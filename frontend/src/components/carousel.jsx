@@ -5,6 +5,11 @@ export default function carousel() {
         <>
         <div>Soy un carousel</div>
         <h2>Holaaaa soy un titulo</h2>
+
+
+        <div>
+            <p>fsdfdsfsdfsdfd</p>
+        </div>
         </>
     )
 }
