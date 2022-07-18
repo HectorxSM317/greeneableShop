@@ -38,6 +38,25 @@ Router.route('/comments')
 Router.route('/comments/:id')
 .post(passport.authenticate('jwt', {session: false}) , deleteComment)
 
+//Products
+
+const ProductsControllers = require('../controllers/productControllers');
+const {getProducts, getOneProduct, addProduct, modifyProduct, removeProduct, multiplesProducts} = ProductsControllers
+
+Router.route('/products')
+.get(getProducts)
+.post(addProduct)
+
+Router.route('/product/:id')
+.delete(removeProduct)
+.put(modifyProduct)
+.get(getOneProduct)
+
+Router.route("/multiplesproducts")
+.post(multiplesProducts)
+
+
+
 
 
 module.exports = Router 
