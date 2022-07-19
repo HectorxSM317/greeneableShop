@@ -4,7 +4,7 @@ const initialState = {
   filterProducts: [],
 };
 
-const citiesReducer = (state = initialState, action) => {
+const productsReducer = (state = initialState, action) => {
   switch (
     action.type //condiciones
   ) {
@@ -35,4 +35,4 @@ const citiesReducer = (state = initialState, action) => {
   }
 };
 
-export default citiesReducer; //se importa en mainReducer
+export default productsReducer; //se importa en mainReducer
