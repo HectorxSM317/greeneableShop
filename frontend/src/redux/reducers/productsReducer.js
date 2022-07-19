@@ -25,7 +25,6 @@ const productsReducer = (state = initialState, action) => {
           .toLowerCase()
           .startsWith(action.payload.toLowerCase().trim())
       );
-
       return {
         ...state,
         filterProducts: filter,

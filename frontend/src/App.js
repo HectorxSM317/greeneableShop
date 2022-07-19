@@ -7,6 +7,7 @@ import Details from './pages/Details';
 // import SignUp from './pages/SingUp';
 import { Route, Routes } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux';
+import productsActions from './redux/actions/productsActions';
 import { useEffect } from 'react';
 // import userActions from './redux/actions/userActions';
 
@@ -15,6 +16,9 @@ function App() {
 
 
   const dispatch = useDispatch()
+  useEffect(()=> {
+    dispatch(productsActions.getProducts())
+  },[])
 
   
 
