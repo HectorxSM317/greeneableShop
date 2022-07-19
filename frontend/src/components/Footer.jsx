@@ -28,17 +28,16 @@ function Footer() {
             <span class="border-shape"></span>
             <div class="bottom_content">
                 <section>
-                    <InstagramIcon />
-                    <FacebookIcon />
-                    <TwitterIcon />
+                    <InstagramIcon style={{ marginRight: "1rem" }} />
+                    <FacebookIcon style={{ marginRight: "1rem" }} />
+                    <TwitterIcon style={{ marginRight: "1rem" }} />
                     <TelegramIcon />
                 </section>
                 <section>
-                    <a href="#">Home</a>
-                    <a href="#">About us</a>
-                    <a href="#">Order</a>
-                    <a href="#">Retail</a>
-                    <a href="#">Member</a>
+                    <a href="#">Products</a>
+                    <a href="#">Pricing</a>
+                    <a href="#">Blog</a>
+                    <a href="#">About</a>
                     <a href="#">Contact Us</a>
                 </section>
             </div>
