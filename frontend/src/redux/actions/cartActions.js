@@ -1,5 +1,6 @@
 import axios from "axios";
-import urlBack from "../../urlBack";
+
+const urlBack = "http://localhost:4000";
 
 const cartActions = {
   createSummary: (cart) => {
@@ -11,7 +12,7 @@ const cartActions = {
 
   getOneSummary: (id) => {
     return async (dispatch, getState) => {
-      const res = await axios(apiUrl + `/summary/${id}`);
+      const res = await axios(apiUrl + `/api/summary/${id}`);
     };
   },
 };
