@@ -5,6 +5,7 @@ const productsActions = {
   getProducts: () => {
     return async (dispatch, getState) => {
       let res = await axios.get(`${urlBack}/api/products`);
+      dispatch({ type: "GETPRODUCTS", payload: res.data.response });
       return res;
     };
   },
