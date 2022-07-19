@@ -1,25 +1,62 @@
-import logo from './logo.svg';
-import './App.css';
+import Navbar from './components/Navbar';
+// import Footer from './components/Footer';
+import Index from './pages/Index';
+import Products from './pages/Products';
+import Details from './pages/Details';
+// import SignIn from './pages/SingIn';
+// import SignUp from './pages/SingUp';
+import { Route, Routes } from 'react-router-dom'
+import { useDispatch, useSelector } from 'react-redux';
+import { useEffect } from 'react';
+// import userActions from './redux/actions/userActions';
+
 
 function App() {
+
+
+  const dispatch = useDispatch()
+
+  
+
+
+  // useEffect(() => {
+  //   if (localStorage.getItem("token") !== null) {
+  //     const token = localStorage.getItem('token')
+  //     dispatch(userActions.verifyToken(token)) //CHEQUEAR
+  //   }
+  // }, [])
+
+
+
+  // const loggedUser = useSelector(store => store.usersReducer.loggedUser)
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Navbar />
+
+      <Routes>
+
+        <Route path="/" element={<Index />} />
+        <Route path="/products" element={<Products />} />
+        <Route path="/details" element={<Details />} />
+        {/* {<Route path="/signUp" element={!loggedUser ? <SignUp /> : <Index />} />}
+        {<Route path="/signIn" element={!loggedUser ? <SignIn /> : <Index />} />} */}
+        
+
+      </Routes>
+      {/* <Footer /> */}
+      {/* <ScrollToTop
+        style={{ boxShadow: "rgba(0, 0, 0, 0.35) 0px 5px 15px" }}
+        smooth
+        color='#142e34'
+        viewBox="-10 -5 24 24"
+        svgPath="M8 10a.5.5 0 0 0 .5-.5V3.707l2.146 2.147a.5.5 0 0 0 .708-.708l-3-3a.5.5 0 0 0-.708 0l-3 3a.5.5 0 1 0 .708.708L7.5 3.707V9.5a.5.5 0 0 0 .5.5zm-7 2.5a.5.5 0 0 1 .5-.5h13a.5.5 0 0 1 0 1h-13a.5.5 0 0 1-.5-.5z"
+      /> */}
+    </>
   );
 }
+
+
+
 
 export default App;
