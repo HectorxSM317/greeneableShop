@@ -13,7 +13,7 @@ const productsActions = {
   getOneProduct: (id) => {
     return async (dispatch, getState) => {
       const res = await axios.get(`${urlBack}/api/product/${id}`);
-      dispatch({ type: "GETONEPRODUCTS", payload: res.data.response });
+      dispatch({ type: "GETONEPRODUCT", payload: res.data.response.product });
       return res;
     };
   },
