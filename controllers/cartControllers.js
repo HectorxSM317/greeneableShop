@@ -4,20 +4,16 @@ const cartControllers = {
   createSummary: async (req, res) => {
     let { productId, userId, date, amount, state } = req.body.cart;
     let { exchange, sold, sent } = date;
-    // console.log(req.body);
+    console.log(req.body);
     // const user = req.user.id;
     let newSummary;
 
     let error = null;
     try {
-      newSummary = await new Summary({
+      newSummary = await new Cart({
         productId: productId,
         userId: userId,
-        date: {
-          exchange: exchange,
-          sold: sold,
-          sent: sent,
-        },
+        date: date,
         amount: amount,
         state: state,
       }).save();
