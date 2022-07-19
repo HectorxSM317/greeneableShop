@@ -1,0 +1,97 @@
+import axios from "axios";
+import urlBack from "../../urlBack";
+
+const productsActions = {
+  getProducts: (cart) => {
+    return async (dispatch, getState) => {
+      let res = await axios.get(`${urlBack}/api/products`, { cart });
+    };
+  },
+
+  getOneProduct: (id) => {
+    return async (dispatch, getState) => {
+      const res = await axios.get(`${urlBack}/api/products/${id}`);
+      dispatch({ type: "GETONEPRODUCTS", payload: res.data.response });
+    };
+  },
+
+  filterProducts: (searchInput) => {
+    return (dispatch, getState) => {
+      dispatch({ type: "FILTERPRODUCTS", payload: searchInput });
+    };
+  },
+
+  addProduct: (data) => {
+    return async (dispatch, getState) => {
+      const token = localStorage.getItem("token");
+
+      const res = await axios.post(
+        `${urlBack}/api/products`,
+        { data },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      dispatch({
+        type: "MESSAGE",
+        payload: {
+          view: true,
+          message: res.data.message,
+          success: res.data.success,
+        },
+      });
+      return res;
+    };
+  },
+  modifyProduct: (data, id) => {
+    const token = localStorage.getItem("token");
+    return async (dispatch, getState) => {
+      const res = await axios.put(
+        `${urlBack}/api/product/${id}`,
+        { data },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      dispatch({
+        type: "message",
+        payload: {
+          view: true,
+          message: res.data.message,
+          success: res.data.success,
+        },
+      });
+
+      return res;
+    };
+  },
+  removeProduct: (id) => {
+    const token = localStorage.getItem("token");
+    return async (dispatch, getState) => {
+      const res = await axios.post(
+        `${urlBack}/api/product/${id}`,
+        {},
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      dispatch({
+        type: "message",
+        payload: {
+          view: true,
+          message: res.data.message,
+          success: res.data.success,
+        },
+      });
+      return res;
+    };
+  },
+};
+
+export default productsActions;

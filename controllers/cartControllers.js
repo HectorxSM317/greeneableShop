@@ -3,7 +3,6 @@ const Cart = require("../models/cart");
 const cartControllers = {
   createSummary: async (req, res) => {
     let { productId, userId, date, amount, state } = req.body.cart;
-    let { exchange, sold, sent } = date;
     console.log(req.body);
     // const user = req.user.id;
     let newSummary;
@@ -17,6 +16,7 @@ const cartControllers = {
         amount: amount,
         state: state,
       }).save();
+
       console.log(newSummary);
     } catch (err) {
       error = err;

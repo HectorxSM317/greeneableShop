@@ -47,7 +47,7 @@ const {
 Router.route("/products").get(getProducts).post(addProduct);
 
 Router.route("/product/:id")
-  .delete(removeProduct)
+  .post(removeProduct)
   .put(modifyProduct)
   .get(getOneProduct);
 
