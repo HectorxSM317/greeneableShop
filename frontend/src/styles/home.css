@@ -31,9 +31,10 @@
     align-items: center;
     height: 30vh;
     background-color: #A3C5B2;
+    border-radius: 10px;
 }
 
-.firstContent, .secondContent{
+.firstContent{
     height: 50vh;
     display: flex;
     margin: 0 5rem;
@@ -42,11 +43,34 @@
 .firstContentA{
     height: 100%;
     width: 50%;
-    background-color: #A3C5B2;
     display: flex;
     justify-content: center;
     align-items: center;
 }
+
+.firstContentA-A{
+    border: 3px solid #A3C5B2;
+    border-radius: 15px;
+    background-image: url("https://www.visionsustentable.com/wp-content/uploads/2021/03/Botella-reutilizable-CArrefour-azul.jpg");
+    background-size: cover;
+    background-position: center;
+}
+.firstContentA-B{
+    border: 3px solid #A3C5B2;
+    border-radius: 15px;
+    background-image: url("https://mymodernmet.com/wp/wp-content/uploads/2018/08/eco-friendly-products-2.jpg");
+    background-size: cover;
+    background-position: center;
+}
+
+.firstContentA-C{
+    border: 3px solid #A3C5B2;
+    border-radius: 15px;
+    background-image: url("https://www.esic.edu/sites/default/files/rethink/wp/georganics.jpg");
+    background-size: cover;
+    background-position: center;
+}
+
 .firstContentB{
     height: 100%;
     width: 50%;
@@ -58,23 +82,21 @@
     padding: 5rem;
 }
 
-.firstContentA-A{
-    background-image: url("https://www.visionsustentable.com/wp-content/uploads/2021/03/Botella-reutilizable-CArrefour-azul.jpg");
+.separator{
+    height: 40vh;
+    background-image: url("https://revistapym.com.co/wp-content/uploads/2021/07/compra-de-productos-sustentables.jpg");
     background-size: cover;
     background-position: center;
-}
-.firstContentA-B{
-    background-image: url("https://mymodernmet.com/wp/wp-content/uploads/2018/08/eco-friendly-products-2.jpg");
-    background-size: cover;
-    background-position: center;
+    margin: 0 5rem;
+    border-radius: 10px;
 }
 
-.firstContentA-C{
-    background-image: url("https://www.esic.edu/sites/default/files/rethink/wp/georganics.jpg");
-    background-size: cover;
-    background-position: center;
+.secondContent{
+    height: 50vh;
+    display: flex;
+    margin: 5rem;
+    margin-bottom: 5rem;
 }
-
 .secondContentA{
     height: 100%;
     width: 50%;
@@ -88,7 +110,6 @@
 .secondContentB{
     height: 100%;
     width: 50%;
-    background-color: #A3C5B2;
     display: flex;
     justify-content: center;
     align-items: center;
