@@ -15,7 +15,7 @@ const userSchema = new mongoose.Schema({
   uniqueString: { type: String, required: true },
   verification: { type: Boolean, required: true },
   phoneNumber: { type: String, required: true },
-  cart: [{ type: mongoose.Types.ObjectId, ref: "carts" }],
+  summary: [{ type: mongoose.Types.ObjectId, ref: "carts" }],
 });
 const User = mongoose.model("users", userSchema);
 

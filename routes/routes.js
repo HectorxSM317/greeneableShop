@@ -53,8 +53,11 @@ Router.route("/product/:id")
 
 Router.route("/multiplesproducts").post(multiplesProducts);
 
-const { createSummary } = require("../controllers/cartControllers");
-
+const {
+  createSummary,
+  getOneSummary,
+} = require("../controllers/cartControllers");
 Router.route("/summary").post(createSummary);
+Router.route("/summary/:id").get(getOneSummary);
 
 module.exports = Router;
