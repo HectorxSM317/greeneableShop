@@ -1,5 +1,5 @@
 import Navbar from './components/Navbar';
-// import Footer from './components/Footer';
+import Footer from './components/Footer';
 import Index from './pages/Index';
 import Products from './pages/Products';
 import Details from './pages/Details';
@@ -48,7 +48,7 @@ function App() {
         
 
       </Routes>
-      {/* <Footer /> */}
+      <Footer />
       {/* <ScrollToTop
         style={{ boxShadow: "rgba(0, 0, 0, 0.35) 0px 5px 15px" }}
         smooth
