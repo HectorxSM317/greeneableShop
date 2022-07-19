@@ -1,40 +1,41 @@
-const nodemailer = require('nodemailer')
-const { google } = require('googleapis')
+const nodemailer = require("nodemailer");
+const { google } = require("googleapis");
 
-const OAuth2 = google.auth.OAuth2 //access to the previously customized options on console cloud
+const OAuth2 = google.auth.OAuth2; //access to the previously customized options on console cloud
 
 const sendVerification = async (email, string) => {
+  const myOAuth2Client = new OAuth2( //creating the settings with 3 params
+    process.env.GOOGLE_CLIENTID,
+    process.env.GOOGLE_CLIENTSECRET,
+    "https://developers.google.com/oauthplayground"
+  );
 
-    const myOAuth2Client = new OAuth2( //creating the settings with 3 params
-        process.env.GOOGLE_CLIENT_ID,
-        process.env.GOOGLE_CLIENT_SECRET,
-        "https://developers.google.com/oauthplayground"
-    )
+  myOAuth2Client.setCredentials({
+    refresh_token: process.env.GOOGLE_REFRESHTOKEN,
+  });
 
-    myOAuth2Client.setCredentials({ refresh_token: process.env.GOOGLE_REFRESH_TOKEN })
+  const accessToken = myOAuth2Client.getAccessToken();
+  const transporter = nodemailer.createTransport({
+    service: "gmail",
 
-    const accessToken = myOAuth2Client.getAccessToken()
-    const transporter = nodemailer.createTransport({
-        service: "gmail",
+    auth: {
+      user: "greenableshop@gmail.com",
+      type: "OAuth2",
+      clientId: process.env.GOOGLE_CLIENTID,
+      clientSecret: process.env.GOOGLE_CLIENTSECRET,
+      refreshToken: process.env.GOOGLE_REFRESHTOKEN,
+      accessToken: accessToken,
+    },
+    tls: {
+      rejectUnauthorized: false, //para que el antivirus no bloquee
+    },
+  });
 
-        auth: {
-            user: process.env.USER,
-            type: "OAuth2",
-            clientId: process.env.GOOGLE_CLIENT_ID,
-            clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-            refreshToken: process.env.GOOGLE_REFRESH_TOKEN,
-            accessToken: accessToken
-        },
-        tls: {
-            rejectUnauthorized: false //para que el antivirus no bloquee
-        }
-    })
-
-    let mailOptions = {
-        from: process.env.USER,
-        to: email,
-        subject: 'Verify your account',
-        html: `
+  let mailOptions = {
+    from: process.env.USER,
+    to: email,
+    subject: "Verify your account",
+    html: `
 
         <div style="color:#0c252c;font-family: 'Arial',sans-serif">
             <h3 style="font-weight:bold">Welcome to MyTinerary! ✈</h3>
@@ -45,16 +46,16 @@ const sendVerification = async (email, string) => {
                     <h4 style="color: white;">Loved by insiders who know and love their cities! </h4>
                 </div>
         </div>
-        `
+        `,
+  };
+
+  await transporter.sendMail(mailOptions, (error, response) => {
+    if (error) {
+      console.log(error);
+    } else {
+      console.log(`Check ${email} to confirm your account.`);
     }
+  });
+};
 
-    await transporter.sendMail(mailOptions, (error, response) => {
-        if (error) {
-            console.log(error)
-        } else {
-            console.log(`Check ${email} to confirm your account.`)
-        }
-    })
-}
-
-module.exports = sendVerification
+module.exports = sendVerification;
