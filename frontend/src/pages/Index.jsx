@@ -52,6 +52,9 @@ export default function Index() {
         </Typography>
       </div>
     </div>
+    <div className='separator'>
+
+    </div>
     <div className='secondContent'>
       <div className='secondContentA'>
       <Typography>
