@@ -32,20 +32,20 @@ export default function Index() {
         <div className='A'>
           <img src="https://www.visionsustentable.com/wp-content/uploads/2021/03/Botella-reutilizable-CArrefour-azul.jpg" alt="" />
           <div className='buyMe'>
-            <h3>COMPRAME</h3>
+            <h3>MORE INFO</h3>
           </div>
         </div>
         <div className='B'>
           <div className='B-1'>
             <img src="https://mymodernmet.com/wp/wp-content/uploads/2018/08/eco-friendly-products-2.jpg" alt="" />
             <div className='buyMe'>
-            <h3>COMPRAME</h3>
+            <h3>MORE INFO</h3>
           </div>
           </div>
           <div className='B-2'>
             <img src="https://www.esic.edu/sites/default/files/rethink/wp/georganics.jpg" alt="" />
             <div className='buyMe'>
-            <h3>COMPRAME</h3>
+            <h3>MORE INFO</h3>
           </div>
           </div>
         </div>
@@ -93,20 +93,20 @@ export default function Index() {
             <div className='B-1'>
               <img src="https://mymodernmet.com/wp/wp-content/uploads/2018/08/eco-friendly-products-2.jpg" alt="" />
               <div className='buyMe'>
-                <h3>COMPRAME</h3>
+                <h3>MORE INFO</h3>
               </div>
             </div>
             <div className='B-2'>
               <img src="https://www.esic.edu/sites/default/files/rethink/wp/georganics.jpg" alt="" />
               <div className='buyMe'>
-                <h3>COMPRAME</h3>
+                <h3>MORE INFO</h3>
               </div>
             </div>
           </div>
           <div className='A'>
             <img src="https://www.visionsustentable.com/wp-content/uploads/2021/03/Botella-reutilizable-CArrefour-azul.jpg" alt="" />
             <div className='buyMe'>
-              <h3>COMPRAME</h3>
+              <h3>MORE INFO</h3>
             </div>
           </div>
       </div>
