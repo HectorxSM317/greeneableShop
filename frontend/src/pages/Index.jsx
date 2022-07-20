@@ -10,6 +10,13 @@ export default function Index() {
   return (
     <>
     <div className='header'>
+      <div className='headerName'>
+        <h1>Make the difference!</h1>
+        <p>Sustainable products to take care of our planet</p>
+      </div>
+      <div className='headerScroll'>
+          <Button variant="contained" sx={{backgroundColor: "#13552D"}}>Scroll</Button>
+      </div>
     </div>
     <div className='line'>
       <div className='lineA'>
@@ -71,7 +78,7 @@ export default function Index() {
     <div className='separator'>
     </div>
     <div className='line3'>
-    <div>
+        <div>
           <Button variant="contained" sx={{backgroundColor: "#13552D"}}>Sustainable</Button>
         </div>
         <div className='line3A'>
