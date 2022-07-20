@@ -61,7 +61,7 @@ export default function Products() {
   }
 
   return (
-    <div className='p-0 mr-0 flex flex-col h-[100vh]'>
+    <div className='p-0 mr-0 flex flex-col min-h-[100vh]'>
 
       <div className="upper-box flex justify-center m-0 p-4 px-5 container-box bg-slate-100 sticky items-center justify-around ">
 
@@ -100,7 +100,7 @@ export default function Products() {
 
 
       </div>
-      <div className='flex flex-wrap items-center justify-around my-1 w-full'>
+      <div className='flex flex-wrap items-center justify-around my-1 w-full grow'>
 
         {products.length > 0 ?
 
