@@ -8,7 +8,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import productsActions from '../redux/actions/productsActions'
 
 export default function Products() {
-
+//soy un comentario xdxdxddxxdx
   const categories = [{ name: "sustainable", img: "https://www.sme-news.co.uk/wp-content/uploads/2020/10/sustainable-products-1024x576.jpg" }, { name: "renewable", img: "https://massachusetts.revolusun.com/wp-content/uploads/sites/2/2018/06/PowerGreen-15000Mah-Solar-Power-Bank-Portable-Solar-Phone-Battery-Charger-External-Power-Pack-for-LG-Phones-1.jpg" }, { name: "" }]
 
   const [age, setAge] = React.useState('');

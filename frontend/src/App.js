@@ -3,6 +3,7 @@ import Footer from './components/Footer';
 import Index from './pages/Index';
 import Products from './pages/Products';
 import Details from './pages/Details';
+import Login from './pages/Login';
 // import SignIn from './pages/SingIn';
 // import SignUp from './pages/SingUp';
 import { Route, Routes } from 'react-router-dom'
@@ -43,8 +44,8 @@ function App() {
         <Route path="/" element={<Index />} />
         {/* <Route path="/products" element={<Products />} /> */}
         <Route path="/details" element={<Details />} />
-        {/* {<Route path="/signUp" element={!loggedUser ? <SignUp /> : <Index />} />}
-        {<Route path="/signIn" element={!loggedUser ? <SignIn /> : <Index />} />} */}
+        {/* {<Route path="/signUp" element={!loggedUser ? <SignUp /> : <Index />} />} */}
+        <Route path="/login" element={<Login />} />
         
 
       </Routes>
