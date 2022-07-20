@@ -19,6 +19,7 @@ const userActions = {
   userSignIn: (loggedUser) => {
     return async (dispatch, getState) => {
       let res = await axios.post(`${urlBack}/api/auth/signIn`, { loggedUser });
+      console.log(res)
       if (res.data.success) {
         localStorage.setItem("token", res.data.response.token);
         dispatch({
