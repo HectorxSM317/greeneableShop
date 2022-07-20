@@ -3,17 +3,17 @@ import Footer from './components/Footer';
 import Index from './pages/Index';
 import Products from './pages/Products';
 import Details from './pages/Details';
-import Login from './pages/Login';
+
 import AboutUs from './pages/AboutUs'
 // import AboutUs from './pages/AboutUs';
 // import Cart from './pages/Cart';
-// import SignIn from './pages/SingIn';
-// import SignUp from './pages/SingUp';
+import SignIn from './pages/SignIn';
+import SignUp from './pages/SignUp';
 import { Route, Routes } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux';
 import productsActions from './redux/actions/productsActions';
 import { useEffect } from 'react';
-// import userActions from './redux/actions/userActions';
+import userActions from './redux/actions/userActions';
 
 
 function App() {
@@ -27,16 +27,16 @@ function App() {
   
 
 
-  // useEffect(() => {
-  //   if (localStorage.getItem("token") !== null) {
-  //     const token = localStorage.getItem('token')
-  //     dispatch(userActions.verifyToken(token)) //CHEQUEAR
-  //   }
-  // }, [])
+  useEffect(() => {
+    if (localStorage.getItem("token") !== null) {
+      const token = localStorage.getItem('token')
+      dispatch(userActions.verifyToken(token)) //CHEQUEAR
+    }
+  }, [])
 
 
 
-  // const loggedUser = useSelector(store => store.usersReducer.loggedUser)
+  const loggedUser = useSelector(store => store.usersReducer.loggedUser)
 
   return (
     <>
@@ -48,10 +48,11 @@ function App() {
         <Route path="/products" element={<Products />} />
         <Route path="/details" element={<Details />} />
         <Route path="/AboutUs" element={<AboutUs />} />
+        {/* <Route path="/signUp" element={<SignUp />} />  */}
         {/* <Route path="/cart" element={<Cart />} /> */}
-        {/* {<Route path="/signUp" element={!loggedUser ? <SignUp /> : <Index />} />} */}
-        {/* {<Route path="/signIn" element={!loggedUser ? <SignIn /> : <Index />} />} */}
-        <Route path="/login" element={<Login />} />
+        {<Route path="/signUp" element={!loggedUser ? <SignUp /> : <Index />} />} 
+        {<Route path="/signIn" element={!loggedUser ? <SignIn /> : <Index />} />}
+        {/* <Route path="/login" element={<Login />} /> */}
 
       </Routes>
       <Footer />
