@@ -40,15 +40,15 @@ function App() {
 
       <Routes>
 
-        <Route path="/" element={<Index />} />
-        {/* <Route path="/products" element={<Products />} /> */}
-        <Route path="/details" element={<Details />} />
+        {/* <Route path="/" element={<Index />} /> */}
+        <Route path="/products" element={<Products />} />
+        {/* <Route path="/details" element={<Details />} /> */}
         {/* {<Route path="/signUp" element={!loggedUser ? <SignUp /> : <Index />} />}
         {<Route path="/signIn" element={!loggedUser ? <SignIn /> : <Index />} />} */}
         
 
       </Routes>
-      <Footer />
+      {/* <Footer /> */}
       {/* <ScrollToTop
         style={{ boxShadow: "rgba(0, 0, 0, 0.35) 0px 5px 15px" }}
         smooth
