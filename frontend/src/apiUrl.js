@@ -1,3 +1,3 @@
-let apiUrl = "https://greeeneable-back.herokuapp.com/"
+// let apiUrl = "https://greeeneable-back.herokuapp.com/"
 
-export default apiUrl
+// export default apiUrl
