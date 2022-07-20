@@ -1,27 +1,21 @@
-import Navbar from './components/Navbar';
-import Footer from './components/Footer';
-import Index from './pages/Index';
-import Products from './pages/Products';
-import Details from './pages/Details';
+import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
+import Index from "./pages/Index";
+import Products from "./pages/Products";
+import Details from "./pages/Details";
 // import SignIn from './pages/SingIn';
 // import SignUp from './pages/SingUp';
-import { Route, Routes } from 'react-router-dom'
-import { useDispatch, useSelector } from 'react-redux';
-import productsActions from './redux/actions/productsActions';
-import { useEffect } from 'react';
+import { Route, Routes } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import productsActions from "./redux/actions/productsActions";
+import { useEffect } from "react";
 // import userActions from './redux/actions/userActions';
 
-
 function App() {
-
-
-  const dispatch = useDispatch()
-  useEffect(()=> {
-    dispatch(productsActions.getProducts())
-  },[])
-
-  
-
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(productsActions.getProducts());
+  }, []);
 
   // useEffect(() => {
   //   if (localStorage.getItem("token") !== null) {
@@ -30,8 +24,6 @@ function App() {
   //   }
   // }, [])
 
-
-
   // const loggedUser = useSelector(store => store.usersReducer.loggedUser)
 
   return (
@@ -39,14 +31,11 @@ function App() {
       <Navbar />
 
       <Routes>
-
-        <Route path="/" element={<Index />} />
-        {/* <Route path="/products" element={<Products />} /> */}
+        {/* <Route path="/" element={<Index />} /> */}
+        <Route path="/products" element={<Products />} />
         {/* <Route path="/details" element={<Details />} /> */}
         {/* {<Route path="/signUp" element={!loggedUser ? <SignUp /> : <Index />} />}
         {<Route path="/signIn" element={!loggedUser ? <SignIn /> : <Index />} />} */}
-        
-
       </Routes>
       <Footer />
       {/* <ScrollToTop
@@ -59,8 +48,5 @@ function App() {
     </>
   );
 }
-
-
-
 
 export default App;

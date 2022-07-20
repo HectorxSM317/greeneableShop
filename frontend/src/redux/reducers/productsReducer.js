@@ -20,11 +20,11 @@ const citiesReducer = (state = initialState, action) => {
         oneProduct: action.payload,
       };
     case "FILTERPRODUCTS":
-      let filter = state.products.filter((product) =>
-        product.name
+      let filter = state.products.filter((product) => {
+        return product.name
           .toLowerCase()
-          .startsWith(action.payload.toLowerCase().trim())
-      );
+          .startsWith(action.payload.searchInput.toLowerCase().trim());
+      });
 
       return {
         ...state,
