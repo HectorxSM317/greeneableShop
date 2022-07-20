@@ -11,22 +11,22 @@ import TelegramIcon from '@mui/icons-material/Telegram';
 function Footer() {
     return (
         <footer>
-            <div class="top_header">
+            <div className="top_header">
                 <section>
-                    <span><i class="fa fa-map-marker"></i></span>
+                    <span><i className="fa fa-map-marker"></i></span>
                     <span>Street, full address, state/province, country, pincode</span>
                 </section>
                 <section>
-                    <span><i class="fa fa-phone"></i></span>
+                    <span><i className="fa fa-phone"></i></span>
                     <span>(00) 0000 0000</span>
                 </section>
                 <section>
-                    <span><i class="fa fa-envelope"></i></span>
+                    <span><i className="fa fa-envelope"></i></span>
                     <span>info@greeneable.com</span>
                 </section>
             </div>
-            <span class="border-shape"></span>
-            <div class="bottom_content">
+            <span className="border-shape"></span>
+            <div className="bottom_content">
                 <section>
                     <InstagramIcon style={{ marginRight: "1rem" }} />
                     <FacebookIcon style={{ marginRight: "1rem" }} />
@@ -41,7 +41,7 @@ function Footer() {
                     <a href="#">Contact Us</a>
                 </section>
             </div>
-            <div class="copyright">
+            <div className="copyright">
                 Copyright © 2022 Greeneable - All rights reserved
             </div>
         </footer>
