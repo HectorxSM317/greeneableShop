@@ -39,7 +39,6 @@ function App() {
   return (
     <>
       <Navbar />
-<<<<<<< HEAD
 
       <Routes>
 
@@ -53,15 +52,6 @@ function App() {
         
 
       </Routes>
-=======
-        <Routes>
-          {/* <Route path="/" element={<Index />} /> */}
-          {/* <Route path="/products" element={<Products />} /> */}
-          <Route path="/details" element={<Details />} />
-          {/* {<Route path="/signUp" element={!loggedUser ? <SignUp /> : <Index />} />}
-          {<Route path="/signIn" element={!loggedUser ? <SignIn /> : <Index />} />} */}
-        </Routes>
->>>>>>> 6217eae3a935275e6c06b245c28fb1545df2f6d5
       <Footer />
       {/* <ScrollToTop
         style={{ boxShadow: "rgba(0, 0, 0, 0.35) 0px 5px 15px" }}
