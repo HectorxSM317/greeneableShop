@@ -8,7 +8,7 @@ import Select from '@mui/material/Select';
 import GoogleSignUp from '../components/GoogleSignUp';
 import { useState } from 'react';
 import { Link as LinkRouter } from 'react-router-dom';
-import toast  from 'react-hot-toast';
+// import toast  from 'react-hot-toast';
 <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300&family=Montserrat:wght@600&display=swap" rel="stylesheet"></link>
 
 
@@ -35,27 +35,28 @@ export default function LogIn(){
 				password: event.target[5].value,
 				photo: event.target[6].value,
 				country: selectCountry,
-				from: "form-Signup" 
+				from: "signUp",
+				role: "user"
 			}
 
-			const res = await dispatch(userActions.signUpUsers(userData))
+			const res = await dispatch(userActions.userSignUp(userData))
 			console.log(res)
-			const errormsg = res.data.message
-			console.log(errormsg)
-			if (res.data.from === "validation") {
-        errormsg.forEach(e => {
-            toast.error(e.message)
-        })
-    }
-    if (res.data.from === "form-Signup") {
-        if (res.data.success) {
-            toast.success(res.data.message)
-			console.log(res.data.message);
-       // navigate('/signin')
-        } else {
-            toast.error(res.data.message)
-        }
-    }
+			// const errormsg = res.data.message
+			// console.log(errormsg)
+	// 		if (res.data.from === "validation") {
+    //     errormsg.forEach(e => {
+    //         toast.error(e.message)
+    //     })
+    // }
+    // if (res.data.from === "form-Signup") {
+    //     if (res.data.success) {
+    //         // toast.success(res.data.message)
+	// 		console.log(res.data.message);
+    //    // navigate('/signin')
+    //     } else {
+    //         toast.error(res.data.message)
+    //     }
+    // }
 };
 		
 		

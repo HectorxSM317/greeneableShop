@@ -3,9 +3,10 @@ const urlBack = "http://localhost:4000";
 
 const userActions = {
   userSignUp: (userData) => {
+    console.log(userData);
     return async (dispatch, getState) => {
       let res = await axios.post(`${urlBack}/api/auth/signUp`, { userData });
-      // console.log(res.data)
+      console.log(res)
       dispatch({
         type: "MESSAGE",
         payload: {
@@ -19,6 +20,7 @@ const userActions = {
   userSignIn: (loggedUser) => {
     return async (dispatch, getState) => {
       let res = await axios.post(`${urlBack}/api/auth/signIn`, { loggedUser });
+      console.log(res)
       if (res.data.success) {
         localStorage.setItem("token", res.data.response.token);
         dispatch({

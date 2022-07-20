@@ -2,9 +2,7 @@
 *:before,*:after {
     box-sizing: inherit;
 }
-body {
-    background-color: #dda02c;
-}
+
 .containerLogin{
     flex-grow: 1;
     /* display: grid; */

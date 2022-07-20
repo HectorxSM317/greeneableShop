@@ -5,26 +5,18 @@ import userActions from '../redux/actions/userActions';
 import { useNavigate } from 'react-router-dom';
 // import { toast } from 'react-toastify';
 
-export default function GoogleSignUp({props}) {
+export default function GoogleSignIn() {
   const dispatch = useDispatch();
   const navigate = useNavigate()
 
   function handleCallbackResponse(response) {
     let userObject = jwt_decode(response.credential);
-    let res = dispatch(userActions.userSignUp({
-    //   fullName: userObject.name,
-    //   email: userObject.email,
-    //   password: userObject.sub,
-    //   userPicture: userObject.picture,
-    //   from: 'google'
-        firstName: userObject.given_name,
-	    lastName: userObject.family_name,
-	    email: userObject.email,
-	    password: userObject.sub,
-	    photo: userObject.picture,
-	    country: props,
-	    from: "google",
-	    role: "user"
+    let res = dispatch(userActions.userSignIn({
+      fullName: userObject.name,
+      email: userObject.email,
+      password: userObject.sub,
+      userPicture: userObject.picture,
+      from: 'google'
     }))
 
     // if (res) {
