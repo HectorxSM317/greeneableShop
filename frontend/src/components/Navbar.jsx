@@ -14,12 +14,48 @@ import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
 import '../styles/navbar.css';
 import LocalMallIcon from '@mui/icons-material/LocalMall';
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import PersonOutlineIcon from '@mui/icons-material/PersonOutline';
+import {Link as LinkRouter, useNavigate} from 'react-router-dom';
 
-const pages = ['Products', 'Pricing', 'Blog'];
-const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
+const pages = [
+  {
+    name:'Home',
+    to: '/'
+  },
+  {
+    name: 'Products',
+    to: '/products'
+  },
+
+  {
+    name: 'About Us',
+    to: '/aboutUs'
+  }
+  ]
+
+const settings  = [
+  {
+    name: 'Sign Up' ,
+    to: '/signUp'
+  },
+  
+  {
+    name: 'Sign In',
+    to: '/signIn'
+  },
+
+    
+  ];
 
 const Navbar = () => {
+
+  // const user=useSelector(store=>store.usersReducer.user)
+
+  const user=false; //provisorio
+  const navigate=useNavigate()
+
+
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
 
@@ -37,6 +73,11 @@ const Navbar = () => {
   const handleCloseUserMenu = () => {
     setAnchorElUser(null);
   };
+
+  function SignOut() {
+    // dispatch(usersActions.SignOutUser())
+      navigate("/")
+  }
 
   return (
     <AppBar position="static">
@@ -85,16 +126,27 @@ const Navbar = () => {
                 horizontal: 'left',
               }}
               open={Boolean(anchorElNav)}
-              onClose={handleCloseNavMenu}
+              // onClose={handleCloseNavMenu}
               sx={{
                 display: { xs: 'block', md: 'none' },
               }}
             >
-              {pages.map((page) => (
+
+               {pages.map((page,index) => (
+                <LinkRouter key={index}  to={page.to} className="linkNav">
+                  <MenuItem>
+                  {/* {console.log(page)} */}
+                
+                    <Typography textAlign="center">{page.name}</Typography>
+                  </MenuItem>
+                </LinkRouter>
+                
+              ))}
+              {/* {pages.map((page) => (
                 <MenuItem key={page} onClick={handleCloseNavMenu}>
                   <Typography textAlign="center">{page}</Typography>
                 </MenuItem>
-              ))}
+              ))} */}
             </Menu>
           </Box>
           <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
@@ -117,7 +169,25 @@ const Navbar = () => {
             LOGO
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-            {pages.map((page) => (
+          {pages.map((page,index) => (
+             <LinkRouter
+                
+                 key={index}
+                 to={page.to}
+                 sx={{ my: 2, color: 'white', display: 'block' }}
+                 
+              >
+                <button  className="mx-2">
+                {page.name}
+                </button>
+
+               
+             </LinkRouter> 
+            
+            ))}
+
+
+            {/* {pages.map((page) => (
               <Button
                 key={page}
                 onClick={handleCloseNavMenu}
@@ -125,7 +195,7 @@ const Navbar = () => {
               >
                 {page}
               </Button>
-            ))}
+            ))} */}
           </Box>
 
           <Box sx={{ flexGrow: 0 }}>
@@ -134,12 +204,11 @@ const Navbar = () => {
                 <PersonOutlineIcon sx={{ color: "white", fontSize: "2rem" }} />
               </IconButton>
             </Tooltip>
-            <Tooltip title="Open settings">
-              <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <LocalMallIcon sx={{ color: "white", fontSize: "1.7rem", marginLeft: "2.5rem" }} />
-              </IconButton>
-            </Tooltip>
-
+            
+                <LinkRouter to="/cart">
+                <ShoppingCartIcon sx={{ color: "white", fontSize: "1.7rem", marginLeft: "2.5rem" }} />
+                </LinkRouter>
+           
             <Menu
               sx={{ mt: '45px' }}
               id="menu-appbar"
@@ -156,11 +225,30 @@ const Navbar = () => {
               open={Boolean(anchorElUser)}
               onClose={handleCloseUserMenu}
             >
-              {settings.map((setting) => (
+{user ? (
+                <Box>
+                
+                  <MenuItem sx={{'&:hover': {bgcolor: 'rgb(224,224,224)'}}} onClick={handleCloseUserMenu}>
+                    <Typography onClick={SignOut}>Sign Out</Typography>
+                  </MenuItem>
+                </Box>
+              
+
+
+              ):settings.map((setting,index) => (
+                <LinkRouter key={index} onClick={handleCloseUserMenu} to={setting.to} className="linkNav">
+                  <MenuItem>
+                      <Typography textAlign="center">{setting.name}</Typography>
+                  </MenuItem>
+                </LinkRouter>
+                
+              ))}
+
+              {/* {settings.map((setting) => (
                 <MenuItem key={setting} onClick={handleCloseUserMenu}>
                   <Typography textAlign="center">{setting}</Typography>
                 </MenuItem>
-              ))}
+              ))} */}
             </Menu>
           </Box>
         </Toolbar>
