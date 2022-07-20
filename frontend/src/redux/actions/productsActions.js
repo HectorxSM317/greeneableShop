@@ -18,11 +18,12 @@ const productsActions = {
     };
   },
 
-  filterProducts: (searchInput, checkbox) => {
+  filterProducts: (searchInput, checkBox) => {
+    // console.log(checkBox);
     return (dispatch, getState) => {
       dispatch({
         type: "FILTERPRODUCTS",
-        payload: { searchInput: searchInput, checkbox: checkbox },
+        payload: { searchInput: searchInput, checkBox: checkBox },
       });
     };
   },

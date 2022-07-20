@@ -18,13 +18,11 @@ export default function Product({ product }) {
           </p>
           <p className="font-bold text-2xl">{product.price} USD</p>
         </div>
+
+        <LinkRouter to={`/details/${product._id}`} className="bg-black">
+          View more
+        </LinkRouter>
       </div>
-      <LinkRouter
-        to={`/details/${product._id}`}
-        className="absolute center bottom-4 text-center pt-2 text-black font-bold rounded-lg h-10 w-32"
-      >
-        View more
-      </LinkRouter>
     </div>
   );
 }

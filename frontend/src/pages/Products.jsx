@@ -6,56 +6,26 @@ import productsActions from "../redux/actions/productsActions";
 import Product from "../components/Product";
 
 export default function Products() {
-  // const categories = [
-  //   {
-  //     name: "Lamp",
-  //     image:
-  //       "https://www.sme-news.co.uk/wp-content/uploads/2020/10/sustainable-products-1024x576.jpg",
-  //   },
-  //   {
-  //     name: "Sustainable",
-  //     image:
-  //       "https://massachusetts.revolusun.com/wp-content/uploads/sites/2/2018/06/PowerGreen-15000Mah-Solar-Power-Bank-Portable-Solar-Phone-Battery-Charger-External-Power-Pack-for-LG-Phones-1.jpg",
-  //   },
-  //   {
-  //     name: "Recycled",
-  //     image:
-  //       "https://i.pinimg.com/736x/57/5c/2e/575c2edfbd6bea407ee2298cffd6cfab--plumbing-pipe-pvc-pipes.jpg",
-  //   },
-  //   {
-  //     name: "Vintage",
-  //     image:
-  //       "https://www.divinedistribution.co.uk/wp-content/uploads/2019/01/20200729_075701458_iOS-375x400.jpg",
-  //   },
-  //   {
-  //     name: "Toys",
-  //     image:
-  //       "https://afilii.com/en/wp-content/uploads/sites/3/2018/09/eco-toys-toys-of-wood-Bowles-by-Julie-Chrpova-1.jpg",
-  //   },
-  // ];
-
-  const [age, setAge] = React.useState("");
-  // const [products, setProducts] = useState()
-
   const [input, setInput] = useState("");
-  const [az, setAz] = useState("");
+  const [buttonRadio, setbuttonRadio] = useState([]);
+  const [catProducts, setCatProducts] = useState([]);
 
-  let checkBox = [];
+  const categories = new Set(catProducts.map((cat) => cat.category));
+
+  const arrayCategories = [...categories];
 
   const dispatch = useDispatch();
-  // console.log(input);
+  useEffect(() => {
+    dispatch(productsActions.getProducts()).then((res) =>
+      setCatProducts(res.data.response)
+    );
+  }, []);
 
   useEffect(() => {
-    dispatch(productsActions.filterProducts(input, checkBox));
-  }, [input]);
+    dispatch(productsActions.filterProducts(input, buttonRadio));
+  }, [input, buttonRadio]);
 
   let products = useSelector((store) => store.productsActions?.filterProducts);
-  // const store = useSelector((store) => store);
-  // console.log(store);
-
-  let category = new Set(products.map((product) => product.category));
-  console.log(category);
-  let categories = [...category];
 
   const handleChange = (e) => {
     if (e === "as-name") {
@@ -64,8 +34,6 @@ export default function Products() {
       setAz("des");
     }
   };
-
-  console.log(checkBox);
 
   return (
     <div className="p-0 mr-0 flex flex-col min-h-[100vh]">
@@ -123,23 +91,19 @@ export default function Products() {
       </div>
 
       <div className="bg-white my-3 w-full justify-center flex gap-5 flex-wrap">
-        {categories.map((cat, i) => {
+        <label>
+          <input type="radio" name="asd" onClick={() => setbuttonRadio("")} />
+          All categories
+        </label>
+
+        {arrayCategories.map((cat, i) => {
           return (
             <label key={i}>
               <input
-                type="checkbox"
+                type="radio"
+                name="asd"
                 value={cat}
-                onClick={(ev) => {
-                  if (ev.target.checked) {
-                    checkBox.push(ev.target.value);
-                  } else {
-                    checkBox = checkBox.filter(
-                      (categoryCheckBox) => categoryCheckBox !== ev.target.value
-                    );
-                  }
-
-                  console.log(checkBox);
-                }}
+                onClick={(ev) => setbuttonRadio(ev.target.value)}
               />
               {cat}
             </label>
