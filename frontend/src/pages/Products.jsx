@@ -1,13 +1,9 @@
 import React from "react";
 import "../styles/products.css";
-import InputLabel from "@mui/material/InputLabel";
-import MenuItem from "@mui/material/MenuItem";
-import Select from "@mui/material/Select";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import productsActions from "../redux/actions/productsActions";
-import { Checkbox } from "@mui/material";
-import { Link as LinkRouter } from "react-router-dom";
+import Product from "../components/Product";
 
 export default function Products() {
   // const categories = [
@@ -159,32 +155,8 @@ export default function Products() {
       </div>
       <div className="flex flex-wrap items-center justify-around my-1 w-full grow">
         {products.length > 0 ? (
-          products?.map((product, i) => {
-            return (
-              <div key={i} className="max-w-[15rem]">
-                <div className="max-w-sm rounded overflow-hidden shadow-lg h-[15rem] w-[15rem] m-1">
-                  <img
-                    className="w-full h-full object-cover"
-                    src={product.photo}
-                    alt="Sunset in the mountains"
-                  />
-                </div>
-                <div className="min-h-[12rem]">
-                  <div className="px-6 py-4">
-                    <p className="font-bold text-lg text-slate-900 mb-2">
-                      {product.name}
-                    </p>
-                    <p className="font-bold text-2xl">{product.price} USD</p>
-                  </div>
-                </div>
-                <LinkRouter
-                  to={`/details/${product._id}`}
-                  className="absolute center bottom-4 text-center pt-2 text-black font-bold rounded-lg h-10 w-32"
-                >
-                  View more
-                </LinkRouter>
-              </div>
-            );
+          products?.map((product) => {
+            return <Product product={product} key={product._id} />;
           })
         ) : (
           <div className="flex justify-center items-center my-5">
