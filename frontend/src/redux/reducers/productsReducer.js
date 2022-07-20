@@ -4,7 +4,7 @@ const initialState = {
   filterProducts: [],
 };
 
-const productsReducer = (state = initialState, action) => {
+const citiesReducer = (state = initialState, action) => {
   switch (
     action.type //condiciones
   ) {
@@ -25,6 +25,7 @@ const productsReducer = (state = initialState, action) => {
           .toLowerCase()
           .startsWith(action.payload.toLowerCase().trim())
       );
+
       return {
         ...state,
         filterProducts: filter,
@@ -34,4 +35,4 @@ const productsReducer = (state = initialState, action) => {
   }
 };
 
-export default productsReducer; //se importa en mainReducer
+export default citiesReducer; //se importa en mainReducer
