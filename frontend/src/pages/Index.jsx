@@ -29,19 +29,26 @@ export default function Index() {
     </div>
     <div className='firstContent'>
       <div className='firstContentA'>
-        <Box sx={{display: 'flex', height: "95%", width: "95%"}}>
-          <Box sx={{height: "100%", width: "50%", mx: 1}} className="firstContentA-A">
-
-          </Box>
-          <Box sx={{height: "100%", width: "50%"}}>
-            <Box sx={{height: "49%", mb: 1}} className="firstContentA-B">
-
-            </Box>
-            <Box sx={{height: "49%", mt: 1 }} className="firstContentA-C">
-
-            </Box>
-          </Box>
-        </Box>
+        <div className='A'>
+          <img src="https://www.visionsustentable.com/wp-content/uploads/2021/03/Botella-reutilizable-CArrefour-azul.jpg" alt="" />
+          <div className='buyMe'>
+            <h3>COMPRAME</h3>
+          </div>
+        </div>
+        <div className='B'>
+          <div className='B-1'>
+            <img src="https://mymodernmet.com/wp/wp-content/uploads/2018/08/eco-friendly-products-2.jpg" alt="" />
+            <div className='buyMe'>
+            <h3>COMPRAME</h3>
+          </div>
+          </div>
+          <div className='B-2'>
+            <img src="https://www.esic.edu/sites/default/files/rethink/wp/georganics.jpg" alt="" />
+            <div className='buyMe'>
+            <h3>COMPRAME</h3>
+          </div>
+          </div>
+        </div>
       </div>
       <div className='firstContentB'>
         <Typography>
@@ -52,8 +59,25 @@ export default function Index() {
         </Typography>
       </div>
     </div>
+    <div className='line2'>
+        <div className='line2A'>
+          <div className='line2A-A'>
+          </div>
+        </div>
+        <div>
+          <Button variant="contained" sx={{backgroundColor: "#13552D"}}>Sustainable</Button>
+        </div>
+    </div>
     <div className='separator'>
-
+    </div>
+    <div className='line3'>
+    <div>
+          <Button variant="contained" sx={{backgroundColor: "#13552D"}}>Sustainable</Button>
+        </div>
+        <div className='line3A'>
+          <div className='line3A-A'>
+          </div>
+        </div>
     </div>
     <div className='secondContent'>
       <div className='secondContentA'>
@@ -65,23 +89,45 @@ export default function Index() {
         </Typography>
       </div>
       <div className='secondContentB'>
-        <Box sx={{display: 'flex', height: "95%", width: "95%"}}>
-            <Box sx={{height: "100%", width: "50%"}}>
-              <Box sx={{height: "49%", mb: 1}} className="firstContentA-B">
-              </Box>
-              <Box sx={{height: "49%", mt: 1 }} className="firstContentA-C">
-              </Box>
-            </Box>
-            <Box sx={{height: "100%", width: "50%", mx: 1}} className="firstContentA-A">
-            </Box>
-          </Box>
+          <div className='B'>
+            <div className='B-1'>
+              <img src="https://mymodernmet.com/wp/wp-content/uploads/2018/08/eco-friendly-products-2.jpg" alt="" />
+              <div className='buyMe'>
+                <h3>COMPRAME</h3>
+              </div>
+            </div>
+            <div className='B-2'>
+              <img src="https://www.esic.edu/sites/default/files/rethink/wp/georganics.jpg" alt="" />
+              <div className='buyMe'>
+                <h3>COMPRAME</h3>
+              </div>
+            </div>
+          </div>
+          <div className='A'>
+            <img src="https://www.visionsustentable.com/wp-content/uploads/2021/03/Botella-reutilizable-CArrefour-azul.jpg" alt="" />
+            <div className='buyMe'>
+              <h3>COMPRAME</h3>
+            </div>
+          </div>
       </div>
     </div>
     <div className='twoCalls'>
-      <Box sx={{height:"100%", width: "50%", borderRadius: 5}} className="firstCall">
-      </Box>
-      <Box sx={{height:"100%", width: "50%", borderRadius: 5}} className="secondCall">
-      </Box>
+      <div className='firstCall'>
+        <img src="https://images.pexels.com/photos/6417967/pexels-photo-6417967.jpeg?auto=compress&cs=tinysrgb&w=1600" alt="" />
+          <div className='text'>
+            <h1>PRODUCTO</h1>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque vero, officiis nam doloremque unde facere id modi sint
+            </p>
+          </div>
+      </div>
+      <div className='secondCall'>
+        <img src="https://images.pexels.com/photos/6706901/pexels-photo-6706901.jpeg?auto=compress&cs=tinysrgb&w=1600" alt="" />
+        <div className='text'>
+          <h1>PRODUCTO</h1>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque vero, officiis nam doloremque unde facere id modi sint
+          </p>
+        </div>
+      </div>
     </div>
     <div className='line'>
       <div className='lineA'>

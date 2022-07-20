@@ -25,20 +25,59 @@
     background-color: #A3C5B2;
 }
 
+.line2{
+    margin: 0 5rem;
+    height: 10vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.line2A{
+    width: 80%;
+    display: flex;
+    justify-content: center;
+}
+
+.line2A-A{
+    width: 100%;
+    height: 5px;
+    background-color: #A3C5B2;
+}
+.line3{
+    margin: 0rem 5rem;
+    height: 10vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.line3A{
+    width: 80%;
+    display: flex;
+    justify-content: center;
+}
+
+.line3A-A{
+    width: 100%;
+    height: 5px;
+    background-color: #A3C5B2;
+}
+
 .carouselHome{
     margin: 0 5rem 5rem 5rem;
     display: flex;
     align-items: center;
     height: 30vh;
-    background-color: #A3C5B2;
+    background-color: rgba(0, 0, 0, 0.1);
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
     border-radius: 10px;
 }
 
 .firstContent{
     height: 50vh;
     display: flex;
-    margin: 0 5rem;
-    margin-bottom: 5rem;
+    margin: 5rem;
 }
 .firstContentA{
     height: 100%;
@@ -46,29 +85,119 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    gap: 1rem;
 }
 
-.firstContentA-A{
-    border: 3px solid #A3C5B2;
-    border-radius: 15px;
-    background-image: url("https://www.visionsustentable.com/wp-content/uploads/2021/03/Botella-reutilizable-CArrefour-azul.jpg");
-    background-size: cover;
-    background-position: center;
+.buyMe{
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    padding: 15px;
+    text-align: center;
+    color: #fff;
+    font-size: 18px;
 }
-.firstContentA-B{
-    border: 3px solid #A3C5B2;
-    border-radius: 15px;
-    background-image: url("https://mymodernmet.com/wp/wp-content/uploads/2018/08/eco-friendly-products-2.jpg");
-    background-size: cover;
-    background-position: center;
+.buyMe h3{
+    font-weight: 700;
+    font-size: 32px;
+    margin: 0 0 20px;
+    transform: translateY(30px);
+    opacity: 0;
+    transition: all 0.3s ease-out;
+}
+.A:hover .buyMe h3{
+    opacity: 1;
+    transform: translateY(0);
 }
 
-.firstContentA-C{
-    border: 3px solid #A3C5B2;
+.B-1:hover .buyMe h3{
+    opacity: 1;
+    transform: translateY(0);
+}
+.B-2:hover .buyMe h3{
+    opacity: 1;
+    transform: translateY(0);
+}
+.A{
+    width: 50%;
+    height: 100%;
+    border: 3px solid white;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
     border-radius: 15px;
-    background-image: url("https://www.esic.edu/sites/default/files/rethink/wp/georganics.jpg");
-    background-size: cover;
-    background-position: center;
+    background: radial-gradient(#111 50%, #000 100%);
+    overflow: hidden;
+    position: relative;
+}
+.A img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 15px;
+    display: block;
+    transform: scale(1.1);
+    transition: all 0.3s ease-out;
+}
+.A:hover img{
+    transform: scale(1);
+    opacity: 0.5;
+}
+.B{
+    width: 50%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    row-gap: 1rem;
+}
+.B-1{
+    height: 24vh;
+    border: 3px solid white;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+    border-radius: 15px;
+    background: radial-gradient(#111 50%, #000 100%);
+    overflow: hidden;
+    position: relative;
+}
+.B-1 img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 15px;
+    display: block;
+    transform: scale(1.3);
+    transition: all 0.3s ease-out;
+}
+.B-1:hover img{
+    transform: scale(1.1);
+    opacity: 0.5;
+}
+.B-2{
+    height: 24vh;
+    border: 3px solid white;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+    border-radius: 15px;
+    background: radial-gradient(#111 50%, #000 100%);
+    overflow: hidden;
+    position: relative;
+}
+.B-2 img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 15px;
+    display: block;
+    transform: scale(1.3);
+    transition: all 0.3s ease-out;
+}
+.B-2:hover img{
+    transform: scale(1.1);
+    opacity: 0.5;
 }
 
 .firstContentB{
@@ -95,7 +224,6 @@
     height: 50vh;
     display: flex;
     margin: 5rem;
-    margin-bottom: 5rem;
 }
 .secondContentA{
     height: 100%;
@@ -113,29 +241,131 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    gap: 1rem;
 }
 
 .twoCalls{
     height: 40vh;
     display: flex;
     justify-content: space-around;
-    margin: 0 4rem;
-    margin-bottom: 5rem;
+    margin: 5rem;
+    gap: 2rem
 }
-
 .firstCall{
-    background-image: url("https://images.pexels.com/photos/6417967/pexels-photo-6417967.jpeg?auto=compress&cs=tinysrgb&w=1600");
-    background-size: cover;
-    background-position: center;
-    margin: 1rem;
+    width: 50%;
+    height: 100%;
+    border-radius: 15px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    cursor: pointer;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+    background: radial-gradient(#111 50%, #000 100%);
+}
+.firstCall img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 15px;
+    display: block;
+    transform: scale(1.1);
+    transition: all 0.3s ease-out;
+}
+.firstCall:hover img{
+    transform: scale(1);
+    opacity: 0.5;
+}
+.firstCall:before, .firstCall:after{
+    content: "";
+    position: absolute;
+    width: calc(100% - 30px);
+    height: 4px;
+    background: #FFF;
+    transition: all .3s;
+}
+.firstCall:before{
+    left: 100%;
+    top: 10px;
+}
+.firstCall:after{
+    left: 100%;
+    bottom: 10px;
+}
+.firstCall:hover:before, .firstCall:hover:after{
+    left: 15px
 }
 
 .secondCall{
-    background-image: url("https://images.pexels.com/photos/6706901/pexels-photo-6706901.jpeg?auto=compress&cs=tinysrgb&w=1600");
-    background-size: cover;
-    background-position: center;
-    margin: 1rem;
+    width: 50%;
+    height: 100%;
+    border-radius: 15px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    cursor: pointer;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+    background: radial-gradient(#111 50%, #000 100%);
 }
+.secondCall img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 15px;
+    display: block;
+    transform: scale(1.1);
+    transition: all 0.3s ease-out;
+}
+.secondCall:hover img{
+    transform: scale(1);
+    opacity: 0.5;
+}
+.secondCall:before, .secondCall:after{
+    content: "";
+    position: absolute;
+    width: calc(100% - 30px);
+    height: 4px;
+    background: #FFF;
+    transition: all .3s;
+}
+.secondCall:before{
+    left: -100%;
+    top: 10px;
+}
+.secondCall:after{
+    left: -100%;
+    bottom: 10px;
+}
+.secondCall:hover:before, .secondCall:hover:after{
+    left: 15px
+}
+.text{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    position: absolute;
+    transition: all .3s;
+    transform: scale(1.5);
+    opacity: 0;
+    height: 80%;
+}
+.text h1{
+    font-weight: bold;
+    font-size: 2em;
+    color: white;
+    padding: 10px 20px;
+}
+.text p{
+    color: white;
+    padding: 10px 20px;
+}
+.text:hover{
+    transform: scale(1);
+    opacity: 1;
+}
+
 
 .lastImage{
     height: 50vh;
