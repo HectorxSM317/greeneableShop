@@ -10,7 +10,7 @@ const ProductsControllers = {
       error = err;
     }
     res.json({
-      response: error ? "ERROR" : { products },
+      response: error ? "ERROR" : products ,
       success: error ? false : true,
       error: error,
     });

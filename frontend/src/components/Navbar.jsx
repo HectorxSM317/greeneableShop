@@ -12,6 +12,9 @@ import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
+import '../styles/navbar.css';
+import LocalMallIcon from '@mui/icons-material/LocalMall';
+import PersonOutlineIcon from '@mui/icons-material/PersonOutline';
 
 const pages = ['Products', 'Pricing', 'Blog'];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
@@ -118,7 +121,7 @@ const Navbar = () => {
               <Button
                 key={page}
                 onClick={handleCloseNavMenu}
-                sx={{ my: 2, color: 'white', display: 'block' }}
+                sx={{ my: 2, color: 'white', fontWeight: "700", display: 'block' }}
               >
                 {page}
               </Button>
@@ -128,9 +131,15 @@ const Navbar = () => {
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+                <PersonOutlineIcon sx={{ color: "white", fontSize: "2rem" }} />
               </IconButton>
             </Tooltip>
+            <Tooltip title="Open settings">
+              <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+                <LocalMallIcon sx={{ color: "white", fontSize: "1.7rem", marginLeft: "2.5rem" }} />
+              </IconButton>
+            </Tooltip>
+
             <Menu
               sx={{ mt: '45px' }}
               id="menu-appbar"
@@ -156,7 +165,7 @@ const Navbar = () => {
           </Box>
         </Toolbar>
       </Container>
-    </AppBar>
+    </AppBar >
   );
 };
 export default Navbar;

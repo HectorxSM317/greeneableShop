@@ -2,16 +2,19 @@ import axios from "axios";
 const urlBack = "http://localhost:4000";
 
 const productsActions = {
-  getProducts: (cart) => {
+  getProducts: () => {
     return async (dispatch, getState) => {
-      let res = await axios.get(`${urlBack}/api/products`, { cart });
+      let res = await axios.get(`${urlBack}/api/products`);
+      dispatch({ type: "GETPRODUCTS", payload: res.data.response });
+      return res;
     };
   },
 
   getOneProduct: (id) => {
     return async (dispatch, getState) => {
-      const res = await axios.get(`${urlBack}/api/products/${id}`);
-      dispatch({ type: "GETONEPRODUCTS", payload: res.data.response });
+      const res = await axios.get(`${urlBack}/api/product/${id}`);
+      dispatch({ type: "GETONEPRODUCT", payload: res.data.response.product });
+      return res;
     };
   },
 
