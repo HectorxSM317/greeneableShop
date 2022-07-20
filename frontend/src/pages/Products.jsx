@@ -27,13 +27,13 @@ export default function Products() {
 
   let products = useSelector((store) => store.productsActions?.filterProducts);
 
-  const handleChange = (e) => {
-    if (e === "as-name") {
-      setAz("asc");
-    } else {
-      setAz("des");
-    }
-  };
+  // const handleChange = (e) => {
+  //   if (e === "as-name") {
+  //     setAz("asc");
+  //   } else {
+  //     setAz("des");
+  //   }
+  // };
 
   return (
     <div className="p-0 mr-0 flex flex-col min-h-[100vh]">
@@ -77,7 +77,7 @@ export default function Products() {
             Order by
           </label>
           <select
-            onChange={(e) => handleChange(e.target.value)}
+            // onChange={(e) => handleChange(e.target.value)}
             name="order"
             className="bg-transparent"
             id="order"
