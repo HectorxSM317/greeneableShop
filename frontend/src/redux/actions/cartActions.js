@@ -12,7 +12,7 @@ const cartActions = {
 
   getOneSummary: (id) => {
     return async (dispatch, getState) => {
-      const res = await axios(apiUrl + `/api/summary/${id}`);
+      const res = await axios(`${urlBack}/api/summary/${id}`);
     };
   },
 };
