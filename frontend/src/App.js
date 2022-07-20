@@ -42,17 +42,16 @@ function App() {
     <>
       <Navbar />
 
-
       <Routes>
 
         <Route path="/" element={<Index />}/>
         <Route path="/products" element={<Products />} />
         <Route path="/details" element={<Details />} />
-        <Route path="/AboutUs" element={<AboutUs />} />
+        {/* <Route path="/aboutUs" element={<AboutUS />} /> */}
         {/* <Route path="/cart" element={<Cart />} /> */}
         {/* {<Route path="/signUp" element={!loggedUser ? <SignUp /> : <Index />} />} */}
         {/* {<Route path="/signIn" element={!loggedUser ? <SignIn /> : <Index />} />} */}
-        <Route path="/login" element={<Login />} />
+        
 
       </Routes>
       <Footer />
