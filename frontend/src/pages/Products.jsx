@@ -10,8 +10,9 @@ export default function Products() {
   const [buttonRadio, setbuttonRadio] = useState([]);
   const [orderSort, setorderSort] = useState([]);
   const [catProducts, setCatProducts] = useState([]);
+  const [cart, setCart] = useState([]);
   // const [asdProducts, setAsdProducts] = useState();
-
+  console.log(cart);
   const categories = new Set(catProducts.map((cat) => cat.category));
   // console.log(orderSort);
   const arrayCategories = [...categories];
@@ -27,7 +28,7 @@ export default function Products() {
     dispatch(productsActions.filterProducts(input, buttonRadio, orderSort));
   }, [input, buttonRadio, orderSort]);
 
-  let products = useSelector((store) => store.productsActions?.filterProducts);
+  let products = useSelector((store) => store.productsReducer?.filterProducts);
 
   function sortProducts(e) {
     if (e === "des-name") {
@@ -126,7 +127,9 @@ export default function Products() {
       <div className="flex flex-wrap items-center justify-around my-1 w-full grow">
         {products.length > 0 ? (
           products?.map((product) => {
-            return <Product product={product} key={product._id} />;
+            return (
+              <Product product={product} key={product._id} setCart={setCart} />
+            );
           })
         ) : (
           <div className="flex justify-center items-center my-5">

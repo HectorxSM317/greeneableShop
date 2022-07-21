@@ -102,6 +102,18 @@ const productsActions = {
       return res;
     };
   },
+
+  addToCart: (product) => {
+    console.log(product);
+    return (dispatch, getState) => {
+      dispatch({
+        type: "ADD_TO_CART",
+        payload: {
+          product: product,
+        },
+      });
+    };
+  },
 };
 
 export default productsActions;

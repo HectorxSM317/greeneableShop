@@ -45,7 +45,9 @@ const {
   getFiveProducts,
 } = ProductsControllers;
 
-Router.route("/products").get(getProducts).post(addProduct);
+Router.route("/products").get(getProducts);
+
+Router.route("/products/upload").post(addProduct);
 
 Router.route("/product/:id")
   .post(removeProduct)
@@ -59,9 +61,13 @@ Router.route("/multiplesproducts").post(multiplesProducts);
 const {
   createSummary,
   getOneSummary,
+  // addCart,
 } = require("../controllers/cartControllers");
 
 Router.route("/summary").post(createSummary);
 Router.route("/summary/:id").get(getOneSummary);
+// Router.route("/summary/cart/:id").get(addCart);
+
+Router.route("/fiveproducts/random").get(getFiveProducts);
 
 module.exports = Router;

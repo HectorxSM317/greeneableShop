@@ -17,6 +17,8 @@ import LocalMallIcon from "@mui/icons-material/LocalMall";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import PersonOutlineIcon from "@mui/icons-material/PersonOutline";
 import { Link as LinkRouter, useNavigate } from "react-router-dom";
+import Cart from "../pages/Cart";
+import { useState } from "react";
 
 const pages = [
   {
@@ -41,8 +43,8 @@ const settings = [
   },
 
   {
-    name: "Sign In",
-    to: "/signIn",
+    name: "Sign Up",
+    to: "/signUp",
   },
 ];
 

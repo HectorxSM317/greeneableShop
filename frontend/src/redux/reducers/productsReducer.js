@@ -2,9 +2,10 @@ const initialState = {
   products: [],
   oneProduct: {},
   filterProducts: [],
+  cart: [],
 };
 
-const citiesReducer = (state = initialState, action) => {
+const productReducer = (state = initialState, action) => {
   switch (
     action.type //condiciones
   ) {
@@ -87,9 +88,58 @@ const citiesReducer = (state = initialState, action) => {
         filterProducts: filterProducts(),
       };
 
+    case "ADD_TO_CART": {
+      let newItem = state.products.find(
+        (product) => product.id === action.payload._id
+      );
+      //console.log(newItem);
+
+      let itemInCart = state.cart.find((item) => item.id === newItem.id);
+
+      return itemInCart
+        ? {
+            ...state,
+            cart: state.cart.map((item) =>
+              item.id === newItem.id
+                ? { ...item, quantity: item.quantity + 1 }
+                : item
+            ),
+          }
+        : {
+            ...state,
+            cart: [...state.cart, { ...newItem, quantity: 1 }],
+          };
+    }
+
+    case "REMOVE_ONE_FROM_CART": {
+      let itemToDelete = state.cart.find((item) => item.id === action.payload);
+
+      return itemToDelete.quantity > 1
+        ? {
+            ...state,
+            cart: state.cart.map((item) =>
+              item.id === action.payload
+                ? { ...item, quantity: item.quantity - 1 }
+                : item
+            ),
+          }
+        : {
+            ...state,
+            cart: state.cart.filter((item) => item.id !== action.payload),
+          };
+    }
+    case "REMOVE_ALL_FROM_CART": {
+      return {
+        ...state,
+        cart: state.cart.filter((item) => item.id !== action.payload),
+      };
+    }
+    case "CLEAR_CART":
+      return initialState;
+
     default:
       return state;
   }
 };
 
-export default citiesReducer; //se importa en mainReducer
+export default productReducer; //se importa en mainReducer
