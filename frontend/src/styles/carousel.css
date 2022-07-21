@@ -34,10 +34,12 @@
 .sliderCarousel {
   display: flex;
   flex-direction: column;
+  justify-content: space-evenly;
   /* justify-content: space-evenly !important; */
 }
-.sliderImg {
-  height: 60%;
+.sliderImg{
+  border-radius: 10px;
+  height: 100%;
   width: 100%;
   background-image: url("https://economiasustentable.com/wp-content/uploads/2021/03/botellas-carrefour.jpg");
   background-position: center;

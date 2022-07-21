@@ -72,7 +72,6 @@ export default function AboutUs() {
                     </CardContent>
                 </Card>
 
-
             </div>
             <div style={{ display: "flex", justifyContent: "center", fontSize: "38px", marginTop: "7rem" }}><h2>Our Partners:</h2></div>
             <div style={{ display: "flex", justifyContent: "center", marginTop: "4rem" }}>
@@ -89,9 +88,6 @@ export default function AboutUs() {
                     ))}
                 </ImageList>
             </div>
-
-
-
         </div >
     );
 }
