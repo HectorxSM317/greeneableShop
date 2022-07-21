@@ -3,13 +3,9 @@ import Footer from './components/Footer';
 import Index from './pages/Index';
 import Products from './pages/Products';
 import Details from './pages/Details';
-<<<<<<< HEAD
-import AboutUs from './pages/AboutUs';
-=======
 import Login from './pages/Login';
 import AboutUs from './pages/AboutUs'
 // import AboutUs from './pages/AboutUs';
->>>>>>> 8d485a7caa35898ea9856731d6b21e52414b9fc6
 // import Cart from './pages/Cart';
 // import SignIn from './pages/SingIn';
 // import SignUp from './pages/SingUp';

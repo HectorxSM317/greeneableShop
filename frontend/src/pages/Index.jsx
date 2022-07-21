@@ -38,6 +38,9 @@ export default function Index() {
       <div className='firstContentA'>
         <div className='A'>
           <img src="https://www.visionsustentable.com/wp-content/uploads/2021/03/Botella-reutilizable-CArrefour-azul.jpg" alt="" />
+          <div className='itemName'>
+            <h3>BOTTLE</h3>
+          </div>
           <div className='buyMe'>
             <h3>MORE INFO</h3>
           </div>
@@ -45,12 +48,18 @@ export default function Index() {
         <div className='B'>
           <div className='B-1'>
             <img src="https://mymodernmet.com/wp/wp-content/uploads/2018/08/eco-friendly-products-2.jpg" alt="" />
+            <div className='itemName'>
+              <h3>BOTTLE</h3>
+            </div>
             <div className='buyMe'>
-            <h3>MORE INFO</h3>
-          </div>
+              <h3>MORE INFO</h3>
+            </div>
           </div>
           <div className='B-2'>
             <img src="https://www.esic.edu/sites/default/files/rethink/wp/georganics.jpg" alt="" />
+            <div className='itemName'>
+              <h3>BOTTLE</h3>
+            </div>
             <div className='buyMe'>
             <h3>MORE INFO</h3>
           </div>
@@ -71,14 +80,14 @@ export default function Index() {
           <div className='line2A-A'>
           </div>
         </div>
-        <div>
+        <div className='lineBtn'>
           <Button variant="contained" sx={{backgroundColor: "#13552D"}}>Sustainable</Button>
         </div>
     </div>
     <div className='separator'>
     </div>
     <div className='line3'>
-        <div>
+        <div className='lineBtn'>
           <Button variant="contained" sx={{backgroundColor: "#13552D"}}>Sustainable</Button>
         </div>
         <div className='line3A'>

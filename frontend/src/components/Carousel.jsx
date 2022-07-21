@@ -30,6 +30,28 @@ return (
         // dynamicBullets: true,
         clickable: true,
         }}
+        breakpoints={{
+            200: {
+            slidesPerView: 1,
+            slidesPerGroup: 1,
+            spaceBetween: 10,
+            },
+            425: {
+            slidesPerView: 2,
+            slidesPerGroup: 2,
+            spaceBetween: 20,
+            },
+            550: {
+            slidesPerView: 3,
+            slidesPerGroup: 3,
+            spaceBetween: 20,
+            },
+            1024: {
+            slidesPerView: 4,
+            slidesPerGroup: 4,
+            spaceBetween: 20,
+            },
+        }}
         autoplay={{
             delay: 3000,
             disableOnInteraction: false,
