@@ -4,8 +4,8 @@ const userSchema = new mongoose.Schema({
   firstName: { type: String, required: true },
   lastName: { type: String },
   country: { type: String, required: true },
-  city: { type: String, required: true },
-  address: { type: String, required: true },
+  city: { type: String  },
+  address: { type: String },
 
   photo: { type: String, required: true },
   email: { type: String, required: true },
@@ -14,7 +14,7 @@ const userSchema = new mongoose.Schema({
   from: { type: Array },
   uniqueString: { type: String, required: true },
   verification: { type: Boolean, required: true },
-  phoneNumber: { type: String, required: true },
+  phoneNumber: { type: String },
   summary: [{ type: mongoose.Types.ObjectId, ref: "carts" }],
 });
 const User = mongoose.model("users", userSchema);

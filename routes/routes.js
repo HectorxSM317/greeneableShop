@@ -42,6 +42,7 @@ const {
   modifyProduct,
   removeProduct,
   multiplesProducts,
+  getFiveProducts,
 } = ProductsControllers;
 
 Router.route("/products").get(getProducts).post(addProduct);
@@ -51,12 +52,15 @@ Router.route("/product/:id")
   .put(modifyProduct)
   .get(getOneProduct);
 
+Router.route("/fiveproducts/random").get(getFiveProducts);
+
 Router.route("/multiplesproducts").post(multiplesProducts);
 
 const {
   createSummary,
   getOneSummary,
 } = require("../controllers/cartControllers");
+
 Router.route("/summary").post(createSummary);
 Router.route("/summary/:id").get(getOneSummary);
 

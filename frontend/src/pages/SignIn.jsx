@@ -111,7 +111,7 @@ function Login (props) {
           <form>
           <div className="flex justify-center items-center">
             <Box
-              component="form"
+              // component="form"
               sx={{
               '& > :not(style)': { m: 1, width: '25ch' },
               }}
