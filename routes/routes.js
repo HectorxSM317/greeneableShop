@@ -45,7 +45,9 @@ const {
   getFiveProducts,
 } = ProductsControllers;
 
-Router.route("/products").get(getProducts).post(addProduct);
+Router.route("/products").get(getProducts)
+
+Router.route('/products/upload').post(addProduct)
 
 Router.route("/product/:id")
   .post(removeProduct)
@@ -64,7 +66,11 @@ const {
 Router.route("/summary").post(createSummary);
 Router.route("/summary/:id").get(getOneSummary);
 
+<<<<<<< HEAD
 // Router.route("/products/upload")
 // .post(passport.authenticate("jwt", {session: false}), uploadProduct)
+=======
+Router.route("/fiveproducts/random").get(getFiveProducts);
+>>>>>>> a7520b1cd90e09ff49f8ce077e1c9a24f90ce669
 
 module.exports = Router;

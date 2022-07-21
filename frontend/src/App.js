@@ -6,7 +6,7 @@ import Details from "./pages/Details";
 
 import AboutUs from "./pages/AboutUs";
 // import AboutUs from './pages/AboutUs';
-// import Cart from './pages/Cart';
+import Cart from './pages/Cart';
 import SignIn from "./pages/SignIn";
 import SignUp from "./pages/SignUp";
 import { Route, Routes } from "react-router-dom";
@@ -40,7 +40,7 @@ function App() {
         <Route path="/details/:id" element={<Details />} />
         <Route path="/AboutUs" element={<AboutUs />} />
         {/* <Route path="/signUp" element={<SignUp />} />  */}
-        {/* <Route path="/cart" element={<Cart />} /> */}
+        <Route path="/cart" element={<Cart />} />
         {
           <Route
             path="/signUp"
