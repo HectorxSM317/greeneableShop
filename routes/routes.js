@@ -45,7 +45,9 @@ const {
   getFiveProducts,
 } = ProductsControllers;
 
-Router.route("/products").get(getProducts).post(addProduct);
+Router.route("/products").get(getProducts)
+
+Router.route('/products/upload').post(addProduct)
 
 Router.route("/product/:id")
   .post(removeProduct)
