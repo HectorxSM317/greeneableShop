@@ -33,9 +33,8 @@ function App() {
   return (
     <>
       <Navbar />
-
       <Routes>
-        <Route path="/" element={<Index />} />
+        <Route path="/" element={<Index />}/>
         <Route path="/products" element={<Products />} />
         <Route path="/details/:id" element={<Details />} />
         <Route path="/AboutUs" element={<AboutUs />} />
