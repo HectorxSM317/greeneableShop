@@ -1,6 +1,7 @@
 require('dotenv').config()
 require('./config/database')
 const cors = require('cors')
+// const fileUpload = require ("express-fileupload")
 const passport = require('passport')
 const Router = require('./routes/routes')
 
@@ -9,6 +10,7 @@ const app = express()
 const PORT =  process.env.PORT || 4000 
 
 app.use(cors());
+// app.use(fileUpload())
 app.use(express.json())
 app.use(passport.initialize())
 app.use('/api', Router)

@@ -64,4 +64,7 @@ const {
 Router.route("/summary").post(createSummary);
 Router.route("/summary/:id").get(getOneSummary);
 
+// Router.route("/products/upload")
+// .post(passport.authenticate("jwt", {session: false}), uploadProduct)
+
 module.exports = Router;
