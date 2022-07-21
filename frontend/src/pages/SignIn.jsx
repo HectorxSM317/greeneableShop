@@ -2,14 +2,13 @@ import React from "react";
 import { useState } from "react";
 import IconButton from "@material-ui/core/IconButton";
 import InputLabel from "@material-ui/core/InputLabel";
-import Visibility from '@mui/icons-material/Visibility';
 import InputAdornment from "@material-ui/core/InputAdornment";
-import VisibilityOff from '@mui/icons-material/VisibilityOff';
+
 import Input from "@material-ui/core/Input";
 import { TextField } from "@material-ui/core";
 import Button from '@mui/material/Button';
 import AccountCircle from '@mui/icons-material/AccountCircle';
-import VpnKey from '@mui/icons-material/VpnKey';
+
 import '../styles/login.css'
 
 import Box from '@mui/material/Box';
@@ -18,97 +17,95 @@ import Card from '@mui/material/Card';
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import userActions from '../redux/actions/userActions'
-
-// import { toast } from 'react-toastify';
+import toast from "react-hot-toast";
 import GoogleSignIn from "../components/GoogleSignIn";
+import Password from '../components/Password'
 
 function Login (props) {
 
-  const [value, setValue] = React.useState('Controlled');
+  // const [value, setValue] = React.useState('Controlled');
 
-  const handleChange = (event) => {
-    setValue(event.target.value);
-  };
+  // const handleChange = (event) => {
+  //   setValue(event.target.value);
+  // };
 
   const ariaLabel = { 'aria-label': 'description' };
 
-  const [values, setValues] = useState({
-    password: "",
-    showPassword: false,
-  });
+
   
-  const handleClickShowPassword = () => {
-    setValues({ ...values, showPassword: !values.showPassword });
-  };
+  // const handleClickShowPassword = () => {
+  //   setValues({ ...values, showPassword: !values.showPassword });
+  // };
   
-  const handleMouseDownPassword = (event) => {
-    event.preventDefault();
-  };
+  // const handleMouseDownPassword = (event) => {
+  //   event.preventDefault();
+  // };
   
-  const handlePasswordChange = (prop) => (event) => {
-    setValues({ ...values, [prop]: event.target.value });
-  };
+  // const handlePasswordChange = (prop) => (event) => {
+  //   setValues({ ...values, [prop]: event.target.value });
+  // };
+
+  
 
 
   //form
-//   const navigate = useNavigate()
-//   const dispatch = useDispatch()
+  const navigate = useNavigate()
+  const dispatch = useDispatch()
 
-//   const handleSubmit = async (event) => {
+  const handleSubmit = async (event) => {
 
-//     event.preventDefault()
+    event.preventDefault()
 
-//     const logedUser = {
-//       email: event.target[0].value,
-//       password: event.target[1].value,
-//       from: 'signInForm'
-//     }
-//     let res = await dispatch(userActions.signInUser(logedUser))
-//     // await props.signInUser(logedUser)
+    const loggedUser = {
+      email: event.target[0].value,
+      password: event.target[2].value,
+      from: 'signIn'
+    }
+    console.log(loggedUser)
+    let res = await dispatch(userActions.userSignIn(loggedUser))
+    // await props.signInUser(logedUser)
 
-//     if (res.data.success) {
-//       try {
-//         toast.success(res.data.message, {
-//           position: "top-center",
-//           autoClose: 7000,
-//           hideProgressBar: false,
-//           closeOnClick: true,
-//           pauseOnHover: true,
-//           draggable: true,
-//           progress: undefined,
-//           });
-//         navigate('/index', {replace:true})
-//       } catch(error) {
+    if (res.data.success) {
+      try {
+        toast.success(res.data.message, {
+          duration: 7000,
+          // hideProgressBar: false,
+          // closeOnClick: true,
+          // pauseOnHover: true,
+          // draggable: true,
+          // progress: undefined,
+          });
+        navigate('/index', {replace:true})
+      } catch(error) {
         
-//         console.log(error);
-//       }
-//     } else {
-//       toast.error(res.data.message, {
-//         position: "top-center",
-//         autoClose: 7000,
-//         hideProgressBar: false,
-//         closeOnClick: true,
-//         pauseOnHover: true,
-//         draggable: true,
-//         progress: undefined,
-//         });
-//       console.log(res);
-//       return logedUser
-//     }
-//   }
+        console.log(error);
+      }
+    } else {
+      toast.error(res.data.message, {
+        duration: 7000,
+        // hideProgressBar: false,
+        // closeOnClick: true,
+        // pauseOnHover: true,
+        // draggable: true,
+        // progress: undefined,
+        });
+      console.log(res);
+      return loggedUser
+    }
+  }
 
   return(
     <div className="h-screen w-screen">
       <div className='h-screen w-full z-10' style={{height: 300}}>
           <img src="https://www.xtrafondos.com/wallpapers/resized/pasto-1455.jpg?s=large" className='w-full h-screen object-cover overflow-hidden' alt=''></img>
       </div>
-      <div className='w-full h-screen z-20 bg-green-400 opacity-40 top-0 left-0 absolute opacity-60'></div>
+      <div className='w-full h-screen z-20 bg-green-400 top-0 left-0 absolute opacity-60'></div>
       <div className="z-30 w-full h-screen flex flex-col absolute top-0 left-0 justify-center items-center ">
         <div className="w-full sm:w-fit h-fit p-8 bg-[white] rounded" 
         style={{
           height: "50vh !important"
         }}>
-          <form>
+          <form onSubmit={(event) => handleSubmit(event)} action="#">
           <div className="flex justify-center items-center">
             <Box
               // component="form"
@@ -120,24 +117,24 @@ function Login (props) {
               className="h-80 w-80 flex flex-col gap-y-4 items-center"
       
             >
-              <div className="w-[400px] flex items-center">
-              <AccountCircle sx={{ color: 'action.active', mr: 1, my: 0.5 }} />
-              <TextField id="outlined-basic" label="E-mail" variant="outlined" required/>
+              <div className="flex items-center" style={{width: "100%"}}>
+                <AccountCircle sx={{ color: 'action.active', mr: 1, my: 0.5 }} />
+                <TextField id="outlined-basic" label="E-mail" variant="outlined" required/>
               </div>
-              <div className="flex items-center">
-                <VpnKey sx={{ color: 'action.active', mr: 1, my: 0.5 }} />
-                <TextField id="outlined-basic" label="Password" variant="outlined" required/>
+              <Password />
+              <div className="flex flex-col h-full justify-evenly items-center gap-y-4">
+                <Button className="w-full" variant="contained" color="success" type="submit">
+                  Login
+                </Button>
+                <GoogleSignIn />
               </div>
-              <Button variant="contained" color="success">
-                Login
-              </Button>
-              <GoogleSignIn />
             </Box>
           </div>
           </form>
         </div>
         
       </div>
+      
     </div>
 
 
