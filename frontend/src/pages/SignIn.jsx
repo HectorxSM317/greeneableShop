@@ -108,7 +108,7 @@ function Login (props) {
           <form onSubmit={(event) => handleSubmit(event)} action="#">
           <div className="flex justify-center items-center">
             <Box
-              
+              // component="form"
               sx={{
               '& > :not(style)': { m: 1, width: '25ch' },
               }}
