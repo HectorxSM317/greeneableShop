@@ -134,7 +134,7 @@ const usersControllers = {
       if (!userExists) {
         res.json({
           success: false,
-          message: `You not registered yet in MyTinerary. Please, sign up.`,
+          message: `You not registered yet in Greeneable. Please, sign up.`,
         }); //CHECKED
       } else {
         if (from === "signIn") {

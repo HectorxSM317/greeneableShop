@@ -14,7 +14,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import productsActions from './redux/actions/productsActions';
 import { useEffect } from 'react';
 // import userActions from './redux/actions/userActions';
-
+import toast, { Toaster } from 'react-hot-toast';
 
 function App() {
 
@@ -55,6 +55,10 @@ function App() {
         <Route path="/login" element={<Login />} />
 
       </Routes>
+      <Toaster 
+      position="top-center"
+      reverseOrder={false}
+      />
       <Footer />
       {/* <ScrollToTop
         style={{ boxShadow: "rgba(0, 0, 0, 0.35) 0px 5px 15px" }}
