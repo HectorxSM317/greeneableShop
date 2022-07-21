@@ -14,6 +14,7 @@ import { useDispatch, useSelector } from "react-redux";
 import productsActions from "./redux/actions/productsActions";
 import { useEffect } from "react";
 import userActions from "./redux/actions/userActions";
+import toast, { Toaster } from 'react-hot-toast';
 
 function App() {
   const dispatch = useDispatch();
