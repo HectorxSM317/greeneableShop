@@ -21,10 +21,11 @@ const citiesReducer = (state = initialState, action) => {
       };
     case "FILTERPRODUCTS":
       let searchInput = action.payload.searchInput;
-      let buttonRadio = action.payload.checkBox;
-      console.log(searchInput);
-      console.log(buttonRadio);
-      function FilterProducts() {
+      let buttonRadio = action.payload.buttonRadio;
+      // let orderSort = action.payload.orderSort;
+      // console.log(orderSort);
+
+      function filterProducts() {
         let filter = [];
 
         if (buttonRadio && searchInput !== "") {
@@ -54,17 +55,38 @@ const citiesReducer = (state = initialState, action) => {
         } else {
           filter.push(...state.products);
         }
-        return filter;
 
-        // return product.name
-        //   .toLowerCase()
-        //   .startsWith(action.payload.searchInput.toLowerCase().trim());
+        // if (orderSort) {
+        //   sortProducts(filter);
+        // }
+
+        return filter;
       }
+
+      // let asd = filterProducts();
+      // console.log(asd);
+      // let filter = [...state.products];
+
+      // if (orderSort) {
+      //   sortProducts(filter);
+      // }
+
+      // function sortProducts(filter) {
+      //   if (orderSort === "des-name") {
+      //     console.log(filter);
+      //     filter = filter.sort((x, y) => x.price - y.price);
+      //     console.log("de la A a la Z");
+      //     console.log("sortdentrofilter", filter);
+      //   }
+      //   console.log("sort", filter);
+      //   return filter;
+      // }
 
       return {
         ...state,
-        filterProducts: FilterProducts(),
+        filterProducts: filterProducts(),
       };
+
     default:
       return state;
   }

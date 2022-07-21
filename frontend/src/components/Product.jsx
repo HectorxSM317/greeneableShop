@@ -1,5 +1,7 @@
 import React from "react";
 import { Link as LinkRouter } from "react-router-dom";
+import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
+import { Button } from "@mui/material";
 
 export default function Product({ product }) {
   return (
@@ -18,10 +20,12 @@ export default function Product({ product }) {
           </p>
           <p className="font-bold text-2xl">{product.price} USD</p>
         </div>
-
         <LinkRouter to={`/details/${product._id}`} className="bg-black">
           View more
         </LinkRouter>
+        <button>
+          <AddShoppingCartIcon />
+        </button>
       </div>
     </div>
   );
