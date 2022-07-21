@@ -10,7 +10,7 @@ const ProductsControllers = {
       error = err;
     }
     res.json({
-      response: error ? "ERROR" : products ,
+      response: error ? "ERROR" : products,
       success: error ? false : true,
       error: error,
     });
@@ -126,6 +126,26 @@ const ProductsControllers = {
     product = await Product.find();
     res.json({
       response: error ? "ERROR" : product,
+      success: error ? false : true,
+      error: error,
+    });
+  },
+
+  getFiveProducts: async (req, res) => {
+    let products;
+    let error = null;
+    try {
+      products = await Product.find();
+    } catch (err) {
+      error = err;
+    }
+    var fiveRandom = [];
+    for (i = 0; fiveRandom.length < 5; i++) {
+      fiveRandom.push(products[Math.floor(Math.random() * products.length)]);
+    }
+
+    res.json({
+      response: error ? "ERROR" : fiveRandom,
       success: error ? false : true,
       error: error,
     });
