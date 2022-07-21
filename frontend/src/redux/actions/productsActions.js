@@ -18,9 +18,13 @@ const productsActions = {
     };
   },
 
-  filterProducts: (searchInput) => {
+  filterProducts: (searchInput, checkBox) => {
+    // console.log(checkBox);
     return (dispatch, getState) => {
-      dispatch({ type: "FILTERPRODUCTS", payload: searchInput });
+      dispatch({
+        type: "FILTERPRODUCTS",
+        payload: { searchInput: searchInput, checkBox: checkBox },
+      });
     };
   },
 
