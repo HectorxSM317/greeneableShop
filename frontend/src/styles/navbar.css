@@ -17,6 +17,23 @@
 
 }
 
+
+.css-1lvtzne {
+    width: 2rem !important;
+}
+
+@media (max-width:900px) {
+    .mui-image-img {
+        width: 5rem !important;
+    }
+
+}
+
+
+.mui-image-wrapper {
+    width: 8rem !important;
+}
+
 .css-1q39md6-MuiButtonBase-root-MuiButton-root {
     background-color: rgb(0, 0, 0) !important;
 
@@ -36,8 +53,7 @@
         0px 18px 23px rgba(0, 0, 0, 0.1) !important;
 }
 
-.MuiList-root{
+.MuiList-root {
     background-color: #c3cf0a;
-    color: rgb(255,255,255);
+    color: rgb(255, 255, 255);
 }
-
