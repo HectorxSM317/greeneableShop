@@ -154,6 +154,7 @@ const ProductsControllers = {
 
   // addToCart: async (res, req) => {
   //   const id = req.params._id;
+  //   const productAdded = req.body
   //   const product = {};
   //   const error = null;
 

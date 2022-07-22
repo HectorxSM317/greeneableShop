@@ -125,7 +125,7 @@ export default function Products() {
         })}
       </div>
       <div className="flex flex-wrap items-center justify-around my-1 w-full grow">
-        {products.length > 0 ? (
+        {products?.length > 0 ? (
           products?.map((product) => {
             return (
               <Product product={product} key={product._id} setCart={setCart} />

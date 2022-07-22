@@ -5,7 +5,7 @@ import { Button } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
 import productsActions from "../redux/actions/productsActions";
 
-export default function Product({ product, setCart }) {
+export default function Product({ product }) {
   const dispatch = useDispatch();
 
   function addToCart(product, e) {
@@ -18,9 +18,6 @@ export default function Product({ product, setCart }) {
     //   hot toaste res.data.message
     // }
   }
-
-  const cart = useSelector((store) => store.productsReducer.cart);
-  // console.log(cart);
 
   return (
     <div className="max-w-[15rem]">
