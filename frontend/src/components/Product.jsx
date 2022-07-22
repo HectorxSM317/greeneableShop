@@ -8,7 +8,7 @@ import productsActions from "../redux/actions/productsActions";
 export default function Product({ product, setCart }) {
   const dispatch = useDispatch();
 
-  function addCart(product, e) {
+  function addToCart(product, e) {
     e.preventDefault();
 
     dispatch(productsActions.addToCart(product));
@@ -19,7 +19,7 @@ export default function Product({ product, setCart }) {
     // }
   }
 
-  const cart = useSelector((store) => console.log(store));
+  const cart = useSelector((store) => store.productsReducer.cart);
   // console.log(cart);
 
   return (
@@ -42,7 +42,7 @@ export default function Product({ product, setCart }) {
           View more
         </LinkRouter>
 
-        <button onClick={(e) => addCart(product, e)}>
+        <button onClick={(e) => addToCart(product, e)}>
           <AddShoppingCartIcon />
         </button>
       </div>

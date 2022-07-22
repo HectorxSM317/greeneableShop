@@ -40,7 +40,7 @@ export default function RecipeReviewCard() {
     dispatch(productsActions.getOneProduct(id));
     // eslint-disable-next-line
   }, []);
-  const product = useSelector((store) => store.productsActions.oneProduct);
+  const product = useSelector((store) => store.productsReducer.oneProduct);
   console.log(product);
 
   const handleExpandClick = () => {

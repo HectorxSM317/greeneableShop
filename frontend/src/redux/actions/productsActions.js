@@ -104,14 +104,15 @@ const productsActions = {
   },
 
   addToCart: (product) => {
-    console.log(product);
     return (dispatch, getState) => {
       dispatch({
         type: "ADD_TO_CART",
-        payload: {
-          product: product,
-        },
+        payload: product,
       });
+
+      let productsCart = getState();
+      let productsCartJson = JSON.stringify(productsCart.productsReducer.cart);
+      localStorage.setItem("product", productsCartJson);
     };
   },
 };

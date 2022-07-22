@@ -12,7 +12,7 @@ export default function Products() {
   const [catProducts, setCatProducts] = useState([]);
   const [cart, setCart] = useState([]);
   // const [asdProducts, setAsdProducts] = useState();
-  console.log(cart);
+  // console.log(cart);
   const categories = new Set(catProducts.map((cat) => cat.category));
   // console.log(orderSort);
   const arrayCategories = [...categories];
@@ -31,14 +31,14 @@ export default function Products() {
   let products = useSelector((store) => store.productsReducer?.filterProducts);
 
   function sortProducts(e) {
-    if (e === "des-name") {
-      console.log(products);
-      products = products.sort((x, y) => x.price - y.price);
-      console.log("de la A a la Z");
-      console.log("sortdentrofilter", products);
-    }
-    console.log("sort", products);
-    return products;
+    // if (e === "des-name") {
+    //   console.log(products);
+    //   products = products.sort((x, y) => x.price - y.price);
+    //   console.log("de la A a la Z");
+    //   console.log("sortdentrofilter", products);
+    // }
+    // console.log("sort", products);
+    // return products;
   }
 
   return (
