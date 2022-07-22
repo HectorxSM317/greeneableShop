@@ -10,6 +10,7 @@ const adminActions = {
                     Authorization: "Bearer "+token
                 }
             })
+            console.log(res)
             dispatch({
                 type: "message",
                 payload: {
