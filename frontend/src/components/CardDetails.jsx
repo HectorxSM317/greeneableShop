@@ -90,14 +90,14 @@ export default function RecipeReviewCard() {
 
   }
 
-  const [image, setImage] = useState("current-image") 
+  const [image, setImage] = useState("current-image")
   const [newImage, setNewImage] = useState()
 
-  
+
   const [files, setFiles] = useState(product.photo)
 
 
-  async function handleConfirm (event){
+  async function handleConfirm(event) {
     event.preventDefault()
     setEditable(false)
     console.log(event.currentTarget[1].textContent)
@@ -142,7 +142,7 @@ export default function RecipeReviewCard() {
                 {editable &&
 
                   image === "upload-image" &&
-                  <input onChange={(event)=>setFiles(event.target.files)} type="file"></input>
+                  <input onChange={(event) => setFiles(event.target.files)} type="file"></input>
                 }
               </div>
 
@@ -160,9 +160,9 @@ export default function RecipeReviewCard() {
               }}
             >
               {<div type="text" contentEditable={editable} suppressContentEditableWarning={true} className={editable ? "editable" : "non-editables"}>{product?.name}</div>}
-             
-          
-          
+
+
+
               <Box sx={{ display: "flex", alignItems: "center" }}>
                 <div>
 
@@ -246,7 +246,7 @@ export default function RecipeReviewCard() {
             </CardContent>
           </Collapse>
         </div>
-              <button type="submit">CONFIRM</button>
+        <button type="submit">CONFIRM</button>
       </form>
     </Card>
   );
