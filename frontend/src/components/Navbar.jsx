@@ -47,8 +47,8 @@ const settings = [
   },
 
   {
-    name: "Sign Up",
-    to: "/signUp",
+    name: "Sign In",
+    to: "/signIn",
   },
 ];
 
