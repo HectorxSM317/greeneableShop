@@ -4,7 +4,6 @@ import { useDispatch, useSelector } from "react-redux";
 import ProductCart from "../components/ProductCart";
 
 export default function Cart() {
-  const [reload, setReload] = useState(false);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -13,7 +12,7 @@ export default function Cart() {
       dispatch({ type: "CART_STORAGE", payload: productsLocal });
       console.log(productsLocal);
     }
-  }, [reload]);
+  }, []);
 
   function handleClearCart(e) {
     e.preventDefault();
@@ -21,10 +20,10 @@ export default function Cart() {
     dispatch({
       type: "CLEAR_CART",
     });
-
-    setReload((r) => !r);
+    localStorage.removeItem("product");
   }
   const cart = useSelector((store) => store.productsReducer.cart);
+
   console.log(cart);
 
   return (
@@ -33,9 +32,7 @@ export default function Cart() {
         <h3>Current products in your cart:</h3>
       </div>
       {cart?.length > 0 &&
-        cart?.map((product, i) => (
-          <ProductCart product={product} key={i} setReload={setReload} />
-        ))}
+        cart?.map((product, i) => <ProductCart product={product} key={i} />)}
 
       <div className="product-box w-[90%] flex row rounded-lg bg-slate-200 p-5 mt-6 min-w-[10rem] mx-2 justify-around items-center">
         <h4>

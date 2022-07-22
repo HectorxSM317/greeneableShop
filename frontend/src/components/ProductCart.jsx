@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 import productsActions from "../redux/actions/productsActions";
 
-export default function ProductCart({ product, setReload }) {
+export default function ProductCart({ product }) {
   console.log(product);
   const dispatch = useDispatch();
 
@@ -11,8 +11,6 @@ export default function ProductCart({ product, setReload }) {
     e.preventDefault();
 
     dispatch(productsActions.removeOneProduct(productId));
-
-    setReload((r) => !r);
   }
 
   function handleRemoveAll(productId, e) {
@@ -23,9 +21,6 @@ export default function ProductCart({ product, setReload }) {
       type: "REMOVE_ALL_FROM_CART",
       payload: productId,
     });
-    localStorage.removeItem("product");
-
-    setReload((r) => !r);
   }
 
   function addToCart(product, e) {

@@ -89,15 +89,14 @@ const productReducer = (state = initialState, action) => {
       };
 
     case "ADD_TO_CART": {
-      console.log(state.products);
-      let newItem = state.products.find(
-        (product) => product._id === action.payload._id
+      let newItem = action.payload;
+
+      let itemInCart = state.cart.find(
+        (item) => item._id === action.payload._id
       );
-      console.log(newItem);
-      console.log(state.cart);
-      let itemInCart = state.cart.find((item) => item._id === newItem._id);
       console.log(itemInCart);
-      return itemInCart
+
+      const newReduxState = itemInCart
         ? {
             ...state,
             cart: state.cart.map((item) =>
@@ -110,31 +109,44 @@ const productReducer = (state = initialState, action) => {
             ...state,
             cart: [...state.cart, { ...newItem, quantity: 1 }],
           };
+
+      localStorage.setItem("product", JSON.stringify(newReduxState.cart));
+
+      return newReduxState;
     }
 
     case "REMOVE_ONE_FROM_CART": {
       let itemToDelete = state.cart.find((item) => item._id === action.payload);
       console.log(itemToDelete);
 
-      return itemToDelete.quantity > 1
-        ? {
-            ...state,
-            cart: state.cart.map((item) =>
-              item._id === action.payload
-                ? { ...item, quantity: item.quantity - 1 }
-                : item
-            ),
-          }
-        : {
-            ...state,
-            cart: state.cart.filter((item) => item._id !== action.payload),
-          };
+      const newReduxStore =
+        itemToDelete.quantity > 1
+          ? {
+              ...state,
+              cart: state.cart.map((item) =>
+                item._id === action.payload
+                  ? { ...item, quantity: item.quantity - 1 }
+                  : item
+              ),
+            }
+          : {
+              ...state,
+              cart: state.cart.filter((item) => item._id !== action.payload),
+            };
+
+      localStorage.setItem("product", JSON.stringify(newReduxStore.cart));
+
+      return newReduxStore;
     }
     case "REMOVE_ALL_FROM_CART": {
-      return {
+      console.log(action.payload);
+      const newReduxStore = {
         ...state,
         cart: state.cart.filter((item) => item._id !== action.payload),
       };
+      console.log(newReduxStore);
+      localStorage.setItem("product", JSON.stringify(newReduxStore.cart));
+      return newReduxStore;
     }
     case "CLEAR_CART":
       return initialState;
