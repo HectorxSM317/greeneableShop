@@ -86,7 +86,7 @@ const ProductsControllers = {
       error: error,
     });
   },
-  getEightProducts: async (req, res) => {
+  getFiveProducts: async (req, res) => {
     let products;
     let error = null;
     try {
