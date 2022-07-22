@@ -36,15 +36,6 @@ export default function Uplaod(){
         console.log(category)
         console.log(file)
 
-        // const formData = {
-        //     file: file,
-        //     name: name,
-        //     description: description,
-        //     price: price,
-        //     category: category
-        // }
-        // console.log(formData)
-
         dispatch(adminActions.uploadProduct(formData))
         .then(res => {
             if (res.data.success) {
