@@ -30,16 +30,16 @@ const cartControllers = {
 
   getOneSummary: async (res, req) => {
     const id = req.params._id;
-    const asd = {};
+    const summary = {};
     const error = null;
 
     try {
-      asd = await Cart.findOne({ _id: id });
+      summary = await Cart.findOne({ _id: id });
     } catch (err) {
       error = err;
     }
     res.json({
-      res: error ? "ERROR" : asd,
+      res: error ? "ERROR" : summary,
       success: error ? false : true,
       error: error,
     });

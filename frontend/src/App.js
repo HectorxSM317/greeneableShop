@@ -3,10 +3,10 @@ import Footer from "./components/Footer";
 import Index from "./pages/Index";
 import Products from "./pages/Products";
 import Details from "./pages/Details";
-
+import Upload from "./pages/Upload"
 import AboutUs from "./pages/AboutUs";
 // import AboutUs from './pages/AboutUs';
-// import Cart from './pages/Cart';
+import Cart from "./pages/Cart";
 import SignIn from "./pages/SignIn";
 import SignUp from "./pages/SignUp";
 import { Route, Routes } from "react-router-dom";
@@ -14,7 +14,7 @@ import { useDispatch, useSelector } from "react-redux";
 import productsActions from "./redux/actions/productsActions";
 import { useEffect } from "react";
 import userActions from "./redux/actions/userActions";
-import toast, { Toaster } from 'react-hot-toast';
+import toast, { Toaster } from "react-hot-toast";
 
 function App() {
   const dispatch = useDispatch();
@@ -35,12 +35,12 @@ function App() {
     <>
       <Navbar />
       <Routes>
-        <Route path="/" element={<Index />}/>
+        <Route path="/" element={<Index />} />
         <Route path="/products" element={<Products />} />
         <Route path="/details/:id" element={<Details />} />
         <Route path="/AboutUs" element={<AboutUs />} />
-        {/* <Route path="/signUp" element={<SignUp />} />  */}
-        {/* <Route path="/cart" element={<Cart />} /> */}
+        <Route path="/cart" element={<Cart />} />
+        <Route path="/upload" element={<Upload />} />
         {
           <Route
             path="/signUp"
@@ -55,10 +55,7 @@ function App() {
         }
         {/* <Route path="/login" element={<Login />} /> */}
       </Routes>
-      <Toaster 
-      position="top-center"
-      reverseOrder={false}
-      />
+      <Toaster position="top-center" reverseOrder={false} />
       <Footer />
       {/* <ScrollToTop
         style={{ boxShadow: "rgba(0, 0, 0, 0.35) 0px 5px 15px" }}
