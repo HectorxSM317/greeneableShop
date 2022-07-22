@@ -141,7 +141,7 @@ const ProductsControllers = {
       error = err;
     }
     var fiveRandom = [];
-    for (i = 0; fiveRandom.length < 5; i++) {
+    for (i = 0; fiveRandom.length < 8; i++) {
       fiveRandom.push(products[Math.floor(Math.random() * products.length)]);
     }
 
