@@ -30,7 +30,6 @@ export default function Cart() {
   const cart = useSelector((store) => store.productsReducer.cart);
 
   console.log(cart);
-
   return (
     <div className="min-h-[60vh] flex items-center justify-center flex-col px-6">
       <div className="mt-[6rem]">

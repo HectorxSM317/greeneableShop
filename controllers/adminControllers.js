@@ -5,9 +5,11 @@ const crypto = require("crypto");
 const adminControllers = {
 uploadProduct: async (req, res) => {
     const { file } = req.files
+    console.log(req.body)
     const name = req.body.name
     const description = req.body.description
     const price = req.body.price
+    const stock = req.body.stock
     const category = req.body.category
     const autor = req.user.id
     try{
@@ -32,6 +34,7 @@ uploadProduct: async (req, res) => {
                 photo: fileName,
                 description: description,
                 price: price,
+                stock: stock,
                 category: category,
                 autor: autor
             })
