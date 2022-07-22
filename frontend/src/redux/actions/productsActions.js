@@ -18,12 +18,15 @@ const productsActions = {
     };
   },
 
-  filterProducts: (searchInput, checkBox) => {
-    // console.log(checkBox);
+  filterProducts: (searchInput, buttonRadio, orderSort) => {
     return (dispatch, getState) => {
       dispatch({
         type: "FILTERPRODUCTS",
-        payload: { searchInput: searchInput, checkBox: checkBox },
+        payload: {
+          searchInput: searchInput,
+          buttonRadio: buttonRadio,
+          orderSort: orderSort,
+        },
       });
     };
   },
@@ -52,6 +55,7 @@ const productsActions = {
       return res;
     };
   },
+
   modifyProduct: (data, id) => {
     const token = localStorage.getItem("token");
     return async (dispatch, getState) => {
@@ -97,6 +101,19 @@ const productsActions = {
         },
       });
       return res;
+    };
+  },
+
+  addToCart: (product) => {
+    return (dispatch, getState) => {
+      dispatch({
+        type: "ADD_TO_CART",
+        payload: product,
+      });
+
+      let productsCart = getState();
+      let productsCartJson = JSON.stringify(productsCart.productsReducer.cart);
+      localStorage.setItem("product", productsCartJson);
     };
   },
 };

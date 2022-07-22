@@ -18,8 +18,9 @@ export default function LogIn(){
 
 		const dispatch = useDispatch()
 
-		const [country, setCountry] = React.useState([])
-
+		const [country, setCountry] = useState([])
+		const [file, setFile] = useState()
+		console.log(file)
 		React.useEffect(() =>{
             axios.get("https://restcountries.com/v3.1/all")
             .then((res) => setCountry(res.data))
@@ -68,7 +69,7 @@ export default function LogIn(){
 
     <div className='containerLogin'>
         
-		<div className="box">
+		<div className="box my-[5rem]">
 			<input type="checkbox" id="toggle" className="box__toggle" hidden />
 			
 			<form className="form form--register" onSubmit={handleSubmit} >
@@ -113,6 +114,10 @@ export default function LogIn(){
 				<div className="form__helper">
 					<input type="text"  id="photo" placeholder="photo" required className="form__input" />
 					<label className="form__label" >Photo</label>
+				</div>
+				<div className="form__helper">
+					<input type="file" onChange={(e)=>setFile(e.target.files)} id="photo" placeholder="photo" required className="form__input" />
+					<label className="form__label my-5" >Photo</label>
 				</div>
 
 				
