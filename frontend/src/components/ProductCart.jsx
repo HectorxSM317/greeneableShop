@@ -10,21 +10,20 @@ export default function ProductCart({ product, setReload }) {
   function handleRemove(productId, e) {
     e.preventDefault();
 
-    dispatch({
-      type: "REMOVE_ONE_FROM_CART",
-      payload: productId,
-    });
+    dispatch(productsActions.removeOneProduct(productId));
 
     setReload((r) => !r);
   }
 
   function handleRemoveAll(productId, e) {
+    console.log(productId);
     e.preventDefault();
 
     dispatch({
       type: "REMOVE_ALL_FROM_CART",
       payload: productId,
     });
+    localStorage.removeItem("product");
 
     setReload((r) => !r);
   }

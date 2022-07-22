@@ -55,6 +55,7 @@ const productsActions = {
       return res;
     };
   },
+
   modifyProduct: (data, id) => {
     const token = localStorage.getItem("token");
     return async (dispatch, getState) => {
@@ -104,16 +105,28 @@ const productsActions = {
   },
 
   addToCart: (product) => {
-    return (dispatch, getState) => {
+    console.log(product);
+    return async (dispatch, getState) => {
       dispatch({
         type: "ADD_TO_CART",
         payload: product,
       });
 
-      let productsCart = getState();
-      let productsCartJson = JSON.stringify(productsCart.productsReducer.cart);
-      localStorage.setItem("product", productsCartJson);
+      let productsCart = await getState();
+      let productsCartJson = productsCart.productsReducer.cart;
+      localStorage.setItem("product", JSON.stringify(productsCartJson));
     };
+  },
+
+  removeOneProduct: (prodId) => (dispatch, getState) => {
+    let productsLocal = JSON.parse(localStorage.getItem("product"));
+    console.log(productsLocal);
+    var lStorage = productsLocal.filter((id) => id !== prodId);
+    localStorage.setItem("carrito", lStorage);
+    dispatch({
+      type: "REMOVE_ONE_FROM_CART",
+      payload: prodId,
+    });
   },
 };
 

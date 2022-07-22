@@ -1,25 +1,29 @@
 import * as React from "react";
 import { styled } from "@mui/material/styles";
 import Card from "@mui/material/Card";
-import CardHeader from "@mui/material/CardHeader";
 import CardMedia from "@mui/material/CardMedia";
 import CardContent from "@mui/material/CardContent";
 import CardActions from "@mui/material/CardActions";
 import Collapse from "@mui/material/Collapse";
-import Avatar from "@mui/material/Avatar";
 import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
-import { red } from "@mui/material/colors";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import ShareIcon from "@mui/icons-material/Share";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-import MoreVertIcon from "@mui/icons-material/MoreVert";
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import productsActions from "../redux/actions/productsActions";
 import Rating from "@mui/material/Rating";
 import Button from "@mui/material/Button";
+import Box from "@mui/material/Box";
+import Menu from "@mui/material/Menu";
+import MenuItem from "@mui/material/MenuItem";
+import Fab from "@mui/material/Fab";
+import EditIcon from "@mui/icons-material/Edit";
+import adminActions from "../redux/actions/adminActions";
+import { useNavigate } from "react-router-dom";
+import toast from "react-hot-toast";
 
 const ExpandMore = styled((props) => {
   const { expand, ...other } = props;
@@ -32,7 +36,18 @@ const ExpandMore = styled((props) => {
   }),
 }));
 
+const ITEM_HEIGHT = 48;
+
 export default function RecipeReviewCard() {
+  const [anchorEl, setAnchorEl] = React.useState(null);
+  const open = Boolean(anchorEl);
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
   const { id } = useParams();
   const [expanded, setExpanded] = React.useState(false);
   const dispatch = useDispatch();
@@ -48,6 +63,17 @@ export default function RecipeReviewCard() {
   };
 
   const [value, setValue] = React.useState(2);
+  const navigate = useNavigate();
+  const handleDelete = (event) => {
+    dispatch(adminActions.deleteProduct(event.target.id)).then((res) => {
+      if (res.data.success) {
+        toast.success(res.data.message, {
+          duration: 3000,
+        });
+        navigate("/products");
+      }
+    });
+  };
 
   return (
     <Card className="details">
@@ -62,8 +88,51 @@ export default function RecipeReviewCard() {
           />
         </div>
         <div className="detailsTop-B">
-          <CardContent>
+          <CardContent
+            sx={{
+              display: "flex",
+              flexdirection: "row",
+              justifyContent: "space-between",
+              width: "100%",
+              alignItems: "center",
+            }}
+          >
             <h3>{product?.name}</h3>
+            <Box sx={{ display: "flex", alignItems: "center" }}>
+              <div>
+                <Fab
+                  className="formBtn"
+                  aria-label="more"
+                  sx={{ height: 15, width: 35, bgcolor: "#41788f" }}
+                  id="long-button"
+                  aria-controls={open ? "long-menu" : undefined}
+                  aria-expanded={open ? "true" : undefined}
+                  aria-haspopup="true"
+                  onClick={handleClick}
+                >
+                  <EditIcon sx={{ width: 15, color: "white" }} />
+                </Fab>
+                <Menu
+                  id="long-menu"
+                  MenuListProps={{ "aria-labelledby": "long-button" }}
+                  anchorEl={anchorEl}
+                  open={open}
+                  onClose={handleClose}
+                  PaperProps={{
+                    style: { maxHeight: ITEM_HEIGHT * 4.5, width: "10ch" },
+                  }}
+                >
+                  <MenuItem onClick={handleClose}>
+                    <Typography>Edit</Typography>
+                  </MenuItem>
+                  <MenuItem onClick={handleClose}>
+                    <Typography id={product?._id} onClick={handleDelete}>
+                      Delete
+                    </Typography>
+                  </MenuItem>
+                </Menu>
+              </div>
+            </Box>
           </CardContent>
           <CardContent>
             <Typography variant="body" color="text.secondary">

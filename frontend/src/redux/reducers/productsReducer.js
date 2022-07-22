@@ -89,14 +89,14 @@ const productReducer = (state = initialState, action) => {
       };
 
     case "ADD_TO_CART": {
-      // console.log(action.payload);
+      console.log(state.products);
       let newItem = state.products.find(
         (product) => product._id === action.payload._id
       );
-      // console.log(newItem);
-
+      console.log(newItem);
+      console.log(state.cart);
       let itemInCart = state.cart.find((item) => item._id === newItem._id);
-      // console.log(itemInCart);
+      console.log(itemInCart);
       return itemInCart
         ? {
             ...state,

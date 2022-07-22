@@ -3,7 +3,7 @@ import Footer from "./components/Footer";
 import Index from "./pages/Index";
 import Products from "./pages/Products";
 import Details from "./pages/Details";
-
+import Upload from "./pages/Upload"
 import AboutUs from "./pages/AboutUs";
 // import AboutUs from './pages/AboutUs';
 import Cart from "./pages/Cart";
@@ -40,6 +40,7 @@ function App() {
         <Route path="/details/:id" element={<Details />} />
         <Route path="/AboutUs" element={<AboutUs />} />
         <Route path="/cart" element={<Cart />} />
+        <Route path="/upload" element={<Upload />} />
         {
           <Route
             path="/signUp"

@@ -52,6 +52,7 @@ const ProductsControllers = {
       error: error,
     });
   },
+
   modifyProduct: async (req, res) => {
     const id = req.params.id;
     const product = req.body.data;
@@ -85,7 +86,7 @@ const ProductsControllers = {
       error: error,
     });
   },
-  getFiveProducts: async (req, res) => {
+  getEightProducts: async (req, res) => {
     let products;
     let error = null;
     try {
@@ -94,7 +95,7 @@ const ProductsControllers = {
       error = err;
     }
     var fiveRandom = [];
-    for (i = 0; fiveRandom.length < 5; i++) {
+    for (i = 0; fiveRandom.length < 8; i++) {
       fiveRandom.push(products[Math.floor(Math.random() * products.length)]);
     }
 
