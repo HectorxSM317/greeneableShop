@@ -19,13 +19,20 @@ export default function Product({ product }) {
     // }
   }
 
+<<<<<<< HEAD
+  const cart = useSelector((store) => store.productsReducer.cart);
+  // console.log(cart);
+  console.log(product)
+  console.log(product.photo)
+=======
+>>>>>>> c4dc213e71abba50a0708b8ef3c15edd3af821ac
   return (
     <div className="max-w-[15rem]">
       <div className="max-w-sm rounded overflow-hidden shadow-lg h-[15rem] w-[15rem] m-1">
         <img
           className="w-full h-full object-cover"
           src={product.photo}
-          alt="Sunset in the mountains"
+          alt={product.name}
         />
       </div>
       <div className="min-h-[12rem]">
