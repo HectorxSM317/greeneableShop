@@ -107,16 +107,12 @@ const productsActions = {
   addToCart: (product) => {
     console.log(product);
     return (dispatch, getState) => {
+      // const res = await axios.get(`${urlBack}/api/product/${id}`);
+
       dispatch({
         type: "ADD_TO_CART",
         payload: product,
       });
-
-      // let productsCart = getState().productsReducer.cart;
-      // console.log(productsCart);
-      // let productsCartJson = productsCart.productsReducer.cart;
-      // console.log(productsCartJson);
-      // localStorage.setItem("product", JSON.stringify(productsCart));
     };
   },
 

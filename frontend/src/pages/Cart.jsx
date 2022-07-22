@@ -2,6 +2,7 @@ import React from "react";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import ProductCart from "../components/ProductCart";
+import productsActions from "../redux/actions/productsActions";
 
 export default function Cart() {
   const dispatch = useDispatch();
@@ -12,6 +13,10 @@ export default function Cart() {
       dispatch({ type: "CART_STORAGE", payload: productsLocal });
       console.log(productsLocal);
     }
+  }, []);
+
+  useEffect(() => {
+    dispatch(productsActions.getProducts());
   }, []);
 
   function handleClearCart(e) {

@@ -27,10 +27,10 @@ const productReducer = (state = initialState, action) => {
       // console.log(orderSort);
 
       function filterProducts() {
-        let filter = [];
+        let filterP = [];
 
         if (buttonRadio && searchInput !== "") {
-          filter.push(
+          filterP.push(
             ...state.products.filter(
               (evento) =>
                 evento.name
@@ -40,13 +40,13 @@ const productReducer = (state = initialState, action) => {
             )
           );
         } else if (buttonRadio && searchInput === "") {
-          filter.push(
+          filterP.push(
             ...state.products.filter(
               (evento) => evento.category === buttonRadio
             )
           );
         } else if (!buttonRadio && searchInput !== "") {
-          filter.push(
+          filterP.push(
             ...state.products.filter((evento) =>
               evento.name
                 .toLowerCase()
@@ -54,14 +54,14 @@ const productReducer = (state = initialState, action) => {
             )
           );
         } else {
-          filter.push(...state.products);
+          filterP.push(...state.products);
         }
 
         // if (orderSort) {
         //   sortProducts(filter);
         // }
 
-        return filter;
+        return filterP;
       }
 
       // let asd = filterProducts();
@@ -117,7 +117,6 @@ const productReducer = (state = initialState, action) => {
 
     case "REMOVE_ONE_FROM_CART": {
       let itemToDelete = state.cart.find((item) => item._id === action.payload);
-      console.log(itemToDelete);
 
       const newReduxStore =
         itemToDelete.quantity > 1
@@ -144,8 +143,9 @@ const productReducer = (state = initialState, action) => {
         ...state,
         cart: state.cart.filter((item) => item._id !== action.payload),
       };
-      console.log(newReduxStore);
+      console.log(newReduxStore.cart);
       localStorage.setItem("product", JSON.stringify(newReduxStore.cart));
+
       return newReduxStore;
     }
     case "CLEAR_CART":
