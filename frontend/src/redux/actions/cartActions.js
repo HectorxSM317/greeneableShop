@@ -15,6 +15,12 @@ const cartActions = {
       const res = await axios(`${urlBack}/api/summary/${id}`);
     };
   },
+
+  // addCarrito: (idProduct) => {
+  //   return async (dispatch, getState) => {
+  //     const res = await axios(`${urlBack}/api/summary/${idProduct}`);
+  //   };
+  // },
 };
 
 export default cartActions;
