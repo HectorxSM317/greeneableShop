@@ -52,6 +52,7 @@ const ProductsControllers = {
       error: error,
     });
   },
+
   modifyProduct: async (req, res) => {
     const id = req.params.id;
     const product = req.body.data;
@@ -81,6 +82,25 @@ const ProductsControllers = {
     }
     res.json({
       response: error ? "ERROR" : product,
+      success: error ? false : true,
+      error: error,
+    });
+  },
+  getEightProducts: async (req, res) => {
+    let products;
+    let error = null;
+    try {
+      products = await Product.find();
+    } catch (err) {
+      error = err;
+    }
+    var fiveRandom = [];
+    for (i = 0; fiveRandom.length < 8; i++) {
+      fiveRandom.push(products[Math.floor(Math.random() * products.length)]);
+    }
+
+    res.json({
+      response: error ? "ERROR" : fiveRandom,
       success: error ? false : true,
       error: error,
     });

@@ -16,11 +16,11 @@ import '../styles/navbar.css';
 import LocalMallIcon from '@mui/icons-material/LocalMall';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import PersonOutlineIcon from '@mui/icons-material/PersonOutline';
-import {Link as LinkRouter, useNavigate} from 'react-router-dom';
+import { Link as LinkRouter, useNavigate } from 'react-router-dom';
 
 const pages = [
   {
-    name:'Home',
+    name: 'Home',
     to: '/'
   },
   {
@@ -31,29 +31,33 @@ const pages = [
   {
     name: 'About Us',
     to: '/aboutUs'
-  }
-  ]
-
-const settings  = [
+  },
   {
-    name: 'Sign Up' ,
+    name: 'Upload',
+    to: '/upload'
+  }
+]
+
+const settings = [
+  {
+    name: 'Sign Up',
     to: '/signUp'
   },
-  
+
   {
     name: 'Sign In',
     to: '/signIn'
   },
 
-    
-  ];
+
+];
 
 const Navbar = () => {
 
   // const user=useSelector(store=>store.usersReducer.user)
 
-  const user=false; //provisorio
-  const navigate=useNavigate()
+  const user = false; //provisorio
+  const navigate = useNavigate()
 
 
   const [anchorElNav, setAnchorElNav] = React.useState(null);
@@ -76,7 +80,7 @@ const Navbar = () => {
 
   function SignOut() {
     // dispatch(usersActions.SignOutUser())
-      navigate("/")
+    navigate("/")
   }
 
   return (
@@ -132,15 +136,15 @@ const Navbar = () => {
               }}
             >
 
-               {pages.map((page,index) => (
-                <LinkRouter key={index}  to={page.to} className="linkNav">
+              {pages.map((page, index) => (
+                <LinkRouter key={index} to={page.to} className="linkNav">
                   <MenuItem>
-                  {/* {console.log(page)} */}
-                
+                    {/* {console.log(page)} */}
+
                     <Typography textAlign="center">{page.name}</Typography>
                   </MenuItem>
                 </LinkRouter>
-                
+
               ))}
               {/* {pages.map((page) => (
                 <MenuItem key={page} onClick={handleCloseNavMenu}>
@@ -169,21 +173,21 @@ const Navbar = () => {
             LOGO
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-          {pages.map((page,index) => (
-             <LinkRouter
-                
-                 key={index}
-                 to={page.to}
-                 sx={{ my: 2, color: 'white', display: 'block' }}
-                 
+            {pages.map((page, index) => (
+              <LinkRouter
+
+                key={index}
+                to={page.to}
+                sx={{ my: 2, color: 'white', display: 'block' }}
+
               >
-                <button  className="mx-2">
-                {page.name}
+                <button className="mx-2">
+                  {page.name}
                 </button>
 
-               
-             </LinkRouter> 
-            
+
+              </LinkRouter>
+
             ))}
 
 
@@ -204,11 +208,11 @@ const Navbar = () => {
                 <PersonOutlineIcon sx={{ color: "white", fontSize: "2rem" }} />
               </IconButton>
             </Tooltip>
-            
-                <LinkRouter to="/cart">
-                <ShoppingCartIcon sx={{ color: "white", fontSize: "1.7rem", marginLeft: "2.5rem" }} />
-                </LinkRouter>
-           
+
+            <LinkRouter to="/cart">
+              <ShoppingCartIcon sx={{ color: "white", fontSize: "1.7rem", marginLeft: "2.5rem" }} />
+            </LinkRouter>
+
             <Menu
               sx={{ mt: '45px' }}
               id="menu-appbar"
@@ -225,23 +229,23 @@ const Navbar = () => {
               open={Boolean(anchorElUser)}
               onClose={handleCloseUserMenu}
             >
-{user ? (
+              {user ? (
                 <Box>
-                
-                  <MenuItem sx={{'&:hover': {bgcolor: 'rgb(224,224,224)'}}} onClick={handleCloseUserMenu}>
+
+                  <MenuItem sx={{ '&:hover': { bgcolor: 'rgb(224,224,224)' } }} onClick={handleCloseUserMenu}>
                     <Typography onClick={SignOut}>Sign Out</Typography>
                   </MenuItem>
                 </Box>
-              
 
 
-              ):settings.map((setting,index) => (
+
+              ) : settings.map((setting, index) => (
                 <LinkRouter key={index} onClick={handleCloseUserMenu} to={setting.to} className="linkNav">
                   <MenuItem>
-                      <Typography textAlign="center">{setting.name}</Typography>
+                    <Typography textAlign="center">{setting.name}</Typography>
                   </MenuItem>
                 </LinkRouter>
-                
+
               ))}
 
               {/* {settings.map((setting) => (
