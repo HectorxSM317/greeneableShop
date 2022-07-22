@@ -27,10 +27,10 @@ const productReducer = (state = initialState, action) => {
       // console.log(orderSort);
 
       function filterProducts() {
-        let filter = [];
+        let filterP = [];
 
         if (buttonRadio && searchInput !== "") {
-          filter.push(
+          filterP.push(
             ...state.products.filter(
               (evento) =>
                 evento.name
@@ -40,13 +40,13 @@ const productReducer = (state = initialState, action) => {
             )
           );
         } else if (buttonRadio && searchInput === "") {
-          filter.push(
+          filterP.push(
             ...state.products.filter(
               (evento) => evento.category === buttonRadio
             )
           );
         } else if (!buttonRadio && searchInput !== "") {
-          filter.push(
+          filterP.push(
             ...state.products.filter((evento) =>
               evento.name
                 .toLowerCase()
@@ -54,14 +54,14 @@ const productReducer = (state = initialState, action) => {
             )
           );
         } else {
-          filter.push(...state.products);
+          filterP.push(...state.products);
         }
 
         // if (orderSort) {
         //   sortProducts(filter);
         // }
 
-        return filter;
+        return filterP;
       }
 
       // let asd = filterProducts();
@@ -89,15 +89,14 @@ const productReducer = (state = initialState, action) => {
       };
 
     case "ADD_TO_CART": {
-      // console.log(action.payload);
-      let newItem = state.products.find(
-        (product) => product._id === action.payload._id
-      );
-      // console.log(newItem);
+      let newItem = action.payload;
 
-      let itemInCart = state.cart.find((item) => item._id === newItem._id);
-      // console.log(itemInCart);
-      return itemInCart
+      let itemInCart = state.cart.find(
+        (item) => item._id === action.payload._id
+      );
+      console.log(itemInCart);
+
+      const newReduxState = itemInCart
         ? {
             ...state,
             cart: state.cart.map((item) =>
@@ -110,31 +109,44 @@ const productReducer = (state = initialState, action) => {
             ...state,
             cart: [...state.cart, { ...newItem, quantity: 1 }],
           };
+
+      localStorage.setItem("product", JSON.stringify(newReduxState.cart));
+
+      return newReduxState;
     }
 
     case "REMOVE_ONE_FROM_CART": {
       let itemToDelete = state.cart.find((item) => item._id === action.payload);
-      console.log(itemToDelete);
 
-      return itemToDelete.quantity > 1
-        ? {
-            ...state,
-            cart: state.cart.map((item) =>
-              item._id === action.payload
-                ? { ...item, quantity: item.quantity - 1 }
-                : item
-            ),
-          }
-        : {
-            ...state,
-            cart: state.cart.filter((item) => item._id !== action.payload),
-          };
+      const newReduxStore =
+        itemToDelete.quantity > 1
+          ? {
+              ...state,
+              cart: state.cart.map((item) =>
+                item._id === action.payload
+                  ? { ...item, quantity: item.quantity - 1 }
+                  : item
+              ),
+            }
+          : {
+              ...state,
+              cart: state.cart.filter((item) => item._id !== action.payload),
+            };
+
+      localStorage.setItem("product", JSON.stringify(newReduxStore.cart));
+
+      return newReduxStore;
     }
     case "REMOVE_ALL_FROM_CART": {
-      return {
+      console.log(action.payload);
+      const newReduxStore = {
         ...state,
         cart: state.cart.filter((item) => item._id !== action.payload),
       };
+      console.log(newReduxStore.cart);
+      localStorage.setItem("product", JSON.stringify(newReduxStore.cart));
+
+      return newReduxStore;
     }
     case "CLEAR_CART":
       return initialState;

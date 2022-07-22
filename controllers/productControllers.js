@@ -141,7 +141,7 @@ const ProductsControllers = {
       error = err;
     }
     var fiveRandom = [];
-    for (i = 0; fiveRandom.length < 5; i++) {
+    for (i = 0; fiveRandom.length < 8; i++) {
       fiveRandom.push(products[Math.floor(Math.random() * products.length)]);
     }
 
@@ -154,6 +154,7 @@ const ProductsControllers = {
 
   // addToCart: async (res, req) => {
   //   const id = req.params._id;
+  //   const productAdded = req.body
   //   const product = {};
   //   const error = null;
 

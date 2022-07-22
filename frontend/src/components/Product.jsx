@@ -5,7 +5,7 @@ import { Button } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
 import productsActions from "../redux/actions/productsActions";
 
-export default function Product({ product, setCart }) {
+export default function Product({ product }) {
   const dispatch = useDispatch();
 
   function addToCart(product, e) {
@@ -19,10 +19,13 @@ export default function Product({ product, setCart }) {
     // }
   }
 
+<<<<<<< HEAD
   const cart = useSelector((store) => store.productsReducer.cart);
   // console.log(cart);
   console.log(product)
   console.log(product.photo)
+=======
+>>>>>>> c4dc213e71abba50a0708b8ef3c15edd3af821ac
   return (
     <div className="max-w-[15rem]">
       <div className="max-w-sm rounded overflow-hidden shadow-lg h-[15rem] w-[15rem] m-1">

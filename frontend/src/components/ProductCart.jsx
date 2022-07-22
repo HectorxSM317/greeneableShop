@@ -3,30 +3,24 @@ import { useDispatch, useSelector } from "react-redux";
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 import productsActions from "../redux/actions/productsActions";
 
-export default function ProductCart({ product, setReload }) {
+export default function ProductCart({ product }) {
   console.log(product);
   const dispatch = useDispatch();
 
   function handleRemove(productId, e) {
     e.preventDefault();
 
-    dispatch({
-      type: "REMOVE_ONE_FROM_CART",
-      payload: productId,
-    });
-
-    setReload((r) => !r);
+    dispatch(productsActions.removeOneProduct(productId));
   }
 
   function handleRemoveAll(productId, e) {
+    console.log(productId);
     e.preventDefault();
 
     dispatch({
       type: "REMOVE_ALL_FROM_CART",
       payload: productId,
     });
-
-    setReload((r) => !r);
   }
 
   function addToCart(product, e) {
