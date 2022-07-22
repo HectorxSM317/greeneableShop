@@ -1,14 +1,33 @@
 import React from "react";
 import { Link as LinkRouter } from "react-router-dom";
+import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
+import { Button } from "@mui/material";
+import { useDispatch, useSelector } from "react-redux";
+import productsActions from "../redux/actions/productsActions";
 
-export default function Product({ product }) {
-  console.log(product.photo)
+export default function Product({ product, setCart }) {
+  const dispatch = useDispatch();
+
+  function addToCart(product, e) {
+    e.preventDefault();
+
+    dispatch(productsActions.addToCart(product));
+    // if(res.data.succes){
+    //   setCart((prod) => [...prod, product]);
+    // }else{
+    //   hot toaste res.data.message
+    // }
+  }
+
+  const cart = useSelector((store) => store.productsReducer.cart);
+  // console.log(cart);
+
   return (
     <div className="max-w-[15rem]">
       <div className="max-w-sm rounded overflow-hidden shadow-lg h-[15rem] w-[15rem] m-1">
         <img
           className="w-full h-full object-cover"
-          src = {product.photo}
+          src={product.photo}
           alt="Sunset in the mountains"
         />
       </div>
@@ -19,12 +38,13 @@ export default function Product({ product }) {
           </p>
           <p className="font-bold text-2xl">{product.price} USD</p>
         </div>
-
         <LinkRouter to={`/details/${product._id}`} className="bg-black">
           View more
         </LinkRouter>
 
-
+        <button onClick={(e) => addToCart(product, e)}>
+          <AddShoppingCartIcon />
+        </button>
       </div>
     </div>
   );
