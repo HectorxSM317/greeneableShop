@@ -1,14 +1,19 @@
 import React from "react";
-import productsActions from "../redux/actions/productsActions";
+import adminActions from "../redux/actions/adminActions"
+import { useState } from "react";
+import "../styles/upload.css"
+import { useDispatch } from "react-redux";
+import toast from "react-hot-toast";
 
-export default function UploadProduct(){
+export default function Uplaod(){
+    const dispatch = useDispatch()
     const [files, setFiles]=useState()
 
     async function handleSubmit(event){
         event.preventDefault()
 
         const file = await files[0]
-        console.log(files)
+        // console.log(file)
         const name = await event.target[0].value
         const description = await event.target[1].value
         const price = await event.target[2].value
@@ -20,14 +25,33 @@ export default function UploadProduct(){
             formData.append("price", price)
             formData.append("category", category)
             formData.append("file", file)
+        console.log(formData)
 
+        // const formData = {
+        //     file: file,
+        //     name: name,
+        //     description: description,
+        //     price: price,
+        //     category: category
+        // }
+        // console.log(formData)
+
+        dispatch(adminActions.uploadProduct(formData))
+        .then(res => {
+            if (res.data.success) {
+                toast.success(res.data.message, {
+                duration: 3000,
+                })
+            }
+        })
+        
             // props.uploadProduct(formData)
             //hay que despachar FORMDATA para desestructurar, creo
     }
 
     return (
-        <div>
-            <form onSubmit={handleSubmit}>
+        <div className="asd">
+            <form onSubmit={handleSubmit} method="post">
                 <div>
                     <input name="name" placeholder="name" type="text"/>
                 </div>

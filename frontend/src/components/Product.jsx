@@ -2,12 +2,13 @@ import React from "react";
 import { Link as LinkRouter } from "react-router-dom";
 
 export default function Product({ product }) {
+  console.log(product.photo)
   return (
     <div className="max-w-[15rem]">
       <div className="max-w-sm rounded overflow-hidden shadow-lg h-[15rem] w-[15rem] m-1">
         <img
           className="w-full h-full object-cover"
-          src={product.photo}
+          src = {product.photo}
           alt="Sunset in the mountains"
         />
       </div>

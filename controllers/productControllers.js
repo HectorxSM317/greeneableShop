@@ -52,50 +52,7 @@ const ProductsControllers = {
       error: error,
     });
   },
-  // uploadProduct: async (req, res) => {
-  //   const { file } = req.files
-  //   const name = req.body.name
-  //   const photo = req.body.photo //CONSULTAR
-  //   const description = req.body.description
-  //   const price = req.body.price
-  //   const category = req.body.category
-  //   const autor = req.user._id //CONSULTAR
-  //   try{
-  //       const productExist = await Places.findOne ({ name })
-  //       if (productExist) {
-  //           res.json({
-  //               success: false,
-  //               message: "This product already exists"
-  //           })
-  //       } else {
-  //           const fileName = crypto.randomBytes(10).toString("hex") + "." + file.name.split(".")[file.name.split(".").length - 1];
-  //           const ruta = `${__dirname}../../frontend/public/image/places/${fileName}`
-  //           file.mv(ruta, err => {
-  //               if (err) {
-  //                   console.log(err)
-  //               } else {
-  //                   console.log("Product uploaded")
-  //               }
-  //           })
-  //           const newProduct = await new Product({ //CONSULTAR
-  //               name: name,
-  //               photo: fileName,
-  //               description: description,
-  //               price: price,
-  //               category: category,
-  //               autor: autor //CONSULTAR
-  //           })
-  //           await newProduct.save()
-  //           res.json({
-  //               success: true,
-  //               message: "Thanks you, the product was uploaded"
-  //           })
-  //       }
-  //   } catch (error) {
-  //       console.log(error)
-  //       res.json({ success: false, message: "Something went wrong, please try again"})
-  //   }
-  // },
+
   modifyProduct: async (req, res) => {
     const id = req.params.id;
     const product = req.body.data;
@@ -129,7 +86,7 @@ const ProductsControllers = {
       error: error,
     });
   },
-  getFiveProducts: async (req, res) => {
+  getEightProducts: async (req, res) => {
     let products;
     let error = null;
     try {
@@ -138,7 +95,7 @@ const ProductsControllers = {
       error = err;
     }
     var fiveRandom = [];
-    for (i = 0; fiveRandom.length < 5; i++) {
+    for (i = 0; fiveRandom.length < 8; i++) {
       fiveRandom.push(products[Math.floor(Math.random() * products.length)]);
     }
 

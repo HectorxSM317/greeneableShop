@@ -31,6 +31,10 @@ const pages = [
   {
     name: 'About Us',
     to: '/aboutUs'
+  },
+  {
+    name: 'Upload',
+    to: '/upload'
   }
 ]
 

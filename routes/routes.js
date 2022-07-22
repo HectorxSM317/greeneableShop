@@ -39,7 +39,7 @@ const {
   getProducts,
   getOneProduct,
   addProduct,
-  modifyProduct,
+  // modifyProduct,
   removeProduct,
   multiplesProducts,
   getFiveProducts,
@@ -47,11 +47,11 @@ const {
 
 Router.route("/products").get(getProducts)
 
-Router.route('/products/upload').post(addProduct)
+// Router.route('/products/upload').post(addProduct)
 
 Router.route("/product/:id")
   .post(removeProduct)
-  .put(modifyProduct)
+  // .put(modifyProduct)
   .get(getOneProduct);
 
 Router.route("/fiveproducts/random").get(getFiveProducts);
@@ -66,11 +66,18 @@ const {
 Router.route("/summary").post(createSummary);
 Router.route("/summary/:id").get(getOneSummary);
 
-<<<<<<< HEAD
-// Router.route("/products/upload")
-// .post(passport.authenticate("jwt", {session: false}), uploadProduct)
-=======
-Router.route("/fiveproducts/random").get(getFiveProducts);
->>>>>>> a7520b1cd90e09ff49f8ce077e1c9a24f90ce669
+// admin
+
+const adminControllers = require("../controllers/adminControllers");
+const { uploadProduct, deleteProduct, modifyProduct } = adminControllers;
+
+Router.route("/products/upload")
+.post(passport.authenticate("jwt", {session: false}), uploadProduct)
+
+Router.route("/products/delete/:id")
+.post(passport.authenticate("jwt", {session: false}), deleteProduct)
+
+Router.route("/products/modify")
+.put(passport.authenticate("jwt", {session: false}), modifyProduct)
 
 module.exports = Router;
