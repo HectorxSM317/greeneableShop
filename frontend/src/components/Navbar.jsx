@@ -21,6 +21,9 @@ import Cart from "../pages/Cart";
 import { useState } from "react";
 import Logo from "../assets/greeneable-logo.png";
 import Image from 'mui-image';
+import { useSelector, useDispatch } from 'react-redux'
+import userActions from "../redux/actions/userActions";
+import toast from "react-hot-toast";
 
 const pages = [
   {
@@ -35,11 +38,7 @@ const pages = [
   {
     name: "About Us",
     to: "/aboutUs",
-  },
-  {
-    name: "Upload",
-    to: "/upload",
-  },
+  }
 ];
 
 const settings = [
@@ -55,9 +54,10 @@ const settings = [
 ];
 
 const Navbar = () => {
-  // const user=useSelector(store=>store.usersReducer.user)
 
-  const user = false; //provisorio
+  const dispatch = useDispatch()
+  const user = useSelector(store => store.usersReducer.loggedUser)
+  // console.log(user)
   const navigate = useNavigate();
 
   const [anchorElNav, setAnchorElNav] = React.useState(null);
@@ -80,15 +80,22 @@ const Navbar = () => {
   };
 
   function SignOut() {
-    // dispatch(usersActions.SignOutUser())
-    navigate("/");
+    dispatch(userActions.userSignOut(user))
+    toast.success("You have signed out", {
+      duration: 3000,
+    });
+    navigate('/', { replace: true })
   }
+
+
+
+
+
 
   return (
     <AppBar position="static">
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          <Image className='logoClass' src={Logo} sx={{ display: { md: 'flex' }, mr: 1, }} />
 
           <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
             <IconButton
@@ -131,6 +138,9 @@ const Navbar = () => {
                 ))
               }
             </Menu >
+            <LinkRouter to="/">
+              <Image className='logoClass' src={Logo} sx={{ display: { md: 'flex' }, mr: 1, }} />
+            </LinkRouter>
 
           </Box >
 
@@ -205,7 +215,19 @@ const Navbar = () => {
                   >
                     <Typography onClick={SignOut}>Sign Out</Typography>
                   </MenuItem>
+                  {user.role === "admin" &&
+
+                    <LinkRouter to="/upload">
+                      <MenuItem
+                        sx={{ "&:hover": { bgcolor: "rgb(224,224,224)" } }}
+                      >
+                        <Typography>Upload Product</Typography>
+                      </MenuItem>
+                    </LinkRouter>
+
+                  }
                 </Box>
+
               ) : (
                 settings.map((setting, index) => (
                   <LinkRouter

@@ -75,7 +75,7 @@ function Login (props) {
           // draggable: true,
           // progress: undefined,
           });
-        navigate('/index', {replace:true})
+        navigate('/', {replace:true})
       } catch(error) {
         
         console.log(error);

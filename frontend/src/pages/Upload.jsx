@@ -16,25 +16,25 @@ export default function Uplaod(){
         // console.log(file)
         const name = await event.target[0].value
         const description = await event.target[1].value
+        const stock = await event.target[3].value
+        console.log(stock)
         const price = await event.target[2].value
-        const category = await event.target[3].value
+        const category = await event.target[4].value
 
         const formData = new FormData()
             formData.append("name", name)
             formData.append("description", description)
             formData.append("price", price)
+            formData.append("stock", stock)
             formData.append("category", category)
             formData.append("file", file)
         console.log(formData)
-
-        // const formData = {
-        //     file: file,
-        //     name: name,
-        //     description: description,
-        //     price: price,
-        //     category: category
-        // }
-        // console.log(formData)
+        console.log(name)
+        console.log(description)
+        console.log(price)
+        console.log(stock)
+        console.log(category)
+        console.log(file)
 
         dispatch(adminActions.uploadProduct(formData))
         .then(res => {
@@ -60,6 +60,9 @@ export default function Uplaod(){
                 </div>
                 <div>
                     <input name="price" placeholder="price" type="text"/>
+                </div>
+                <div>
+                    <input name="stock" placeholder="stock" type="number"/>
                 </div>
                 <div>
                     <input name="category" placeholder="category" type="text"/>
