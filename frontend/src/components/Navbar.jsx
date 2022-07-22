@@ -19,6 +19,8 @@ import PersonOutlineIcon from "@mui/icons-material/PersonOutline";
 import { Link as LinkRouter, useNavigate } from "react-router-dom";
 import Cart from "../pages/Cart";
 import { useState } from "react";
+import Logo from "../assets/greeneable-logo.png";
+import Image from 'mui-image';
 
 const pages = [
   {
@@ -47,8 +49,8 @@ const settings = [
   },
 
   {
-    name: "Sign Up",
-    to: "/signUp",
+    name: "Sign In",
+    to: "/signIn",
   },
 ];
 
@@ -62,6 +64,7 @@ const Navbar = () => {
   const [anchorElUser, setAnchorElUser] = React.useState(null);
 
   const handleOpenNavMenu = (event) => {
+    console.log(event.currentTarget)
     setAnchorElNav(event.currentTarget);
   };
   const handleOpenUserMenu = (event) => {
@@ -85,24 +88,7 @@ const Navbar = () => {
     <AppBar position="static">
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          <AdbIcon sx={{ display: { xs: "none", md: "flex" }, mr: 1 }} />
-          <Typography
-            variant="h6"
-            noWrap
-            component="a"
-            href="/"
-            sx={{
-              mr: 2,
-              display: { xs: "none", md: "flex" },
-              fontFamily: "monospace",
-              fontWeight: 700,
-              letterSpacing: ".3rem",
-              color: "inherit",
-              textDecoration: "none",
-            }}
-          >
-            LOGO
-          </Typography>
+          <Image className='logoClass' src={Logo} sx={{ display: { md: 'flex' }, mr: 1, }} />
 
           <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
             <IconButton
@@ -128,55 +114,43 @@ const Navbar = () => {
                 horizontal: "left",
               }}
               open={Boolean(anchorElNav)}
-              // onClose={handleCloseNavMenu}
+              onClose={handleCloseNavMenu}
               sx={{
                 display: { xs: "block", md: "none" },
               }}
             >
-              {pages.map((page, index) => (
-                <LinkRouter key={index} to={page.to} className="linkNav">
-                  <MenuItem>
-                    {/* {console.log(page)} */}
+              {
+                pages.map((page, index) => (
+                  <LinkRouter key={index} to={page.to} className="linkNav">
+                    <MenuItem>
+                      {/* {console.log(page)} */}
 
-                    <Typography textAlign="center">{page.name}</Typography>
-                  </MenuItem>
-                </LinkRouter>
-              ))}
-              {/* {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">{page}</Typography>
-                </MenuItem>
-              ))} */}
-            </Menu>
-          </Box>
-          <AdbIcon sx={{ display: { xs: "flex", md: "none" }, mr: 1 }} />
-          <Typography
-            variant="h5"
-            noWrap
-            component="a"
-            href=""
-            sx={{
-              mr: 2,
-              display: { xs: "flex", md: "none" },
-              flexGrow: 1,
-              fontFamily: "monospace",
-              fontWeight: 700,
-              letterSpacing: ".3rem",
-              color: "inherit",
-              textDecoration: "none",
-            }}
-          >
-            LOGO
-          </Typography>
-          <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
+                      <Typography textAlign="center">{page.name}</Typography>
+                    </MenuItem>
+                  </LinkRouter>
+                ))
+              }
+            </Menu >
+
+          </Box >
+
+
+          <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
             {pages.map((page, index) => (
               <LinkRouter
+
                 key={index}
                 to={page.to}
-                sx={{ my: 2, color: "white", display: "block" }}
+                sx={{ my: 2, color: 'white', display: 'block' }}
+
               >
-                <button className="mx-2">{page.name}</button>
+                <button className="mx-2">
+                  {page.name}
+                </button>
+
+
               </LinkRouter>
+
             ))}
 
             {/* {pages.map((page) => (
@@ -205,7 +179,7 @@ const Navbar = () => {
                   marginLeft: "2.5rem",
                 }}
               />
-            </LinkRouter>
+            </LinkRouter >
 
             <Menu
               sx={{ mt: "45px" }}
@@ -252,11 +226,11 @@ const Navbar = () => {
                   <Typography textAlign="center">{setting}</Typography>
                 </MenuItem>
               ))} */}
-            </Menu>
-          </Box>
-        </Toolbar>
-      </Container>
-    </AppBar>
+            </Menu >
+          </Box >
+        </Toolbar >
+      </Container >
+    </AppBar >
   );
 };
 export default Navbar;
