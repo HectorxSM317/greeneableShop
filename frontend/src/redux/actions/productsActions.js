@@ -105,16 +105,24 @@ const productsActions = {
   },
 
   addToCart: (product) => {
+    console.log(product);
     return (dispatch, getState) => {
+      // const res = await axios.get(`${urlBack}/api/product/${id}`);
+
       dispatch({
         type: "ADD_TO_CART",
         payload: product,
       });
-
-      let productsCart = getState();
-      let productsCartJson = JSON.stringify(productsCart.productsReducer.cart);
-      localStorage.setItem("product", productsCartJson);
     };
+  },
+
+  removeOneProduct: (prodId) => (dispatch, getState) => {
+    // var lStorage = localStorage.filter((id) => id !== prodId);
+    // localStorage.setItem("carrito", lStorage);
+    dispatch({
+      type: "REMOVE_ONE_FROM_CART",
+      payload: prodId,
+    });
   },
 };
 
