@@ -35,7 +35,7 @@ export default function Cart() {
           <ProductCart product={product} key={i} setReload={setReload} />
         ))}
 
-      <div className="product-box w-[90%] flex row rounded-lg bg-slate-200 p-5 mt-6 items-center min-w-[10rem] mx-2 justify-around items-center">
+      <div className="product-box w-[90%] flex row rounded-lg bg-slate-200 p-5 mt-6 min-w-[10rem] mx-2 justify-around items-center">
         <h4>
           Total:
           {cart.reduce((total, item) => total + item.price * item.quantity, 0)}

@@ -55,6 +55,7 @@ const productsActions = {
       return res;
     };
   },
+
   modifyProduct: (data, id) => {
     const token = localStorage.getItem("token");
     return async (dispatch, getState) => {
