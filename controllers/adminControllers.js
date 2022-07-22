@@ -1,6 +1,6 @@
 const Product = require("../models/product");
 const crypto = require("crypto");
-
+const path = require('path')
 
 const adminControllers = {
 uploadProduct: async (req, res) => {
@@ -21,8 +21,9 @@ uploadProduct: async (req, res) => {
             })
         } else {
             const fileName = crypto.randomBytes(10).toString("hex") + "." + file.name.split(".")[file.name.split(".").length - 1];
-            const ruta = `${__dirname}../../frontend/src/assets/products/${fileName}`
-            file.mv(ruta, err => {
+            const route = path.resolve('storage/products',fileName)
+            const ruta = `http://localhost:4000/products/${fileName}`
+            file.mv(route, err => {
                 if (err) {
                     console.log(err)
                 } else {
@@ -31,7 +32,7 @@ uploadProduct: async (req, res) => {
             })
             const newProduct = await new Product({ //CONSULTAR
                 name: name,
-                photo: fileName,
+                photo: ruta,
                 description: description,
                 price: price,
                 stock: stock,
