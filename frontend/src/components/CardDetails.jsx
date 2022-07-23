@@ -24,6 +24,7 @@ import EditIcon from "@mui/icons-material/Edit";
 import adminActions from "../redux/actions/adminActions";
 import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
+import DeleteIcon from "@mui/icons-material/Delete";
 
 const ExpandMore = styled((props) => {
   const { expand, ...other } = props;
@@ -51,21 +52,23 @@ export default function RecipeReviewCard() {
 
   const { id } = useParams();
   const [expanded, setExpanded] = React.useState(false);
-  const [editable, setEditable] = useState(false)
+  const [editable, setEditable] = useState(false);
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(productsActions.getOneProduct(id));
-    // eslint-disable-next-line
+    dispatch(productsActions.getProducts());
   }, []);
   const product = useSelector((store) => store.productsReducer.oneProduct);
+  const products = useSelector((store) => store.productsReducer.products);
+
+  const allCateg = products.map((item) => item.category);
+  const cleanCats = [...new Set(allCateg), "other"];
 
   const handleExpandClick = () => {
     setExpanded(!expanded);
   };
 
-  const loggedUser = useSelector(store => store.usersReducer.loggedUser)
-  console.log(loggedUser)
-
+  const loggedUser = useSelector((store) => store.usersReducer.loggedUser);
 
   const [value, setValue] = React.useState(2);
   const navigate = useNavigate();
@@ -80,174 +83,365 @@ export default function RecipeReviewCard() {
     });
   };
 
-
-
-
-
   const handleEdit = () => {
-    console.log("editable mode")
-    setEditable(true)
+    console.log("editable mode");
+    setEditable(true);
+  };
 
+  const [image, setImage] = useState("current-image");
+  const [newImage, setNewImage] = useState();
+
+  // const [files, setFiles] = useState(product.photo)
+
+  async function handleConfirm(event) {
+    event.preventDefault();
+    setEditable(false);
+    console.log(event.currentTarget[1].textContent);
+    // const file = await files[0];
+    const name = await event.target[0].value;
+    const description = await event.target[1].value;
+    const stock = await event.target[3].value;
+    const price = await event.target[2].value;
+    const category = await event.target[4].value;
+    const formData = new FormData();
+    formData.append("name", name);
+    formData.append("description", description);
+    formData.append("price", price);
+    formData.append("stock", stock);
+    formData.append("category", category);
+    // formData.append("file", file);
   }
 
-  const [image, setImage] = useState("current-image") 
-  const [newImage, setNewImage] = useState()
+  const PRODUCT_INITIAL_STATE = {
+    name: "",
+    description: "",
+    stock: 0,
+    price: 0,
+    category: "",
+    otherCategory: "",
+    imageSelection: "",
+    photo: "",
+    newImageFile: null,
+  };
+  const [productState, setProductState] = useState(PRODUCT_INITIAL_STATE);
+  const {
+    name,
+    description,
+    stock,
+    price,
+    category,
+    imageSelection,
+    photo,
+    newImageFile,
+  } = productState;
 
-  
-  const [files, setFiles] = useState(product.photo)
-
-
-  async function handleConfirm (event){
-    event.preventDefault()
+  function handleSubmit(event) {
     setEditable(false)
-    console.log(event.currentTarget[1].textContent)
-    const file = await files[0]
-    const name = await event.target[0].value
-    const description = await event.target[1].value
-    const stock = await event.target[3].value
-    const price = await event.target[2].value
-    const category = await event.target[4].value
     const formData = new FormData()
     formData.append("name", name)
     formData.append("description", description)
     formData.append("price", price)
     formData.append("stock", stock)
     formData.append("category", category)
-    formData.append("file", file)
+    if (imageSelection === "upload-image") {
+      formData.append("photo", newImageFile)
+    } else {
+      formData.append('photo', photo)
+    }
+    dispatch(adminActions.modifyProduct(product._id, formData)).then((res) => {
+      console.log(res);
+      if (res.data.success) {
+        toast.success(res.data.message, {
+          duration: 3000,
+        });
+      } else {
+        toast.error(res.data.message, {
+          duration: 3000,
+        });
+      }
+    });
   }
 
+  useEffect(() => {
+    if (product.name) {
+      setProductState({
+        name: product.name,
+        description: product.description,
+        stock: product.stock,
+        price: product.price,
+        category: product.category,
+        otherCategory: "",
+        imageSelection: "current-image",
+        photo: product.photo,
+        newImageFile: null,
+      });
+    }
+  }, [product])
+
+  const handleDiscard = () => {
+      console.log(PRODUCT_INITIAL_STATE)
+  }
 
   return (
     <Card className="details">
-      <form onSubmit={handleConfirm} >
-        <div className="detailsTop">
-          <div className="detailsTop-A flex flex-col justify-center items-start min-w-[30vw]">
-
-
-            <CardMedia
-              className="detailsTop-A-cardMedia flex grow"
-              component="img"
-              height="100%"
-              image={product?.photo}
-              alt="Paella dish"
-            />
-            <div className="grow">
-              {editable &&
-                <select onChange={(e) => setImage(e.target.value)}>
-                  <option value="current-image">Use current image</option>
-                  <option value="upload-image">Upload image</option>
-                </select>
-              }
-              <div>
-                {editable &&
-
-                  image === "upload-image" &&
-                  <input onChange={(event)=>setFiles(event.target.files)} type="file"></input>
+      <div className="detailsTop">
+        <div className="detailsTop-A flex flex-col justify-center items-start min-w-[30vw]">
+          <CardMedia
+            className="detailsTop-A-cardMedia flex grow"
+            component="img"
+            height="100%"
+            image={product?.photo}
+            alt="Paella dish"
+          />
+          <div className="grow">
+            {editable && (
+              <select
+                onChange={(e) =>
+                  setProductState({
+                    ...productState,
+                    imageSelection: e.target.value,
+                  })
                 }
-              </div>
-
+              >
+                <option value="current-image">Use current image</option>
+                <option value="upload-image">Upload image</option>
+              </select>
+            )}
+            <div>
+              {editable && imageSelection === "upload-image" && (
+                <input
+                  onChange={(event) =>
+                    setProductState({
+                      ...productState,
+                      newImageFile: event.target.files[0],
+                    })
+                  }
+                  type="file"
+                ></input>
+              )}
             </div>
           </div>
+        </div>
 
-          <div className="detailsTop-B">
-            <CardContent
-              sx={{
-                display: "flex",
-                flexdirection: "row",
-                justifyContent: "space-between",
-                width: "100%",
-                alignItems: "center",
-              }}
-            >
-              {<div type="text" contentEditable={editable} suppressContentEditableWarning={true} className={editable ? "editable" : "non-editables"}>{product?.name}</div>}
-             
-          
-          
-              <Box sx={{ display: "flex", alignItems: "center" }}>
+        <div className="detailsTop-B">
+          <Box sx={{ display: "flex", alignItems: "center" }}>
+            <div>
+              {loggedUser && loggedUser.role === "admin" && (
                 <div>
+                  <Button
+                    variant="contained"
+                    color="error"
+                    id={product?._id} onClick={handleDelete}
+                    sx={{ bgcolor: "#d30000", borderRadius: 50 }}
 
-                  {loggedUser && loggedUser.role === "admin" &&
-                    <Fab
-                      className="formBtn"
-                      aria-label="more"
-                      sx={{ height: 15, width: 35, bgcolor: "#41788f" }}
-                      id="long-button"
-                      aria-controls={open ? "long-menu" : undefined}
-                      aria-expanded={open ? "true" : undefined}
-                      aria-haspopup="true"
-                      onClick={handleClick}
-                    >
-                      <EditIcon sx={{ width: 15, color: "white" }} />
-                    </Fab>}
-                  <Menu
-                    id="long-menu"
-                    MenuListProps={{ "aria-labelledby": "long-button" }}
-                    anchorEl={anchorEl}
-                    open={open}
-                    onClose={handleClose}
-                    PaperProps={{
-                      style: { maxHeight: ITEM_HEIGHT * 4.5, width: "10ch" },
-                    }}
                   >
-                    <MenuItem onClick={handleClose}>
-                      <Typography onClick={handleEdit} >Edit</Typography>
-                    </MenuItem>
-                    <MenuItem onClick={handleClose}>
-                      <Typography id={product?._id} onClick={handleDelete}>
-                        Delete
-                      </Typography>
-                    </MenuItem>
-                  </Menu>
+                    <DeleteIcon sx={{ width: 15, color: "white" }} />
+                  </Button>
+                  <Button
+                    variant="contained"
+                    color="primary"
+                    id={product?._id} onClick={handleEdit}
+                    sx={{ bgcolor: "#41788f", margin: 1, borderRadius: 50 }}
+                  >
+                    <EditIcon sx={{ width: 15, color: "white" }} />
+                  </Button>
+                  {editable &&
+
+
+                    <>
+                    
+                    <Button
+                      variant="contained"
+                      onClick={(e) => handleSubmit(e)}
+                      sx={{ bgcolor: "#41788f", bgcolor: "#13542d", margin: 1, borderRadius: 50, color: "white" }}
+                      color="success"
+                      aria-label="more"
+                      id="long-button"
+                    >
+                      Save
+                    </Button>
+                    <Button
+                      variant="contained"
+                      onClick={(e) => handleDiscard(e)}
+                      sx={{ bgcolor: "#41788f", bgcolor: "error", margin: 1, borderRadius: 50, color: "white" }}
+                      color="error"
+                      aria-label="more"
+                      id="long-button"
+
+                    >
+                      Discard
+                    </Button>
+                    </>
+
+
+                  }
                 </div>
-              </Box>
-            </CardContent>
-            <CardContent>
-              <Typography variant="body" color="text.secondary" clasName="flex items-center" >
-                {
-                  <div className="flex flex-row items-center justify-center">
-                    <div suppressContentEditableWarning={true} className={editable ? "editable" : "non-editables"} contentEditable={editable}>{product?.price} </div>
-                    <div className="mx-2">USD</div>
-                  </div>}
-              </Typography>
-            </CardContent>
-            <CardContent>
-              <Rating name="read-only" value={value} readOnly />
-            </CardContent>
-            <CardActions disableSpacing>
-              <IconButton aria-label="add to favorites">
-                <FavoriteIcon />
-              </IconButton>
-              <IconButton aria-label="share">
-                <ShareIcon />
-              </IconButton>
-            </CardActions>
-            <CardContent sx={{ width: "100%" }}>
-              <Button variant="contained" sx={{ width: "100%" }}>
-                Add To Cart
-              </Button>
-            </CardContent>
-          </div>
-        </div>
-        <div className="detailsExpand">
-          <CardActions sx={{ p: 0 }}>
-            <ExpandMore
-              expand={expanded}
-              onClick={handleExpandClick}
-              aria-expanded={expanded}
-              aria-label="show more"
+              )}
+            </div>
+          </Box>
+          <CardContent
+            sx={{
+              display: "flex",
+              flexdirection: "row",
+              justifyContent: "space-between",
+              width: "100%",
+              alignItems: "center",
+            }}
+          >
+
+            {
+              <div className="flex flex-row items-center justify-center">
+                Name:
+                <div onInput={(event) => setProductState({
+                  ...productState,
+                  name: event.currentTarget.textContent
+                })} suppressContentEditableWarning={true} className={editable ? "editable" : "non-editables"} contentEditable={editable}>{product?.name} </div>
+
+              </div>}
+
+
+
+
+          </CardContent>
+          <CardContent>
+            <Typography
+              variant="body"
+              color="text.secondary"
+              className="flex items-center"
             >
-              <ExpandMoreIcon />
-            </ExpandMore>
+              {
+                <div className="flex flex-row items-center justify-center">
+                  <div className="mx-2">USD</div>
+                  <div
+                    onInput={(event) =>
+                      setProductState({
+                        ...productState,
+                        price: event.currentTarget.textContent,
+                      })
+                    }
+                    suppressContentEditableWarning={true}
+                    className={editable ? "editable" : "non-editables"}
+                    contentEditable={editable}
+                  >
+                    {product?.price}{" "}
+                  </div>
+                </div>
+              }
+            </Typography>
+            <Typography
+              variant="body"
+              color="text.secondary"
+              className="flex items-center"
+            >
+              {
+                <div className="flex flex-row items-center justify-center">
+                  Stock:
+                  <div
+                    onInput={(event) =>
+                      setProductState({
+                        ...productState,
+                        stock: event.currentTarget.textContent,
+                      })
+                    }
+                    suppressContentEditableWarning={true}
+                    className={editable ? "editable" : "non-editables"}
+                    contentEditable={editable}
+                  >
+                    {product?.price}{" "}
+                  </div>
+                </div>
+              }
+            </Typography>
+
+            <div>
+              {editable ? (
+                <>
+                  <p>Category:</p>
+                  <select
+                    onChange={(e) =>
+                      setProductState({
+                        ...productState,
+                        category: e.target.value,
+                      })
+                    }
+                  >
+                    {cleanCats.map((item, i) => {
+                      return <option key={i}>{item}</option>;
+                    })}
+                  </select>
+                </>
+              ) : (
+                <Typography
+                  variant="body"
+                  color="text.secondary"
+                  className="flex items-center"
+                >
+                  Category: {product.category}
+                </Typography>
+              )}
+              {category === "other" && (
+                <div
+                  className={editable ? "editable" : "non-editables"}
+                  contentEditable={true}
+                  suppressContentEditableWarning={true}
+                  onChange={(e) =>
+                    setProductState({
+                      ...productState,
+                      otherCategory: e.target.value,
+                    })
+                  }
+                ></div>
+              )}
+            </div>
+          </CardContent>
+          <CardContent>
+            <Rating name="read-only" value={value} readOnly />
+          </CardContent>
+          <CardActions disableSpacing>
+            <IconButton aria-label="add to favorites">
+              <FavoriteIcon />
+            </IconButton>
+            <IconButton aria-label="share">
+              <ShareIcon />
+            </IconButton>
           </CardActions>
-          <Collapse in={expanded} timeout="auto" unmountOnExit>
-            <Typography paragraph>Description</Typography>
-            <CardContent>
-              <div className={editable ? "editable" : "non-editables"} contentEditable={editable} suppressContentEditableWarning={true}>{product?.description} </div>
-            </CardContent>
-          </Collapse>
+          <CardContent sx={{ width: "100%" }}>
+            <Button variant="contained" sx={{ width: "100%" }}>
+              Add To Cart
+            </Button>
+          </CardContent>
         </div>
-              <button type="submit">CONFIRM</button>
-      </form>
+      </div>
+      <div className="detailsExpand">
+        <CardActions sx={{ p: 0 }}>
+          <ExpandMore
+            expand={expanded}
+            onClick={handleExpandClick}
+            aria-expanded={expanded}
+            aria-label="show more"
+          >
+            <ExpandMoreIcon />
+          </ExpandMore>
+        </CardActions>
+        <Collapse in={expanded} timeout="auto" unmountOnExit>
+          <Typography paragraph>Description</Typography>
+          <CardContent>
+            <div
+              onInput={(event) =>
+                setProductState({
+                  ...productState,
+                  description: event.currentTarget.textContent,
+                })
+              }
+              className={editable ? "editable" : "non-editables"}
+              contentEditable={editable}
+              suppressContentEditableWarning={true}
+            >
+              {product?.description}{" "}
+            </div>
+          </CardContent>
+        </Collapse>
+      </div>
     </Card>
   );
 }

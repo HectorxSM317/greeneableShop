@@ -70,15 +70,17 @@ modifyProduct: async (req, res) => {
     const id = req.params.id
     const product = req.body
     let productdb
+    
     let error = null
     try {
         productdb = await Product.findOneAndUpdate({ _id: id }, product,{ new: true })
-        
+        console.log(productdb)
     } catch (err) { error = err }
     res.json({
         response: error ? 'ERROR' : productdb,
         success: error ? false : true,
-        error: {error:error, message:"It's not possible to modify the product. Please, try again"}
+        error: error,
+        message: error ? "ERROR" : "Product modified successfully."
     })
 
 },
