@@ -5,6 +5,7 @@ import { useDispatch } from "react-redux";
 import productsActions from "../redux/actions/productsActions";
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
+import toast from "react-hot-toast";
 
 export default function Product({ product }) {
   const dispatch = useDispatch();
@@ -13,11 +14,8 @@ export default function Product({ product }) {
     e.preventDefault();
 
     dispatch(productsActions.addToCart(product));
-    // if(res.data.succes){
-    //   setCart((prod) => [...prod, product]);
-    // }else{
-    //   hot toaste res.data.message
-    // }
+    toast.success('Product added!')
+
   }
 
   return (

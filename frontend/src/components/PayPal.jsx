@@ -7,9 +7,13 @@ export default function PayPal() {
   const cart = useSelector((store) => store.productsReducer.cart);
   console.log(cart);
 
+  const [success, setSuccess] = useState(false);
+  const [orderID, setOrderID] = useState(false);
+  const [ErrorMessage, setErrorMessage] = useState("");
+
   useEffect(() => {
     PayPalCheckOut();
-  }, [cart]);
+  }, []);
 
   const initialOptions = {
     // Genero las opciones para enviarle al CDN
@@ -49,7 +53,7 @@ export default function PayPal() {
     console.log(data);
     return actions.order.capture().then(function (details) {
       const { payer } = details;
-      // setSuccess(true);
+      setSuccess(true);
       console.log("Capture result", details, JSON.stringify(details, null, 2)); //veo los datos en consola
       var transaction = details.purchase_units[0].payments.captures[0];
       alert(
@@ -60,7 +64,7 @@ export default function PayPal() {
           "\n\nSee console for all available details"
       );
       console.log(details);
-      // setOrderID(transaction.id);
+      setOrderID(transaction.id);
     });
   };
 
@@ -70,25 +74,23 @@ export default function PayPal() {
 
   const onError = (data, actions) => {
     // Capturo error en caso de que exista
-    // setErrorMessage("An Error occured with your payment ");
+    setErrorMessage("An Error occured with your payment ");
   };
 
   const PayPalCheckOut = () => {
     return (
-      <>
-        <PayPalScriptProvider options={initialOptions}>
-          {/*Inicializo el CDN*/}
-          {/*Inicializo los botones*/}
-          <PayPalButtons
-            createOrder={createOrder}
-            onApprove={onApprove}
-            onError={onError}
-            onCancel={onCancel}
-          />
-        </PayPalScriptProvider>
-      </>
+      <PayPalScriptProvider options={initialOptions}>
+        {/*Inicializo el CDN*/}
+        {/*Inicializo los botones*/}
+        <PayPalButtons
+          createOrder={createOrder}
+          onApprove={onApprove}
+          onError={onError}
+          onCancel={onCancel}
+        />
+      </PayPalScriptProvider>
     );
   };
 
-  return <PayPalCheckOut />;
+  return PayPalCheckOut();
 }

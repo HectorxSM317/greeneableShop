@@ -35,32 +35,6 @@ a {
     width: 80px;
 }
 
-.border-shape::before {
-    background: #ffbe00 none repeat scroll 0 0;
-    bottom: 0;
-    content: "";
-    height: 1px;
-    left: 80px;
-    margin: 0 auto;
-    position: absolute;
-    text-align: center;
-    top: 1px;
-    width: 100px;
-}
-
-.border-shape::after {
-    background: #ffbe00 none repeat scroll 0 0;
-    bottom: 0;
-    content: "";
-    height: 1px;
-    margin: 0 auto;
-    position: absolute;
-    right: 80px;
-    text-align: center;
-    top: 1px;
-    width: 100px;
-}
-
 
 
 

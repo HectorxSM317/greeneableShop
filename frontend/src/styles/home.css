@@ -32,17 +32,18 @@
   object-fit: cover;
 }
 #center{
-  margin-top: 50px;
+  margin-top: 6rem;
   position: absolute;
   top: 0;
   left: auto;
-  width: 400px;
-  height: 400px;
-  object-fit: cover;
+  width: 18rem;
+  height: 18rem;
+  object-fit: contain;
 }
 
 #text{
   position: absolute;
+  padding-top: 200px;
   color: white;
   white-space: nowrap;
   font-size: 7.5vw;

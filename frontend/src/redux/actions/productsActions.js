@@ -34,7 +34,6 @@ const productsActions = {
   addProduct: (data) => {
     return async (dispatch, getState) => {
       const token = localStorage.getItem("token");
-
       const res = await axios.post(
         `${urlBack}/api/products`,
         { data },

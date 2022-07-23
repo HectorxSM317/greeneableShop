@@ -25,6 +25,7 @@ import adminActions from "../redux/actions/adminActions";
 import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 import DeleteIcon from "@mui/icons-material/Delete";
+import { RiLeafFill } from "react-icons/ri";
 
 const ExpandMore = styled((props) => {
   const { expand, ...other } = props;
@@ -395,7 +396,10 @@ export default function RecipeReviewCard() {
             </div>
           </CardContent>
           <CardContent>
-            <Rating name="read-only" value={value} readOnly />
+            <Rating name="read-only" value={value} readOnly 
+            icon={<RiLeafFill fontSize="inherit" color="green" />}
+            emptyIcon={<RiLeafFill fontSize="inherit"/>}
+            />
           </CardContent>
           <CardActions disableSpacing>
             <IconButton aria-label="add to favorites">
