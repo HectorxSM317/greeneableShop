@@ -68,7 +68,7 @@ const ProductsControllers = {
     res.json({
       response: error ? "ERROR" : productdb,
       success: error ? false : true,
-      error: error,
+      error: error
     });
   },
   removeProduct: async (req, res) => {
