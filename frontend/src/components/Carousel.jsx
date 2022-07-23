@@ -75,8 +75,7 @@ export default function App() {
             >
                 {carouselItems.map((event) => (
                     <SwiperSlide className="sliderCarousel">
-                        <Box>
-                            <img src={event.photo}></img>
+                        <Box className="sliderImg" sx={{backgroundImage: `url("${event.photo}")`, backgroundSize: "cover", backgroundPosition: "center"}}>
                         </Box>
                         <Box>
                             <Typography>{event.name}</Typography>
@@ -89,18 +88,3 @@ export default function App() {
         </>
     );
 }
-
-{/* // <SwiperSlide className="asd">
-// <CardMedia
-//     component="img"
-//     alt="green iguana"
-//     height="120"
-//     image="https://img.joomcdn.net/6bc14a248ce97640dd7dc0e82b19492078b4307e_original.jpeg"
-// />
-// <Box>
-//     <Typography>Botella</Typography>
-// </Box>
-// <Box>
-//     <Button sx={{fontSize: 10, color: "black"}} size="medium">See More</Button>
-// </Box>
-// </SwiperSlide> */}
