@@ -106,9 +106,9 @@ const productsActions = {
 
   addToCart: (product) => {
     console.log(product);
-    return (dispatch, getState) => {
-      // const res = await axios.get(`${urlBack}/api/product/${id}`);
-
+    return async (dispatch, getState) => {
+      // const res = await axios.get(`${urlBack}/api/productcart/add`, {product});
+      // console.log(res);
       dispatch({
         type: "ADD_TO_CART",
         payload: product,

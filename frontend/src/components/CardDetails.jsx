@@ -51,7 +51,7 @@ export default function RecipeReviewCard() {
 
   const { id } = useParams();
   const [expanded, setExpanded] = React.useState(false);
-  const [editable, setEditable] = useState(false)
+  const [editable, setEditable] = useState(false);
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(productsActions.getOneProduct(id));
@@ -63,9 +63,8 @@ export default function RecipeReviewCard() {
     setExpanded(!expanded);
   };
 
-  const loggedUser = useSelector(store => store.usersReducer.loggedUser)
-  console.log(loggedUser)
-
+  const loggedUser = useSelector((store) => store.usersReducer.loggedUser);
+  console.log(loggedUser);
 
   const [value, setValue] = React.useState(2);
   const navigate = useNavigate();
@@ -80,50 +79,40 @@ export default function RecipeReviewCard() {
     });
   };
 
-
-
-
-
   const handleEdit = () => {
-    console.log("editable mode")
-    setEditable(true)
+    console.log("editable mode");
+    setEditable(true);
+  };
 
+  const [image, setImage] = useState("current-image");
+  const [newImage, setNewImage] = useState();
+
+  // const [files, setFiles] = useState(product.photo)
+
+  async function handleConfirm(event) {
+    event.preventDefault();
+    setEditable(false);
+    console.log(event.currentTarget[1].textContent);
+    // const file = await files[0];
+    const name = await event.target[0].value;
+    const description = await event.target[1].value;
+    const stock = await event.target[3].value;
+    const price = await event.target[2].value;
+    const category = await event.target[4].value;
+    const formData = new FormData();
+    formData.append("name", name);
+    formData.append("description", description);
+    formData.append("price", price);
+    formData.append("stock", stock);
+    formData.append("category", category);
+    // formData.append("file", file);
   }
-
-  const [image, setImage] = useState("current-image") 
-  const [newImage, setNewImage] = useState()
-
-  
-  const [files, setFiles] = useState(product.photo)
-
-
-  async function handleConfirm (event){
-    event.preventDefault()
-    setEditable(false)
-    console.log(event.currentTarget[1].textContent)
-    const file = await files[0]
-    const name = await event.target[0].value
-    const description = await event.target[1].value
-    const stock = await event.target[3].value
-    const price = await event.target[2].value
-    const category = await event.target[4].value
-    const formData = new FormData()
-    formData.append("name", name)
-    formData.append("description", description)
-    formData.append("price", price)
-    formData.append("stock", stock)
-    formData.append("category", category)
-    formData.append("file", file)
-  }
-
 
   return (
     <Card className="details">
-      <form onSubmit={handleConfirm} >
+      <form onSubmit={handleConfirm}>
         <div className="detailsTop">
           <div className="detailsTop-A flex flex-col justify-center items-start min-w-[30vw]">
-
-
             <CardMedia
               className="detailsTop-A-cardMedia flex grow"
               component="img"
@@ -132,20 +121,20 @@ export default function RecipeReviewCard() {
               alt="Paella dish"
             />
             <div className="grow">
-              {editable &&
+              {editable && (
                 <select onChange={(e) => setImage(e.target.value)}>
                   <option value="current-image">Use current image</option>
                   <option value="upload-image">Upload image</option>
                 </select>
-              }
+              )}
               <div>
-                {editable &&
-
-                  image === "upload-image" &&
-                  <input onChange={(event)=>setFiles(event.target.files)} type="file"></input>
-                }
+                {editable && image === "upload-image" && (
+                  <input
+                    // onChange={(event) => setFiles(event.target.files)}
+                    type="file"
+                  ></input>
+                )}
               </div>
-
             </div>
           </div>
 
@@ -159,14 +148,20 @@ export default function RecipeReviewCard() {
                 alignItems: "center",
               }}
             >
-              {<div type="text" contentEditable={editable} suppressContentEditableWarning={true} className={editable ? "editable" : "non-editables"}>{product?.name}</div>}
-             
-          
-          
+              {
+                <div
+                  type="text"
+                  contentEditable={editable}
+                  suppressContentEditableWarning={true}
+                  className={editable ? "editable" : "non-editables"}
+                >
+                  {product?.name}
+                </div>
+              }
+
               <Box sx={{ display: "flex", alignItems: "center" }}>
                 <div>
-
-                  {loggedUser && loggedUser.role === "admin" &&
+                  {loggedUser && loggedUser.role === "admin" && (
                     <Fab
                       className="formBtn"
                       aria-label="more"
@@ -178,7 +173,8 @@ export default function RecipeReviewCard() {
                       onClick={handleClick}
                     >
                       <EditIcon sx={{ width: 15, color: "white" }} />
-                    </Fab>}
+                    </Fab>
+                  )}
                   <Menu
                     id="long-menu"
                     MenuListProps={{ "aria-labelledby": "long-button" }}
@@ -190,7 +186,7 @@ export default function RecipeReviewCard() {
                     }}
                   >
                     <MenuItem onClick={handleClose}>
-                      <Typography onClick={handleEdit} >Edit</Typography>
+                      <Typography onClick={handleEdit}>Edit</Typography>
                     </MenuItem>
                     <MenuItem onClick={handleClose}>
                       <Typography id={product?._id} onClick={handleDelete}>
@@ -202,12 +198,23 @@ export default function RecipeReviewCard() {
               </Box>
             </CardContent>
             <CardContent>
-              <Typography variant="body" color="text.secondary" clasName="flex items-center" >
+              <Typography
+                variant="body"
+                color="text.secondary"
+                clasName="flex items-center"
+              >
                 {
                   <div className="flex flex-row items-center justify-center">
-                    <div suppressContentEditableWarning={true} className={editable ? "editable" : "non-editables"} contentEditable={editable}>{product?.price} </div>
+                    <div
+                      suppressContentEditableWarning={true}
+                      className={editable ? "editable" : "non-editables"}
+                      contentEditable={editable}
+                    >
+                      {product?.price}{" "}
+                    </div>
                     <div className="mx-2">USD</div>
-                  </div>}
+                  </div>
+                }
               </Typography>
             </CardContent>
             <CardContent>
@@ -242,11 +249,17 @@ export default function RecipeReviewCard() {
           <Collapse in={expanded} timeout="auto" unmountOnExit>
             <Typography paragraph>Description</Typography>
             <CardContent>
-              <div className={editable ? "editable" : "non-editables"} contentEditable={editable} suppressContentEditableWarning={true}>{product?.description} </div>
+              <div
+                className={editable ? "editable" : "non-editables"}
+                contentEditable={editable}
+                suppressContentEditableWarning={true}
+              >
+                {product?.description}{" "}
+              </div>
             </CardContent>
           </Collapse>
         </div>
-              <button type="submit">CONFIRM</button>
+        <button type="submit">CONFIRM</button>
       </form>
     </Card>
   );

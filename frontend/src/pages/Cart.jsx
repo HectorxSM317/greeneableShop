@@ -6,6 +6,7 @@ import productsActions from "../redux/actions/productsActions";
 
 export default function Cart() {
   const dispatch = useDispatch();
+  const cart = useSelector((store) => store.productsReducer.cart);
 
   useEffect(() => {
     if (localStorage.getItem("product") !== null) {
@@ -27,7 +28,12 @@ export default function Cart() {
     });
     localStorage.removeItem("product");
   }
-  const cart = useSelector((store) => store.productsReducer.cart);
+
+  function handleBuy(e) {
+    e.preventDefault();
+
+    dispatch(productsActions.payCart(cart));
+  }
 
   console.log(cart);
   return (
@@ -43,7 +49,10 @@ export default function Cart() {
           Total:
           {cart.reduce((total, item) => total + item.price * item.quantity, 0)}
         </h4>
-        <button className="p-3 bg-green-300 rounded-md w-[10rem] my-4 text-white">
+        <button
+          onClick={(e) => handleBuy(e)}
+          className="p-3 bg-green-300 rounded-md w-[10rem] my-4 text-white"
+        >
           Buy
         </button>
         <button
