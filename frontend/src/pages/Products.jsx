@@ -8,7 +8,7 @@ import Product from "../components/Product";
 
 export default function Products() {
   const [input, setInput] = useState("");
-  const [buttonRadio, setbuttonRadio] = useState([]);
+  const [buttonRadio, setbuttonRadio] = useState();
   const [orderSort, setorderSort] = useState([]);
   const [catProducts, setCatProducts] = useState([]);
   const [cart, setCart] = useState([]);

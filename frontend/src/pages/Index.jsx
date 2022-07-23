@@ -22,8 +22,15 @@ export default function Index() {
   A.style.top = value * 0.8 + "px";
   B.style.top = value * 1 + "px";
   C.style.top = value * 0.5 + "px";
-  D.style.marginTop = value * 1.7 + "px";
+  D.style.marginTop = value * 0.9 + "px";
   E.style.Top = value * 1 + "px";
+  console.log(B.style.display)
+
+  if(window.scrollY <= 700){
+    B.style.display = "block"
+  }else{
+    B.style.display = "none"
+  }
   })
   }, []);
 
