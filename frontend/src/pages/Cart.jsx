@@ -1,6 +1,7 @@
 import React from "react";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import PayPal from "../components/PayPal";
 import ProductCart from "../components/ProductCart";
 import productsActions from "../redux/actions/productsActions";
 
@@ -55,12 +56,29 @@ export default function Cart() {
         >
           Buy
         </button>
+
+        <div style={{ width: "100%" }}>
+          <PayPal
+            sx={{ marginTop: "1rem", fontSize: "large", width: "100%" }}
+          />
+          <button
+            onClick={(e) => handleClearCart(e)}
+            variant="contained"
+            color="error"
+            sx={{ marginTop: "1rem", fontSize: "large", width: "100%" }}
+          >
+            CLEAR
+          </button>
+        </div>
+
+        {/* 
         <button
           onClick={(e) => handleClearCart(e)}
           className="p-3 bg-red-600 rounded-md w-[10rem] my-4 text-white"
         >
           Empty Cart
         </button>
+        <PayPal /> */}
       </div>
     </div>
   );
