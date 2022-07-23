@@ -58,9 +58,7 @@ export default function Cart() {
         </button>
 
         <div style={{ width: "100%" }}>
-          <PayPal
-            sx={{ marginTop: "1rem", fontSize: "large", width: "100%" }}
-          />
+          <PayPal />
           <button
             onClick={(e) => handleClearCart(e)}
             variant="contained"
