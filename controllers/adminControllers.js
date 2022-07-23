@@ -4,12 +4,14 @@ const path = require('path')
 
 const adminControllers = {
 uploadProduct: async (req, res) => {
+    
     const { file } = req.files
-    console.log(req.body)
+    console.log(req.files)
     const name = req.body.name
     const description = req.body.description
     const price = req.body.price
     const stock = req.body.stock
+    const sustainable = req.body.sustainable
     const category = req.body.category
     const autor = req.user.id
     try{
@@ -37,7 +39,8 @@ uploadProduct: async (req, res) => {
                 price: price,
                 stock: stock,
                 category: category,
-                autor: autor
+                autor: autor,
+                sustainable: sustainable
             })
             await newProduct.save()
             res.json({
@@ -68,13 +71,28 @@ deleteProduct: async (req,res) => {
 
 modifyProduct: async (req, res) => {
     const id = req.params.id
-    const product = req.body
+    const { file } = req.files
+    const {name, description, sustainable, stock, price, photo } = req.body.product
+    const fileName = crypto.randomBytes(10).toString("hex") + "." + file.name.split(".")[file.name.split(".").length - 1];
+    const route = path.resolve('storage/products',fileName)
+    const ruta = `http://localhost:4000/products/${fileName}`
+    file.mv(route, err => {
+        if (err) {
+            console.log(err)
+        } else {
+            console.log("Product successfully uploaded")
+        }
+    })
+
     let productdb
     
     let error = null
     try {
         productdb = await Product.findOneAndUpdate({ _id: id }, product,{ new: true })
-        console.log(productdb)
+
+        
+
+
     } catch (err) { error = err }
     res.json({
         response: error ? 'ERROR' : productdb,

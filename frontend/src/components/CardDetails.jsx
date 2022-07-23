@@ -63,7 +63,7 @@ export default function RecipeReviewCard() {
   const products = useSelector((store) => store.productsReducer.products);
 
   const allCateg = products.map((item) => item.category);
-  const cleanCats = [...new Set(allCateg), "other"];
+  const cleanCats = [...new Set(allCateg)];
 
   const handleExpandClick = () => {
     setExpanded(!expanded);
@@ -71,7 +71,7 @@ export default function RecipeReviewCard() {
 
   const loggedUser = useSelector((store) => store.usersReducer.loggedUser);
 
-  const [value, setValue] = React.useState(2);
+  const [value, setValue] = React.useState();
   const navigate = useNavigate();
   const handleDelete = (event) => {
     dispatch(adminActions.deleteProduct(event.target.id)).then((res) => {
@@ -89,35 +89,18 @@ export default function RecipeReviewCard() {
     setEditable(true);
   };
 
-  const [image, setImage] = useState("current-image");
-  const [newImage, setNewImage] = useState();
+  const [reload, setReload] = useState(false);
 
   // const [files, setFiles] = useState(product.photo)
 
-  async function handleConfirm(event) {
-    event.preventDefault();
-    setEditable(false);
-    console.log(event.currentTarget[1].textContent);
-    // const file = await files[0];
-    const name = await event.target[0].value;
-    const description = await event.target[1].value;
-    const stock = await event.target[3].value;
-    const price = await event.target[2].value;
-    const category = await event.target[4].value;
-    const formData = new FormData();
-    formData.append("name", name);
-    formData.append("description", description);
-    formData.append("price", price);
-    formData.append("stock", stock);
-    formData.append("category", category);
-    // formData.append("file", file);
-  }
+  
 
   const PRODUCT_INITIAL_STATE = {
     name: "",
     description: "",
     stock: 0,
     price: 0,
+    sustainable: 0,
     category: "",
     otherCategory: "",
     imageSelection: "",
@@ -130,12 +113,15 @@ export default function RecipeReviewCard() {
     description,
     stock,
     price,
+    sustainable,
     category,
     imageSelection,
     photo,
     newImageFile,
   } = productState;
 
+  console.log(newImageFile)
+  console.log(photo)
   function handleSubmit(event) {
     setEditable(false)
     const formData = new FormData()
@@ -144,6 +130,7 @@ export default function RecipeReviewCard() {
     formData.append("price", price)
     formData.append("stock", stock)
     formData.append("category", category)
+    formData.append("sustainable", sustainable)
     if (imageSelection === "upload-image") {
       formData.append("photo", newImageFile)
     } else {
@@ -171,6 +158,7 @@ export default function RecipeReviewCard() {
         stock: product.stock,
         price: product.price,
         category: product.category,
+        sustainable: product.sustainable,
         otherCategory: "",
         imageSelection: "current-image",
         photo: product.photo,
@@ -181,6 +169,7 @@ export default function RecipeReviewCard() {
 
   const handleDiscard = () => {
       console.log(PRODUCT_INITIAL_STATE)
+      setEditable(false)
   }
 
   return (
@@ -380,26 +369,20 @@ export default function RecipeReviewCard() {
                   Category: {product.category}
                 </Typography>
               )}
-              {category === "other" && (
-                <div
-                  className={editable ? "editable" : "non-editables"}
-                  contentEditable={true}
-                  suppressContentEditableWarning={true}
-                  onChange={(e) =>
-                    setProductState({
-                      ...productState,
-                      otherCategory: e.target.value,
-                    })
-                  }
-                ></div>
-              )}
             </div>
           </CardContent>
           <CardContent>
-            <Rating name="read-only" value={value} readOnly 
-            icon={<RiLeafFill fontSize="inherit" color="green" />}
-            emptyIcon={<RiLeafFill fontSize="inherit"/>}
-            />
+          <Rating readOnly={!editable} name="sustainable" value={value}
+                        onChange={(event, newValue) => {
+                          setProductState({
+                            ...productState,
+                            sustainable: newValue,
+                          })
+                        }}
+                        icon={<RiLeafFill fontSize="inherit" color="green" />}
+                        emptyIcon={<RiLeafFill fontSize="inherit" />}
+                    />
+
           </CardContent>
           <CardActions disableSpacing>
             <IconButton aria-label="add to favorites">
