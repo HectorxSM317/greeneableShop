@@ -136,18 +136,17 @@ export default function RecipeReviewCard() {
   } = productState;
 
   function handleSubmit(event) {
-    setEditable(false);
-    event.preventDefault();
-    const formData = new FormData();
-    formData.append("name", name);
-    formData.append("description", description);
-    formData.append("price", price);
-    formData.append("stock", stock);
-    formData.append("category", category);
+    setEditable(false)
+    const formData = new FormData()
+    formData.append("name", name)
+    formData.append("description", description)
+    formData.append("price", price)
+    formData.append("stock", stock)
+    formData.append("category", category)
     if (imageSelection === "upload-image") {
-      formData.append("photo", newImageFile);
+      formData.append("photo", newImageFile)
     } else {
-      formData.append("photo", photo);
+      formData.append('photo', photo)
     }
     dispatch(adminActions.modifyProduct(product._id, formData)).then((res) => {
       console.log(res);
@@ -177,7 +176,11 @@ export default function RecipeReviewCard() {
         newImageFile: null,
       });
     }
-  }, [product]);
+  }, [product])
+
+  const handleDiscard = () => {
+      console.log(PRODUCT_INITIAL_STATE)
+  }
 
   return (
     <Card className="details">
@@ -225,46 +228,53 @@ export default function RecipeReviewCard() {
             <div>
               {loggedUser && loggedUser.role === "admin" && (
                 <div>
-                  <Fab
-                    className="formBtn"
-                    aria-label="more"
-                    sx={{ height: 15, width: 35, bgcolor: "#d30000" }}
-                    id="long-button"
+                  <Button
+                    variant="contained"
+                    color="error"
+                    id={product?._id} onClick={handleDelete}
+                    sx={{ bgcolor: "#d30000", borderRadius: 50 }}
+
                   >
-                    <DeleteIcon
-                      sx={{ width: 15, color: "white" }}
-                      id={product?._id}
-                      onClick={handleDelete}
-                    />
-                  </Fab>
-                  <Fab
-                    className="formBtn"
-                    aria-label="more"
-                    sx={{
-                      height: 15,
-                      width: 35,
-                      bgcolor: "#41788f",
-                      margin: 1,
-                    }}
-                    id="long-button"
+                    <DeleteIcon sx={{ width: 15, color: "white" }} />
+                  </Button>
+                  <Button
+                    variant="contained"
+                    color="primary"
+                    id={product?._id} onClick={handleEdit}
+                    sx={{ bgcolor: "#41788f", margin: 1, borderRadius: 50 }}
                   >
-                    <EditIcon
-                      sx={{ width: 15, color: "white" }}
-                      id={product?._id}
-                      onClick={handleEdit}
-                    />
-                  </Fab>
-                  {editable && (
-                    <button
+                    <EditIcon sx={{ width: 15, color: "white" }} />
+                  </Button>
+                  {editable &&
+
+
+                    <>
+                    
+                    <Button
+                      variant="contained"
                       onClick={(e) => handleSubmit(e)}
-                      className="formBtn"
+                      sx={{ bgcolor: "#41788f", bgcolor: "#13542d", margin: 1, borderRadius: 50, color: "white" }}
+                      color="success"
                       aria-label="more"
-                      sx={{ height: 15, bgcolor: "#13542d", borderRadius: 3 }}
                       id="long-button"
                     >
                       Save
-                    </button>
-                  )}
+                    </Button>
+                    <Button
+                      variant="contained"
+                      onClick={(e) => handleDiscard(e)}
+                      sx={{ bgcolor: "#41788f", bgcolor: "error", margin: 1, borderRadius: 50, color: "white" }}
+                      color="error"
+                      aria-label="more"
+                      id="long-button"
+
+                    >
+                      Discard
+                    </Button>
+                    </>
+
+
+                  }
                 </div>
               )}
             </div>
@@ -278,24 +288,20 @@ export default function RecipeReviewCard() {
               alignItems: "center",
             }}
           >
+
             {
               <div className="flex flex-row items-center justify-center">
                 Name:
-                <div
-                  onInput={(event) =>
-                    setProductState({
-                      ...productState,
-                      name: event.currentTarget.textContent,
-                    })
-                  }
-                  suppressContentEditableWarning={true}
-                  className={editable ? "editable" : "non-editables"}
-                  contentEditable={editable}
-                >
-                  {product?.name}{" "}
-                </div>
-              </div>
-            }
+                <div onInput={(event) => setProductState({
+                  ...productState,
+                  name: event.currentTarget.textContent
+                })} suppressContentEditableWarning={true} className={editable ? "editable" : "non-editables"} contentEditable={editable}>{product?.name} </div>
+
+              </div>}
+
+
+
+
           </CardContent>
           <CardContent>
             <Typography
