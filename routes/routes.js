@@ -86,7 +86,7 @@ Router.route("/products/delete/:id").post(
   deleteProduct
 );
 
-Router.route("/products/modify").put(
+Router.route("/products/modify/:id").put(
   passport.authenticate("jwt", { session: false }),
   modifyProduct
 );
