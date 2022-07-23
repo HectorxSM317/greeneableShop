@@ -2,14 +2,15 @@ import axios from "axios";
 const urlBack = "http://localhost:4000";
 
 const adminActions = {
-        uploadProduct: (newProduct) => {
-            const token = localStorage.getItem("token")
-            return async (dispatch, getState) => {
-                const res = await axios.post(`${urlBack}/api/products/upload`, newProduct,
-                {headers: {
-                    Authorization: "Bearer "+token
-                }
-            })
+    uploadProduct: (newProduct) => {
+        const token = localStorage.getItem("token")
+        return async (dispatch, getState) => {
+            const res = await axios.post(`${urlBack}/api/products/upload`, newProduct,
+                {
+                    headers: {
+                        Authorization: "Bearer " + token
+                    }
+                })
             console.log(res)
             dispatch({
                 type: "message",
@@ -43,14 +44,19 @@ const adminActions = {
         }
     },
 
-    modifyComment: (product) => {
+    modifyProduct: (id, product) => {
         const token = localStorage.getItem('token')
+        console.log(product)
+        for (const value of product.values()) {
+            console.log(value);
+        }
         return async (dispatch, getState) => {
-            const res = await axios.put(`${urlBack}/api/products/modify`, { product }, {
+            const res = await axios.put(`${urlBack}/api/products/modify/${id}`, product, {
                 headers: {
                     'Authorization': `Bearer ${token}`
                 }
             })
+            console.log(res)
             dispatch({
                 type: 'message',
                 payload: {
