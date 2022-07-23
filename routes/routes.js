@@ -43,6 +43,7 @@ const {
   removeProduct,
   multiplesProducts,
   getFiveProducts,
+  addToCart,
 } = ProductsControllers;
 
 Router.route("/products").get(getProducts);
@@ -57,6 +58,8 @@ Router.route("/product/:id")
 Router.route("/fiveproducts/random").get(getFiveProducts);
 
 Router.route("/multiplesproducts").post(multiplesProducts);
+
+Router.route("/productcart/add").get(addToCart);
 
 const {
   createSummary,
