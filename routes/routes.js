@@ -59,7 +59,7 @@ Router.route("/fiveproducts/random").get(getFiveProducts);
 
 Router.route("/multiplesproducts").post(multiplesProducts);
 
-Router.route("/productcart/add").get(addToCart);
+Router.route("/productcart/asdprod").get(addToCart);
 
 const {
   createSummary,
