@@ -1,9 +1,11 @@
 import React from "react";
 import { Link as LinkRouter } from "react-router-dom";
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
-import { Button } from "@mui/material";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import productsActions from "../redux/actions/productsActions";
+import Button from '@mui/material/Button';
+import Typography from '@mui/material/Typography';
+import toast from "react-hot-toast";
 
 export default function Product({ product }) {
   const dispatch = useDispatch();
@@ -12,36 +14,34 @@ export default function Product({ product }) {
     e.preventDefault();
 
     dispatch(productsActions.addToCart(product));
-    // if(res.data.succes){
-    //   setCart((prod) => [...prod, product]);
-    // }else{
-    //   hot toaste res.data.message
-    // }
+    toast.success('Product added!')
+
   }
 
   return (
-    <div className="max-w-[15rem]">
-      <div className="max-w-sm rounded overflow-hidden shadow-lg h-[15rem] w-[15rem] m-1">
-        <img
-          className="w-full h-full object-cover"
-          src={product.photo}
-          alt={product.name}
-        />
+    <div className="card">
+      <div className="image">
+        <img src={product.photo} alt="" />
       </div>
-      <div className="min-h-[12rem]">
-        <div className="px-6 py-4">
-          <p className="font-bold text-lg text-slate-900 mb-2">
+      <div className="content">
+        <div className="info">
+          <Typography gutterBottom variant="h6" component="div">
             {product.name}
-          </p>
-          <p className="font-bold text-2xl">{product.price} USD</p>
+          </Typography>
+          <Typography variant="body2" color="text.secondary">
+            {product.price} USD
+          </Typography>
         </div>
-        <LinkRouter to={`/details/${product._id}`} className="bg-black">
-          View more
-        </LinkRouter>
-
-        <button onClick={(e) => addToCart(product, e)}>
-          <AddShoppingCartIcon />
-        </button>
+        <div className="moreInfo">
+          <LinkRouter to={`/details/${product._id}`}>
+            <Button size="small" sx={{color: "black"}}>
+              View more
+            </Button>
+          </LinkRouter>
+          <Button variant="contained" onClick={(e) => addToCart(product, e)}>
+            Add To Cart
+          </Button>
+        </div>
       </div>
     </div>
   );

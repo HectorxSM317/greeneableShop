@@ -1,11 +1,13 @@
 import React from "react";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import PayPal from "../components/PayPal";
 import ProductCart from "../components/ProductCart";
 import productsActions from "../redux/actions/productsActions";
 
 export default function Cart() {
   const dispatch = useDispatch();
+  const cart = useSelector((store) => store.productsReducer.cart);
 
   useEffect(() => {
     if (localStorage.getItem("product") !== null) {
@@ -27,7 +29,12 @@ export default function Cart() {
     });
     localStorage.removeItem("product");
   }
-  const cart = useSelector((store) => store.productsReducer.cart);
+
+  function handleBuy(e) {
+    e.preventDefault();
+
+    dispatch(productsActions.payCart(cart));
+  }
 
   console.log(cart);
   return (
@@ -43,15 +50,33 @@ export default function Cart() {
           Total:
           {cart.reduce((total, item) => total + item.price * item.quantity, 0)}
         </h4>
-        <button className="p-3 bg-green-300 rounded-md w-[10rem] my-4 text-white">
+        <button
+          onClick={(e) => handleBuy(e)}
+          className="p-3 bg-green-300 rounded-md w-[10rem] my-4 text-white"
+        >
           Buy
         </button>
+
+        <div style={{ width: "100%" }}>
+          <PayPal />
+          <button
+            onClick={(e) => handleClearCart(e)}
+            variant="contained"
+            color="error"
+            sx={{ marginTop: "1rem", fontSize: "large", width: "100%" }}
+          >
+            CLEAR
+          </button>
+        </div>
+
+        {/* 
         <button
           onClick={(e) => handleClearCart(e)}
           className="p-3 bg-red-600 rounded-md w-[10rem] my-4 text-white"
         >
           Empty Cart
         </button>
+        <PayPal /> */}
       </div>
     </div>
   );

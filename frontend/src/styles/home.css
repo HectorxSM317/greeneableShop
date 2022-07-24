@@ -1,32 +1,67 @@
-.header {
-  height: 100vh;
-  background-image: url("../assets/header.jpg");
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
+.bodyPrueba{
+  min-height: 100vh;
+  background-color: grey;
+  overflow-x: hidden;
 }
-.headerName {
-  height: 85%;
+
+.headerPrueba{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 30px 100px;
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
   align-items: center;
-  flex-direction: column;
 }
-.headerName h1 {
-  color: white;
-  font-weight: bold;
-  font-size: 50px;
-}
-.headerName p {
-  color: white;
-  font-weight: bold;
-  font-size: 20px;
-}
-.headerScroll {
-  height: 15%;
+.section{
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  padding: 100px;
   display: flex;
   justify-content: center;
   align-items: center;
+}
+.poi{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+#center{
+  margin-top: 6rem;
+  position: absolute;
+  top: 0;
+  left: auto;
+  width: 18rem;
+  height: 18rem;
+  object-fit: contain;
+}
+
+#text{
+  position: absolute;
+  padding-top: 200px;
+  color: white;
+  white-space: nowrap;
+  font-size: 7.5vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+#par{
+  margin-top: 150px;
+  position: absolute;
+  color: white;
+  font-size: 2vw;
+}
+
+.contenedorDeTodo{
+  position: relative;
+  background-color: white;
 }
 
 .line {

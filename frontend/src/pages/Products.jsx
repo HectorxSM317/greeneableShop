@@ -5,10 +5,11 @@ import { useDispatch, useSelector } from "react-redux";
 import productsActions from "../redux/actions/productsActions";
 import Product from "../components/Product";
 
+
 export default function Products() {
   const [input, setInput] = useState("");
-  const [buttonRadio, setbuttonRadio] = useState([]);
-  const [orderSort, setorderSort] = useState([]);
+  const [buttonRadio, setbuttonRadio] = useState("");
+  const [orderSort, setorderSort] = useState("");
   const [catProducts, setCatProducts] = useState([]);
   const [cart, setCart] = useState([]);
   // const [asdProducts, setAsdProducts] = useState();
@@ -83,7 +84,7 @@ export default function Products() {
             Order by
           </label>
           <select
-            onChange={(e) => sortProducts(e.target.value)}
+            onChange={(e) => setorderSort(e.target.value)}
             name="order"
             className="bg-transparent"
             id="order"
@@ -124,7 +125,7 @@ export default function Products() {
           );
         })}
       </div>
-      <div className="flex flex-wrap items-center justify-around my-1 w-full grow">
+      <div className="productList">
         {products?.length > 0 ? (
           products?.map((product) => {
             return (

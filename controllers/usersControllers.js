@@ -221,7 +221,6 @@ const usersControllers = {
   verifyEmail: async (req, res) => {
     const { string } = req.params;
     const user = await User.findOne({ uniqueString: string });
-    console.log(user);
 
     if (user) {
       user.verification = true;
