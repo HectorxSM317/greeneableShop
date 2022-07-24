@@ -8,8 +8,8 @@ import Product from "../components/Product";
 
 export default function Products() {
   const [input, setInput] = useState("");
-  const [buttonRadio, setbuttonRadio] = useState();
-  const [orderSort, setorderSort] = useState([]);
+  const [buttonRadio, setbuttonRadio] = useState("");
+  const [orderSort, setorderSort] = useState("");
   const [catProducts, setCatProducts] = useState([]);
   const [cart, setCart] = useState([]);
   // const [asdProducts, setAsdProducts] = useState();
@@ -84,7 +84,7 @@ export default function Products() {
             Order by
           </label>
           <select
-            onChange={(e) => sortProducts(e.target.value)}
+            onChange={(e) => setorderSort(e.target.value)}
             name="order"
             className="bg-transparent"
             id="order"
