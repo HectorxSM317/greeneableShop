@@ -68,7 +68,7 @@ export default function Uplaod() {
 
     return (
         <div className="asd">
-            <form onSubmit={handleSubmit} method="post">
+            <form onSubmit={handleSubmit} className="form-box p-6 drop-shadow-lg rounded-md" method="post">
                 <div>
                     <input name="name" placeholder="name" type="text" required />
                 </div>

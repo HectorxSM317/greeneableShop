@@ -1,6 +1,14 @@
 .asd{
-    height: 100vh;
+    min-height: 60vh;
+    padding-top: 10vh;
     display: flex;
     justify-content: center;
     align-items: center;
+    background-image: url(../assets/parallax/back.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
+
+
+
