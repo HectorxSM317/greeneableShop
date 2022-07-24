@@ -43,6 +43,8 @@ const {
   removeProduct,
   multiplesProducts,
   getFiveProducts,
+  getThreeLampProducts,
+  getThreeToyProducts,
   addToCart,
 } = ProductsControllers;
 
@@ -56,7 +58,8 @@ Router.route("/product/:id")
   .get(getOneProduct);
 
 Router.route("/fiveproducts/random").get(getFiveProducts);
-
+Router.route("/threelampproducts/random").get(getThreeLampProducts);
+Router.route("/threetoyproducts/random").get(getThreeToyProducts);
 Router.route("/multiplesproducts").post(multiplesProducts);
 
 // Router.route("/productcart/asdprod").get(addToCart);
