@@ -8,6 +8,7 @@ import productsActions from "../redux/actions/productsActions";
 export default function Cart() {
   const dispatch = useDispatch();
   const cart = useSelector((store) => store.productsReducer.cart);
+  console.log(cart);
 
   useEffect(() => {
     if (localStorage.getItem("product") !== null) {

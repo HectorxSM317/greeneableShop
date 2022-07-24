@@ -2,22 +2,27 @@ const Cart = require("../models/cart");
 
 const cartControllers = {
   createSummary: async (req, res) => {
-    let { productId, userId, date, amount, state } = req.body.cart;
+    console.log(req.body);
+    let { productId, purchaseId, userId, payer, date, amount, status } =
+      req.body.summary;
     // const user = req.user.id;
     let newSummary;
 
     let error = null;
     try {
       newSummary = await new Cart({
-        productId: productId,
+        productsId: productId,
+        purchaseId: purchaseId,
         userId: userId,
+        payer: payer,
         date: date,
         amount: amount,
-        state: state,
+        status: status,
       }).save();
     } catch (err) {
       error = err;
     }
+    console.log(newSummary);
     res.json({
       res: error ? "ERROR" : newSummary,
       success: error ? false : true,
