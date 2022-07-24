@@ -10,6 +10,11 @@ export default function PayPal() {
   const [success, setSuccess] = useState(false);
   const [orderID, setOrderID] = useState(false);
   const [ErrorMessage, setErrorMessage] = useState("");
+  let total = cart?.reduce(
+    (amount, item) => item.price * item.quantity + amount,
+    0
+  );
+  console.log(total);
 
   useEffect(() => {
     PayPalCheckOut();
@@ -23,13 +28,6 @@ export default function PayPal() {
     intent: "capture", //Estableco el metodos este autoriza la operacion y captura los fondos
   };
 
-  //   export const getTotal =(basket) => {
-  //     let Total = basket?.reduce((amount, item)=> item.price + amount, 0);
-
-  //     return Total;
-
-  // }
-
   let productsId = cart.map((items) => items._id);
   console.log(productsId);
 
@@ -41,7 +39,7 @@ export default function PayPal() {
         {
           description: "items",
           amount: {
-            value: "1.99",
+            value: total,
           },
         },
       ],

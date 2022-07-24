@@ -166,7 +166,6 @@ export default function RecipeReviewCard() {
       });
     }
   }, [product]);
-  console.log(product.sustainable);
   const handleDiscard = () => {
     console.log(PRODUCT_INITIAL_STATE);
     setEditable(false);
