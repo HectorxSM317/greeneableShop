@@ -132,7 +132,7 @@ const ProductsControllers = {
     });
   },
 
-  getFiveProducts: async (req, res) => {
+  getThreeLampProducts: async (req, res) => {
     let products;
     let error = null;
     try {
@@ -140,17 +140,42 @@ const ProductsControllers = {
     } catch (err) {
       error = err;
     }
-    var fiveRandom = [];
-    for (i = 0; fiveRandom.length < 8; i++) {
-      fiveRandom.push(products[Math.floor(Math.random() * products.length)]);
-    }
+    var threeRandom = [];
+    let filteredArray = products.filter((product)=>product.category === "Lamp");
+    const shuffled = filteredArray.sort(() => 0.5 - Math.random());
+    threeRandom = shuffled.slice(0, 3);
 
     res.json({
-      response: error ? "ERROR" : fiveRandom,
+      response: error ? "ERROR" : threeRandom,
       success: error ? false : true,
       error: error,
     });
   },
+  getThreeToyProducts: async (req, res) => {
+    let products;
+    let error = null;
+    try {
+      products = await Product.find();
+    } catch (err) {
+      error = err;
+    }
+    var threeRandom = [];
+    let filteredArray = products.filter((product)=>product.category === "Toys");
+    
+      const shuffled = filteredArray.sort(() => 0.5 - Math.random());
+      threeRandom = shuffled.slice(0, 3);
+  
+    
+    
+
+    res.json({
+      response: error ? "ERROR" : threeRandom,
+      success: error ? false : true,
+      error: error,
+    });
+  },
+
+  
 
   getStock: async (res, req) => {
     console.log(req.body);
