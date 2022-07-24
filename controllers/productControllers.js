@@ -68,7 +68,7 @@ const ProductsControllers = {
     res.json({
       response: error ? "ERROR" : productdb,
       success: error ? false : true,
-      error: error
+      error: error,
     });
   },
   removeProduct: async (req, res) => {
@@ -153,7 +153,7 @@ const ProductsControllers = {
   },
 
   addToCart: async (res, req) => {
-    console.log(req.body);
+    // console.log(req.body);
     const productAdded = req.body;
     const product = {};
     const error = null;

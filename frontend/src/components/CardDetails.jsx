@@ -42,6 +42,7 @@ const ITEM_HEIGHT = 48;
 
 export default function RecipeReviewCard() {
   const [anchorEl, setAnchorEl] = React.useState(null);
+  const [reload, setReload] = useState(false);
 
   const open = Boolean(anchorEl);
   const handleClick = (event) => {
@@ -58,7 +59,7 @@ export default function RecipeReviewCard() {
   useEffect(() => {
     dispatch(productsActions.getOneProduct(id));
     dispatch(productsActions.getProducts());
-  }, []);
+  }, [reload]);
   const product = useSelector((store) => store.productsReducer.oneProduct);
   const products = useSelector((store) => store.productsReducer.products);
 
@@ -71,7 +72,7 @@ export default function RecipeReviewCard() {
 
   const loggedUser = useSelector((store) => store.usersReducer.loggedUser);
 
-  const [value, setValue] = React.useState();
+  // const [value, setValue] = React.useState();
   const navigate = useNavigate();
   const handleDelete = (event) => {
     dispatch(adminActions.deleteProduct(event.target.id)).then((res) => {
@@ -89,11 +90,7 @@ export default function RecipeReviewCard() {
     setEditable(true);
   };
 
-  const [reload, setReload] = useState(false);
-
   // const [files, setFiles] = useState(product.photo)
-
-  
 
   const PRODUCT_INITIAL_STATE = {
     name: "",
@@ -119,22 +116,24 @@ export default function RecipeReviewCard() {
     photo,
     newImageFile,
   } = productState;
+  console.log(sustainable);
 
-  console.log(newImageFile)
-  console.log(photo)
+  console.log(name);
+  console.log(photo);
   function handleSubmit(event) {
-    setEditable(false)
-    const formData = new FormData()
-    formData.append("name", name)
-    formData.append("description", description)
-    formData.append("price", price)
-    formData.append("stock", stock)
-    formData.append("category", category)
-    formData.append("sustainable", sustainable)
+    setEditable(false);
+    const newFile = newImageFile;
+    const formData = new FormData();
+    formData.append("name", name);
+    formData.append("description", description);
+    formData.append("price", price);
+    formData.append("stock", stock);
+    formData.append("category", category);
+    formData.append("sustainable", sustainable);
     if (imageSelection === "upload-image") {
-      formData.append("photo", newImageFile)
+      formData.append("file", newFile);
     } else {
-      formData.append('photo', photo)
+      formData.append("photo", photo);
     }
     dispatch(adminActions.modifyProduct(product._id, formData)).then((res) => {
       console.log(res);
@@ -142,6 +141,7 @@ export default function RecipeReviewCard() {
         toast.success(res.data.message, {
           duration: 3000,
         });
+        setReload(!reload);
       } else {
         toast.error(res.data.message, {
           duration: 3000,
@@ -165,12 +165,12 @@ export default function RecipeReviewCard() {
         newImageFile: null,
       });
     }
-  }, [product])
-
+  }, [product]);
+  console.log(product.sustainable);
   const handleDiscard = () => {
-      console.log(PRODUCT_INITIAL_STATE)
-      setEditable(false)
-  }
+    console.log(PRODUCT_INITIAL_STATE);
+    setEditable(false);
+  };
 
   return (
     <Card className="details">
@@ -200,12 +200,13 @@ export default function RecipeReviewCard() {
             <div>
               {editable && imageSelection === "upload-image" && (
                 <input
-                  onChange={(event) =>
+                  onChange={(event) => {
                     setProductState({
                       ...productState,
                       newImageFile: event.target.files[0],
-                    })
-                  }
+                    });
+                    console.log(newImageFile);
+                  }}
                   type="file"
                 ></input>
               )}
@@ -221,50 +222,57 @@ export default function RecipeReviewCard() {
                   <Button
                     variant="contained"
                     color="error"
-                    id={product?._id} onClick={handleDelete}
+                    id={product?._id}
+                    onClick={handleDelete}
                     sx={{ bgcolor: "#d30000", borderRadius: 50 }}
-
                   >
                     <DeleteIcon sx={{ width: 15, color: "white" }} />
                   </Button>
                   <Button
                     variant="contained"
                     color="primary"
-                    id={product?._id} onClick={handleEdit}
+                    id={product?._id}
+                    onClick={handleEdit}
                     sx={{ bgcolor: "#41788f", margin: 1, borderRadius: 50 }}
                   >
                     <EditIcon sx={{ width: 15, color: "white" }} />
                   </Button>
-                  {editable &&
-
-
+                  {editable && (
                     <>
-                    
-                    <Button
-                      variant="contained"
-                      onClick={(e) => handleSubmit(e)}
-                      sx={{ bgcolor: "#41788f", bgcolor: "#13542d", margin: 1, borderRadius: 50, color: "white" }}
-                      color="success"
-                      aria-label="more"
-                      id="long-button"
-                    >
-                      Save
-                    </Button>
-                    <Button
-                      variant="contained"
-                      onClick={(e) => handleDiscard(e)}
-                      sx={{ bgcolor: "#41788f", bgcolor: "error", margin: 1, borderRadius: 50, color: "white" }}
-                      color="error"
-                      aria-label="more"
-                      id="long-button"
-
-                    >
-                      Discard
-                    </Button>
+                      <Button
+                        variant="contained"
+                        onClick={(e) => handleSubmit(e)}
+                        sx={{
+                          bgcolor: "#41788f",
+                          bgcolor: "#13542d",
+                          margin: 1,
+                          borderRadius: 50,
+                          color: "white",
+                        }}
+                        color="success"
+                        aria-label="more"
+                        id="long-button"
+                      >
+                        Save
+                      </Button>
+                      <Button
+                        variant="contained"
+                        onClick={(e) => handleDiscard(e)}
+                        sx={{
+                          bgcolor: "#41788f",
+                          bgcolor: "error",
+                          margin: 1,
+                          borderRadius: 50,
+                          color: "white",
+                        }}
+                        color="error"
+                        aria-label="more"
+                        id="long-button"
+                      >
+                        Discard
+                      </Button>
                     </>
-
-
-                  }
+                  )}
                 </div>
               )}
             </div>
@@ -278,20 +286,24 @@ export default function RecipeReviewCard() {
               alignItems: "center",
             }}
           >
-
             {
               <div className="flex flex-row items-center justify-center">
                 Name:
-                <div onInput={(event) => setProductState({
-                  ...productState,
-                  name: event.currentTarget.textContent
-                })} suppressContentEditableWarning={true} className={editable ? "editable" : "non-editables"} contentEditable={editable}>{product?.name} </div>
-
-              </div>}
-
-
-
-
+                <div
+                  onInput={(event) =>
+                    setProductState({
+                      ...productState,
+                      name: event.currentTarget.textContent,
+                    })
+                  }
+                  suppressContentEditableWarning={true}
+                  className={editable ? "editable" : "non-editables"}
+                  contentEditable={editable}
+                >
+                  {product?.name}{" "}
+                </div>
+              </div>
+            }
           </CardContent>
           <CardContent>
             <Typography
@@ -372,17 +384,19 @@ export default function RecipeReviewCard() {
             </div>
           </CardContent>
           <CardContent>
-          <Rating readOnly={!editable} name="sustainable" value={value}
-                        onChange={(event, newValue) => {
-                          setProductState({
-                            ...productState,
-                            sustainable: newValue,
-                          })
-                        }}
-                        icon={<RiLeafFill fontSize="inherit" color="green" />}
-                        emptyIcon={<RiLeafFill fontSize="inherit" />}
-                    />
-
+            <Rating
+              readOnly={!editable}
+              name="sustainable"
+              value={sustainable}
+              onChange={(event, newValue) => {
+                setProductState({
+                  ...productState,
+                  sustainable: newValue,
+                });
+              }}
+              icon={<RiLeafFill fontSize="inherit" color="green" />}
+              emptyIcon={<RiLeafFill fontSize="inherit" />}
+            />
           </CardContent>
           <CardActions disableSpacing>
             <IconButton aria-label="add to favorites">

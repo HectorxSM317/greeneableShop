@@ -97,7 +97,6 @@ const productReducer = (state = initialState, action) => {
       let itemInCart = state.cart.find(
         (item) => item._id === action.payload._id
       );
-      console.log(itemInCart);
 
       const newReduxState = itemInCart
         ? {
