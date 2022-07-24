@@ -46,6 +46,7 @@ const {
   getThreeLampProducts,
   getThreeToyProducts,
   addToCart,
+  getStock,
 } = ProductsControllers;
 
 Router.route("/products").get(getProducts);
@@ -62,7 +63,7 @@ Router.route("/threelampproducts/random").get(getThreeLampProducts);
 Router.route("/threetoyproducts/random").get(getThreeToyProducts);
 Router.route("/multiplesproducts").post(multiplesProducts);
 
-// Router.route("/productcart/asdprod").get(addToCart);
+Router.route("/productcart/getstock").get(getStock);
 
 const {
   createSummary,
