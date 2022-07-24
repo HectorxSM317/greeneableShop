@@ -3,9 +3,10 @@ import axios from "axios";
 const urlBack = "http://localhost:4000";
 
 const cartActions = {
-  createSummary: (cart) => {
+  createSummary: (summary) => {
+    console.log(summary);
     return async (dispatch, getState) => {
-      let res = await axios.post(`${urlBack}/api/summary`, { cart });
+      let res = await axios.post(`${urlBack}/api/summary`, { summary });
       // console.log(res.data)
     };
   },

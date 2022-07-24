@@ -125,6 +125,14 @@ const productsActions = {
       payload: prodId,
     });
   },
+
+  getStock: (cart) => {
+    return async (dispatch, getState) => {
+      const res = await axios.get(`${urlBack}/api/productcart/getstock`, {
+        cart,
+      });
+    };
+  },
 };
 
 export default productsActions;
