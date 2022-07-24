@@ -18,7 +18,7 @@ export default function PayPal() {
   const initialOptions = {
     // Genero las opciones para enviarle al CDN
     "client-id":
-      "AVwpM06a3dkz60RSWEtOm1SZnA2Pkcb3ieDCSWjIFu_2oFZ3y12Cpfm-eBnL6ewLGv4oN9f78GLEkrcZ",
+      "AdLA2SfyCWBXYNZojrQTNKQEDMZOCsR83TruRwgbUQJoCczOqNqFuBbt8FPXcHbiOmMwFh2-qChTVRrF",
     currency: "USD", //Establesco la moneda
     intent: "capture", //Estableco el metodos este autoriza la operacion y captura los fondos
   };

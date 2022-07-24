@@ -106,7 +106,9 @@ const productsActions = {
   addToCart: (product) => {
     console.log(product);
     return async (dispatch, getState) => {
-      // const res = await axios.get(`${urlBack}/api/productcart/add`, {product});
+      // const res = await axios.get(`${urlBack}/api/productcart/asdprod`, {
+      //   product,
+      // });
       // console.log(res);
       dispatch({
         type: "ADD_TO_CART",

@@ -23,7 +23,7 @@ const productReducer = (state = initialState, action) => {
     case "FILTERPRODUCTS":
       let searchInput = action.payload.searchInput;
       let buttonRadio = action.payload.buttonRadio;
-      // let orderSort = action.payload.orderSort;
+      let orderSort = action.payload.orderSort;
       // console.log(orderSort);
 
       function filterProducts() {
@@ -57,31 +57,34 @@ const productReducer = (state = initialState, action) => {
           filterP.push(...state.products);
         }
 
-        // if (orderSort) {
-        //   sortProducts(filter);
-        // }
+        
+        if (orderSort ) {
+          filterP = sortProducts(orderSort, filterP);
+        }
 
         return filterP;
       }
 
-      // let asd = filterProducts();
-      // console.log(asd);
-      // let filter = [...state.products];
-
-      // if (orderSort) {
-      //   sortProducts(filter);
-      // }
-
-      // function sortProducts(filter) {
-      //   if (orderSort === "des-name") {
-      //     console.log(filter);
-      //     filter = filter.sort((x, y) => x.price - y.price);
-      //     console.log("de la A a la Z");
-      //     console.log("sortdentrofilter", filter);
-      //   }
-      //   console.log("sort", filter);
-      //   return filter;
-      // }
+      function sortProducts(orderSort, filterP) {
+        console.log("filterP", filterP)
+        let filter
+        if (orderSort === "des-name") {
+          filter = filterP.sort((a, b) => a.name.localeCompare(b.name)).reverse()
+        }
+        else if (orderSort === "as-name"){
+          filter = filterP.sort((a, b) => a.name.localeCompare(b.name))
+        }
+        else if (orderSort === "high-price"){
+          filter = filterP.sort((a, b)=> a.price - b.price).reverse()
+        }
+        else if (orderSort === "low-price"){
+          filter = filterP.sort((a, b)=> a.price - b.price)
+        }
+        else if (orderSort === "false"){
+          filter = filterP
+        }
+        return filter
+      }
 
       return {
         ...state,
@@ -94,7 +97,6 @@ const productReducer = (state = initialState, action) => {
       let itemInCart = state.cart.find(
         (item) => item._id === action.payload._id
       );
-      console.log(itemInCart);
 
       const newReduxState = itemInCart
         ? {
