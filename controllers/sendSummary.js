@@ -4,6 +4,7 @@ const { google } = require("googleapis");
 const OAuth2 = google.auth.OAuth2; //access to the previously customized options on console cloud
 
 const sendSummary = async (newSummary) => {
+  console.log("entro");
   const myOAuth2Client = new OAuth2( //creating the settings with 3 params
     process.env.GOOGLE_CLIENTID,
     process.env.GOOGLE_CLIENTSECRET,
@@ -33,7 +34,7 @@ const sendSummary = async (newSummary) => {
 
   let mailOptions = {
     from: process.env.USER,
-    to: newSummary.payer.email_address,
+    to: "greenableshop@gmail.com",
     subject: "Thank you for your purchase! 🌱",
     html: `
 
@@ -86,7 +87,7 @@ const sendSummary = async (newSummary) => {
                     </tr>
                     <tr>
                         <td>Email address:</td>
-                        <td>${newSummary.payer.name.email_address}</td>
+                        <td>${newSummary.payer.email_address}</td>
                     </tr>
                     <tr>
                         <td>Payer ID:</td>
@@ -102,18 +103,19 @@ const sendSummary = async (newSummary) => {
                     </th>
                 </thead>
                 <tbody style="font-family: Verdana">
-                ${newSummary.productsId.map((item) => {
-                  `<tr>
-                            <td>Product</td>
-                            <td>${item.name}</td>
-                        <tr>
-                            <td>Price</td>
-                            <td>${item.price} USD</td>
-                        </tr>
-                        <tr>
-                          <td>Sustainability:</td>
-                          <td>${item.sustainable}</td>
-                        </tr>`;
+                ${newSummary.productsCart.map((item) => {
+                  return `<tr>
+                    <td>Product</td>
+                    <td>${item.name}</td>
+                <tr>
+                    <td>Price</td>
+                    <td>${item.price} USD</td>
+                </tr>
+                <tr>
+                    <td>Quantity</td>
+                    <td>${item.quantity} USD</td>
+                </tr>
+                `;
                 })}
                 </tbody>
                 <tfoot style="font-family: Verdana">
@@ -159,6 +161,7 @@ const sendSummary = async (newSummary) => {
       console.log(`Check ${email} to confirm your account.`);
     }
   });
+  console.log("final");
 };
 
 module.exports = sendSummary;
