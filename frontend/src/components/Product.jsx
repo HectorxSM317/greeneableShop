@@ -10,8 +10,8 @@ import "../styles/products.css";
 
 export default function Product({ product }) {
   const dispatch = useDispatch();
-  const cart = useSelector((store) => store.productsReducer.cart);
-  console.log(cart)
+  // const cart = useSelector((store) => store.productsReducer.cart);
+  // console.log(cart)
   function addToCart(product, e) {
     e.preventDefault();
 
@@ -20,8 +20,8 @@ export default function Product({ product }) {
 
   }
 
-  let filter  = cart.filter ( item => item._id === product._id)
-  console.log(filter)
+  // let filter  = cart.filter ( item => item._id === product._id)
+  // console.log(filter)
 
   return (
     <div className="card">
@@ -47,16 +47,13 @@ export default function Product({ product }) {
           </Typography>
           }
 
-        <Typography color="green">
+        {/* <Typography color="green">
         {cart.filter((item)=>
           //  console.log(item.quantity)
           // <Typography>quantity:{ item.quantity}</Typography>
           item._id===product._id
         )}
-          </Typography>
-
-         
-          
+          </Typography> */}
 
         </div>
         <div className="moreInfo">
@@ -66,28 +63,11 @@ export default function Product({ product }) {
             </Button>
           </LinkRouter>
 
-          
-          
-
-          
-        
         <Button variant="contained" onClick={(e) => addToCart(product, e)}>
           Add To Cart
          </Button>
          
-          
        
-          
-
-
-          
-          
-          
-            
-          
-          
-          
-          
         </div>
       </div>
     </div>
