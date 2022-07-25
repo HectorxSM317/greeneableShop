@@ -1,15 +1,13 @@
 const mongoose = require("mongoose");
 
 const cartSchema = new mongoose.Schema({
-  productId: [{ type: mongoose.Types.ObjectId, ref: "products" }],
+  productsId: [{ type: mongoose.Types.ObjectId, ref: "products" }],
+  purchaseId: { type: String, required: true },
   userId: { type: mongoose.Types.ObjectId, ref: "users" },
-  date: {
-    exchange: { type: Date },
-    sold: { type: Date },
-    sent: { type: Date },
-  },
+  payer: { type: Object, required: true },
+  date: { type: Date },
   amount: { type: Number, required: true },
-  state: { type: String, required: true },
+  status: { type: String, required: true },
 });
 
 const Cart = mongoose.model("carts", cartSchema);

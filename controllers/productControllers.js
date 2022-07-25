@@ -132,7 +132,7 @@ const ProductsControllers = {
     });
   },
 
-  getFiveProducts: async (req, res) => {
+  getThreeLampProducts: async (req, res) => {
     let products;
     let error = null;
     try {
@@ -140,47 +140,46 @@ const ProductsControllers = {
     } catch (err) {
       error = err;
     }
-    var fiveRandom = [];
-    for (i = 0; fiveRandom.length < 8; i++) {
-      fiveRandom.push(products[Math.floor(Math.random() * products.length)]);
-    }
+    var threeRandom = [];
+    let filteredArray = products.filter((product)=>product.category === "Lamp");
+    const shuffled = filteredArray.sort(() => 0.5 - Math.random());
+    threeRandom = shuffled.slice(0, 3);
 
     res.json({
-      response: error ? "ERROR" : fiveRandom,
+      response: error ? "ERROR" : threeRandom,
+      success: error ? false : true,
+      error: error,
+    });
+  },
+  getThreeToyProducts: async (req, res) => {
+    let products;
+    let error = null;
+    try {
+      products = await Product.find();
+    } catch (err) {
+      error = err;
+    }
+    var threeRandom = [];
+    let filteredArray = products.filter((product)=>product.category === "Toys");
+    
+      const shuffled = filteredArray.sort(() => 0.5 - Math.random());
+      threeRandom = shuffled.slice(0, 3);
+  
+    
+    
+
+    res.json({
+      response: error ? "ERROR" : threeRandom,
       success: error ? false : true,
       error: error,
     });
   },
 
-  addToCart: async (res, req) => {
-    // console.log(req.body);
-    const productAdded = req.body;
-    const product = {};
-    const error = null;
-    // try {
-    //   product = await Product.findOne({ _id: productAdded._id });
-    // } catch (err) {
-    //   error = err;
-    // }
-    // console.log(product);
+  
 
-    // if(product.stock === 0){
-    //   res.json({
-    //     success: false, message:"no stock"
-    //   })
-    // }else{
-    //   try {
-    //     const productToModify = await Product.findOneAndUpdate({"stock":product.stock}, {$set: {"comments.$.comment": comment,"comments.$.date": Date.now() }}, {new: true})
-    //     res.json({ success: true, response:{newComment},toast:true, message:"tu comentario a sido modificado" })
-    // }
-    // catch (error) {
-    //     console.log(error)
-    //     res.json({ success: true, message: "Algo a salido mal intentalo en unos minutos" })
-    // }
-    //   res.json({
-    //     success: true, message: "Product added successfully"
-    //   })
-    // }
+  getStock: async (res, req) => {
+    console.log(req.body);
+    const productAdded = req.body;
   },
 };
 
