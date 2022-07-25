@@ -23,7 +23,7 @@ const validator = (req, res, next) => {
     city: joi.string(),
     address: joi.string(),
 
-    photo: joi.string().required(),
+    // photo: joi.string().required(),
     lastName: joi.any(),
     phoneNumber: joi.string(),
   });

@@ -39,8 +39,11 @@ export default function Password() {
 
 
     return(
-        <div className="flex items-center" style={{width: "100%"}}>
-                <VpnKey sx={{ color: 'action.active', mr: 1, my: 0.5 }} />
+        <div className="flex items-center flex-col sm:flex-row gap-2" style={{width: "100%"}}>
+          <div>
+            <VpnKey sx={{ color: 'action.active', mr: 1, my: 0.5 }} />
+          </div>
+          <div style={{width: "100%"}}>
                 <FormControl sx={{ m: 1, width: '25ch' }} variant="outlined">
                   <InputLabel htmlFor="outlined-adornment-password">Password</InputLabel>
                   <OutlinedInput
@@ -64,6 +67,7 @@ export default function Password() {
                     required
                   />
                 </FormControl>
+          </div>        
         </div>
     )
 }
