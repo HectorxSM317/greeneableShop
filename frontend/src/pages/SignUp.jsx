@@ -82,7 +82,7 @@ export default function LogIn(){
       		</div>
 			<div className='w-full h-screen z-20 bg-green-400 top-0 left-0 absolute opacity-60'></div>
 			<div className="z-30 w-full h-screen flex flex-col flex-wrap absolute top-0 left-0 justify-center items-center ">
-				<div className="card p-8 bg-[white] rounded"
+				<div className="card-register p-8 bg-[white] rounded"
 				style={{
 					height: "50vh !important"
 				  }}

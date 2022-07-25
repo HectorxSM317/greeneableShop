@@ -2,12 +2,12 @@
     width: 48% !important;
 }
 
-.card {
+.card-register {
     width: 60% !important;
 }
 
 @media (width < 550px) {
-    .card {
+    .card-register {
         width: 100% !important;
     }
 }
