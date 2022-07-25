@@ -125,7 +125,7 @@ export default function Products() {
         })}
       </div>
       <div className="productList">
-        {products?.length > 0 ? (
+        {products && products?.length > 0 ? (
           products?.map((product) => {
             return (
               <Product product={product} key={product._id} setCart={setCart} />

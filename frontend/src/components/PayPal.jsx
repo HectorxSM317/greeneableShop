@@ -7,6 +7,7 @@ import toast from "react-hot-toast";
 
 export default function PayPal() {
   const cart = useSelector((store) => store.productsReducer.cart);
+  console.log(cart);
   const loggedUser = useSelector((store) => store.usersReducer.loggedUser);
   const dispatch = useDispatch();
 
@@ -14,28 +15,44 @@ export default function PayPal() {
   const [orderID, setOrderID] = useState(false);
   const [ErrorMessage, setErrorMessage] = useState("");
   const [details, setDetails] = useState();
+  const [productsCart, setProductsCart] = useState([]);
 
-  let total = cart?.reduce(
-    (amount, item) => item.price * item.quantity + amount,
-    0
-  );
+  const getTotal = (cart) => {
+    let Total = cart?.reduce(
+      (amount, item) => item.price * item.quantity + amount,
+      0
+    );
 
+    return Total;
+  };
+  // console.log(itemsCart);
   useEffect(() => {
     PayPalCheckOut();
+    let items = [];
+
+    cart.map((item, i) => {
+      items.push({
+        name: item.name,
+        quantity: item.quantity,
+        photo: item.photo,
+        price: item.price,
+      });
+    });
+    console.log(items);
+    setProductsCart(items);
   }, [cart]);
 
   const initialOptions = {
     // Genero las opciones para enviarle al CDN
     "client-id":
-      "AdLA2SfyCWBXYNZojrQTNKQEDMZOCsR83TruRwgbUQJoCczOqNqFuBbt8FPXcHbiOmMwFh2-qChTVRrF",
+      "AYDe49tTmuKagE4eZKY9Teuapk_ardpt9UHVUn5mtGXPkSoNc90BoCB46MGAONW6Mc7wTumOFUrMHtfn",
     currency: "USD", //Establesco la moneda
     intent: "capture", //Estableco el metodos este autoriza la operacion y captura los fondos
   };
-
+  console.log(productsCart);
   function createSummary() {
-    let productsId = cart?.map((items) => items._id);
-
     const summary = {
+      productsCart: productsCart,
       purchaseId: details.id,
       userId: loggedUser.id || loggedUser._id,
       payer: {
@@ -48,11 +65,11 @@ export default function PayPal() {
         payer_id: details.payer.payer_id,
       },
       date: details.create_time,
-      amount: total,
+      amount: getTotal(cart),
       status: details.status,
     };
 
-    dispatch(cartActions.createSummary(summary, productsId));
+    dispatch(cartActions.createSummary(summary));
   }
 
   if (orderID) {
@@ -62,12 +79,13 @@ export default function PayPal() {
   const createOrder = (data, actions) => {
     // Creo la orden de con los datos, esta puede ser general o con detalle de items
 
+    console.log(getTotal(cart));
     return actions.order.create({
       purchase_units: [
         {
           description: "items",
           amount: {
-            value: total,
+            value: getTotal(cart),
           },
         },
       ],
@@ -76,7 +94,7 @@ export default function PayPal() {
 
   const onApprove = (data, actions) => {
     // recibo el resultado de mi operacion
-    let aprovacion = actions.order.capture().then(function (details) {
+    return actions.order.capture().then(function (details) {
       const { payer } = details;
       setSuccess(true);
       console.log("Capture result", details, JSON.stringify(details, null, 2)); //veo los datos en consola
@@ -91,9 +109,14 @@ export default function PayPal() {
       );
       setDetails(details);
       setOrderID(transaction.id);
+      // const compraVerificada =
+      //   details.purchase_units[0].payments.captures[0].status;
+      // /* console.log(compraVerificada)
+      //           console.log(carritoUser); */
+      // if (compraVerificada == "COMPLETED") {
+      //   carritoUser.map((x) => dispatch(modificarStock(x._id, x.stock - 1)));
+      // }
     });
-
-    return aprovacion;
   };
 
   const onCancel = (data) => {
@@ -120,5 +143,5 @@ export default function PayPal() {
     );
   };
 
-  return PayPalCheckOut();
+  return <PayPalCheckOut />;
 }
