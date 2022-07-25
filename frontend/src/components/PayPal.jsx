@@ -16,6 +16,7 @@ export default function PayPal() {
   const [success, setSuccess] = useState(false);
   const [orderID, setOrderID] = useState(false);
   const [ErrorMessage, setErrorMessage] = useState("");
+  const [details, setDetails] = useState();
 
   let total = cart?.reduce(
     (amount, item) => item.price * item.quantity + amount,
@@ -35,32 +36,39 @@ export default function PayPal() {
     intent: "capture", //Estableco el metodos este autoriza la operacion y captura los fondos
   };
 
-  let productsId = cart?.map((items) => items._id);
-  console.log(productsId);
+  // console.log(productsId);
+  console.log(details);
 
-  // function createSummary() {
-  //   console.log("crear");
-  //   const Summary = {
-  //     productsId: productsId,
-  //     purchaseId: summary.id,
-  //     userId: loggedUser.id || loggedUser._id,
-  //     payer: {
-  //       address: summary.payer.adress,
-  //       email_address: summary.payer.email_address,
-  //       name: {
-  //         given_name: summary.payer.name.given_name,
-  //         surname: summary.payer.name.surname,
-  //       },
-  //       payer_id: summary.payer.payer_id,
-  //     },
-  //     date: summary.create_time,
-  //     amount: total,
-  //     status: summary.status,
-  //   };
+  function createSummary() {
+    console.log("crear");
 
-  //   console.log(summary);
-  //   dispatch(cartActions.createSummary(Summary));
-  // }
+    let productsId = cart?.map((items) => items._id);
+    console.log(productsId);
+
+    const summary = {
+      purchaseId: details.id,
+      userId: loggedUser.id || loggedUser._id,
+      payer: {
+        address: details.payer.adress,
+        email_address: details.payer.email_address,
+        name: {
+          given_name: details.payer.name.given_name,
+          surname: details.payer.name.surname,
+        },
+        payer_id: details.payer.payer_id,
+      },
+      date: details.create_time,
+      amount: total,
+      status: details.status,
+    };
+
+    console.log(summary);
+    dispatch(cartActions.createSummary(summary, productsId));
+  }
+
+  if (orderID) {
+    createSummary();
+  }
 
   const createOrder = (data, actions) => {
     // Creo la orden de con los datos, esta puede ser general o con detalle de items
@@ -77,18 +85,17 @@ export default function PayPal() {
       ],
     });
   };
-  console.log(productsId);
+  // console.log(productsId);
 
-  const onApprove = (data, actions, productsId) => {
+  const onApprove = (data, actions) => {
     // recibo el resultado de mi operacion
-    console.log(productsId);
     console.log(data);
     let aprovacion = actions.order.capture().then(function (details) {
       const { payer } = details;
       setSuccess(true);
       console.log("Capture result", details, JSON.stringify(details, null, 2)); //veo los datos en consola
       var transaction = details.purchase_units[0].payments.captures[0];
-      localStorage.removeItem("carrito");
+      // localStorage.removeItem("carrito");
       toast.success(
         "Transaction " +
           transaction.status +
@@ -96,32 +103,10 @@ export default function PayPal() {
           transaction.id +
           "\n\nSee console for all available details"
       );
+      setDetails(details);
       setOrderID(transaction.id);
 
       console.log("si se ejecuto");
-
-      if (transaction) {
-        const summary = {
-          productsId: productsId,
-          purchaseId: details.id,
-          userId: loggedUser.id || loggedUser._id,
-          payer: {
-            address: details.payer.adress,
-            email_address: details.payer.email_address,
-            name: {
-              given_name: details.payer.name.given_name,
-              surname: details.payer.name.surname,
-            },
-            payer_id: details.payer.payer_id,
-          },
-          date: details.create_time,
-          amount: total,
-          status: details.status,
-        };
-
-        console.log(summary);
-        dispatch(cartActions.createSummary(summary));
-      }
     });
 
     return aprovacion;
