@@ -94,10 +94,9 @@ const ProductsControllers = {
     } catch (err) {
       error = err;
     }
-    var fiveRandom = [];
-    for (i = 0; fiveRandom.length < 8; i++) {
-      fiveRandom.push(products[Math.floor(Math.random() * products.length)]);
-    }
+    let fiveRandom = [];
+    const shuffled = products.sort(() => 0.5 - Math.random());
+    fiveRandom = shuffled.slice(0, 8);
 
     res.json({
       response: error ? "ERROR" : fiveRandom,

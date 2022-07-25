@@ -7,6 +7,7 @@ import Button from "@mui/material/Button";
 import CardMedia from "@mui/material/CardMedia";
 import axios from "axios";
 import { useEffect } from "react";
+import { Link as LinkRouter } from 'react-router-dom'
 
 // Import Swiper styles
 import "swiper/css";
@@ -71,6 +72,8 @@ export default function App() {
         className="mySwiper"
       >
         {carouselItems.map((event, i) => (
+
+
           <SwiperSlide key={i} className="sliderCarousel">
             <Box
               className="sliderImg"
@@ -84,11 +87,14 @@ export default function App() {
               <Typography>{event.name}</Typography>
             </Box>
             <Box>
-              <Button sx={{ fontSize: 10, color: "black" }} size="medium">
-                See More
-              </Button>
+              <LinkRouter to={`/details/${event._id}`}>
+                <Button sx={{ fontSize: 14, color: "black" }} size="medium">
+                  See More
+                </Button>
+              </LinkRouter>
             </Box>
           </SwiperSlide>
+
         ))}
       </Swiper>
     </>

@@ -14,6 +14,11 @@ export default function Index() {
   const [threeLampRandom, setThreeLampRandom] = useState([]);
   const [threeToysRandom, setThreeToysRandom] = useState([]);
   useEffect(() => {
+    setTimeout(() => {
+      window.scrollTo(0, 0);
+    }, 500);
+  }, []);
+  useEffect(() => {
     axios
       .get("http://localhost:4000/api/threelampproducts/random")
       .then((res) => setThreeLampRandom(res.data.response));
@@ -37,7 +42,7 @@ export default function Index() {
       C.style.top = value * 0.5 + "px";
       D.style.marginTop = value * 0.9 + "px";
       E.style.Top = value * 1 + "px";
-      console.log(B.style.display)
+      // console.log(B.style.display)
 
       if (window.scrollY <= 700) {
         B.style.display = "block"
@@ -67,7 +72,9 @@ export default function Index() {
             </div>
           </div>
           <div className='lineB'>
-            <Button variant="contained" sx={{ backgroundColor: "#13552D" }}>All Product</Button>
+            <LinkRouter to={"/products/"}>
+              <Button variant="contained" sx={{ backgroundColor: "#13552D" }}>All Products</Button>
+            </LinkRouter>
           </div>
           <div className='lineC'>
             <div className='lineC-A'>
@@ -167,6 +174,9 @@ export default function Index() {
               <div className='B'>
                 <div className='B-1'>
                   <img src={threeToysRandom[0].photo} alt="" />
+                  <div className='itemName'>
+                    <h3>{threeToysRandom[0].name}</h3>
+                  </div>
                   <LinkRouter to={`/details/${threeToysRandom[0]._id}`}>
                     <div className='buyMe'>
                       <h3>MORE INFO</h3>
@@ -175,6 +185,9 @@ export default function Index() {
                 </div>
                 <div className='B-2'>
                   <img src={threeToysRandom[1].photo} alt="" />
+                  <div className='itemName'>
+                    <h3>{threeToysRandom[1].name}</h3>
+                  </div>
                   <LinkRouter to={`/details/${threeToysRandom[1]._id}`}>
                     <div className='buyMe'>
                       <h3>MORE INFO</h3>
@@ -186,6 +199,9 @@ export default function Index() {
                 <img
                   src={threeToysRandom[2].photo}
                   alt="" />
+                <div className='itemName'>
+                  <h3>{threeToysRandom[2].name}</h3>
+                </div>
                 <LinkRouter to={`/details/${threeToysRandom[2]._id}`}>
                   <div className='buyMe'>
                     <h3>MORE INFO</h3>
@@ -222,7 +238,9 @@ export default function Index() {
             </div>
           </div>
           <div className='lineB'>
-            <Button variant="contained" sx={{ backgroundColor: "#13552D" }}>Shop Now</Button>
+            <LinkRouter to={"/products/"}>
+              <Button variant="contained" sx={{ backgroundColor: "#13552D" }}>Shop Now</Button>
+            </LinkRouter>
           </div>
           <div className='lineC'>
             <div className='lineC-A'>
