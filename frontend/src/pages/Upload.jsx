@@ -105,7 +105,7 @@ export default function Uplaod() {
                         </label>
                         <label className="labelUp">
                             <span className="spanLabel">Stock</span>
-                            <input className="inputUp" name="stock" type="number" required />
+                            <input className="inputUp" name="stock" type="number" min={1} required />
                         </label>
 
                         <span style={{ marginTop: "1.5rem" }} className="spanLabel">Sustainable</span>
