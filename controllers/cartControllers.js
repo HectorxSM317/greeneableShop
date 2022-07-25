@@ -3,22 +3,25 @@ const sendSummary = require("./sendSummary");
 
 const cartControllers = {
   createSummary: async (req, res) => {
-    let { summary, productsId } = req.body;
+    console.log(req.body);
+    let { productsCart, purchaseId, userId, payer, date, amount, status } =
+      req.body.summary;
+
     let newSummary;
-    // console.log(req.body.summary)
+    console.log(req.body.summary)
+
+
     let error = null;
     try {
       newSummary = await new Cart({
-        productsId: ["hola"],
-        purchaseId: summary.purchaseId,
-        userId: summary.userId,
-        payer: summary.payer,
-        date: summary.date,
-        amount: summary.amount,
-        status: summary.status,
+        productsCart: productsCart,
+        purchaseId: purchaseId,
+        userId: userId,
+        payer: payer,
+        date: date,
+        amount: amount,
+        status: status,
       }).save();
-
-      console.log(newSummary)
       await sendSummary(newSummary);
     } catch (err) {
       error = err;

@@ -24,6 +24,14 @@ function App() {
   }, []);
 
   useEffect(() => {
+    if (localStorage.getItem("product") !== null) {
+      let productsLocal = JSON.parse(localStorage.getItem("product"));
+      dispatch({ type: "CART_STORAGE", payload: productsLocal });
+      console.log(productsLocal);
+    }
+  }, []);
+
+  useEffect(() => {
     if (localStorage.getItem("token") !== null) {
       const token = localStorage.getItem("token");
       dispatch(userActions.verifyToken(token)); //CHEQUEAR
@@ -56,8 +64,8 @@ function App() {
         }
         {/* <Route path="/login" element={<Login />} /> */}
       </Routes>
-      <Toaster position="top-center" reverseOrder={false} />
-      <Footer />
+      <Toaster position="top-left" reverseOrder={false} />
+      {/* <Footer /> */}
       {/* <ScrollToTop
         style={{ boxShadow: "rgba(0, 0, 0, 0.35) 0px 5px 15px" }}
         smooth

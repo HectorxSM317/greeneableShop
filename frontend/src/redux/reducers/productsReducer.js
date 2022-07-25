@@ -3,6 +3,13 @@ const initialState = {
   oneProduct: {},
   filterProducts: [],
   cart: [],
+  total: 0,
+};
+
+export const getTotal = (cart) => {
+  let Total = cart?.reduce((amount, item) => item.price + amount, 0);
+
+  return Total;
 };
 
 const productReducer = (state = initialState, action) => {
@@ -149,11 +156,13 @@ const productReducer = (state = initialState, action) => {
     }
     case "CLEAR_CART":
       return {
+        ...state,
         cart: [],
       };
 
     case "CART_STORAGE":
       return {
+        ...state,
         cart: action.payload,
       };
 
