@@ -12,19 +12,10 @@ import { Link as LinkRouter } from "react-router-dom";
 export default function Cart() {
   const dispatch = useDispatch();
   const cart = useSelector((store) => store.productsReducer.cart);
-  console.log(useSelector((store) => console.log(store)));
-
-  useEffect(() => {
-    if (localStorage.getItem("product") !== null) {
-      let productsLocal = JSON.parse(localStorage.getItem("product"));
-      dispatch({ type: "CART_STORAGE", payload: productsLocal });
-      console.log(productsLocal);
-    }
-  }, []);
 
   useEffect(() => {
     dispatch(productsActions.getProducts());
-  }, []);
+  }, [cart]);
 
   function handleClearCart(e) {
     e.preventDefault();
@@ -85,7 +76,7 @@ export default function Cart() {
             <p className="my-2">Payment methods:</p>
 
             <div className="paypal">
-              <PayPal />
+              <PayPal cart={cart} />
             </div>
           </div>
         </div>
