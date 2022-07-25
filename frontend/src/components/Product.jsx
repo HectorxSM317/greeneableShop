@@ -15,7 +15,6 @@ export default function Product({ product }) {
 
     dispatch(productsActions.addToCart(product));
     toast.success('Product added!')
-
   }
 
   return (
