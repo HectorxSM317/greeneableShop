@@ -17,7 +17,6 @@ export default function Product({ product }) {
 
     dispatch(productsActions.addToCart(product));
     toast.success('Product added!')
-
   }
 
   // let filter  = cart.filter ( item => item._id === product._id)
