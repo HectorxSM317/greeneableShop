@@ -1,25 +1,47 @@
 const Cart = require("../models/cart");
+const sendSummary = require("./sendSummary");
 
 const cartControllers = {
   createSummary: async (req, res) => {
-    let { productId, userId, date, amount, state } = req.body.cart;
-    // const user = req.user.id;
+    let { summary, productsId } = req.body;
     let newSummary;
 
     let error = null;
     try {
       newSummary = await new Cart({
-        productId: productId,
-        userId: userId,
-        date: date,
-        amount: amount,
-        state: state,
+        productsId: productsId,
+        purchaseId: summary.purchaseId,
+        userId: summary.userId,
+        payer: summary.payer,
+        date: summary.date,
+        amount: summary.amount,
+        status: summary.status,
       }).save();
+      console.log("enviarmail");
+      await sendSummary(newSummary);
+      console.log("envio el mail");
+    } catch (err) {
+      error = err;
+    }
+
+    res.json({
+      res: error ? "ERROR" : newSummary,
+      success: error ? false : true,
+      error: error,
+    });
+  },
+
+  getSummary: async (res, req) => {
+    let summary;
+    const error = null;
+
+    try {
+      summary = await Cart.find().populate("productsId").populate("userId");
     } catch (err) {
       error = err;
     }
     res.json({
-      res: error ? "ERROR" : newSummary,
+      res: error ? "ERROR" : summary,
       success: error ? false : true,
       error: error,
     });
@@ -31,7 +53,9 @@ const cartControllers = {
     const error = null;
 
     try {
-      summary = await Cart.findOne({ _id: id });
+      summary = await Cart.findOne({ _id: id })
+        .populate("productsId")
+        .populate("userId");
     } catch (err) {
       error = err;
     }

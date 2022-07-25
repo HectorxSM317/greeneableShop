@@ -141,4 +141,24 @@ footer .bottom_content section {
         margin: 0 5px;
         display: inline-block;
     }
+
 }
+
+@media (max-width:768px) {
+    
+    footer .bottom_content  {
+       display: flex;
+       flex-direction: column;
+       align-items: center;
+       justify-content: center;
+    }
+
+    footer .top_header section {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+     }
+
+}
+

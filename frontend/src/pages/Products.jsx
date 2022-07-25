@@ -5,7 +5,6 @@ import { useDispatch, useSelector } from "react-redux";
 import productsActions from "../redux/actions/productsActions";
 import Product from "../components/Product";
 
-
 export default function Products() {
   const [input, setInput] = useState("");
   const [buttonRadio, setbuttonRadio] = useState("");
