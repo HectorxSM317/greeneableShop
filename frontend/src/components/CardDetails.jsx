@@ -154,7 +154,7 @@ export default function RecipeReviewCard({ product }) {
         description: product.description,
         stock: product.stock,
         price: product.price,
-        category: "asd",
+        category: product.category,
         sustainable: product.sustainable,
         otherCategory: "",
         imageSelection: "current-image",
