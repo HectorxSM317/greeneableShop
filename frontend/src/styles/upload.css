@@ -10,5 +10,8 @@
     background-size: cover;
 }
 
-
+.form-box{
+    padding: 3rem;
+    backdrop-filter: blur(5px);
+}
 
