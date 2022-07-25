@@ -20,11 +20,12 @@ import { Link as LinkRouter, useNavigate } from "react-router-dom";
 import Cart from "../pages/Cart";
 import { useState } from "react";
 import Logo from "../assets/greeneable-logo.png";
-import Image from 'mui-image';
-import { useSelector, useDispatch } from 'react-redux'
+import Image from "mui-image";
+import { useSelector, useDispatch } from "react-redux";
 import userActions from "../redux/actions/userActions";
 import toast from "react-hot-toast";
-
+import Badge from "@mui/material/Badge";
+import { styled } from "@mui/material/styles";
 
 const pages = [
   {
@@ -39,7 +40,7 @@ const pages = [
   {
     name: "About Us",
     to: "/aboutUs",
-  }
+  },
 ];
 
 const settings = [
@@ -54,18 +55,27 @@ const settings = [
   },
 ];
 
-const Navbar = () => {
+const StyledBadge = styled(Badge)(({ theme }) => ({
+  "& .MuiBadge-badge": {
+    right: -3,
+    top: 13,
+    border: `2px solid ${theme.palette.background.paper}`,
+    padding: "0 4px",
+  },
+}));
 
-  const dispatch = useDispatch()
-  const user = useSelector(store => store.usersReducer.loggedUser)
-  // console.log(user)
+const Navbar = () => {
+  const dispatch = useDispatch();
+  const user = useSelector((store) => store.usersReducer.loggedUser);
+  const cart = useSelector((store) => store.productsReducer.cart);
+  console.log(cart);
   const navigate = useNavigate();
 
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
 
   const handleOpenNavMenu = (event) => {
-    console.log(event.currentTarget)
+    console.log(event.currentTarget);
     setAnchorElNav(event.currentTarget);
   };
   const handleOpenUserMenu = (event) => {
@@ -81,23 +91,17 @@ const Navbar = () => {
   };
 
   function SignOut() {
-    dispatch(userActions.userSignOut(user))
+    dispatch(userActions.userSignOut(user));
     toast.success("You have signed out", {
       duration: 3000,
     });
-    navigate('/', { replace: true })
+    navigate("/", { replace: true });
   }
-
-
-
-
-
 
   return (
     <AppBar position="static">
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-
           <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
             <IconButton
               size="large"
@@ -127,41 +131,34 @@ const Navbar = () => {
                 display: { xs: "block", md: "none" },
               }}
             >
-              {
-                pages.map((page, index) => (
-                  <LinkRouter key={index} to={page.to} className="linkNav">
-                    <MenuItem>
-                      {/* {console.log(page)} */}
+              {pages.map((page, index) => (
+                <LinkRouter key={index} to={page.to} className="linkNav">
+                  <MenuItem>
+                    {/* {console.log(page)} */}
 
-                      <Typography textAlign="center">{page.name}</Typography>
-                    </MenuItem>
-                  </LinkRouter>
-                ))
-              }
-            </Menu >
+                    <Typography textAlign="center">{page.name}</Typography>
+                  </MenuItem>
+                </LinkRouter>
+              ))}
+            </Menu>
             <LinkRouter to="/">
-              <Image className='logoClass' src={Logo} sx={{ display: { md: 'flex' }, mr: 1, }} />
+              <Image
+                className="logoClass"
+                src={Logo}
+                sx={{ display: { md: "flex" }, mr: 1 }}
+              />
             </LinkRouter>
+          </Box>
 
-          </Box >
-
-
-          <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
+          <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
             {pages.map((page, index) => (
               <LinkRouter
-
                 key={index}
                 to={page.to}
-                sx={{ my: 2, color: 'white', display: 'block' }}
-
+                sx={{ my: 2, color: "white", display: "block" }}
               >
-                <button className="mx-2">
-                  {page.name}
-                </button>
-
-
+                <button className="mx-2">{page.name}</button>
               </LinkRouter>
-
             ))}
 
             {/* {pages.map((page) => (
@@ -179,11 +176,33 @@ const Navbar = () => {
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
                 {/* <PersonOutlineIcon sx={{ color: "white", fontSize: "2rem" }} /> */}
-                {user ? <Avatar alt="User Photo" src={user?.photo}/> : <Avatar alt="Offline User" src="https://secure.gravatar.com/avatar/a6321ca519c15d35a4e297efc45d5ecb?s=500&d=mm&r=g" sx={{ color: "white"}}/> }
+                {user ? (
+                  <Avatar alt="User Photo" src={user?.photo} />
+                ) : (
+                  <Avatar
+                    alt="Offline User"
+                    src="https://secure.gravatar.com/avatar/a6321ca519c15d35a4e297efc45d5ecb?s=500&d=mm&r=g"
+                    sx={{ color: "white" }}
+                  />
+                )}
               </IconButton>
             </Tooltip>
 
             <LinkRouter to="/cart">
+              <IconButton aria-label="cart">
+                <StyledBadge badgeContent={cart.length} color="success">
+                  <ShoppingCartIcon
+                    sx={{
+                      color: "white",
+                      fontSize: "1.7rem",
+                      marginLeft: "2.5rem",
+                    }}
+                  />
+                </StyledBadge>
+              </IconButton>
+            </LinkRouter>
+
+            {/* <LinkRouter className="relative" to="/cart">
               <ShoppingCartIcon
                 sx={{
                   color: "white",
@@ -191,7 +210,10 @@ const Navbar = () => {
                   marginLeft: "2.5rem",
                 }}
               />
-            </LinkRouter >
+              <p className="absolute top-0 right-0 rounded-full numerocarrito">
+                {cart.length}
+              </p>
+            </LinkRouter> */}
 
             <Menu
               sx={{ mt: "45px" }}
@@ -217,8 +239,7 @@ const Navbar = () => {
                   >
                     <Typography onClick={SignOut}>Sign Out</Typography>
                   </MenuItem>
-                  {user.role === "admin" &&
-
+                  {user.role === "admin" && (
                     <LinkRouter to="/upload">
                       <MenuItem
                         sx={{ "&:hover": { bgcolor: "rgb(224,224,224)" } }}
@@ -226,10 +247,8 @@ const Navbar = () => {
                         <Typography>Upload Product</Typography>
                       </MenuItem>
                     </LinkRouter>
-
-                  }
+                  )}
                 </Box>
-
               ) : (
                 settings.map((setting, index) => (
                   <LinkRouter
@@ -250,11 +269,11 @@ const Navbar = () => {
                   <Typography textAlign="center">{setting}</Typography>
                 </MenuItem>
               ))} */}
-            </Menu >
-          </Box >
-        </Toolbar >
-      </Container >
-    </AppBar >
+            </Menu>
+          </Box>
+        </Toolbar>
+      </Container>
+    </AppBar>
   );
 };
 export default Navbar;

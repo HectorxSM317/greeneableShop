@@ -149,7 +149,7 @@ const usersControllers = {
                 firstName: userExists.firstName,
                 email: userExists.email,
                 from: userExists.from,
-                urlImage: userExists.urlImage,
+                photo: userExists.photo,
                 role: userExists.role,
               };
 
@@ -187,7 +187,7 @@ const usersControllers = {
               firstName: userExists.firstName,
               email: userExists.email,
               from: userExists.from,
-              urlImage: userExists.urlImage,
+              photo: userExists.photo,
               role: userExists.role,
             };
 
@@ -242,7 +242,7 @@ const usersControllers = {
           firstName: req.user.firstName,
           email: req.user.email,
           from: "token",
-          urlImage: req.user.urlImage,
+          photo: req.user.photo,
           message: "Welcome back, " + req.user.firstName,
           role: req.user.role,
         },
