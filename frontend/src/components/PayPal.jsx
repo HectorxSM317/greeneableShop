@@ -27,7 +27,7 @@ export default function PayPal() {
   const initialOptions = {
     // Genero las opciones para enviarle al CDN
     "client-id":
-      "AdLA2SfyCWBXYNZojrQTNKQEDMZOCsR83TruRwgbUQJoCczOqNqFuBbt8FPXcHbiOmMwFh2-qChTVRrF",
+      "AYDe49tTmuKagE4eZKY9Teuapk_ardpt9UHVUn5mtGXPkSoNc90BoCB46MGAONW6Mc7wTumOFUrMHtfn",
     currency: "USD", //Establesco la moneda
     intent: "capture", //Estableco el metodos este autoriza la operacion y captura los fondos
   };
@@ -36,7 +36,7 @@ export default function PayPal() {
     let productsId = cart?.map((items) => items._id);
 
     const summary = {
-      purchaseId: details.id,
+      purchaseId: cart,
       userId: loggedUser.id || loggedUser._id,
       payer: {
         address: details.payer.adress,

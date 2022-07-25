@@ -5,11 +5,11 @@ const cartControllers = {
   createSummary: async (req, res) => {
     let { summary, productsId } = req.body;
     let newSummary;
-
+    // console.log(req.body.summary)
     let error = null;
     try {
       newSummary = await new Cart({
-        productsId: productsId,
+        productsId: ["hola"],
         purchaseId: summary.purchaseId,
         userId: summary.userId,
         payer: summary.payer,
@@ -17,6 +17,8 @@ const cartControllers = {
         amount: summary.amount,
         status: summary.status,
       }).save();
+
+      console.log(newSummary)
       await sendSummary(newSummary);
     } catch (err) {
       error = err;

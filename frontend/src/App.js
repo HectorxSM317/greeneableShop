@@ -68,7 +68,7 @@ function App() {
       <PayPalScriptProvider
         options={{
           "client-id":
-            "AdLA2SfyCWBXYNZojrQTNKQEDMZOCsR83TruRwgbUQJoCczOqNqFuBbt8FPXcHbiOmMwFh2-qChTVRrF",
+            "AYDe49tTmuKagE4eZKY9Teuapk_ardpt9UHVUn5mtGXPkSoNc90BoCB46MGAONW6Mc7wTumOFUrMHtfn",
         }}
       />
     </>
