@@ -57,8 +57,7 @@ const productReducer = (state = initialState, action) => {
           filterP.push(...state.products);
         }
 
-        
-        if (orderSort ) {
+        if (orderSort) {
           filterP = sortProducts(orderSort, filterP);
         }
 
@@ -66,24 +65,22 @@ const productReducer = (state = initialState, action) => {
       }
 
       function sortProducts(orderSort, filterP) {
-        console.log("filterP", filterP)
-        let filter
+        console.log("filterP", filterP);
+        let filter;
         if (orderSort === "des-name") {
-          filter = filterP.sort((a, b) => a.name.localeCompare(b.name)).reverse()
-        }
-        else if (orderSort === "as-name"){
-          filter = filterP.sort((a, b) => a.name.localeCompare(b.name))
-        }
-        else if (orderSort === "high-price"){
-          filter = filterP.sort((a, b)=> a.price - b.price).reverse()
-        }
-        else if (orderSort === "low-price"){
-          filter = filterP.sort((a, b)=> a.price - b.price)
-        }
-        else if (orderSort === "false"){
           filter = filterP
+            .sort((a, b) => a.name.localeCompare(b.name))
+            .reverse();
+        } else if (orderSort === "as-name") {
+          filter = filterP.sort((a, b) => a.name.localeCompare(b.name));
+        } else if (orderSort === "high-price") {
+          filter = filterP.sort((a, b) => a.price - b.price).reverse();
+        } else if (orderSort === "low-price") {
+          filter = filterP.sort((a, b) => a.price - b.price);
+        } else if (orderSort === "false") {
+          filter = filterP;
         }
-        return filter
+        return filter;
       }
 
       return {
@@ -151,7 +148,9 @@ const productReducer = (state = initialState, action) => {
       return newReduxStore;
     }
     case "CLEAR_CART":
-      return initialState;
+      return {
+        cart: [],
+      };
 
     case "CART_STORAGE":
       return {

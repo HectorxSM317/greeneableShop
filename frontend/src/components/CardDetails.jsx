@@ -40,7 +40,7 @@ const ExpandMore = styled((props) => {
 
 const ITEM_HEIGHT = 48;
 
-export default function RecipeReviewCard() {
+export default function RecipeReviewCard({ product }) {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [reload, setReload] = useState(false);
 
@@ -52,15 +52,15 @@ export default function RecipeReviewCard() {
     setAnchorEl(null);
   };
 
-  const { id } = useParams();
+  // const { id } = useParams();
   const [expanded, setExpanded] = React.useState(false);
   const [editable, setEditable] = useState(false);
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(productsActions.getOneProduct(id));
     dispatch(productsActions.getProducts());
   }, [reload]);
-  const product = useSelector((store) => store.productsReducer.oneProduct);
+  // const product = useSelector((store) => store.productsReducer.oneProduct);
+  console.log("inicio", product);
   const products = useSelector((store) => store.productsReducer.products);
 
   const allCateg = products.map((item) => item.category);
@@ -86,7 +86,6 @@ export default function RecipeReviewCard() {
   };
 
   const handleEdit = () => {
-    console.log("editable mode");
     setEditable(true);
   };
 
@@ -116,10 +115,7 @@ export default function RecipeReviewCard() {
     photo,
     newImageFile,
   } = productState;
-  console.log(sustainable);
 
-  console.log(name);
-  console.log(photo);
   function handleSubmit(event) {
     setEditable(false);
     const newFile = newImageFile;
@@ -136,7 +132,6 @@ export default function RecipeReviewCard() {
       formData.append("photo", photo);
     }
     dispatch(adminActions.modifyProduct(product._id, formData)).then((res) => {
-      console.log(res);
       if (res.data.success) {
         toast.success(res.data.message, {
           duration: 3000,
@@ -150,14 +145,16 @@ export default function RecipeReviewCard() {
     });
   }
 
+  console.log("effect", product);
+
   useEffect(() => {
-    if (product.name) {
+    if (product) {
       setProductState({
         name: product.name,
         description: product.description,
         stock: product.stock,
         price: product.price,
-        category: product.category,
+        category: "asd",
         sustainable: product.sustainable,
         otherCategory: "",
         imageSelection: "current-image",
@@ -204,7 +201,6 @@ export default function RecipeReviewCard() {
                       ...productState,
                       newImageFile: event.target.files[0],
                     });
-                    console.log(newImageFile);
                   }}
                   type="file"
                 ></input>
@@ -377,7 +373,9 @@ export default function RecipeReviewCard() {
                   color="text.secondary"
                   className="flex items-center"
                 >
+                  {console.log(product.category)}
                   Category: {product.category}
+                  {console.log(product.category)}
                 </Typography>
               )}
             </div>

@@ -23,7 +23,7 @@ export default function Products() {
       setCatProducts(res.data.response)
     );
   }, []);
-
+  console.log(useSelector((store) => console.log(store)));
   useEffect(() => {
     dispatch(productsActions.filterProducts(input, buttonRadio, orderSort));
   }, [input, buttonRadio, orderSort]);
