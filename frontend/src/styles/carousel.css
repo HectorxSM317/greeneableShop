@@ -3,12 +3,6 @@
   height: 90%;
 }
 
-/* .swiper-horizontal>.swiper-pagination-bullets,
-.swiper-pagination-bullets.swiper-pagination-horizontal,
-.swiper-pagination-custom,
-.swiper-pagination-fraction {
-  height: 0.1 !important;
-} */
 
 .swiper-slide {
   text-align: center;
@@ -29,6 +23,10 @@
   -webkit-align-items: center;
   align-items: center;
   border-radius: 10px;
+}
+
+.swiper-pagination-horizontal {
+  height: 0.1px !important;
 }
 
 .swiper-slide img {

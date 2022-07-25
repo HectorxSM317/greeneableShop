@@ -145,14 +145,14 @@ export default function Index() {
             </div>
           </div>
           <div className='lineBtn'>
-            <Button variant="contained" sx={{ backgroundColor: "#13552D" }}>Sustainable</Button>
+            <h3 variant="contained" style={{ backgroundColor: "#13552D", color: "white" }}>Sustainable</h3>
           </div>
         </div>
         <div className='separator'>
         </div>
         <div className='line3'>
           <div className='lineBtn'>
-            <Button variant="contained" sx={{ backgroundColor: "#13552D" }}>Sustainable</Button>
+            <h3 variant="contained" style={{ backgroundColor: "#13552D", color: "white" }}>Sustainable</h3>
           </div>
           <div className='line3A'>
             <div className='line3A-A'>
@@ -215,20 +215,16 @@ export default function Index() {
             <img src="https://images.pexels.com/photos/6417967/pexels-photo-6417967.jpeg?auto=compress&cs=tinysrgb&w=1600"
               alt="" />
             <div className='text'>
-              <h1>PRODUCTO</h1>
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque vero, officiis nam doloremque unde facere id
-                modi sint
-              </p>
+              <h1>No more laboratory tests based on animal suffering</h1>
+
             </div>
           </div>
           <div className='secondCall'>
             <img src="https://images.pexels.com/photos/6706901/pexels-photo-6706901.jpeg?auto=compress&cs=tinysrgb&w=1600"
               alt="" />
             <div className='text'>
-              <h1>PRODUCTO</h1>
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque vero, officiis nam doloremque unde facere id
-                modi sint
-              </p>
+              <h1>Try our totally cruelty free personal hygiene and beauty products</h1>
+
             </div>
           </div>
         </div>
