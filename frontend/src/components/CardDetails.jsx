@@ -163,10 +163,6 @@ export default function RecipeReviewCard({ product }) {
       });
     }
   }, [product]);
-  const handleDiscard = () => {
-    console.log(PRODUCT_INITIAL_STATE);
-    setEditable(false);
-  };
 
   return (
     <Card className="details">
@@ -250,22 +246,6 @@ export default function RecipeReviewCard({ product }) {
                       >
                         Save
                       </Button>
-                      <Button
-                        variant="contained"
-                        onClick={(e) => handleDiscard(e)}
-                        sx={{
-                          bgcolor: "#41788f",
-                          bgcolor: "error",
-                          margin: 1,
-                          borderRadius: 50,
-                          color: "white",
-                        }}
-                        color="error"
-                        aria-label="more"
-                        id="long-button"
-                      >
-                        Discard
-                      </Button>
                     </>
                   )}
                 </div>
@@ -283,7 +263,8 @@ export default function RecipeReviewCard({ product }) {
           >
             {
               <div className="flex flex-row items-center justify-center">
-                Name:
+                
+                <p className="font-bold py-2">Name:</p>
                 <div
                   onInput={(event) =>
                     setProductState({
@@ -292,7 +273,7 @@ export default function RecipeReviewCard({ product }) {
                     })
                   }
                   suppressContentEditableWarning={true}
-                  className={editable ? "editable" : "non-editables"}
+                  className={editable ? "editable rounded-lg" : "non-editables"}
                   contentEditable={editable}
                 >
                   {product?.name}{" "}
@@ -308,7 +289,7 @@ export default function RecipeReviewCard({ product }) {
             >
               {
                 <div className="flex flex-row items-center justify-center">
-                  <div className="mx-2">USD</div>
+                  <p className="font-bold py-2 text-black">USD:</p>
                   <div
                     onInput={(event) =>
                       setProductState({
@@ -317,7 +298,7 @@ export default function RecipeReviewCard({ product }) {
                       })
                     }
                     suppressContentEditableWarning={true}
-                    className={editable ? "editable" : "non-editables"}
+                    className={editable ? "editable rounded-lg" : "non-editables"}
                     contentEditable={editable}
                   >
                     {product?.price}{" "}
@@ -331,8 +312,9 @@ export default function RecipeReviewCard({ product }) {
               className="flex items-center"
             >
               {
-                <div className="flex flex-row items-center justify-center">
-                  Stock:
+                <div className="flex flex-row items-center justify-center my-2">
+                 
+                  <p className="font-bold py-2 text-black">Stock:</p>
                   <div
                     onInput={(event) =>
                       setProductState({
@@ -341,10 +323,10 @@ export default function RecipeReviewCard({ product }) {
                       })
                     }
                     suppressContentEditableWarning={true}
-                    className={editable ? "editable" : "non-editables"}
+                    className={editable ? "editable rounded-lg" : "non-editables"}
                     contentEditable={editable}
                   >
-                    {product?.price}{" "}
+                    {product?.stock}{" "}
                   </div>
                 </div>
               }
@@ -353,7 +335,7 @@ export default function RecipeReviewCard({ product }) {
             <div>
               {editable ? (
                 <>
-                  <p>Category:</p>
+                  <p className="font-bold py-2">Category:</p>
                   <select
                     onChange={(e) =>
                       setProductState({
@@ -396,12 +378,12 @@ export default function RecipeReviewCard({ product }) {
             />
           </CardContent>
           <CardActions disableSpacing>
-            <IconButton aria-label="add to favorites">
+            {/* <IconButton aria-label="add to favorites">
               <FavoriteIcon />
             </IconButton>
             <IconButton aria-label="share">
               <ShareIcon />
-            </IconButton>
+            </IconButton> */}
           </CardActions>
           <CardContent sx={{ width: "100%" }}>
             <Button variant="contained" sx={{ width: "100%" }}>
@@ -422,8 +404,8 @@ export default function RecipeReviewCard({ product }) {
           </ExpandMore>
         </CardActions>
         <Collapse in={expanded} timeout="auto" unmountOnExit>
-          <Typography paragraph>Description</Typography>
           <CardContent>
+            <p className="font-bold p-2">Description:</p>
             <div
               onInput={(event) =>
                 setProductState({
@@ -431,7 +413,7 @@ export default function RecipeReviewCard({ product }) {
                   description: event.currentTarget.textContent,
                 })
               }
-              className={editable ? "editable" : "non-editables"}
+              className={editable ? "editable rounded-lg" : "non-editables"}
               contentEditable={editable}
               suppressContentEditableWarning={true}
             >
