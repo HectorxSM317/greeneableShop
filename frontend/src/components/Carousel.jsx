@@ -28,7 +28,6 @@ export default function App() {
       .then((res) => setCarouselItems(res.data.response));
   }, []);
 
-  console.log(carouselItems);
   return (
     <>
       <Swiper

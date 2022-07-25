@@ -68,14 +68,12 @@ const Navbar = () => {
   const dispatch = useDispatch();
   const user = useSelector((store) => store.usersReducer.loggedUser);
   const cart = useSelector((store) => store.productsReducer.cart);
-  console.log(cart);
   const navigate = useNavigate();
 
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
 
   const handleOpenNavMenu = (event) => {
-    console.log(event.currentTarget);
     setAnchorElNav(event.currentTarget);
   };
   const handleOpenUserMenu = (event) => {
@@ -134,8 +132,6 @@ const Navbar = () => {
               {pages.map((page, index) => (
                 <LinkRouter key={index} to={page.to} className="linkNav">
                   <MenuItem>
-                    {/* {console.log(page)} */}
-
                     <Typography textAlign="center">{page.name}</Typography>
                   </MenuItem>
                 </LinkRouter>

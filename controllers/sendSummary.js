@@ -4,7 +4,6 @@ const { google } = require("googleapis");
 const OAuth2 = google.auth.OAuth2; //access to the previously customized options on console cloud
 
 const sendSummary = async (newSummary) => {
-  console.log("inicio");
   const myOAuth2Client = new OAuth2( //creating the settings with 3 params
     process.env.GOOGLE_CLIENTID,
     process.env.GOOGLE_CLIENTSECRET,
@@ -61,9 +60,15 @@ const sendSummary = async (newSummary) => {
                 <p style="font-weight: 100; font-size: 20px ; line-height: 20px;  font-family: Verdana; color: #8F91A4; text-align: center; line-height: 1">Purchase summary: </p>
             <div style="padding: 20px">
                 <p style="font-family: Verdana">Date: ${newSummary.date} </p>
-                <p style="font-family: Verdana">Purchase ID: ${newSummary.purchaseId}</p>
-                <p style="font-family: Verdana">User ID: ${newSummary.userId} </p>
-                <p style="font-family: Verdana">Amount: ${newSummary.amount} USD </p>
+                <p style="font-family: Verdana">Purchase ID: ${
+                  newSummary.purchaseId
+                }</p>
+                <p style="font-family: Verdana">User ID: ${
+                  newSummary.userId
+                } </p>
+                <p style="font-family: Verdana">Amount: ${
+                  newSummary.amount
+                } USD </p>
                 <p style="font-family: Verdana">Status:${newSummary.status}</p>
                 <table>
                 <thead style="font-family: Verdana">
@@ -97,8 +102,8 @@ const sendSummary = async (newSummary) => {
                     </th>
                 </thead>
                 <tbody style="font-family: Verdana">
-                ${newSummary.productsId.map( item => {
-                        `<tr>
+                ${newSummary.productsId.map((item) => {
+                  `<tr>
                             <td>Product</td>
                             <td>${item.name}</td>
                         <tr>
@@ -108,8 +113,8 @@ const sendSummary = async (newSummary) => {
                         <tr>
                           <td>Sustainability:</td>
                           <td>${item.sustainable}</td>
-                        </tr>`
-                }) }
+                        </tr>`;
+                })}
                 </tbody>
                 <tfoot style="font-family: Verdana">
                     <tr>
@@ -147,7 +152,6 @@ const sendSummary = async (newSummary) => {
 </div>
         `,
   };
-  console.log("paso pora qui");
   await transporter.sendMail(mailOptions, (error, response) => {
     if (error) {
       console.log(error);

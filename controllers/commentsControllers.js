@@ -42,8 +42,6 @@ const commentsControllers = {
         },
         { new: true }
       );
-
-      console.log(newComment);
       res.json({
         success: true,
         response: { newComment },

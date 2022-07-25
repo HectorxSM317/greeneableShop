@@ -9,9 +9,6 @@ export default function PayPal() {
   const cart = useSelector((store) => store.productsReducer.cart);
   const loggedUser = useSelector((store) => store.usersReducer.loggedUser);
   const dispatch = useDispatch();
-  console.log(loggedUser);
-
-  // console.log(cart);
 
   const [success, setSuccess] = useState(false);
   const [orderID, setOrderID] = useState(false);
@@ -22,7 +19,6 @@ export default function PayPal() {
     (amount, item) => item.price * item.quantity + amount,
     0
   );
-  // console.log(total);
 
   useEffect(() => {
     PayPalCheckOut();
@@ -36,14 +32,8 @@ export default function PayPal() {
     intent: "capture", //Estableco el metodos este autoriza la operacion y captura los fondos
   };
 
-  // console.log(productsId);
-  console.log(details);
-
   function createSummary() {
-    console.log("crear");
-
     let productsId = cart?.map((items) => items._id);
-    console.log(productsId);
 
     const summary = {
       purchaseId: details.id,
@@ -62,7 +52,6 @@ export default function PayPal() {
       status: details.status,
     };
 
-    console.log(summary);
     dispatch(cartActions.createSummary(summary, productsId));
   }
 
@@ -72,7 +61,6 @@ export default function PayPal() {
 
   const createOrder = (data, actions) => {
     // Creo la orden de con los datos, esta puede ser general o con detalle de items
-    console.log(data);
 
     return actions.order.create({
       purchase_units: [
@@ -85,11 +73,9 @@ export default function PayPal() {
       ],
     });
   };
-  // console.log(productsId);
 
   const onApprove = (data, actions) => {
     // recibo el resultado de mi operacion
-    console.log(data);
     let aprovacion = actions.order.capture().then(function (details) {
       const { payer } = details;
       setSuccess(true);
@@ -105,8 +91,6 @@ export default function PayPal() {
       );
       setDetails(details);
       setOrderID(transaction.id);
-
-      console.log("si se ejecuto");
     });
 
     return aprovacion;

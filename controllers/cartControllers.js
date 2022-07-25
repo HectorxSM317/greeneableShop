@@ -17,9 +17,7 @@ const cartControllers = {
         amount: summary.amount,
         status: summary.status,
       }).save();
-      console.log("enviarmail");
       await sendSummary(newSummary);
-      console.log("envio el mail");
     } catch (err) {
       error = err;
     }
