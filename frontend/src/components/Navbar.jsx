@@ -25,6 +25,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import userActions from "../redux/actions/userActions";
 import toast from "react-hot-toast";
 
+
 const pages = [
   {
     name: "Home",
@@ -177,7 +178,8 @@ const Navbar = () => {
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <PersonOutlineIcon sx={{ color: "white", fontSize: "2rem" }} />
+                {/* <PersonOutlineIcon sx={{ color: "white", fontSize: "2rem" }} /> */}
+                {user ? <Avatar alt="User Photo" src={user?.photo}/> : <Avatar alt="Offline User" src="https://secure.gravatar.com/avatar/a6321ca519c15d35a4e297efc45d5ecb?s=500&d=mm&r=g" sx={{ color: "white"}}/> }
               </IconButton>
             </Tooltip>
 
