@@ -8,10 +8,10 @@ import { useState } from "react";
 
 export default function Details() {
   const { id } = useParams();
-  console.log(id);
+  // console.log(id);
   const dispatch = useDispatch();
   const [product, setProduct] = useState();
-  console.log(product);
+  // console.log(product);
 
   useEffect(() => {
     dispatch(productsActions.getOneProduct(id)).then((res) =>
