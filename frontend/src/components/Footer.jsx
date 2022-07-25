@@ -36,8 +36,8 @@ function Footer() {
                   </h5>
                   <iframe
                     src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d13139.529356443161!2d-58.51998844898532!3d-34.58184362101943!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bcb64c098b0e67%3A0x4f28c3a2b8ffefe4!2sVilla%20Pueyrred%C3%B3n%2C%20CABA!5e0!3m2!1ses-419!2sar!4v1658520367012!5m2!1ses-419!2sar"
-                    width="500"
-                    height="150"
+                    width="250"
+                    height="200"
                     style={{ border: "0", borderRadius: "5px" }}
                     allowFullScreen=""
                     loading="lazy"
