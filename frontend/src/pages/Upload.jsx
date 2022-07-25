@@ -67,46 +67,75 @@ export default function Uplaod() {
     }
 
     return (
-        <div className="asd">
-            <form onSubmit={handleSubmit} className="form-box p-6 drop-shadow-lg rounded-md" method="post">
-                <div>
-                    <input name="name" placeholder="name" type="text" required />
-                </div>
-                <div>
-                    <input name="description" placeholder="description" type="text" required />
-                </div>
-                <div>
-                    <input name="price" placeholder="price" type="text" required />
-                </div>
-                <div>
-                    <input name="stock" placeholder="stock" type="number" required />
-                </div>
-                <div>
-                    <Rating name="sustainable" value={value}
-                        onChange={(event, newValue) => {
-                            setValue(newValue);
+        <div className="fondoUp">
+            < form
+                className="form"
+                onSubmit={handleSubmit}
+                method="post"
+                style={{
+                    display: "flex",
+                    justifyContent: "center",
+                    paddingBottom: "1rem"
+
+                }
+                }
+            >
+                <div className="cont">
+                    <div
+                        className="form sign-in"
+                        style={{
+                            display: "flex",
+                            justifyContent: "center",
+                            flexDirection: "column",
+                            alignItems: "center",
                         }}
-                        icon={<RiLeafFill fontSize="inherit" color="green" />}
-                        emptyIcon={<RiLeafFill fontSize="inherit" />}
-                    />
-                </div>
-                <div>
+                    >
+                        <h2 className="h2Login">Upload Product</h2>
+                        <label className="labelUp">
+                            <span className="spanLabel">Name</span>
+                            <input className="inputUp" name="name" type="text" required />
+                        </label>
+                        <label className="labelUp">
+                            <span className="spanLabel">Description</span>
+                            <input className="inputUp" name="description" type="text" required />
+                        </label>
+                        <label className="labelUp">
+                            <span className="spanLabel">Price</span>
+                            <input className="inputUp" name="price" type="text" required />
+                        </label>
+                        <label className="labelUp">
+                            <span className="spanLabel">Stock</span>
+                            <input className="inputUp" name="stock" type="number" required />
+                        </label>
 
-                    <p>Category:</p>
-                    <select required >
-                        {cleanCats.map((item, i) => {
-                            return <option key={i}>{item}</option>;
-                        })}
-                    </select>
+                        <span style={{ marginTop: "1.5rem" }} className="spanLabel">Sustainable</span>
+                        <Rating style={{ marginTop: "1.5rem", borderBottom: "1px solid rgba(109, 93, 93, 0.4)" }} name="sustainable" value={value}
+                            onChange={(event, newValue) => {
+                                setValue(newValue);
+                            }}
+                            icon={<RiLeafFill fontSize="inherit" color="green" />}
+                            emptyIcon={<RiLeafFill fontSize="inherit" />}
+                        />
 
+
+                        <label className="labelUp">
+                            <span className="spanLabel">Category</span>
+                            <select className="inputUp" required >
+                                {cleanCats.map((item, i) => {
+                                    return <option key={i}>{item}</option>;
+                                })}
+                            </select>
+                        </label>
+                        <label className="labelUp">
+                            <span className="spanLabel">Photo</span>
+                            <input className="inputUp" required onChange={(event) => setFiles(event.target.files)} name="photo" placeholder="photo" type="file" />
+                        </label>
+                        <button className="submit botonLogin" type="submit">
+                            Upload
+                        </button>
+                    </div>
                 </div>
-                <div>
-                    <input required onChange={(event) => setFiles(event.target.files)} name="photo" placeholder="photo" type="file" />
-                </div>
-                <div>
-                    <button type="submit">Upload</button>
-                </div>
-            </form>
+            </form >
         </div>
     );
 }
