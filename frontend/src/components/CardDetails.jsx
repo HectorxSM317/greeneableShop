@@ -60,7 +60,7 @@ export default function RecipeReviewCard({ product }) {
     dispatch(productsActions.getProducts());
   }, [reload]);
   // const product = useSelector((store) => store.productsReducer.oneProduct);
-  console.log("inicio", product);
+  // console.log("inicio", product);
   const products = useSelector((store) => store.productsReducer.products);
 
   const allCateg = products.map((item) => item.category);
@@ -145,7 +145,7 @@ export default function RecipeReviewCard({ product }) {
     });
   }
 
-  console.log("effect", product);
+  // console.log("effect", product);
 
   useEffect(() => {
     if (product) {
@@ -164,10 +164,18 @@ export default function RecipeReviewCard({ product }) {
     }
   }, [product]);
 
+  function addToCart(product, e) {
+    e.preventDefault();
+
+    dispatch(productsActions.addToCart(product));
+    toast.success('Product added!')
+
+  }
+
   return (
     <Card className="details">
       <div className="detailsTop">
-        <div className="detailsTop-A flex flex-col justify-center items-start min-w-[30vw]">
+        <div className="detailsTop-A flex flex-col justify-center items-start min-w-[20vw]">
           <CardMedia
             className="detailsTop-A-cardMedia flex grow"
             component="img"
@@ -175,7 +183,7 @@ export default function RecipeReviewCard({ product }) {
             image={product?.photo}
             alt="Paella dish"
           />
-          <div className="grow">
+          <div className="grow inputUpload">
             {editable && (
               <select
                 onChange={(e) =>
@@ -189,54 +197,56 @@ export default function RecipeReviewCard({ product }) {
                 <option value="upload-image">Upload image</option>
               </select>
             )}
-            <div>
-              {editable && imageSelection === "upload-image" && (
-                <input
-                  onChange={(event) => {
-                    setProductState({
-                      ...productState,
-                      newImageFile: event.target.files[0],
-                    });
-                  }}
-                  type="file"
-                ></input>
-              )}
-            </div>
+              <div className="inputUploadA">
+                {editable && imageSelection === "upload-image" && (
+                  <input
+                    onChange={(event) => {
+                      setProductState({
+                        ...productState,
+                        newImageFile: event.target.files[0],
+                      });
+                    }}
+                    type="file"
+                  ></input>
+                )}
+              </div>
           </div>
         </div>
-
         <div className="detailsTop-B">
-          <Box sx={{ display: "flex", alignItems: "center" }}>
+          <Box className="editContent" sx={{ display: "flex", alignItems: "center"}}>
             <div>
               {loggedUser && loggedUser.role === "admin" && (
                 <div>
                   <Button
+                    className="editContentBtn"
                     variant="contained"
                     color="error"
                     id={product?._id}
                     onClick={handleDelete}
-                    sx={{ bgcolor: "#d30000", borderRadius: 50 }}
+                    sx={{ bgcolor: "#d30000", mr: 1,borderRadius: 50}}
                   >
                     <DeleteIcon sx={{ width: 15, color: "white" }} />
                   </Button>
                   <Button
+                    className="editContentBtn"
                     variant="contained"
                     color="primary"
                     id={product?._id}
                     onClick={handleEdit}
-                    sx={{ bgcolor: "#41788f", margin: 1, borderRadius: 50 }}
+                    sx={{ bgcolor: "#41788f",mr: 1, borderRadius: 5}}
                   >
                     <EditIcon sx={{ width: 15, color: "white" }} />
                   </Button>
                   {editable && (
                     <>
                       <Button
+                        className="editContentBtn"
                         variant="contained"
                         onClick={(e) => handleSubmit(e)}
                         sx={{
                           bgcolor: "#41788f",
                           bgcolor: "#13542d",
-                          margin: 1,
+                          my: 1,
                           borderRadius: 50,
                           color: "white",
                         }}
@@ -259,11 +269,11 @@ export default function RecipeReviewCard({ product }) {
               justifyContent: "space-between",
               width: "100%",
               alignItems: "center",
+              p: 0
             }}
           >
             {
-              <div className="flex flex-row items-center justify-center">
-                
+              <div className="flex flex-row items-center flex-wrap">
                 <p className="font-bold py-2">Name:</p>
                 <div
                   onInput={(event) =>
@@ -281,7 +291,8 @@ export default function RecipeReviewCard({ product }) {
               </div>
             }
           </CardContent>
-          <CardContent>
+          <CardContent
+          sx={{p: 0}}>
             <Typography
               variant="body"
               color="text.secondary"
@@ -313,7 +324,6 @@ export default function RecipeReviewCard({ product }) {
             >
               {
                 <div className="flex flex-row items-center justify-center my-2">
-                 
                   <p className="font-bold py-2 text-black">Stock:</p>
                   <div
                     onInput={(event) =>
@@ -331,7 +341,6 @@ export default function RecipeReviewCard({ product }) {
                 </div>
               }
             </Typography>
-
             <div>
               {editable ? (
                 <>
@@ -355,15 +364,16 @@ export default function RecipeReviewCard({ product }) {
                   color="text.secondary"
                   className="flex items-center"
                 >
-                  {console.log(product.category)}
+                  {/* {console.log(product.category)} */}
                   Category: {product.category}
-                  {console.log(product.category)}
+                  {/* {console.log(product.category)} */}
                 </Typography>
               )}
             </div>
           </CardContent>
-          <CardContent>
+          <CardContent sx={{p: 0}}>
             <Rating
+              sx={{py: 1}}
               readOnly={!editable}
               name="sustainable"
               value={sustainable}
@@ -377,16 +387,8 @@ export default function RecipeReviewCard({ product }) {
               emptyIcon={<RiLeafFill fontSize="inherit" />}
             />
           </CardContent>
-          <CardActions disableSpacing>
-            {/* <IconButton aria-label="add to favorites">
-              <FavoriteIcon />
-            </IconButton>
-            <IconButton aria-label="share">
-              <ShareIcon />
-            </IconButton> */}
-          </CardActions>
           <CardContent sx={{ width: "100%" }}>
-            <Button variant="contained" sx={{ width: "100%" }}>
+            <Button variant="contained" sx={{ width: "100%" }} onClick={(e) => addToCart(product, e)}>
               Add To Cart
             </Button>
           </CardContent>
