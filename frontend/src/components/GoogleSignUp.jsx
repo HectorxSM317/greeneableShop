@@ -3,15 +3,16 @@ import jwt_decode from 'jwt-decode';
 import { useDispatch } from 'react-redux';
 import userActions from '../redux/actions/userActions';
 import { useNavigate } from 'react-router-dom';
+import toast from 'react-hot-toast';
 // import { toast } from 'react-toastify';
 
 export default function GoogleSignUp({props}) {
   const dispatch = useDispatch();
   const navigate = useNavigate()
 
-  function handleCallbackResponse(response) {
+  async function handleCallbackResponse(response) {
     let userObject = jwt_decode(response.credential);
-    let res = dispatch(userActions.userSignUp({
+    let res = await dispatch(userActions.userSignUp({
     //   fullName: userObject.name,
     //   email: userObject.email,
     //   password: userObject.sub,
@@ -26,7 +27,20 @@ export default function GoogleSignUp({props}) {
 	    from: "google",
 	    role: "user"
     }))
-
+    console.log(res.data);
+    if(res.data.success){
+      toast.success(res.data.message, {
+      
+        position: "top-center",
+        autoClose: 7000 
+      })
+    }else{
+      toast.error(res.data.message, {
+      
+        position: "top-center",
+        autoClose: 7000 
+      })
+    }
     // if (res) {
     //   try {
     //     toast.success(res.data.message, {

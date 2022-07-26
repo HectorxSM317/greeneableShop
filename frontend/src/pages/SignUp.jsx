@@ -137,7 +137,7 @@ export default function LogIn() {
 														Register
 													</Button>
 													<p className='font-bold text-gray-500'>OR</p>
-													<GoogleSignUp />
+													<GoogleSignUp props={selectCountry}/>
 												</div>
 
 											</div>
