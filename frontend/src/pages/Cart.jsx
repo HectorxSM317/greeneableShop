@@ -54,7 +54,8 @@ export default function Cart() {
               )}{" "}
               USD
             </h4>
-
+            
+            
             <Button
               color="error"
               onClick={(e) => handleClearCart(e)}
