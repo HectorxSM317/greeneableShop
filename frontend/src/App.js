@@ -16,6 +16,7 @@ import { useEffect } from "react";
 import userActions from "./redux/actions/userActions";
 import toast, { Toaster } from "react-hot-toast";
 import { PayPalScriptProvider } from "@paypal/react-paypal-js";
+import Checkout from "./pages/Checkout";
 
 function App() {
   const dispatch = useDispatch();
@@ -50,6 +51,7 @@ function App() {
         <Route path="/AboutUs" element={<AboutUs />} />
         <Route path="/cart" element={<Cart />} />
         <Route path="/upload" element={<Upload />} />
+        <Route path="/checkout" element={<Checkout />} />
         {
           <Route
             path="/signUp"
@@ -65,7 +67,7 @@ function App() {
         {/* <Route path="/login" element={<Login />} /> */}
       </Routes>
       <Toaster position="top-left" reverseOrder={false} />
-      {/* <Footer /> */}
+      <Footer />
       {/* <ScrollToTop
         style={{ boxShadow: "rgba(0, 0, 0, 0.35) 0px 5px 15px" }}
         smooth

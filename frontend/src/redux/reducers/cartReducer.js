@@ -1,5 +1,6 @@
 const initialState = {
   cart: [],
+  summary: {},
 };
 
 const cartReducer = (state = initialState, action) => {
@@ -74,6 +75,12 @@ const cartReducer = (state = initialState, action) => {
       return {
         ...state,
         cart: action.payload,
+      };
+    case "SUMMARY":
+      console.log(action.payload);
+      return {
+        ...state,
+        summary: action.payload,
       };
 
     default:

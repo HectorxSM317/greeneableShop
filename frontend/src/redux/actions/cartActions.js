@@ -9,7 +9,10 @@ const cartActions = {
       let res = await axios.post(`${urlBack}/api/summary`, {
         summary,
       });
-      // console.log(res.data)
+      dispatch({
+        type: "SUMMARY",
+        payload: summary,
+      });
     };
   },
 
@@ -18,12 +21,9 @@ const cartActions = {
       const res = await axios(`${urlBack}/api/summary/${id}`);
     };
   },
-
-  // addCarrito: (idProduct) => {
-  //   return async (dispatch, getState) => {
-  //     const res = await axios(`${urlBack}/api/summary/${idProduct}`);
-  //   };
-  // },
+  checkOut: (summary) => {
+    return async (dispatch, getState) => {};
+  },
 };
 
 export default cartActions;

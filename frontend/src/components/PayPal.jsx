@@ -5,12 +5,14 @@ import { useSelector, useDispatch } from "react-redux";
 import cartActions from "../redux/actions/cartActions";
 import toast from "react-hot-toast";
 import { RiRestaurant2Line } from "react-icons/ri";
+import { useNavigate } from "react-router-dom";
 
 export default function PayPal({ isValid }) {
   const cart = useSelector((store) => store.productsReducer.cart);
   console.log(cart);
   const loggedUser = useSelector((store) => store.usersReducer.loggedUser);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const [success, setSuccess] = useState(false);
   const [orderID, setOrderID] = useState(false);
@@ -67,6 +69,7 @@ export default function PayPal({ isValid }) {
     dispatch({
       type: "CLEAR_CART",
     });
+    navigate("/checkout", 1000);
   }
 
   const createOrder = (data, actions) => {
