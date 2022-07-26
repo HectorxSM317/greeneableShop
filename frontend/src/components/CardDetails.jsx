@@ -388,7 +388,7 @@ export default function RecipeReviewCard({ product }) {
             />
           </CardContent>
           <CardContent sx={{ width: "100%" }}>
-            <Button variant="contained" sx={{ width: "100%" }} onClick={(e) => addToCart(product, e)}>
+            <Button className="generalBtn" variant="contained" sx={{ width: "100%", backgroundColor: "#13552D"}} onClick={(e) => addToCart(product, e)}>
               Add To Cart
             </Button>
           </CardContent>
