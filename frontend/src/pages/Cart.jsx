@@ -71,7 +71,7 @@ export default function Cart() {
                 <button
                   type="button"
                   onClick={validateStock}
-                  className="p-3 bg-green-300 rounded-md w-[10rem] my-4 text-white"
+                  className="validateStock"
                 >
                   Validate Stock
                 </button>

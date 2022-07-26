@@ -642,3 +642,18 @@
   }
 
 }
+
+.btnHome{
+  background-color: rgba(19, 85, 45, 0.8) !important;
+}
+
+.btnHome:hover{
+  background-color: #07642fe8 !important;
+  
+}
+
+.sustainable{
+  background-color:rgba(19, 85, 45, 0.8) !important;
+  color: white;
+  padding: .4rem;
+}
