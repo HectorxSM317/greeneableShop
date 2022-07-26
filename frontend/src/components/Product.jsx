@@ -38,9 +38,20 @@ export default function Product({ product }) {
             {product.price} USD
           </Typography>
 
-          {product.stock <= 5 ? (
+          {/* {product.stock <= 5 ? (
             <Typography color="error">Last units in stock!</Typography>
           ) : (
+            <Typography color="green">Available stock</Typography>
+          )} */}
+
+          {product.stock <= 5 ? 
+          (product.stock===0) ?
+             <Typography color="error">Out of stock</Typography>
+             :
+             <Typography color="error">Last units in stock!</Typography>  
+          
+            
+           : (
             <Typography color="green">Available stock</Typography>
           )}
 
@@ -54,12 +65,13 @@ export default function Product({ product }) {
         </div>
         <div className="moreInfo">
           <LinkRouter to={`/details/${product._id}`}>
-            <Button size="small" sx={{ color: "black" }}>
+            <Button size="small" className="viewMore">
               View more
             </Button>
           </LinkRouter>
           <Button
             variant="contained"
+            className="buttonAdd"
             onClick={(e) => product.stock > 0 && addToCart(product, e)}
           >
             Add To Cart
