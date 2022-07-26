@@ -15,7 +15,7 @@ import { TextField } from "@material-ui/core";
 import EmailIcon from '@mui/icons-material/Email';
 import Password from '../components/Password';
 import Button from '@mui/material/Button';
-// import toast  from 'react-hot-toast';
+import toast  from 'react-hot-toast';
 <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300&family=Montserrat:wght@600&display=swap" rel="stylesheet"></link>
 
 
@@ -56,14 +56,14 @@ export default function LogIn() {
 		//     })
 		// }
 		// if (res.data.from === "form-Signup") {
-		//     if (res.data.success) {
-		//         // toast.success(res.data.message)
-		// 		console.log(res.data.message);
-		//    // navigate('/signin')
-		//     } else {
-		//         toast.error(res.data.message)
-		//     }
-		// }
+		    if (res.data.success) {
+		        toast.success(res.data.message)
+				console.log(res.data.message);
+		   // navigate('/signin')
+		    } else {
+		        toast.error(res.data.message)
+		    }
+		
 	};
 
 
@@ -137,7 +137,7 @@ export default function LogIn() {
 														Register
 													</Button>
 													<p className='font-bold text-gray-500'>OR</p>
-													<GoogleSignUp />
+													<GoogleSignUp props={selectCountry}/>
 												</div>
 
 											</div>

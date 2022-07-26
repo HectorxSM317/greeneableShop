@@ -1,4 +1,5 @@
 import axios from "axios";
+import toast from "react-hot-toast";
 const urlBack = "http://localhost:4000";
 
 const userActions = {
@@ -6,7 +7,10 @@ const userActions = {
     console.log(userData);
     return async (dispatch, getState) => {
       let res = await axios.post(`${urlBack}/api/auth/signUp`, { userData });
-      console.log(res)
+      // {res.data.message.map((message)=> (
+      //   toast.error(message.message)
+      //   ))}
+      console.log(res);
       dispatch({
         type: "MESSAGE",
         payload: {
@@ -15,6 +19,8 @@ const userActions = {
           success: res.data.success,
         },
       });
+      return res
+      
     };
   },
   userSignIn: (loggedUser) => {
@@ -23,6 +29,7 @@ const userActions = {
       console.log(res)
       if (res.data.success) {
         localStorage.setItem("token", res.data.response.token);
+
         dispatch({
           type: "USER",
           payload: {

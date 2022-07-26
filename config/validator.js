@@ -6,7 +6,28 @@ const validator = (req, res, next) => {
     email: joi.string().email({ minDomainSegments: 2 }).required().messages({
       "string.email": '"mail": incorrect format',
     }),
-    firstName: joi.string().required(),
+    firstName: joi.string()
+    .min(3)
+    .max(30)
+    .trim()
+    .pattern(new RegExp('[a-zA-Z]'))
+    .required()
+    .messages({
+      'string.pattern.base':'"firstName" :can not contain numbers',
+      'string.min': '"firstName": min 3 characters',
+      'string.max': '"firstName": max 60 characters'
+    }),
+    lastName: joi.string()
+    .min(3)
+    .max(30)
+    .pattern(new RegExp('[a-zA-Z]'))
+    .trim()
+    .required()
+    .messages({
+      'string.pattern.base':'"lastName" :can not contain numbers',
+      'string.min': '"lastName": min 3 characters',
+      'string.max': '"lastName": max 60 characters'
+    }),
     password: joi
       .string()
       .min(8)
@@ -23,8 +44,8 @@ const validator = (req, res, next) => {
     city: joi.string(),
     address: joi.string(),
 
-    // photo: joi.string().required(),
-    lastName: joi.any(),
+    photo: joi.string(),
+      
     phoneNumber: joi.string(),
   });
   const validation = schema.validate(req.body.userData, { abortEarly: false });
