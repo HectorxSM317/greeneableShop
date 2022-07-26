@@ -1,4 +1,5 @@
 const Cart = require("../models/cart");
+const Product = require("../models/product");
 const sendSummary = require("./sendSummary");
 
 const cartControllers = {
@@ -6,6 +7,11 @@ const cartControllers = {
     console.log(req.body);
     let { productsCart, purchaseId, userId, payer, date, amount, status } =
       req.body.summary;
+
+    let arrayProductsId = productsCart.map((product) => product._id);
+    console.log("x", productsCart);
+    console.log(arrayProductsId);
+    let productsDb = [];
 
     let newSummary;
     console.log(req.body.summary)
@@ -27,6 +33,20 @@ const cartControllers = {
       error = err;
     }
 
+    try {
+      productsDb = await Product.find({ _id: { $in: arrayProductsId } });
+      for (const product of productsDb) {
+        let productOfCart = productsCart.find(
+          (p) => p._id === product._id.toString()
+        );
+        product.stock = product.stock - productOfCart.quantity;
+        await product.save();
+      }
+    } catch (err) {
+      error = err;
+    }
+    console.log(productsDb);
+
     res.json({
       res: error ? "ERROR" : newSummary,
       success: error ? false : true,
@@ -39,7 +59,7 @@ const cartControllers = {
     const error = null;
 
     try {
-      summary = await Cart.find().populate("productsId").populate("userId");
+      summary = await Cart.find();
     } catch (err) {
       error = err;
     }
