@@ -45,7 +45,7 @@ const validator = (req, res, next) => {
     address: joi.string(),
 
     photo: joi.string(),
-   
+      
     phoneNumber: joi.string(),
   });
   const validation = schema.validate(req.body.userData, { abortEarly: false });

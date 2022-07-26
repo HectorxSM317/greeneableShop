@@ -4,8 +4,9 @@ import { useDispatch } from "react-redux";
 import userActions from "../redux/actions/userActions";
 import { useNavigate } from "react-router-dom";
 // import { toast } from 'react-toastify';
+import toast from 'react-hot-toast';
 
-export default function GoogleSignIn() {
+export default function GoogleSignIn({props}) {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -17,35 +18,28 @@ export default function GoogleSignIn() {
         email: userObject.email,
         password: userObject.sub,
         userPicture: userObject.picture,
+        country: props,
         from: "google",
       })
     );
-
+      console.log(res);
     // if (res) {
     //   try {
     //     toast.success(res.data.message, {
-    //       position: "top-center",
+    //       position: "top-left",
     //       autoClose: 7000,
-    //       hideProgressBar: false,
-    //       closeOnClick: true,
-    //       pauseOnHover: true,
-    //       draggable: true,
-    //       progress: undefined,
+          
     //       });
     //     navigate('/index', {replace:true})
     //   } catch(error) {
-
+        
     //     console.log(error);
     //   }
     // } else {
     //   toast.error(res.data.message, {
-    //     position: "top-center",
+    //     position: "top-left",
     //     autoClose: 7000,
-    //     hideProgressBar: false,
-    //     closeOnClick: true,
-    //     pauseOnHover: true,
-    //     draggable: true,
-    //     progress: undefined,
+        
     //     });
     //   return res
     // }

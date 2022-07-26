@@ -32,7 +32,7 @@ export default function Product({ product }) {
           <Typography gutterBottom variant="h6" component="div">
             {product.name}
           </Typography>
-          <Typography variant="body2" color="text.secondary">
+          <Typography variant="body2" color="text.secondary" className="price">
             {product.price} USD
           </Typography>
 
@@ -62,7 +62,7 @@ export default function Product({ product }) {
             </Button>
           </LinkRouter>
 
-        <Button variant="contained" onClick={(e) => addToCart(product, e)}>
+        <Button variant="contained" color="success" onClick={(e) => addToCart(product, e)}>
           Add To Cart
          </Button>
          
