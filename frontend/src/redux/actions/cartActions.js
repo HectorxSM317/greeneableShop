@@ -4,7 +4,6 @@ const urlBack = "http://localhost:4000";
 
 const cartActions = {
   createSummary: (summary) => {
-    console.log(summary);
     return async (dispatch, getState) => {
       let res = await axios.post(`${urlBack}/api/summary`, {
         summary,
@@ -13,12 +12,13 @@ const cartActions = {
         type: "SUMMARY",
         payload: summary,
       });
+      return res.data.res.success;
     };
   },
 
-  getOneSummary: (id) => {
+  getSummaryUser: () => {
     return async (dispatch, getState) => {
-      const res = await axios(`${urlBack}/api/summary/${id}`);
+      const res = await axios(`${urlBack}/api/summary/checkouts`);
     };
   },
   checkOut: (summary) => {

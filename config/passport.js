@@ -11,12 +11,15 @@ module.exports = passport.use(
       secretOrKey: process.env.SECRET_KEY, //recibimos la secret key . si todo está ok pasa al cuerpo
     },
     (jwt_payload, done) => {
+      console.log(jwt_payload);
       //extracting the body of the token (payload)
       User.findOne({ _id: jwt_payload.id })
 
         .then((user) => {
+          console.log("userpassport", user);
           if (user) {
             //if user exists
+            console.log("paso");
             return done(null, user);
           } else if (err) {
             console.log(err);

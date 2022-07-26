@@ -1,6 +1,7 @@
 const initialState = {
   cart: [],
   summary: {},
+  checkout: false,
 };
 
 const cartReducer = (state = initialState, action) => {
@@ -77,10 +78,10 @@ const cartReducer = (state = initialState, action) => {
         cart: action.payload,
       };
     case "SUMMARY":
-      console.log(action.payload);
       return {
         ...state,
         summary: action.payload,
+        checkout: true,
       };
 
     default:

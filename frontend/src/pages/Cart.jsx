@@ -7,16 +7,18 @@ import productsActions from "../redux/actions/productsActions";
 import Button from "@mui/material/Button";
 import DeleteIcon from "@mui/icons-material/Delete";
 import "../styles/productCart.css";
-import { Link as LinkRouter } from "react-router-dom";
+import { Link as LinkRouter, useNavigate } from "react-router-dom";
 
 export default function Cart() {
   const dispatch = useDispatch();
+  const navigate = useNavigate;
   const cart = useSelector((store) => store.productsReducer.cart);
+  const checkout = useSelector((store) => store.cartReducer.checkout);
   const [isValid, setIsValid] = useState(false);
+  const summary = useSelector((store) => store.cartReducer.summary);
+  const loggedUser = useSelector((store) => store.usersReducer.loggedUser);
 
-  // useEffect(() => {
-  //   dispatch(productsActions.getProducts());
-  // }, [cart]);
+  console.log(summary);
 
   function handleClearCart(e) {
     dispatch({
@@ -30,7 +32,7 @@ export default function Cart() {
     setIsValid(res);
   }
 
-  console.log(isValid);
+  console.log(checkout);
   return (
     <>
       {cart?.length > 0 ? (
@@ -52,8 +54,7 @@ export default function Cart() {
               )}
               USD
             </h4>
-            
-            
+
             <Button
               color="error"
               onClick={(e) => handleClearCart(e)}
@@ -87,6 +88,11 @@ export default function Cart() {
               Click here to start making it greeneable!
             </button>
           </LinkRouter>
+          {!checkout && loggedUser && (
+            <LinkRouter to="/checkout">
+              <button className="text-6xl text-black">CheckOut</button>
+            </LinkRouter>
+          )}
         </div>
       )}
     </>
