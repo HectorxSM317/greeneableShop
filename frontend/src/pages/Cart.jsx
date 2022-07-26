@@ -37,15 +37,15 @@ export default function Cart() {
     <>
       {cart?.length > 0 ? (
         <div className="min-h-[60vh] flex items-center justify-center flex-col px-6">
-          <div className="mt-[6rem]">
-            <h3>Current products in your cart:</h3>
+          <div className="mt-[6rem] cartTitle">
+            <h1>Current products in your cart:</h1>
           </div>
           {cart?.length > 0 &&
             cart?.map((product, i) => (
               <ProductCart product={product} key={i} isValid={isValid} />
             ))}
 
-          <div className="product-box w-[90%] flex row rounded-lg bg-slate-200 p-5 mt-6 min-w-[10rem] mx-2 justify-around items-center containerPriceClear">
+          <div className="product-box w-[90%] flex row rounded-lg p-5 mt-6 min-w-[10rem] mx-2 justify-around items-center containerPriceClear">
             <h4 className="font-bold">
               Total Price:
               {cart.reduce(
@@ -56,9 +56,10 @@ export default function Cart() {
             </h4>
 
             <Button
-              color="error"
+              className="generalBtn"
+              color="success"
               onClick={(e) => handleClearCart(e)}
-              variant="outlined"
+              variant="contained"
               startIcon={<DeleteIcon />}
             >
               CLEAR CART

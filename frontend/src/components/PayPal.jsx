@@ -63,9 +63,9 @@ export default function PayPal({ isValid }) {
 
   if (orderID) {
     createSummary();
-    dispatch({
-      type: "CLEAR_CART",
-    });
+    // dispatch({
+    //   type: "CLEAR_CART",
+    // });
   }
 
   const createOrder = (data, actions) => {

@@ -1,7 +1,7 @@
 const initialState = {
   cart: [],
-  summary: {},
-  checkout: false,
+  // summary: {},
+  // checkout: false,
 };
 
 const cartReducer = (state = initialState, action) => {
@@ -77,12 +77,12 @@ const cartReducer = (state = initialState, action) => {
         ...state,
         cart: action.payload,
       };
-    case "SUMMARY":
-      return {
-        ...state,
-        summary: action.payload,
-        checkout: true,
-      };
+    // case "SUMMARY":
+    //   return {
+    //     ...state,
+    //     summary: action.payload,
+    //     checkout: true,
+    //   };
 
     default:
       return state;

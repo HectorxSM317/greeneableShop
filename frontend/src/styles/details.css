@@ -1,8 +1,11 @@
 .containerDetails {
-    min-height: 80vh;
+    min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
+    /* background-image: url("../assets/parallax/back.jpg");
+    background-position: center;
+    background-size: cover; */
 }
 
 .editable {
@@ -29,6 +32,43 @@
     width: 100%;
     display: flex;
     justify-content: center;
+}
+
+.containerLorem{
+    width: 90%;
+    min-height: 15vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 6rem;
+}
+.lorem{
+    min-height: 12vh;
+    width: 100%;
+    border-radius: 10px;
+    background-color: rgba(19, 85, 45, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0px 0px 3px black;
+}
+
+.lorem h1{
+    text-align: center;
+    font-size: 30px;
+    color: white;
+}
+
+.containerCardDetails{
+    width: 90%;
+    min-height: 70vh;
+    background-color: #2a9d4b10;
+    margin: 1rem;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .details {
@@ -71,6 +111,14 @@
     flex-direction: column-reverse;
     justify-content: center;
     align-items: center;
+}
+/* 13552D */
+/* rgba(19, 85, 45, 0.706) */
+.generalBtn{ 
+    background-color: rgba(19, 85, 45, 0.8) !important;
+}
+.generalBtn:hover{ 
+    background-color: #07642fe8 !important;
 }
 
 @media (max-width: 600px) {
