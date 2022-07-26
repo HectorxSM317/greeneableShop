@@ -140,7 +140,7 @@ export default function Products() {
               Sadly, we can't find any products to match your query. Try
               broadening your search!
             </p>
-            <img src="https://i.ibb.co/89f3FN5/tree.png" alt="tree" border="0" className="tree"/>
+            <img src="https://i.ibb.co/pZLvF6D/planet.png" alt="planet" border="0" className="planet"/>
             
           </div>
         )}

@@ -81,7 +81,7 @@ export default function Index() {
           </div>
           <div className="lineB">
             <LinkRouter to={"/products/"}>
-              <Button variant="contained" sx={{ backgroundColor: "#13552D" }}>
+              <Button variant="contained" className="btnHome">
                 All Products
               </Button>
             </LinkRouter>
@@ -155,7 +155,7 @@ export default function Index() {
           <div className="lineBtn">
             <h3
               variant="contained"
-              style={{ backgroundColor: "#13552D", color: "white" }}
+              className="sustainable"
             >
               Sustainable
             </h3>
@@ -166,7 +166,7 @@ export default function Index() {
           <div className="lineBtn">
             <h3
               variant="contained"
-              style={{ backgroundColor: "#13552D", color: "white" }}
+              className="sustainable"
             >
               Sustainable
             </h3>
@@ -196,7 +196,7 @@ export default function Index() {
               {/* <RiLeafFill size={100} width="100%" height={100} color="green" /> */}
               <img
                 className="leaf h-2/3"
-                src="https://images.vexels.com/media/users/3/227638/isolated/lists/0aa9744a5e4230e6eca1ee7295fa862e-naturaleza-hoja-plana.png"
+                src="https://www.pngmart.com/files/7/Green-Leaf-PNG-Photo.png"
                 alt=""
               />
             </div>
@@ -218,7 +218,7 @@ export default function Index() {
               {/* <RiLeafFill size={100} width="100%" height={100} color="green" /> */}
               <img
                 className="leaf h-2/3"
-                src="https://images.vexels.com/media/users/3/227638/isolated/lists/0aa9744a5e4230e6eca1ee7295fa862e-naturaleza-hoja-plana.png"
+                src="https://www.pngmart.com/files/7/Green-Leaf-PNG-Photo.png"
                 alt=""
               />
             </div>
@@ -240,7 +240,7 @@ export default function Index() {
               {/* <RiLeafFill size={100} width="100%" height={100} color="green" /> */}
               <img
                 className="leaf h-2/3"
-                src="https://images.vexels.com/media/users/3/227638/isolated/lists/0aa9744a5e4230e6eca1ee7295fa862e-naturaleza-hoja-plana.png"
+                src="https://www.pngmart.com/files/7/Green-Leaf-PNG-Photo.png"
                 alt=""
               />
             </div>
@@ -262,7 +262,7 @@ export default function Index() {
               {/* <RiLeafFill size={100} width="100%" height={100} color="green" /> */}
               <img
                 className="leaf h-2/3"
-                src="https://images.vexels.com/media/users/3/227638/isolated/lists/0aa9744a5e4230e6eca1ee7295fa862e-naturaleza-hoja-plana.png"
+                src="https://www.pngmart.com/files/7/Green-Leaf-PNG-Photo.png"
                 alt=""
               />
             </div>
@@ -280,7 +280,7 @@ export default function Index() {
               {/* <RiLeafFill size={100} width="100%" height={100} color="green" /> */}
               <img
                 className="leaf h-2/3"
-                src="https://images.vexels.com/media/users/3/227638/isolated/lists/0aa9744a5e4230e6eca1ee7295fa862e-naturaleza-hoja-plana.png"
+                src="https://www.pngmart.com/files/7/Green-Leaf-PNG-Photo.png"
                 alt=""
               />
             </div>
@@ -288,21 +288,19 @@ export default function Index() {
 
           <div className="flex relative flex-grow justify-center w-full items-center">
             <h2 hidden={firstLeaf} className="absolute text-center">
-              Sustituyen productos tradicionales por otros de menor impacto
+            Substitute traditional products for others with less impact.
             </h2>
             <h2 hidden={secondLeaf} className="absolute text-center">
-              consumen menos energía al momento de ser usados
+            They consume less energy when used.
             </h2>
             <h2 hidden={thirdLeaf} className="absolute text-center">
-              No usan productos o procesos agresivos para el medio ambiente en
-              su proceso de producción
+            They do not use aggressive products or processes for the environment in their production process.
             </h2>
             <h2 hidden={cuartoLeaf} className="absolute text-center">
-              sus materias primas provienen de recursos naturales bien
-              aprovechados que se recuperan en cierto plazo
+            Its raw materials come from well-used natural resources that are recovered over a period of time.
             </h2>
             <h2 hidden={quinthLeaf} className="absolute text-center">
-              contribuyen a resolver un problema ambiental
+            Contribute to solving an environmental problem.
             </h2>
             <h2 hidden={noLeaf} className="absolute text-center">
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam
@@ -395,7 +393,7 @@ export default function Index() {
           </div>
           <div className="lineB">
             <LinkRouter to={"/products/"}>
-              <Button variant="contained" sx={{ backgroundColor: "#13552D" }}>
+              <Button variant="contained" className="btnHome">
                 Shop Now
               </Button>
             </LinkRouter>
