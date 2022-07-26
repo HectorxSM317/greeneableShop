@@ -11,11 +11,11 @@ const productsActions = {
   },
 
   getOneProduct: (id) => {
-    console.log(id);
+    // console.log(id);
     return async (dispatch, getState) => {
       const res = await axios.get(`${urlBack}/api/product/${id}`);
       dispatch({ type: "GETONEPRODUCT", payload: res.data.response.product });
-      console.log(res);
+      // console.log(res);
       return res;
     };
   },

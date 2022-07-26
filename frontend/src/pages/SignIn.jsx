@@ -65,6 +65,7 @@ function Login (props) {
     let res = await dispatch(userActions.userSignIn(loggedUser))
     // await props.signInUser(logedUser)
 
+    
     if (res.data.success) {
       try {
         toast.success(res.data.message, {
@@ -101,6 +102,9 @@ function Login (props) {
       </div>
       <div className='w-full h-screen z-20 bg-green-400 top-0 left-0 absolute opacity-60'></div>
       <div className="z-30 w-full h-screen flex flex-col absolute top-0 left-0 justify-center items-center ">
+        <div className="w-full text-center pb-4 ">
+          <h1 className="text-6xl sm:text-8xl font-extrabold text-white font-['Pacifico', 'cursive']">Login</h1>
+        </div>
         <div className="w-full sm:w-fit h-fit p-8 bg-[white] rounded" 
         style={{
           height: "50vh !important"

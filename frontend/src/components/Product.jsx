@@ -6,6 +6,7 @@ import productsActions from "../redux/actions/productsActions";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import toast from "react-hot-toast";
+import "../styles/products.css";
 
 export default function Product({ product }) {
   const dispatch = useDispatch();
@@ -20,6 +21,9 @@ export default function Product({ product }) {
     toast.success("Product added!");
   }
 
+  // let filter  = cart.filter ( item => item._id === product._id)
+  // console.log(filter)
+
   return (
     <div className="card">
       <div className="image">
@@ -30,9 +34,23 @@ export default function Product({ product }) {
           <Typography gutterBottom variant="h6" component="div">
             {product.name}
           </Typography>
-          <Typography variant="body2" color="text.secondary">
+          <Typography variant="body2" color="text.secondary" className="price">
             {product.price} USD
           </Typography>
+
+          {product.stock <= 5 ? (
+            <Typography color="error">Last units in stock!</Typography>
+          ) : (
+            <Typography color="green">Available stock</Typography>
+          )}
+
+          {/* <Typography color="green">
+        {cart.filter((item)=>
+          //  console.log(item.quantity)
+          // <Typography>quantity:{ item.quantity}</Typography>
+          item._id===product._id
+        )}
+          </Typography> */}
         </div>
         <div className="moreInfo">
           <LinkRouter to={`/details/${product._id}`}>
