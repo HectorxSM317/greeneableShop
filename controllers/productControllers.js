@@ -140,7 +140,9 @@ const ProductsControllers = {
       error = err;
     }
     var threeRandom = [];
-    let filteredArray = products.filter((product)=>product.category === "Lamp");
+    let filteredArray = products.filter(
+      (product) => product.category === "Lamp"
+    );
     const shuffled = filteredArray.sort(() => 0.5 - Math.random());
     threeRandom = shuffled.slice(0, 3);
 
@@ -159,13 +161,12 @@ const ProductsControllers = {
       error = err;
     }
     var threeRandom = [];
-    let filteredArray = products.filter((product)=>product.category === "Toys");
-    
-      const shuffled = filteredArray.sort(() => 0.5 - Math.random());
-      threeRandom = shuffled.slice(0, 3);
-  
-    
-    
+    let filteredArray = products.filter(
+      (product) => product.category === "Toys"
+    );
+
+    const shuffled = filteredArray.sort(() => 0.5 - Math.random());
+    threeRandom = shuffled.slice(0, 3);
 
     res.json({
       response: error ? "ERROR" : threeRandom,
@@ -174,11 +175,36 @@ const ProductsControllers = {
     });
   },
 
-  
+  validateStock: async (req, res) => {
+    const productsInCart = req.body.cart;
 
-  getStock: async (res, req) => {
-    console.log(req.body);
-    const productAdded = req.body;
+    let arrayProductsId = productsInCart.map((product) => product._id);
+    let productsDb = [];
+    let productsValidos = [];
+    let error;
+
+    try {
+      productsDb = await Product.find({ _id: { $in: arrayProductsId } });
+    } catch (err) {
+      error = err;
+    }
+
+    productsDb.forEach((item) => {
+      let productOfCart = productsInCart.find(
+        (product) => product._id === item._id.toString()
+      );
+      if (item.stock >= productOfCart.quantity) {
+        productsValidos.push(item);
+      }
+    });
+
+    res.json({
+      response: error
+        ? "ERROR"
+        : productsValidos.length === productsInCart.length,
+      success: error ? false : true,
+      error: error,
+    });
   },
 };
 

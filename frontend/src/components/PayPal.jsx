@@ -4,8 +4,9 @@ import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import cartActions from "../redux/actions/cartActions";
 import toast from "react-hot-toast";
+import { RiRestaurant2Line } from "react-icons/ri";
 
-export default function PayPal() {
+export default function PayPal({ isValid }) {
   const cart = useSelector((store) => store.productsReducer.cart);
   console.log(cart);
   const loggedUser = useSelector((store) => store.usersReducer.loggedUser);
@@ -15,7 +16,7 @@ export default function PayPal() {
   const [orderID, setOrderID] = useState(false);
   const [ErrorMessage, setErrorMessage] = useState("");
   const [details, setDetails] = useState();
-  const [productsCart, setProductsCart] = useState([]);
+  // const [productsCart, setProductsCart] = useState([]);
 
   const getTotal = (cart) => {
     let Total = cart?.reduce(
@@ -27,19 +28,8 @@ export default function PayPal() {
   };
   // console.log(itemsCart);
   useEffect(() => {
+    if (!isValid) return;
     PayPalCheckOut();
-    let items = [];
-
-    cart.map((item, i) => {
-      items.push({
-        name: item.name,
-        quantity: item.quantity,
-        photo: item.photo,
-        price: item.price,
-      });
-    });
-    console.log(items);
-    setProductsCart(items);
   }, [cart]);
 
   const initialOptions = {
@@ -49,10 +39,10 @@ export default function PayPal() {
     currency: "USD", //Establesco la moneda
     intent: "capture", //Estableco el metodos este autoriza la operacion y captura los fondos
   };
-  console.log(productsCart);
+  // console.log(productsCart);
   function createSummary() {
     const summary = {
-      productsCart: productsCart,
+      productsCart: cart,
       purchaseId: details.id,
       userId: loggedUser.id || loggedUser._id,
       payer: {
@@ -74,6 +64,9 @@ export default function PayPal() {
 
   if (orderID) {
     createSummary();
+    dispatch({
+      type: "CLEAR_CART",
+    });
   }
 
   const createOrder = (data, actions) => {
@@ -99,7 +92,7 @@ export default function PayPal() {
       setSuccess(true);
       console.log("Capture result", details, JSON.stringify(details, null, 2)); //veo los datos en consola
       var transaction = details.purchase_units[0].payments.captures[0];
-      // localStorage.removeItem("carrito");
+
       toast.success(
         "Transaction " +
           transaction.status +
@@ -109,13 +102,6 @@ export default function PayPal() {
       );
       setDetails(details);
       setOrderID(transaction.id);
-      // const compraVerificada =
-      //   details.purchase_units[0].payments.captures[0].status;
-      // /* console.log(compraVerificada)
-      //           console.log(carritoUser); */
-      // if (compraVerificada == "COMPLETED") {
-      //   carritoUser.map((x) => dispatch(modificarStock(x._id, x.stock - 1)));
-      // }
     });
   };
 
@@ -129,6 +115,7 @@ export default function PayPal() {
   };
 
   const PayPalCheckOut = () => {
+    if (!isValid) return;
     return (
       <PayPalScriptProvider options={initialOptions}>
         {/*Inicializo el CDN*/}
