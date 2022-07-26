@@ -7,7 +7,7 @@ import Rating from "@mui/material/Rating";
 import { RiLeafFill } from "react-icons/ri";
 import "../styles/productCart.css";
 
-export default function ProductCart({ product }) {
+export default function ProductCart({ product, isValid }) {
   const dispatch = useDispatch();
 
   function handleRemove(productId, e) {
@@ -70,7 +70,10 @@ export default function ProductCart({ product }) {
         <h3>Stock: {product?.stock}</h3>
         <div className="addQuantityRemove">
           <div className="addRemove">
-            <button onClick={(e) => handleRemove(product?._id, e)}>
+            <button
+              disabled={isValid}
+              onClick={(e) => handleRemove(product?._id, e)}
+            >
               <RemoveIcon className="buttonaddRemove" />
             </button>
           </div>
@@ -78,7 +81,12 @@ export default function ProductCart({ product }) {
             <p>{product.quantity}</p>
           </div>
           <div className="addRemove">
-            <button onClick={(e) => addToCart(product, e)}>
+            <button
+              disabled={isValid}
+              onClick={(e) =>
+                product.quantity < product.stock && addToCart(product, e)
+              }
+            >
               <AddIcon className="buttonaddRemove" />
             </button>
           </div>

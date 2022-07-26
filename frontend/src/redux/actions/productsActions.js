@@ -128,11 +128,14 @@ const productsActions = {
     });
   },
 
-  getStock: (cart) => {
+  validateStock: (cart) => {
+    console.log(cart);
     return async (dispatch, getState) => {
-      const res = await axios.get(`${urlBack}/api/productcart/getstock`, {
+      const res = await axios.post(`${urlBack}/api/productcart/validateStock`, {
         cart,
       });
+      console.log(res.data);
+      return res.data.response;
     };
   },
 };

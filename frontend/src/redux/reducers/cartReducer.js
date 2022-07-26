@@ -64,6 +64,7 @@ const cartReducer = (state = initialState, action) => {
       return newReduxStore;
     }
     case "CLEAR_CART":
+      localStorage.removeItem("product");
       return {
         ...state,
         cart: [],
