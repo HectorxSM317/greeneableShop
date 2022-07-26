@@ -7,16 +7,18 @@ import productsActions from "../redux/actions/productsActions";
 import Button from "@mui/material/Button";
 import DeleteIcon from "@mui/icons-material/Delete";
 import "../styles/productCart.css";
-import { Link as LinkRouter } from "react-router-dom";
+import { Link as LinkRouter, useNavigate } from "react-router-dom";
 
 export default function Cart() {
   const dispatch = useDispatch();
+  const navigate = useNavigate;
   const cart = useSelector((store) => store.productsReducer.cart);
+  const checkout = useSelector((store) => store.cartReducer.checkout);
   const [isValid, setIsValid] = useState(false);
+  const summary = useSelector((store) => store.cartReducer.summary);
+  const loggedUser = useSelector((store) => store.usersReducer.loggedUser);
 
-  // useEffect(() => {
-  //   dispatch(productsActions.getProducts());
-  // }, [cart]);
+  console.log(summary);
 
   function handleClearCart(e) {
     dispatch({
@@ -30,7 +32,7 @@ export default function Cart() {
     setIsValid(res);
   }
 
-  console.log(isValid);
+  console.log(checkout);
   return (
     <>
       {cart?.length > 0 ? (
@@ -52,6 +54,7 @@ export default function Cart() {
               )}
               USD
             </h4>
+
             <Button
               className="generalBtn"
               color="success"
@@ -62,21 +65,31 @@ export default function Cart() {
               CLEAR CART
             </Button>
           </div>
-          <div className="product-box w-[90%] rounded-lg p-5 mt-6 min-w-[10rem] mx-2 my-5 buy">
-            <div>
-              <button
-                type="button"
-                onClick={validateStock}
-                className="p-3 rounded-md w-[10rem] my-4 text-white generalBtn"
-              >
-                Check stock
-              </button>
+          {loggedUser ? (
+            <div className="product-box w-[90%] rounded-lg bg-slate-200 p-5 mt-6 min-w-[10rem] mx-2 my-5 buy">
+              <div>
+                <button
+                  type="button"
+                  onClick={validateStock}
+                  className="p-3 bg-green-300 rounded-md w-[10rem] my-4 text-white"
+                >
+                  Validate Stock
+                </button>
+              </div>
+              <p className="my-2">Payment methods:</p>
+              <div className="paypal">
+                <PayPal isValid={isValid} />
+              </div>
             </div>
-            <p className="my-2">Payment methods:</p>
-            <div className="paypal">
-              <PayPal isValid={isValid} />
+          ) : (
+            <div className="flex gap-3 my-10">
+              <p>You need</p>
+              <LinkRouter to="/signIn">
+                <button className="color">Sign in</button>
+              </LinkRouter>
+              <p>to pay</p>
             </div>
-          </div>
+          )}
         </div>
       ) : (
         <div className="emptyCart">
@@ -86,6 +99,11 @@ export default function Cart() {
               Click here to start making it greeneable!
             </button>
           </LinkRouter>
+          {/* {!checkout && loggedUser && (
+            <LinkRouter to="/checkout">
+              <button className="text-6xl text-black">CheckOut</button>
+            </LinkRouter>
+          )} */}
         </div>
       )}
     </>

@@ -4,26 +4,26 @@ const urlBack = "http://localhost:4000";
 
 const cartActions = {
   createSummary: (summary) => {
-    console.log(summary);
     return async (dispatch, getState) => {
       let res = await axios.post(`${urlBack}/api/summary`, {
         summary,
       });
-      // console.log(res.data)
+      dispatch({
+        type: "SUMMARY",
+        payload: summary,
+      });
+      return res.data.res.success;
     };
   },
 
-  getOneSummary: (id) => {
+  getSummaryUser: () => {
     return async (dispatch, getState) => {
-      const res = await axios(`${urlBack}/api/summary/${id}`);
+      const res = await axios(`${urlBack}/api/summary/checkouts`);
     };
   },
-
-  // addCarrito: (idProduct) => {
-  //   return async (dispatch, getState) => {
-  //     const res = await axios(`${urlBack}/api/summary/${idProduct}`);
-  //   };
-  // },
+  checkOut: (summary) => {
+    return async (dispatch, getState) => {};
+  },
 };
 
 export default cartActions;

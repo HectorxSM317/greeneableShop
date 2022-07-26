@@ -4,7 +4,6 @@ import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import cartActions from "../redux/actions/cartActions";
 import toast from "react-hot-toast";
-import { RiRestaurant2Line } from "react-icons/ri";
 
 export default function PayPal({ isValid }) {
   const cart = useSelector((store) => store.productsReducer.cart);
@@ -59,14 +58,14 @@ export default function PayPal({ isValid }) {
       status: details.status,
     };
 
-    dispatch(cartActions.createSummary(summary));
+    let res = dispatch(cartActions.createSummary(summary));
   }
 
   if (orderID) {
     createSummary();
-    dispatch({
-      type: "CLEAR_CART",
-    });
+    // dispatch({
+    //   type: "CLEAR_CART",
+    // });
   }
 
   const createOrder = (data, actions) => {
