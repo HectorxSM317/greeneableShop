@@ -67,7 +67,7 @@ function App() {
         {/* <Route path="/login" element={<Login />} /> */}
       </Routes>
       <Toaster position="top-left" reverseOrder={false} />
-      {/* <Footer /> */}
+      <Footer />
       {/* <ScrollToTop
         style={{ boxShadow: "rgba(0, 0, 0, 0.35) 0px 5px 15px" }}
         smooth

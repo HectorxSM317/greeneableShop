@@ -66,15 +66,15 @@ Router.route("/productcart/validateStock").post(validateStock);
 
 const {
   createSummary,
-  getSummaryUser,
+  // getSummaryUser,
   // addCart,
 } = require("../controllers/cartControllers");
 
 Router.route("/summary").post(createSummary);
-Router.route("/summary/checkouts").get(
-  passport.authenticate("jwt", { session: false }),
-  getSummaryUser
-);
+// Router.route("/summary/checkouts").get(
+//   passport.authenticate("jwt", { session: false }),
+//   getSummaryUser
+// );
 // Router.route("/summary/cart/:id").get(addCart);
 
 // admin

@@ -68,25 +68,25 @@ const cartControllers = {
     });
   },
 
-  getSummaryUser: async (res, req) => {
-    console.log("asdsa");
-    // console.log("req", req);
-    // const id = req.user._id;
-    const summary = [];
-    let error;
+  // getSummaryUser: async (res, req) => {
+  //   console.log("asdsa");
+  // console.log("req", req);
+  // const id = req.user._id;
+  // const summary = [];
+  // let error;
 
-    // try {
-    //   summary = await Cart.find({ userId: id });
-    // } catch (err) {
-    //   error = err;
-    // }
-    // console.log(summary);
-    // res.json({
-    //   res: error ? "ERROR" : summary,
-    //   success: error ? false : true,
-    //   error: error,
-    // });
-  },
+  // try {
+  //   summary = await Cart.find({ userId: id });
+  // } catch (err) {
+  //   error = err;
+  // }
+  // console.log(summary);
+  // res.json({
+  //   res: error ? "ERROR" : summary,
+  //   success: error ? false : true,
+  //   error: error,
+  // });
+  // },
 };
 
 module.exports = cartControllers;

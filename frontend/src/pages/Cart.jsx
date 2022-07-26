@@ -64,21 +64,31 @@ export default function Cart() {
               CLEAR CART
             </Button>
           </div>
-          <div className="product-box w-[90%] rounded-lg bg-slate-200 p-5 mt-6 min-w-[10rem] mx-2 my-5 buy">
-            <div>
-              <button
-                type="button"
-                onClick={validateStock}
-                className="p-3 bg-green-300 rounded-md w-[10rem] my-4 text-white"
-              >
-                Comprobar stock
-              </button>
+          {loggedUser ? (
+            <div className="product-box w-[90%] rounded-lg bg-slate-200 p-5 mt-6 min-w-[10rem] mx-2 my-5 buy">
+              <div>
+                <button
+                  type="button"
+                  onClick={validateStock}
+                  className="p-3 bg-green-300 rounded-md w-[10rem] my-4 text-white"
+                >
+                  Validate Stock
+                </button>
+              </div>
+              <p className="my-2">Payment methods:</p>
+              <div className="paypal">
+                <PayPal isValid={isValid} />
+              </div>
             </div>
-            <p className="my-2">Payment methods:</p>
-            <div className="paypal">
-              <PayPal isValid={isValid} />
+          ) : (
+            <div className="flex gap-3 my-10">
+              <p>You need</p>
+              <LinkRouter to="/signIn">
+                <button className="color">Sign in</button>
+              </LinkRouter>
+              <p>to pay</p>
             </div>
-          </div>
+          )}
         </div>
       ) : (
         <div className="emptyCart">
@@ -88,11 +98,11 @@ export default function Cart() {
               Click here to start making it greeneable!
             </button>
           </LinkRouter>
-          {!checkout && loggedUser && (
+          {/* {!checkout && loggedUser && (
             <LinkRouter to="/checkout">
               <button className="text-6xl text-black">CheckOut</button>
             </LinkRouter>
-          )}
+          )} */}
         </div>
       )}
     </>
