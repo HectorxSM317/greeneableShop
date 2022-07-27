@@ -43,7 +43,6 @@ export default function Index() {
     let B = document.getElementById("center");
     let C = document.getElementById("front");
     let D = document.getElementById("titleHeader");
-    let E = document.getElementById("par");
 
     window.addEventListener("scroll", function () {
       let value = window.scrollY;
@@ -51,8 +50,7 @@ export default function Index() {
       B.style.top = value * 1 + "px";
       C.style.top = value * 0.5 + "px";
       D.style.marginTop = value * 1.6 + "px";
-      E.style.Top = value * 1 + "px";
-      // console.log(B.style.display)
+      console.log(B.style.display)
 
       if (window.scrollY <= 800) {
         B.style.display = "block";
