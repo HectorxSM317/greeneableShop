@@ -401,8 +401,10 @@ export default function Index() {
           <div className="lastImage-A"></div>
           <div className="lastImage-B">
             <Typography sx={{ fontSize: 50 }}>Be sustainable</Typography>
+
           </div>
         </div>
+
       </div>
     </div>
   );

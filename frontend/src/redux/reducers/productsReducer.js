@@ -37,7 +37,8 @@ const productReducer = (state = initialState, action) => {
       function filterProducts() {
         let filterP = [];
 
-        if (buttonRadio && searchInput !== "") {
+        if (buttonRadio && searchInput &&  sustainableRank !== "") {
+          sortSustainable()
           filterP.push(
             ...state.products.filter(
               (evento) =>
@@ -47,13 +48,15 @@ const productReducer = (state = initialState, action) => {
                 evento.category === buttonRadio
             )
           );
-        } else if (buttonRadio && searchInput === "") {
+        } else if (buttonRadio && searchInput && sustainableRank === "") {
+          sortSustainable()
           filterP.push(
             ...state.products.filter(
               (evento) => evento.category === buttonRadio
             )
           );
-        } else if (!buttonRadio && searchInput !== "") {
+        } else if (!buttonRadio && searchInput && sustainableRank !== "") {
+          sortSustainable()
           filterP.push(
             ...state.products.filter((evento) =>
               evento.name
@@ -61,13 +64,36 @@ const productReducer = (state = initialState, action) => {
                 .includes(searchInput.trim().toLowerCase())
             )
           );
-        } else {
+        } 
+        else if (!buttonRadio && !searchInput  && sustainableRank !== "") {
+          sortSustainable()
+          filterP.push(
+            ...state.products.filter((evento) =>
+              evento.name
+                .toLowerCase()
+                .includes(searchInput.trim().toLowerCase())
+            )
+          );
+        }
+        else if (!buttonRadio && searchInput && !sustainableRank !== "") {
+          sortSustainable()
+          filterP.push(
+            ...state.products.filter((evento) =>
+              evento.name
+                .toLowerCase()
+                .includes(searchInput.trim().toLowerCase())
+            )
+          );
+        }
+        
+        else {
           filterP.push(...state.products);
         }
 
         if (orderSort) {
           filterP = sortProducts(orderSort, filterP);
         }
+       
 
         return filterP;
       }
@@ -91,9 +117,41 @@ const productReducer = (state = initialState, action) => {
         return filter;
       }
 
-      // let productfilter = products.filter(
-      //   (product) => product.sustainable <= 2
-      // );
+      function sortSustainable(filterP, ){
+      let sustArray = [];
+    
+      if (sustainableRank === "leaf1") {
+        sustArray.push(...state.products.filter((product)=>
+            product.sustainable === 1
+        ))
+      }
+      else if (sustainableRank <= "leaf2"){
+        sustArray.push(...state.products.filter((product)=>
+          product.sustainable === 2
+      ))
+      }
+      else if (sustainableRank <= "leaf3"){
+        sustArray.push(...state.products.filter((product)=>
+          product.sustainable === 3
+      ))
+      }
+      else if (sustainableRank <= "leaf4"){
+        sustArray.push(...state.products.filter((product)=>
+          product.sustainable === 4
+      ))
+      }
+      else if (sustainableRank <= "leaf5"){
+        sustArray.push(...state.products.filter((product)=>
+          product.sustainable === 5
+      ))
+      }
+    
+      return sustArray
+    }
+
+
+
+  
 
       return {
         ...state,
