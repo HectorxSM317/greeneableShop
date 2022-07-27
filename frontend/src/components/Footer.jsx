@@ -6,73 +6,51 @@ import TwitterIcon from "@mui/icons-material/Twitter";
 import TelegramIcon from "@mui/icons-material/Telegram";
 // import Logo from '../assets/logo-lighter.png'
 import { Link as LinkRouter } from "react-router-dom";
+import Logo from "../assets/logo-effect3.png";
+import { AiOutlineHome } from "react-icons/ai";
+import { BiStore } from "react-icons/bi";
+import { BiInfoCircle } from "react-icons/bi";
 
 function Footer() {
   return (
-    <footer>
-      <div className="top_header">
-        <section>
-          <span>
-            <i className="fa fa-map-marker"></i>
-          </span>
-          <span>Phone: (+54) 11 345 2167</span>
-        </section>
-        <section>
-          <span>
-            <i className="fa fa-phone"></i>
-          </span>
-          <table>
-            <tbody>
-              <tr>
-                <td className="mapStyle">
-                  <h5
-                    style={{
-                      display: "flex",
-                      justifyContent: "center",
-                      paddingBottom: ".5rem",
-                    }}
-                  >
-                    Find us at:
-                  </h5>
-                  <iframe
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d13139.529356443161!2d-58.51998844898532!3d-34.58184362101943!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bcb64c098b0e67%3A0x4f28c3a2b8ffefe4!2sVilla%20Pueyrred%C3%B3n%2C%20CABA!5e0!3m2!1ses-419!2sar!4v1658520367012!5m2!1ses-419!2sar"
-                    width="250"
-                    height="200"
-                    style={{ border: "0", borderRadius: "5px" }}
-                    allowFullScreen=""
-                    loading="lazy"
-                  ></iframe>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </section>
-        <section>
-          <span>
-            <i className="fa fa-envelope"></i>
-          </span>
-          <span>
-            Contact:{" "}
-            <a href="mailto:info@greeneable.com">info@greeneable.com</a>
-          </span>
-        </section>
-      </div>
-      <span className="border-shape"></span>
-      <div className="bottom_content">
-        <section>
-          <InstagramIcon style={{ marginRight: "1rem" }} />
-          <FacebookIcon style={{ marginRight: "1rem" }} />
-          <TwitterIcon style={{ marginRight: "1rem" }} />
-          <TelegramIcon />
-        </section>
-        <section>
-          <LinkRouter to={"/"}>Home</LinkRouter>
-          <LinkRouter to={"/products/"}>Products</LinkRouter>
+    <footer className="flex flex-col">
+      <div className="flex flex-col">
+        <div className="flex flex-col items-center justify-around md:justify-center sm:flex-row gap-3 md:gap-20 py-3">
+          <div className="flex justify-center sm:hidden pt-2">
+            <LinkRouter to="/">
+              <img src={Logo} className="w-20 justify-start" />
+            </LinkRouter>
+          </div>
 
-          <LinkRouter to={"/aboutUs/"}>About Us</LinkRouter>
-        </section>
+          <div className="flex gap-5 sm:gap-10 md:gap-15 lg:gap-20 justify-center py-2">
+            <LinkRouter to={"/"} className="flex items-center">
+              <AiOutlineHome /> Home
+            </LinkRouter>
+            <LinkRouter to={"/products/"} className="flex items-center">
+              <BiStore /> Products
+            </LinkRouter>
+            <LinkRouter to={"/aboutUs/"} className="flex items-center">
+              <BiInfoCircle /> About Us
+            </LinkRouter>
+          </div>
+        </div>
+
+        <div className="flex flex-col sm:flex-row sm:justify-around gap-3 my-3">
+          <div className="flex justify-center">
+            <p>Phone: (+54) 11 345 2167</p>
+          </div>
+          <div className="flex gap-5 items-center justify-center">
+            <InstagramIcon />
+            <FacebookIcon />
+            <TwitterIcon />
+          </div>
+          <div className="flex justify-center">
+            Contact:
+            <a href="mailto:info@greeneable.com">info@greeneable.com</a>
+          </div>
+        </div>
       </div>
-      <div className="copyright">
+      <div className="bg-neutral-900/50 p-2 text-white text-center">
         Copyright © 2022 Greeneable - All rights reserved
       </div>
     </footer>

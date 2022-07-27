@@ -13,12 +13,10 @@ export default function Cart() {
   const dispatch = useDispatch();
   const navigate = useNavigate;
   const cart = useSelector((store) => store.productsReducer.cart);
-  const checkout = useSelector((store) => store.cartReducer.checkout);
+  // const checkout = useSelector((store) => store.cartReducer.checkout);
   const [isValid, setIsValid] = useState(false);
-  const summary = useSelector((store) => store.cartReducer.summary);
+  // const summary = useSelector((store) => store.cartReducer.summary);
   const loggedUser = useSelector((store) => store.usersReducer.loggedUser);
-
-  console.log(summary);
 
   function handleClearCart(e) {
     dispatch({
@@ -32,7 +30,6 @@ export default function Cart() {
     setIsValid(res);
   }
 
-  console.log(checkout);
   return (
     <>
       {cart?.length > 0 ? (

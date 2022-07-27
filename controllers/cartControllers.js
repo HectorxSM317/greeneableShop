@@ -54,17 +54,30 @@ const cartControllers = {
     });
   },
 
-  getSummary: async (res, req) => {
-    let summary;
-    const error = null;
+  getSustainable: async (req, res) => {
+    let summary = [];
+    let error;
+    let arraySustainable = [];
+    let sustainable = 0;
 
     try {
       summary = await Cart.find();
     } catch (err) {
       error = err;
     }
+
+    summary.map((summ) => {
+      summ.productsCart.map((p) =>
+        arraySustainable.push(p.sustainable * p.quantity)
+      );
+    });
+
+    let sustainableFull = arraySustainable.reduce(
+      (total, item) => total + item
+    );
+
     res.json({
-      res: error ? "ERROR" : summary,
+      res: error ? "ERROR" : sustainableFull,
       success: error ? false : true,
       error: error,
     });

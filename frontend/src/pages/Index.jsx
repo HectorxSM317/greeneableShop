@@ -42,17 +42,15 @@ export default function Index() {
     let A = document.getElementById("back");
     let B = document.getElementById("center");
     let C = document.getElementById("front");
-    let D = document.getElementById("text");
-    let E = document.getElementById("par");
+    let D = document.getElementById("titleHeader");
 
     window.addEventListener("scroll", function () {
       let value = window.scrollY;
       A.style.top = value * 0.8 + "px";
       B.style.top = value * 1 + "px";
       C.style.top = value * 0.5 + "px";
-      D.style.marginTop = value * 1.5 + "px";
-      E.style.Top = value * 1 + "px";
-      // console.log(B.style.display)
+      D.style.marginTop = value * 1.6 + "px";
+      console.log(B.style.display)
 
       if (window.scrollY <= 800) {
         B.style.display = "block";
@@ -66,13 +64,13 @@ export default function Index() {
     <div className="bodyPrueba">
       <div className="headerPrueba"></div>
       <div className="section">
-        <img className="poi" src={back} id="back" alt="" />
+        <img className="sectionImg" src={back} id="back" alt="" />
         <img src={center} id="center" alt="" />
-        <div id="text">
+        <div id="titleHeader">
           <h2>Greeneable</h2>
-          <h3 id="par">Sustainable products to take care of our planet</h3>
+          <h3>Sustainable products to take care of our planet</h3>
         </div>
-        <img className="poi" src={front} id="front" alt="" />
+        <img className="sectionImg" src={front} id="front" alt="" />
       </div>
       <div className="contenedorDeTodo">
         <div className="leaves">
@@ -189,22 +187,23 @@ export default function Index() {
           </div>
           <div className="leavesText">
             <h2 hidden={firstLeaf}>
-            Substitute traditional products for others with less impact.
+              Substitute traditional products for others with less impact.
             </h2>
-            <h2 hidden={secondLeaf}>
-            They consume less energy when used.
-            </h2>
+            <h2 hidden={secondLeaf}>They consume less energy when used.</h2>
             <h2 hidden={thirdLeaf}>
-            They do not use aggressive products or processes for the environment in their production process.
+              They do not use aggressive products or processes for the
+              environment in their production process.
             </h2>
             <h2 hidden={cuartoLeaf}>
-            Its raw materials come from well-used natural resources that are recovered over a period of time.
+              Its raw materials come from well-used natural resources that are
+              recovered over a period of time.
             </h2>
             <h2 hidden={quinthLeaf}>
-            Contribute to solving an environmental problem.
+              Contribute to solving an environmental problem.
             </h2>
             <h2 hidden={noLeaf}>
-              Hover over the leaves to obtein info about the sustainability levels.
+              Hover over the leaves to obtein info about the sustainability
+              levels.
             </h2>
           </div>
         </div>
@@ -287,10 +286,7 @@ export default function Index() {
             <div className="line2A-A"></div>
           </div>
           <div className="lineBtn">
-            <h3
-              variant="contained"
-              className="sustainable"
-            >
+            <h3 variant="contained" className="sustainable">
               Sustainable
             </h3>
           </div>
@@ -298,10 +294,7 @@ export default function Index() {
         <div className="separator"></div>
         <div className="line3">
           <div className="lineBtn">
-            <h3
-              variant="contained"
-              className="sustainable"
-            >
+            <h3 variant="contained" className="sustainable">
               Sustainable
             </h3>
           </div>
