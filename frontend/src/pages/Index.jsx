@@ -73,9 +73,11 @@ export default function Index() {
         <img className="sectionImg" src={front} id="front" alt="" />
       </div>
       <div className="contenedorDeTodo">
-        <div className="leaves">
+
+      <div className="leaves">
           <div className="topLeaves">
             <h1>Our sustainability project:</h1>
+            <p>We are Greeneable, an ecological e-commerce deeply committed to protecting the environment, and we are aware of the serious deforestation problems that affect the Amazon rainforest (the lung of the world). For this reason, we offer an innovative rating system, based on scores from 1 to 5, which represent the sustainability levels of our products. Every 500 points achieved, we will donate 1 tree for reforestation projects.</p>
           </div>
           <div className="leavesImg">
             <div
@@ -187,19 +189,19 @@ export default function Index() {
           </div>
           <div className="leavesText">
             <h2 hidden={firstLeaf}>
-              Substitute traditional products for others with less impact.
+              <span>Level 1</span>: Substitute traditional products for others with less impact.
             </h2>
-            <h2 hidden={secondLeaf}>They consume less energy when used.</h2>
+            <h2 hidden={secondLeaf}><span>Level 2</span>: They consume less energy when used.</h2>
             <h2 hidden={thirdLeaf}>
-              They do not use aggressive products or processes for the
+            <span>Level 3</span>: They do not use aggressive products or processes for the
               environment in their production process.
             </h2>
             <h2 hidden={cuartoLeaf}>
-              Its raw materials come from well-used natural resources that are
+            <span>Level 4</span>: Its raw materials come from well-used natural resources that are
               recovered over a period of time.
             </h2>
             <h2 hidden={quinthLeaf}>
-              Contribute to solving an environmental problem.
+            <span>Level 5</span>: Contribute to solving an environmental problem.
             </h2>
             <h2 hidden={noLeaf}>
               Hover over the leaves to obtein info about the sustainability
@@ -207,6 +209,7 @@ export default function Index() {
             </h2>
           </div>
         </div>
+
         <div className="line">
           <div className="lineA">
             <div className="lineA-A"></div>
