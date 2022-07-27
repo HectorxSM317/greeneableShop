@@ -131,10 +131,10 @@ export default function Products() {
               broadening your search!
             </p>
             <img
-              src="https://i.ibb.co/89f3FN5/tree.png"
-              alt="tree"
+              src="https://i.ibb.co/pZLvF6D/planet.png"
+              alt="planet"
               border="0"
-              className="tree"
+              className="planet"
             />
           </div>
         )}
