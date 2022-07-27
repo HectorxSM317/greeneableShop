@@ -32,68 +32,65 @@ const productReducer = (state = initialState, action) => {
       let buttonRadio = action.payload.buttonRadio;
       let orderSort = action.payload.orderSort;
       let sustainableRank = action.payload.sustainableRank;
-      // console.log(orderSort);
+      console.log(sustainableRank);
 
       function filterProducts() {
         let filterP = [];
 
-        if (buttonRadio && searchInput &&  sustainableRank !== "") {
-          sortSustainable()
+        if (buttonRadio && searchInput && sustainableRank !== 0) {
           filterP.push(
             ...state.products.filter(
               (evento) =>
                 evento.name
                   .toLowerCase()
                   .includes(searchInput.trim().toLowerCase()) &&
-                evento.category === buttonRadio
+                evento.category === buttonRadio &&
+                evento.sustainable === sustainableRank
             )
           );
-        } else if (buttonRadio && searchInput && sustainableRank === "") {
-          sortSustainable()
+        } else if (buttonRadio && searchInput && sustainableRank === 0) {
           filterP.push(
             ...state.products.filter(
               (evento) => evento.category === buttonRadio
             )
           );
         } else if (!buttonRadio && searchInput && sustainableRank !== "") {
-          sortSustainable()
           filterP.push(
-            ...state.products.filter((evento) =>
-              evento.name
-                .toLowerCase()
-                .includes(searchInput.trim().toLowerCase())
+            ...state.products.filter(
+              (evento) =>
+                evento.name
+                  .toLowerCase()
+                  .includes(searchInput.trim().toLowerCase()) &&
+                evento.sustainable === sustainableRank
             )
           );
-        } 
-        else if (!buttonRadio && !searchInput  && sustainableRank !== "") {
-          sortSustainable()
+        } else if (!buttonRadio && !searchInput && sustainableRank !== "") {
           filterP.push(
-            ...state.products.filter((evento) =>
-              evento.name
-                .toLowerCase()
-                .includes(searchInput.trim().toLowerCase())
+            ...state.products.filter(
+              (evento) =>
+                evento.name
+                  .toLowerCase()
+                  .includes(searchInput.trim().toLowerCase()) &&
+                evento.sustainable === sustainableRank
             )
           );
-        }
-        else if (!buttonRadio && searchInput && !sustainableRank !== "") {
-          sortSustainable()
+        } else if (!buttonRadio && searchInput && !sustainableRank !== "") {
           filterP.push(
-            ...state.products.filter((evento) =>
-              evento.name
-                .toLowerCase()
-                .includes(searchInput.trim().toLowerCase())
+            ...state.products.filter(
+              (evento) =>
+                evento.name
+                  .toLowerCase()
+                  .includes(searchInput.trim().toLowerCase()) &&
+                evento.sustainable === sustainableRank
             )
           );
-        }
-        
-        else {
+        } else {
           filterP.push(...state.products);
         }
 
         if (orderSort) {
           filterP = sortProducts(orderSort, filterP);
         }
-       
 
         return filterP;
       }
@@ -117,41 +114,34 @@ const productReducer = (state = initialState, action) => {
         return filter;
       }
 
-      function sortSustainable(filterP, ){
-      let sustArray = [];
-    
-      if (sustainableRank === "leaf1") {
-        sustArray.push(...state.products.filter((product)=>
-            product.sustainable === 1
-        ))
-      }
-      else if (sustainableRank <= "leaf2"){
-        sustArray.push(...state.products.filter((product)=>
-          product.sustainable === 2
-      ))
-      }
-      else if (sustainableRank <= "leaf3"){
-        sustArray.push(...state.products.filter((product)=>
-          product.sustainable === 3
-      ))
-      }
-      else if (sustainableRank <= "leaf4"){
-        sustArray.push(...state.products.filter((product)=>
-          product.sustainable === 4
-      ))
-      }
-      else if (sustainableRank <= "leaf5"){
-        sustArray.push(...state.products.filter((product)=>
-          product.sustainable === 5
-      ))
-      }
-    
-      return sustArray
-    }
+      function sortSustainable(filterP) {
+        let sustArray = [];
 
+        if (sustainableRank === "leaf1") {
+          sustArray.push(
+            ...state.products.filter((product) => product.sustainable === 1)
+          );
+        } else if (sustainableRank <= "leaf2") {
+          sustArray.push(
+            ...state.products.filter((product) => product.sustainable === 2)
+          );
+        } else if (sustainableRank <= "leaf3") {
+          sustArray.push(
+            ...state.products.filter((product) => product.sustainable === 3)
+          );
+        } else if (sustainableRank <= "leaf4") {
+          sustArray.push(
+            ...state.products.filter((product) => product.sustainable === 4)
+          );
+        } else if (sustainableRank <= "leaf5") {
+          sustArray.push(
+            ...state.products.filter((product) => product.sustainable === 5)
+          );
+        }
+        console.log(sustArray);
 
-
-  
+        return sustArray;
+      }
 
       return {
         ...state,

@@ -108,35 +108,35 @@ export default function Products() {
         <div>
           <Checkbox
             id="leaf1"
-            value="leaf1"
+            value={1}
             onChange={(e) => setSustainableRank(e.target.value)}
             icon={<RiLeafLine />}
             checkedIcon={<RiLeafFill />}
           />
           <Checkbox
             id="leaf2"
-            value="leaf2"
+            value={2}
             onChange={(e) => setSustainableRank(e.target.value)}
             icon={<RiLeafLine />}
             checkedIcon={<RiLeafFill />}
           />
           <Checkbox
             id="leaf3"
-            value="leaf3"
+            value={3}
             onChange={(e) => setSustainableRank(e.target.value)}
             icon={<RiLeafLine />}
             checkedIcon={<RiLeafFill />}
           />
           <Checkbox
             id="leaf4"
-            value="leaf4"
+            value={4}
             onChange={(e) => setSustainableRank(e.target.value)}
             icon={<RiLeafLine />}
             checkedIcon={<RiLeafFill />}
           />
           <Checkbox
             id="leaf5"
-            value="leaf5"
+            value={5}
             onChange={(e) => setSustainableRank(e.target.value)}
             icon={<RiLeafLine />}
             checkedIcon={<RiLeafFill />}
