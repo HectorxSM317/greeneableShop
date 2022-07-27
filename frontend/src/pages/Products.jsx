@@ -43,7 +43,7 @@ export default function Products() {
 
   return (
     <div className="p-0 mr-0 flex flex-col min-h-[100vh]">
-      <div className="upper-box flex flex-col sm:flex-row justify-center m-0 p-4 px-5 container-box bg-slate-100 sticky items-center sm:justify-around ">
+      <div className="upper-box bgInputs gap-2 flex flex-col sm:flex-row justify-center m-0 p-4 px-5 container-box bg-slate-100 sticky items-center sm:justify-around ">
         <div className="input-search">
           <label
             htmlFor="default-search"
@@ -79,16 +79,14 @@ export default function Products() {
           </div>
         </div>
         <div className="order">
-          <label className="mx-2" htmlFor="order">
-            Order by
-          </label>
+          <label className="mx-2" htmlFor="order"></label>
           <select
             onChange={(e) => setorderSort(e.target.value)}
             name="order"
-            className="bg-transparent"
+            className="bg-transparent border-2 rounded-2xl p-2"
             id="order"
           >
-            <option value={false}>Sort</option>
+            <option value={false}>Sort by</option>
             <option value="as-name">Ascending name</option>
             <option value="des-name">Descending name</option>
             <option value="high-price">Higher price</option>
