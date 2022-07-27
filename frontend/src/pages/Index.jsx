@@ -23,11 +23,11 @@ export default function Index() {
   const [noLeaf, setNoLeaf] = useState(false);
 
   // console.log(firstLeaf);
-  // useEffect(() => {
-  //   setTimeout(() => {
-  //     window.scrollTo(0, 0);
-  //   }, 500);
-  // }, []);
+  useEffect(() => {
+    setTimeout(() => {
+      window.scrollTo(0, 0);
+    }, 500);
+  }, []);
   useEffect(() => {
     axios
       .get("http://localhost:4000/api/threelampproducts/random")
@@ -401,10 +401,8 @@ export default function Index() {
           <div className="lastImage-A"></div>
           <div className="lastImage-B">
             <Typography sx={{ fontSize: 50 }}>Be sustainable</Typography>
-
           </div>
         </div>
-
       </div>
     </div>
   );

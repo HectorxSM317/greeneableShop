@@ -9,6 +9,11 @@ import { RiLeafFill } from "react-icons/ri";
 import { RiLeafLine } from "react-icons/ri";
 
 export default function Products() {
+  useEffect(() => {
+    setTimeout(() => {
+      window.scrollTo(0, 0);
+    }, 500);
+  }, []);
   const [input, setInput] = useState("");
   const [buttonRadio, setbuttonRadio] = useState("");
   const [orderSort, setorderSort] = useState("");
@@ -110,36 +115,46 @@ export default function Products() {
             id="leaf1"
             value={1}
             onChange={(e) => setSustainableRank(e.target.value)}
-            icon={<RiLeafLine />}
-            checkedIcon={<RiLeafFill />}
+            icon={<RiLeafLine style={{ color: "green", fontSize: "28px" }} />}
+            checkedIcon={
+              <RiLeafFill style={{ color: "green", fontSize: "28px" }} />
+            }
           />
           <Checkbox
             id="leaf2"
             value={2}
             onChange={(e) => setSustainableRank(e.target.value)}
-            icon={<RiLeafLine />}
-            checkedIcon={<RiLeafFill />}
+            icon={<RiLeafLine style={{ color: "green", fontSize: "28px" }} />}
+            checkedIcon={
+              <RiLeafFill style={{ color: "green", fontSize: "28px" }} />
+            }
           />
           <Checkbox
             id="leaf3"
             value={3}
             onChange={(e) => setSustainableRank(e.target.value)}
-            icon={<RiLeafLine />}
-            checkedIcon={<RiLeafFill />}
+            icon={<RiLeafLine style={{ color: "green", fontSize: "28px" }} />}
+            checkedIcon={
+              <RiLeafFill style={{ color: "green", fontSize: "28px" }} />
+            }
           />
           <Checkbox
             id="leaf4"
             value={4}
             onChange={(e) => setSustainableRank(e.target.value)}
-            icon={<RiLeafLine />}
-            checkedIcon={<RiLeafFill />}
+            icon={<RiLeafLine style={{ color: "green", fontSize: "28px" }} />}
+            checkedIcon={
+              <RiLeafFill style={{ color: "green", fontSize: "28px" }} />
+            }
           />
           <Checkbox
             id="leaf5"
             value={5}
             onChange={(e) => setSustainableRank(e.target.value)}
-            icon={<RiLeafLine />}
-            checkedIcon={<RiLeafFill />}
+            icon={<RiLeafLine style={{ color: "green", fontSize: "28px" }} />}
+            checkedIcon={
+              <RiLeafFill style={{ color: "green", fontSize: "28px" }} />
+            }
           />
         </div>
       </div>

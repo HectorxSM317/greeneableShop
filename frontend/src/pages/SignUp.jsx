@@ -7,7 +7,7 @@ import axios from "axios";
 import MenuItem from "@mui/material/MenuItem";
 import Select from "@mui/material/Select";
 import GoogleSignUp from "../components/GoogleSignUp";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link as LinkRouter } from "react-router-dom";
 import Box from "@mui/material/Box";
 import AccountCircle from "@mui/icons-material/AccountCircle";
@@ -22,6 +22,11 @@ import toast from "react-hot-toast";
 ></link>;
 
 export default function LogIn() {
+  useEffect(() => {
+    setTimeout(() => {
+      window.scrollTo(0, 0);
+    }, 500);
+  }, []);
   const [selectCountry, setSelectCountry] = useState("");
 
   const dispatch = useDispatch();
