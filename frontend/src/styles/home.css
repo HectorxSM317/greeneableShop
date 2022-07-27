@@ -1,7 +1,7 @@
 .bodyPrueba {
   min-height: 100vh;
   background-color: grey;
-  overflow-x: hidden;
+  /* overflow-x: hidden; */
 }
 
 .headerPrueba {
