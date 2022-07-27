@@ -112,7 +112,7 @@ const Navbar = () => {
   return (
     <AppBar position="static">
       <Container maxWidth="xl">
-        <Toolbar disableGutters>
+        <Toolbar disableGutters sx={{width: "100%"}}>
           <Box
             className="order-1"
             sx={{
@@ -158,11 +158,11 @@ const Navbar = () => {
             </Menu>
           </Box>
 
-          <LinkRouter className="order-0" to="/">
+          <LinkRouter className="order-0" to="/" >
             <Image src={Logo} className="loguito justify-start" />
           </LinkRouter>
 
-          <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
+          <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" }, width: "60%", justifyContent: "center" }}>
             {pages.map((page, index) => (
               <LinkRouter
                 key={index}
@@ -184,7 +184,7 @@ const Navbar = () => {
             ))} */}
           </Box>
 
-          <Box className="flex items-center gap-5 order-3">
+          <Box className="flex items-center gap-5 order-3" sx={{width: "20%", justifyContent: "flex-end"}}>
             <IconButton aria-label="cart">
               <StyledBadge badgeContent={sustainable} color="success">
                 <RiLeafFill
