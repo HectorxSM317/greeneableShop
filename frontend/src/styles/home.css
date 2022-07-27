@@ -57,7 +57,7 @@
 }
 
 #par {
-  margin-top: 150px;
+  padding-top: 200px;
   position: absolute;
   color: white;
   font-size: 2vw;
@@ -144,7 +144,7 @@
 .firstContent {
   min-height: 50vh;
   display: flex;
-  margin: 5rem;
+  margin: 2rem 5rem;
 }
 
 .firstContentA {
@@ -338,7 +338,7 @@
 .secondContent {
   min-height: 50vh;
   display: flex;
-  margin: 5rem;
+  margin: 2rem 5rem;
 }
 
 .secondContentA {
@@ -365,7 +365,7 @@
   height: 40vh;
   display: flex;
   justify-content: space-around;
-  margin: 5rem;
+  margin: 2rem 5rem;
   gap: 2rem;
 }
 
@@ -522,6 +522,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  text-align: center;
 }
 
 .lastImage-B {
@@ -547,34 +548,27 @@
   border-radius: 20px;
 }
 
-.topLeaves{
-  background-color: #2a9d4b10;
-  height: 10vh;
-  margin: 0 5rem;
-  border-top-left-radius: 20px;
-  border-top-right-radius: 20px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-}
-.topLeavesA{
-  font-size: 1.5em;
-}
 .leaves{
-  /* background-color: rgba(19, 85, 45, 0.5); */
   background-color: #2a9d4b10;
-  height: 20vh;
+  height: 30vh;
   margin: 0 5rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  border-bottom-left-radius: 20px;
-  border-bottom-right-radius: 20px;
+  border-radius: 20px;
+}
+.topLeaves{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+.topLeaves h1{
+  font-size: 1.5em;
 }
 .leavesImg{
-  height: 70%;
+  height: 60%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -590,7 +584,24 @@
   text-align: center;
 }
 
+.line4{
+  display: none;
+}
+
 @media (max-width: 375px) {
+  .line4 {
+    margin: 0rem 5rem;
+    height: 10vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+  }
+  
+  .line4A {
+    width: 100%;
+    height: 5px;
+    background-color: #a3c5b2;
+  }
 
   .firstContentA,
   .secondContentB {
@@ -628,10 +639,6 @@
     width: 100% !important;
   }
 
-  .twoCalls {
-    margin-top: 2rem !important;
-  }
-
   .text h1 {
     font-size: 1em;
   }
@@ -646,6 +653,9 @@
 }
 
 @media (max-width: 768px) {
+  .leaves{
+    margin: 0 1rem;
+  }
   .carouselHome {
     margin: 2rem 2rem
   }
@@ -678,7 +688,7 @@
   
   .firstContentB,
   .secondContentA {
-    height: 25vh;
+    max-height: 35vh;
     width: 100%;
     padding: 0;
   }
