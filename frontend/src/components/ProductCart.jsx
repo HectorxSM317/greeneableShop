@@ -37,9 +37,9 @@ export default function ProductCart({ product, isValid }) {
   }
 
   return (
-    <div className="product-box flex row bg-slate-200 p-5 items-center w-[90%] my-2 containerCardsCart">
+    <div className="product-box flex row p-5 items-center w-[90%] my-2 containerCardsCart">
       <img
-        className="w-[10rem] h-[10rem] object-cover"
+        className="w-[10rem] h-[10rem] object-cover imageCart"
         src={product?.photo}
         alt="..."
       />

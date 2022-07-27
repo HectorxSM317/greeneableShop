@@ -24,10 +24,17 @@ export default function Details() {
   return (
     <>
       <div style={{ display: "flex", flexDirection: "column" }} className="containerDetails">
-        {product && <CardDetails product={product} />}
-        <LinkRouter to={"/products/"}>
-          <Button variant="contained">Back to Products</Button>
-        </LinkRouter>
+        <div className="containerLorem">
+        <div className="lorem">
+          <h1>Everything you and the world needs is here</h1>
+        </div>
+        </div>
+        <div className="containerCardDetails">
+          {product && <CardDetails product={product} />}
+          <LinkRouter to={"/products/"}>
+            <Button className="generalBtn" variant="contained" sx={{mb:4}}>Back to Products</Button>
+          </LinkRouter>
+        </div>
       </div>
     </>
   );

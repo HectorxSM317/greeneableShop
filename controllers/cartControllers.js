@@ -68,24 +68,25 @@ const cartControllers = {
     });
   },
 
-  getOneSummary: async (res, req) => {
-    const id = req.params._id;
-    const summary = {};
-    const error = null;
+  // getSummaryUser: async (res, req) => {
+  //   console.log("asdsa");
+  // console.log("req", req);
+  // const id = req.user._id;
+  // const summary = [];
+  // let error;
 
-    try {
-      summary = await Cart.findOne({ _id: id })
-        .populate("productsId")
-        .populate("userId");
-    } catch (err) {
-      error = err;
-    }
-    res.json({
-      res: error ? "ERROR" : summary,
-      success: error ? false : true,
-      error: error,
-    });
-  },
+  // try {
+  //   summary = await Cart.find({ userId: id });
+  // } catch (err) {
+  //   error = err;
+  // }
+  // console.log(summary);
+  // res.json({
+  //   res: error ? "ERROR" : summary,
+  //   success: error ? false : true,
+  //   error: error,
+  // });
+  // },
 };
 
 module.exports = cartControllers;
