@@ -323,7 +323,7 @@
   justify-content: space-evenly;
   align-items: center;
   text-align: center;
-  padding: 5rem;
+  padding: 2rem;
 }
 
 .separator {
@@ -349,7 +349,7 @@
   justify-content: space-evenly;
   align-items: center;
   text-align: center;
-  padding: 5rem;
+  padding: 2rem;
 }
 
 .secondContentB {
@@ -671,6 +671,9 @@
     flex-direction: row;
     align-items: center;
     column-gap: 1rem;
+  }
+  .B-1, .B-2{
+    width: 50%;
   }
   
   .firstContentB,
