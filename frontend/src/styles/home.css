@@ -54,7 +54,7 @@
   justify-content: center;
   align-items: center;
   width: 90%;
-  height: 50%;
+  height: 60%;
 }
 
 #titleHeader h3{
@@ -607,6 +607,9 @@
 }
 
 @media (max-width: 375px) {
+  .lastImage-B p{
+    font-size: 2em;
+  }
   #titleHeader h2{
     height: 40%;
     font-size: 2em;
@@ -678,6 +681,9 @@
 }
 
 @media (max-width: 768px) {
+  .itemName{
+    font-size: 14px;
+  }
   .leaves {
     margin: 0 1rem;
   }
