@@ -4,6 +4,9 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import productsActions from "../redux/actions/productsActions";
 import Product from "../components/Product";
+import Checkbox from "@mui/material/Checkbox";
+import { RiLeafFill } from "react-icons/ri";
+import { RiLeafLine } from "react-icons/ri";
 
 export default function Products() {
   const [input, setInput] = useState("");
@@ -11,6 +14,15 @@ export default function Products() {
   const [orderSort, setorderSort] = useState("");
   const [catProducts, setCatProducts] = useState([]);
   const [cart, setCart] = useState([]);
+  const [sustainableRank, setSustainableRank] = useState();
+
+  const [firstLeaf, setFirstLeaf] = useState(true);
+  const [secondLeaf, setSecondLeaf] = useState(true);
+  const [thirdLeaf, setThirdLeaf] = useState(true);
+  const [cuartoLeaf, setCuartoLeaf] = useState(true);
+  const [quinthLeaf, setQuinthLeaf] = useState(true);
+  const [noLeaf, setNoLeaf] = useState(false);
+
   // const [asdProducts, setAsdProducts] = useState();
   // console.log(cart);
   const categories = new Set(catProducts.map((cat) => cat.category));
@@ -23,23 +35,20 @@ export default function Products() {
       setCatProducts(res.data.response)
     );
   }, []);
-  console.log(useSelector((store) => console.log(store)));
+
   useEffect(() => {
-    dispatch(productsActions.filterProducts(input, buttonRadio, orderSort));
+    dispatch(
+      productsActions.filterProducts(
+        input,
+        buttonRadio,
+        orderSort,
+        sustainableRank
+      )
+    );
   }, [input, buttonRadio, orderSort]);
 
   let products = useSelector((store) => store.productsReducer?.filterProducts);
-
-  function sortProducts(e) {
-    // if (e === "des-name") {
-    //   console.log(products);
-    //   products = products.sort((x, y) => x.price - y.price);
-    //   console.log("de la A a la Z");
-    //   console.log("sortdentrofilter", products);
-    // }
-    // console.log("sort", products);
-    // return products;
-  }
+  console.log(products);
 
   return (
     <div className="p-0 mr-0 flex flex-col min-h-[100vh]">
@@ -92,6 +101,46 @@ export default function Products() {
             <option value="high-price">Higher price</option>
             <option value="low-price">Lower price</option>
           </select>
+        </div>
+      </div>
+
+      <div className="flex justify-center">
+        <div>
+          <Checkbox
+            id="leaf1"
+            value="leaf1"
+            onChange={(e) => setSustainableRank(e.target.value)}
+            icon={<RiLeafLine />}
+            checkedIcon={<RiLeafFill />}
+          />
+          <Checkbox
+            id="leaf2"
+            value="leaf2"
+            onChange={(e) => setSustainableRank(e.target.value)}
+            icon={<RiLeafLine />}
+            checkedIcon={<RiLeafFill />}
+          />
+          <Checkbox
+            id="leaf3"
+            value="leaf3"
+            onChange={(e) => setSustainableRank(e.target.value)}
+            icon={<RiLeafLine />}
+            checkedIcon={<RiLeafFill />}
+          />
+          <Checkbox
+            id="leaf4"
+            value="leaf4"
+            onChange={(e) => setSustainableRank(e.target.value)}
+            icon={<RiLeafLine />}
+            checkedIcon={<RiLeafFill />}
+          />
+          <Checkbox
+            id="leaf5"
+            value="leaf5"
+            onChange={(e) => setSustainableRank(e.target.value)}
+            icon={<RiLeafLine />}
+            checkedIcon={<RiLeafFill />}
+          />
         </div>
       </div>
 

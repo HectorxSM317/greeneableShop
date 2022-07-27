@@ -20,7 +20,7 @@ const productsActions = {
     };
   },
 
-  filterProducts: (searchInput, buttonRadio, orderSort) => {
+  filterProducts: (searchInput, buttonRadio, orderSort, sustainableRank) => {
     return (dispatch, getState) => {
       dispatch({
         type: "FILTERPRODUCTS",
@@ -28,6 +28,7 @@ const productsActions = {
           searchInput: searchInput,
           buttonRadio: buttonRadio,
           orderSort: orderSort,
+          sustainableRank: sustainableRank,
         },
       });
     };

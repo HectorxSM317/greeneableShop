@@ -31,6 +31,7 @@ const productReducer = (state = initialState, action) => {
       let searchInput = action.payload.searchInput;
       let buttonRadio = action.payload.buttonRadio;
       let orderSort = action.payload.orderSort;
+      let sustainableRank = action.payload.sustainableRank;
       // console.log(orderSort);
 
       function filterProducts() {
@@ -89,6 +90,10 @@ const productReducer = (state = initialState, action) => {
         }
         return filter;
       }
+
+      // let productfilter = products.filter(
+      //   (product) => product.sustainable <= 2
+      // );
 
       return {
         ...state,
