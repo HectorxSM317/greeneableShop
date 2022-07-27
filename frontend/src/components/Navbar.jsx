@@ -186,7 +186,7 @@ const Navbar = () => {
 
           <Box className="flex items-center gap-5 order-3" sx={{width: "20%", justifyContent: "flex-end"}}>
             <IconButton aria-label="cart">
-              <StyledBadge badgeContent={sustainable} color="success">
+              <StyledBadge badgeContent={sustainable} color="success" max={9999}>
                 <RiLeafFill
                   className="iconLeaf"
                   style={{

@@ -8,7 +8,7 @@ import Typography from "@mui/material/Typography";
 import toast from "react-hot-toast";
 import "../styles/products.css";
 import { IoIosEye } from "react-icons/io";
-import { green } from "@mui/material/colors";
+import { BiInfoCircle } from "react-icons/bi";
 
 export default function Product({ product }) {
   const dispatch = useDispatch();
@@ -25,37 +25,15 @@ export default function Product({ product }) {
 
   return (
     <div className="relative card h-[20rem] bg-black">
-      {product.stock <= 5 ? (
-        product.stock === 0 ? (
-          <div className="absolute -right-2 top-0 bg-gray-600/75 border rounded-sm p-1 pr-4">
-            <Typography className="" color="error">
-              Out of stock
-            </Typography>
-          </div>
-        ) : (
-          <div className="absolute -right-2 top-0 bg-gray-600/75 border rounded-sm p-1 pr-4">
-            <Typography className="" color="error">
-              Last units
-            </Typography>
-          </div>
-        )
-      ) : (
-        <div className="absolute -right-2 top-0 bg-gray-600/75 border rounded-sm p-1 pr-4">
-          <Typography className="" color="success">
-            available products
-          </Typography>
-        </div>
-      )}
-
       <div className="image">
         <img src={product.photo} alt="" />
       </div>
       <LinkRouter
-        className="absolute top-28 -right-5"
+        className="absolute top-36 -right-5"
         to={`/details/${product._id}`}
       >
-        <Button className="viewMore bg-gray-900">
-          <IoIosEye size={35} className="eyes" />
+        <Button className="viewMore bg-">
+          <BiInfoCircle size={35} className="eyes" />
         </Button>
       </LinkRouter>
       <div className="content">
@@ -70,7 +48,7 @@ export default function Product({ product }) {
           </Typography>
         </div>
         <div className="moreInfo">
-          <Typography variant="body2" className="text-white">
+          <Typography variant="body2" className="text-white font-bold">
             {product.price} USD
           </Typography>
           <Button

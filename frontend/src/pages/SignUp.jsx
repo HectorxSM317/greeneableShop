@@ -32,11 +32,11 @@ export default function LogIn() {
   const dispatch = useDispatch();
 
   const [country, setCountry] = useState([]);
-
+  console.log(country);
   React.useEffect(() => {
     axios
       .get("https://restcountries.com/v3.1/all")
-      .then((res) => setCountry(res.data));
+      .then((res) => setCountry(res.data.sort((a, b) => 1)));
   }, []);
 
   const handleSubmit = async (event) => {
@@ -98,28 +98,24 @@ export default function LogIn() {
                 hidden
               />
 
-              <form className="form form--register" onSubmit={handleSubmit}>
+              <form className="" onSubmit={handleSubmit}>
                 <div className="w-full text-center flex flex-col justify-center items-center">
                   <h1 className="w-full">Sign up</h1>
-                  <div className="w-full">
-                    <h1>Select Country</h1>
-                  </div>
 
-                  <Select
+                  <select
                     name="country"
-                    className="countryy"
+                    className="countryy w-4/5 bg-slate-500/25 rounded-lg p-2 my-2"
                     id="country"
                     required
-                    defaultValue=""
                     onChange={(p) => setSelectCountry(p.target.value)}
                   >
-                    <MenuItem value=""></MenuItem>
+                    <option value="">Select your Country</option>
                     {country.map((country, index) => (
-                      <MenuItem key={index} value={country.name.common}>
+                      <option key={index} value={country.name.common}>
                         {country.name.common}
-                      </MenuItem>
+                      </option>
                     ))}
-                  </Select>
+                  </select>
                 </div>
                 {selectCountry && (
                   <div className="h-fit w-full flex flex-col items-center justify-center py-4">

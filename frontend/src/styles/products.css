@@ -26,14 +26,14 @@
   width: 15rem;
   border-radius: 5%;
   box-shadow: 0 1em 1em rgba(0, 0, 0, 0.5);
-  background-color: rgba(19, 85, 45, 0.8);
+  background-color: rgba(19, 85, 45, 0.5);
 }
 
 .eyes {
   color: #13542d;
 }
 .image {
-  height: 40%;
+  height: 50%;
 }
 .image img {
   width: 100%;
@@ -44,7 +44,7 @@
   border-bottom-right-radius: 40%;
 }
 .content {
-  height: 60%;
+  height: 50%;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -93,7 +93,7 @@
 }
 
 .buttonAdd {
-  background-color: rgba(19, 85, 45, 0.8) !important;
+  background-color: #13542d !important;
 }
 
 .buttonAdd:hover {

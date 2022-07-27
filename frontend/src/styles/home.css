@@ -555,7 +555,7 @@
 
 .leaves {
   background-color: #2a9d4b10;
-  height: 30vh;
+  /* height: 30vh; */
   margin: 0 5rem;
   display: flex;
   flex-direction: column;
@@ -565,18 +565,31 @@
 }
 .topLeaves {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   text-align: center;
+  gap: 1rem;
 }
 .topLeaves h1 {
-  font-size: 1.5em;
+  font-size: 2em;
+  margin-top: 1rem;
+  color:  rgba(19, 85, 45, 0.8) ;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.topLeaves p {
+  text-align: justify;
+  margin: 0 1rem;
+  font-size: large;
 }
 .leavesImg {
   height: 60%;
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-top: 1rem;
 }
 .leafImg {
   height: 100%;
@@ -587,7 +600,17 @@
   justify-content: center;
   align-items: center;
   text-align: center;
+  font-size: large;
 }
+
+.leavesText h2{
+  margin-bottom: 1rem;
+}
+
+.leavesText h2 span{
+  color:  rgba(19, 85, 45, 0.8) ;
+}
+
 
 .line4 {
   display: none;

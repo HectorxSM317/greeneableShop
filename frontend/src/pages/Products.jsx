@@ -19,14 +19,14 @@ export default function Products() {
   const [orderSort, setorderSort] = useState("");
   const [catProducts, setCatProducts] = useState([]);
   const [cart, setCart] = useState([]);
-  const [sustainableRank, setSustainableRank] = useState();
+  const [sustainableRank, setSustainableRank] = useState("");
 
-  const [firstLeaf, setFirstLeaf] = useState(true);
-  const [secondLeaf, setSecondLeaf] = useState(true);
-  const [thirdLeaf, setThirdLeaf] = useState(true);
-  const [cuartoLeaf, setCuartoLeaf] = useState(true);
-  const [quinthLeaf, setQuinthLeaf] = useState(true);
-  const [noLeaf, setNoLeaf] = useState(false);
+  const [firstLeaf, setFirstLeaf] = useState(false);
+  const [secondLeaf, setSecondLeaf] = useState(false);
+  const [thirdLeaf, setThirdLeaf] = useState(false);
+  const [cuartoLeaf, setCuartoLeaf] = useState(false);
+  const [quinthLeaf, setQuinthLeaf] = useState(false);
+  const [noLeaf, setNoLeaf] = useState(true);
 
   // const [asdProducts, setAsdProducts] = useState();
   // console.log(cart);
@@ -97,7 +97,7 @@ export default function Products() {
           <select
             onChange={(e) => setorderSort(e.target.value)}
             name="order"
-            className="bg-transparent border-2 rounded-2xl p-2"
+            className="bg-white border-2 rounded-t-md p-2"
             id="order"
           >
             <option value={false}>Sort by</option>
@@ -110,64 +110,161 @@ export default function Products() {
       </div>
 
       <div className="flex justify-center">
-        <div>
-          <Checkbox
-            id="leaf1"
-            value={1}
-            onChange={(e) => setSustainableRank(e.target.value)}
-            icon={<RiLeafLine style={{ color: "green", fontSize: "28px" }} />}
-            checkedIcon={
-              <RiLeafFill style={{ color: "green", fontSize: "28px" }} />
-            }
-          />
-          <Checkbox
-            id="leaf2"
-            value={2}
-            onChange={(e) => setSustainableRank(e.target.value)}
-            icon={<RiLeafLine style={{ color: "green", fontSize: "28px" }} />}
-            checkedIcon={
-              <RiLeafFill style={{ color: "green", fontSize: "28px" }} />
-            }
-          />
-          <Checkbox
-            id="leaf3"
-            value={3}
-            onChange={(e) => setSustainableRank(e.target.value)}
-            icon={<RiLeafLine style={{ color: "green", fontSize: "28px" }} />}
-            checkedIcon={
-              <RiLeafFill style={{ color: "green", fontSize: "28px" }} />
-            }
-          />
-          <Checkbox
-            id="leaf4"
-            value={4}
-            onChange={(e) => setSustainableRank(e.target.value)}
-            icon={<RiLeafLine style={{ color: "green", fontSize: "28px" }} />}
-            checkedIcon={
-              <RiLeafFill style={{ color: "green", fontSize: "28px" }} />
-            }
-          />
-          <Checkbox
-            id="leaf5"
-            value={5}
-            onChange={(e) => setSustainableRank(e.target.value)}
-            icon={<RiLeafLine style={{ color: "green", fontSize: "28px" }} />}
-            checkedIcon={
-              <RiLeafFill style={{ color: "green", fontSize: "28px" }} />
-            }
-          />
+        <div className="flex py-5 gap-5">
+          <label htmlFor="leaf" className="flex items-center pr-3">
+            {noLeaf ? (
+              <RiLeafFill style={{ color: "grey", fontSize: "35px" }} />
+            ) : (
+              <RiLeafLine style={{ color: "grey", fontSize: "35px" }} />
+            )}
+
+            <input
+              className="hidden"
+              name="leaf"
+              type="radio"
+              id="leaf"
+              value=""
+              onChange={(e) => {
+                setFirstLeaf(false);
+                setSecondLeaf(false);
+                setThirdLeaf(false);
+                setCuartoLeaf(false);
+                setQuinthLeaf(false);
+                setNoLeaf(e.target.checked);
+                setSustainableRank(e.target.value);
+              }}
+              // icon={<RiLeafLine style={{ color: "green", fontSize: "28px" }} />}
+              // checkedIcon={
+              //   <RiLeafFill style={{ color: "green", fontSize: "28px" }} />
+              // }
+            />
+          </label>
+          <label htmlFor="leaf1">
+            {firstLeaf ||
+            secondLeaf ||
+            thirdLeaf ||
+            cuartoLeaf ||
+            quinthLeaf ? (
+              <RiLeafFill style={{ color: "green", fontSize: "35px" }} />
+            ) : (
+              <RiLeafLine style={{ color: "green", fontSize: "35px" }} />
+            )}
+
+            <input
+              className="hidden"
+              name="leaf"
+              type="radio"
+              id="leaf1"
+              value="leaf1"
+              onChange={(e) => {
+                setNoLeaf(false);
+                setSecondLeaf(false);
+                setThirdLeaf(false);
+                setCuartoLeaf(false);
+                setQuinthLeaf(false);
+                setFirstLeaf(e.target.checked);
+                setSustainableRank(e.target.value);
+              }}
+            />
+          </label>
+          <label htmlFor="leaf2">
+            {secondLeaf || thirdLeaf || cuartoLeaf || quinthLeaf ? (
+              <RiLeafFill style={{ color: "green", fontSize: "35px" }} />
+            ) : (
+              <RiLeafLine style={{ color: "green", fontSize: "35px" }} />
+            )}
+
+            <input
+              className="hidden"
+              name="leaf"
+              type="radio"
+              id="leaf2"
+              value="leaf2"
+              onChange={(e) => {
+                setNoLeaf(false);
+                setThirdLeaf(false);
+                setCuartoLeaf(false);
+                setQuinthLeaf(false);
+                setSecondLeaf(e.target.checked);
+                setSustainableRank(e.target.value);
+              }}
+            />
+          </label>
+          <label htmlFor="leaf3">
+            {thirdLeaf || cuartoLeaf || quinthLeaf ? (
+              <RiLeafFill style={{ color: "green", fontSize: "35px" }} />
+            ) : (
+              <RiLeafLine style={{ color: "green", fontSize: "35px" }} />
+            )}
+
+            <input
+              className="hidden"
+              name="leaf"
+              type="radio"
+              id="leaf3"
+              value="leaf3"
+              onChange={(e) => {
+                setNoLeaf(false);
+                setCuartoLeaf(false);
+                setQuinthLeaf(false);
+                setThirdLeaf(e.target.checked);
+                setSustainableRank(e.target.value);
+              }}
+            />
+          </label>
+          <label htmlFor="leaf4">
+            {cuartoLeaf || quinthLeaf ? (
+              <RiLeafFill style={{ color: "green", fontSize: "35px" }} />
+            ) : (
+              <RiLeafLine style={{ color: "green", fontSize: "35px" }} />
+            )}
+
+            <input
+              className="hidden"
+              name="leaf"
+              type="radio"
+              id="leaf4"
+              value="leaf4"
+              onChange={(e) => {
+                setNoLeaf(false);
+                setQuinthLeaf(false);
+                setCuartoLeaf(e.target.checked);
+                setSustainableRank(e.target.value);
+              }}
+            />
+          </label>
+          <label htmlFor="leaf5">
+            {quinthLeaf ? (
+              <RiLeafFill style={{ color: "green", fontSize: "35px" }} />
+            ) : (
+              <RiLeafLine style={{ color: "green", fontSize: "35px" }} />
+            )}
+
+            <input
+              className="hidden"
+              name="leaf"
+              type="radio"
+              id="leaf5"
+              value="leaf5"
+              onChange={(e) => {
+                setNoLeaf(false);
+                setQuinthLeaf(e.target.checked);
+                setSustainableRank(e.target.value);
+              }}
+            />
+          </label>
         </div>
       </div>
 
-      <div className="bg-white my-3 w-full px-5 sm:justify-center flex gap-5 flex-wrap">
-        <label>
+      <div className="bg-white my-3 w-full px-5 sm:justify-center flex gap-5 lg:gap-15 flex-wrap">
+        <label className="flex gap-2">
           <input type="radio" name="asd" onClick={() => setbuttonRadio("")} />
           All categories
         </label>
 
         {arrayCategories.map((cat, i) => {
           return (
-            <label key={i}>
+            <label key={i} className="flex gap-2">
               <input
                 type="radio"
                 name="asd"
