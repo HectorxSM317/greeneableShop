@@ -167,3 +167,17 @@
         width: 100%;
     }
 }
+
+.validateStock{
+    background-color: rgba(19, 85, 45, 0.8) !important;
+    color: white;
+    width: 10rem;
+    padding: .5rem;
+    margin: 1rem 0;
+    box-shadow: 1px 1px 1px gray;
+}
+
+.validateStock:hover{
+  background-color: #07642fe8 !important;
+  
+}
