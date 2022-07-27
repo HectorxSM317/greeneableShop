@@ -4,7 +4,7 @@
   /* overflow-x: hidden; */
 }
 
-.headerPrueba {
+/* .headerPrueba {
   position: absolute;
   top: 0;
   left: 0;
@@ -13,7 +13,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-}
+} */
 
 .section {
   position: relative;

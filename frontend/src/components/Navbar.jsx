@@ -110,7 +110,7 @@ const Navbar = () => {
   }
 
   return (
-    <AppBar position="static">
+    <AppBar position="static" className="container-box-x">
       <Container maxWidth="xl">
         <Toolbar disableGutters sx={{width: "100%"}}>
           <Box

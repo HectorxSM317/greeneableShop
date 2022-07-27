@@ -4,7 +4,7 @@
   background-color: rgba(0, 0, 0, 0) !important;
 }
 
-.css-hip9hq-MuiPaper-root-MuiAppBar-root {
+.css-hip9hq-MuiPaper-root-MuiAppBar-root, .container-box-x {
   display: flex !important;
   justify-content: center !important;
   align-items: center !important;

@@ -71,7 +71,7 @@ export default function RecipeReviewCard({ product }) {
   };
 
   const loggedUser = useSelector((store) => store.usersReducer.loggedUser);
-
+  const cart = useSelector((store) => store.productsReducer.cart);
   // const [value, setValue] = React.useState();
   const navigate = useNavigate();
   const handleDelete = (event) => {
@@ -166,12 +166,17 @@ export default function RecipeReviewCard({ product }) {
 
   function addToCart(product, e) {
     e.preventDefault();
+    let productAdded = cart.find((p) => p._id === product._id);
+    if (productAdded?.quantity >= product.stock) {
+      toast.error('Product out of stock!')
+      return
+    }
+    
 
     dispatch(productsActions.addToCart(product));
     toast.success('Product added!')
 
   }
-
   return (
     <Card className="details">
       <div className="detailsTop">
@@ -197,23 +202,23 @@ export default function RecipeReviewCard({ product }) {
                 <option value="upload-image">Upload image</option>
               </select>
             )}
-              <div className="inputUploadA">
-                {editable && imageSelection === "upload-image" && (
-                  <input
-                    onChange={(event) => {
-                      setProductState({
-                        ...productState,
-                        newImageFile: event.target.files[0],
-                      });
-                    }}
-                    type="file"
-                  ></input>
-                )}
-              </div>
+            <div className="inputUploadA">
+              {editable && imageSelection === "upload-image" && (
+                <input
+                  onChange={(event) => {
+                    setProductState({
+                      ...productState,
+                      newImageFile: event.target.files[0],
+                    });
+                  }}
+                  type="file"
+                ></input>
+              )}
+            </div>
           </div>
         </div>
         <div className="detailsTop-B">
-          <Box className="editContent" sx={{ display: "flex", alignItems: "center"}}>
+          <Box className="editContent" sx={{ display: "flex", alignItems: "center" }}>
             <div>
               {loggedUser && loggedUser.role === "admin" && (
                 <div>
@@ -223,7 +228,7 @@ export default function RecipeReviewCard({ product }) {
                     color="error"
                     id={product?._id}
                     onClick={handleDelete}
-                    sx={{ bgcolor: "#d30000", mr: 1,borderRadius: 50}}
+                    sx={{ bgcolor: "#d30000", mr: 1, borderRadius: 50 }}
                   >
                     <DeleteIcon sx={{ width: 15, color: "white" }} />
                   </Button>
@@ -233,7 +238,7 @@ export default function RecipeReviewCard({ product }) {
                     color="primary"
                     id={product?._id}
                     onClick={handleEdit}
-                    sx={{ bgcolor: "#41788f",mr: 1, borderRadius: 5}}
+                    sx={{ bgcolor: "#41788f", mr: 1, borderRadius: 5 }}
                   >
                     <EditIcon sx={{ width: 15, color: "white" }} />
                   </Button>
@@ -292,7 +297,7 @@ export default function RecipeReviewCard({ product }) {
             }
           </CardContent>
           <CardContent
-          sx={{p: 0}}>
+            sx={{ p: 0 }}>
             <Typography
               variant="body"
               color="text.secondary"
@@ -371,9 +376,9 @@ export default function RecipeReviewCard({ product }) {
               )}
             </div>
           </CardContent>
-          <CardContent sx={{p: 0}}>
+          <CardContent sx={{ p: 0 }}>
             <Rating
-              sx={{py: 1}}
+              sx={{ py: 1 }}
               readOnly={!editable}
               name="sustainable"
               value={sustainable}
@@ -388,7 +393,7 @@ export default function RecipeReviewCard({ product }) {
             />
           </CardContent>
           <CardContent sx={{ width: "100%" }}>
-            <Button className="generalBtn" variant="contained" sx={{ width: "100%", backgroundColor: "#13552D"}} onClick={(e) => addToCart(product, e)}>
+            <Button className="generalBtn" variant="contained" sx={{ width: "100%", backgroundColor: "#13552D" }} onClick={(e) => addToCart(product, e)}>
               Add To Cart
             </Button>
           </CardContent>

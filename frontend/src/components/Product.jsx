@@ -9,6 +9,8 @@ import toast from "react-hot-toast";
 import "../styles/products.css";
 import { IoIosEye } from "react-icons/io";
 import { BiInfoCircle } from "react-icons/bi";
+import Rating from "@mui/material/Rating";
+import { RiLeafFill } from "react-icons/ri";
 
 export default function Product({ product }) {
   const dispatch = useDispatch();
@@ -46,6 +48,13 @@ export default function Product({ product }) {
           >
             {product.name}
           </Typography>
+          <Rating
+          readOnly
+          name="sustainable"
+          value={product?.sustainable}
+          icon={<RiLeafFill fontSize="inherit" color="green" />}
+          emptyIcon={<RiLeafFill fontSize="inherit" />}
+        />
         </div>
         <div className="moreInfo">
           <Typography variant="body2" className="text-white font-bold">

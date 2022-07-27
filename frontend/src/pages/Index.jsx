@@ -64,7 +64,6 @@ export default function Index() {
 
   return (
     <div className="bodyPrueba">
-      <div className="headerPrueba"></div>
       <div className="section">
         <img className="sectionImg" src={back} id="back" alt="" />
         <img src={center} id="center" alt="" />
