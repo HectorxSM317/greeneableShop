@@ -70,7 +70,7 @@ const Navbar = () => {
   const cart = useSelector((store) => store.productsReducer.cart);
   const navigate = useNavigate();
 
-  const totalQuantity=cart.reduce((total, item) => total+ item.quantity,0);
+  const totalQuantity = cart.reduce((total, item) => total + item.quantity, 0);
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
 
@@ -199,7 +199,7 @@ const Navbar = () => {
               </IconButton>
             </LinkRouter>
 
-           
+
             {/* <LinkRouter className="relative" to="/cart">
               <ShoppingCartIcon
                 sx={{

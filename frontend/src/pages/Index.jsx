@@ -9,6 +9,11 @@ import { Box, Typography } from '@mui/material'
 import Carousel from "../components/Carousel"
 import Button from '@mui/material/Button';
 import { Link as LinkRouter } from 'react-router-dom'
+import hoja from "../assets/hoja-de-arbol.png";
+import hojaRotada from "../assets/hoja-rotada.png";
+import CardMedia from "@mui/material/CardMedia";
+import Card from "@mui/material/Card";
+import Image from "mui-image";
 
 export default function Index() {
   const [threeLampRandom, setThreeLampRandom] = useState([]);
@@ -249,9 +254,13 @@ export default function Index() {
           </div>
           <div className='lastImage-B'>
             <Typography sx={{ fontSize: 50 }}>Be sustainable</Typography>
+
           </div>
         </div>
+
       </div>
-    </div >
+    </div>
+
+
   )
 }
