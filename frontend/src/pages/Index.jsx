@@ -189,8 +189,8 @@ export default function Index() {
               }}
               className={
                 !secondLeaf || !thirdLeaf || !cuartoLeaf || !quinthLeaf
-                  ? "h-full flex items-center mix-blend-hard-light"
-                  : "h-full flex items-center hover:mix-blend-hard-light"
+                  ? "h-full flex items-center mix-blend-darken"
+                  : "h-full flex items-center hover:mix-blend-darken"
               }
             >
               {/* <RiLeafFill size={100} width="100%" height={100} color="green" /> */}
@@ -211,8 +211,8 @@ export default function Index() {
               }}
               className={
                 !thirdLeaf || !cuartoLeaf || !quinthLeaf
-                  ? "h-full flex items-center mix-blend-hard-light"
-                  : "h-full flex items-center hover:mix-blend-hard-light"
+                  ? "h-full flex items-center mix-blend-darken"
+                  : "h-full flex items-center hover:mix-blend-darken"
               }
             >
               {/* <RiLeafFill size={100} width="100%" height={100} color="green" /> */}
@@ -233,8 +233,8 @@ export default function Index() {
               }}
               className={
                 !cuartoLeaf || !quinthLeaf
-                  ? "h-full flex items-center mix-blend-hard-light"
-                  : "h-full flex items-center hover:mix-blend-hard-light"
+                  ? "h-full flex items-center mix-blend-darken"
+                  : "h-full flex items-center hover:mix-blend-darken"
               }
             >
               {/* <RiLeafFill size={100} width="100%" height={100} color="green" /> */}
@@ -255,8 +255,8 @@ export default function Index() {
               }}
               className={
                 !quinthLeaf
-                  ? "h-full flex items-center mix-blend-hard-light"
-                  : "h-full flex items-center hover:mix-blend-hard-light"
+                  ? "h-full flex items-center mix-blend-darken"
+                  : "h-full flex items-center hover:mix-blend-darken"
               }
             >
               {/* <RiLeafFill size={100} width="100%" height={100} color="green" /> */}
@@ -275,7 +275,7 @@ export default function Index() {
                 setNoLeaf(false);
                 setQuinthLeaf(true);
               }}
-              className="h-full   flex items-center hover:mix-blend-hard-light"
+              className="h-full flex items-center hover:mix-blend-darken"
             >
               {/* <RiLeafFill size={100} width="100%" height={100} color="green" /> */}
               <img
