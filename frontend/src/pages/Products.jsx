@@ -97,7 +97,7 @@ export default function Products() {
         </div>
       </div>
 
-      <div className="bg-white my-3 w-full justify-center flex gap-5 flex-wrap">
+      <div className="bg-white my-3 w-full px-5 flex gap-5 flex-wrap">
         <label>
           <input type="radio" name="asd" onClick={() => setbuttonRadio("")} />
           All categories

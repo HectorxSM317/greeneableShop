@@ -54,7 +54,7 @@ export default function Index() {
       E.style.Top = value * 1 + "px";
       // console.log(B.style.display)
 
-      if (window.scrollY <= 700) {
+      if (window.scrollY <= 800) {
         B.style.display = "block";
       } else {
         B.style.display = "none";
@@ -75,12 +75,10 @@ export default function Index() {
         <img className="poi" src={front} id="front" alt="" />
       </div>
       <div className="contenedorDeTodo">
-        <div className="topLeaves">
-          <div className="topLeavesA">
+        <div className="leaves">
+          <div className="topLeaves">
             <h1>Our sustainability project:</h1>
           </div>
-        </div>
-        <div className="leaves">
           <div className="leavesImg">
             <div
               onMouseOver={() => {
@@ -306,7 +304,6 @@ export default function Index() {
             <div className="line3A-A"></div>
           </div>
         </div>
-
         <div className="secondContent">
           <div className="secondContentA">
             <h3 style={{ fontSize: "42px" }}>Eco-Toys</h3>
@@ -360,6 +357,9 @@ export default function Index() {
               </div>
             </div>
           )}
+        </div>
+        <div className="line4">
+          <div className="line4A"></div>
         </div>
         <div className="twoCalls">
           <div className="firstCall">
