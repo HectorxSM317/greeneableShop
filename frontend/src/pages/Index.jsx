@@ -42,7 +42,7 @@ export default function Index() {
     let A = document.getElementById("back");
     let B = document.getElementById("center");
     let C = document.getElementById("front");
-    let D = document.getElementById("text");
+    let D = document.getElementById("titleHeader");
     let E = document.getElementById("par");
 
     window.addEventListener("scroll", function () {
@@ -50,7 +50,7 @@ export default function Index() {
       A.style.top = value * 0.8 + "px";
       B.style.top = value * 1 + "px";
       C.style.top = value * 0.5 + "px";
-      D.style.marginTop = value * 1.5 + "px";
+      D.style.marginTop = value * 1.6 + "px";
       E.style.Top = value * 1 + "px";
       // console.log(B.style.display)
 
@@ -66,13 +66,13 @@ export default function Index() {
     <div className="bodyPrueba">
       <div className="headerPrueba"></div>
       <div className="section">
-        <img className="poi" src={back} id="back" alt="" />
+        <img className="sectionImg" src={back} id="back" alt="" />
         <img src={center} id="center" alt="" />
-        <div id="text">
+        <div id="titleHeader">
           <h2>Greeneable</h2>
-          <h3 id="par">Sustainable products to take care of our planet</h3>
+          <h3>Sustainable products to take care of our planet</h3>
         </div>
-        <img className="poi" src={front} id="front" alt="" />
+        <img className="sectionImg" src={front} id="front" alt="" />
       </div>
       <div className="contenedorDeTodo">
         <div className="leaves">
