@@ -189,22 +189,23 @@ export default function Index() {
           </div>
           <div className="leavesText">
             <h2 hidden={firstLeaf}>
-            Substitute traditional products for others with less impact.
+              Substitute traditional products for others with less impact.
             </h2>
-            <h2 hidden={secondLeaf}>
-            They consume less energy when used.
-            </h2>
+            <h2 hidden={secondLeaf}>They consume less energy when used.</h2>
             <h2 hidden={thirdLeaf}>
-            They do not use aggressive products or processes for the environment in their production process.
+              They do not use aggressive products or processes for the
+              environment in their production process.
             </h2>
             <h2 hidden={cuartoLeaf}>
-            Its raw materials come from well-used natural resources that are recovered over a period of time.
+              Its raw materials come from well-used natural resources that are
+              recovered over a period of time.
             </h2>
             <h2 hidden={quinthLeaf}>
-            Contribute to solving an environmental problem.
+              Contribute to solving an environmental problem.
             </h2>
             <h2 hidden={noLeaf}>
-              Hover over the leaves to obtein info about the sustainability levels.
+              Hover over the leaves to obtein info about the sustainability
+              levels.
             </h2>
           </div>
         </div>
@@ -287,10 +288,7 @@ export default function Index() {
             <div className="line2A-A"></div>
           </div>
           <div className="lineBtn">
-            <h3
-              variant="contained"
-              className="sustainable"
-            >
+            <h3 variant="contained" className="sustainable">
               Sustainable
             </h3>
           </div>
@@ -298,10 +296,7 @@ export default function Index() {
         <div className="separator"></div>
         <div className="line3">
           <div className="lineBtn">
-            <h3
-              variant="contained"
-              className="sustainable"
-            >
+            <h3 variant="contained" className="sustainable">
               Sustainable
             </h3>
           </div>

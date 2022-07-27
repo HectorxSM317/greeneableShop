@@ -97,10 +97,8 @@ export default function Products() {
         </div>
       </div>
 
-      <div className="bg-white my-3 w-full justify-center flex gap-5 flex-wrap">
-      
-      
-      <label>
+      <div className="bg-white my-3 w-full px-5 flex gap-5 flex-wrap">
+        <label>
           <input type="radio" name="asd" onClick={() => setbuttonRadio("")} />
           All categories
         </label>
@@ -116,16 +114,8 @@ export default function Products() {
               />
               {cat}
             </label>
-            // <div
-            //   key={i}
-            //   className="flex justify-center items-center border p-5"
-            //   onClick={(ev) => console.log(ev)}
-            // >
-            //   <p>{cat}</p>
-            // </div>
           );
         })}
-   
       </div>
       <div className="productList">
         {products && products?.length > 0 ? (
@@ -140,8 +130,12 @@ export default function Products() {
               Sadly, we can't find any products to match your query. Try
               broadening your search!
             </p>
-            <img src="https://i.ibb.co/pZLvF6D/planet.png" alt="planet" border="0" className="planet"/>
-            
+            <img
+              src="https://i.ibb.co/pZLvF6D/planet.png"
+              alt="planet"
+              border="0"
+              className="planet"
+            />
           </div>
         )}
       </div>

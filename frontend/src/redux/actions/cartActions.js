@@ -16,13 +16,12 @@ const cartActions = {
     };
   },
 
-  getSummaryUser: () => {
+  getSustainable: () => {
     return async (dispatch, getState) => {
-      const res = await axios(`${urlBack}/api/summary/checkouts`);
+      let res = await axios.get(`${urlBack}/api/summary/sustainable`);
+      console.log(res);
+      return res;
     };
-  },
-  checkOut: (summary) => {
-    return async (dispatch, getState) => {};
   },
 };
 

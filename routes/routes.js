@@ -66,11 +66,14 @@ Router.route("/productcart/validateStock").post(validateStock);
 
 const {
   createSummary,
+  getSustainable,
   // getSummaryUser,
   // addCart,
 } = require("../controllers/cartControllers");
 
 Router.route("/summary").post(createSummary);
+Router.route("/summary/sustainable").get(getSustainable);
+
 // Router.route("/summary/checkouts").get(
 //   passport.authenticate("jwt", { session: false }),
 //   getSummaryUser
