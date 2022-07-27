@@ -70,7 +70,7 @@ export default function Cart() {
                   onClick={validateStock}
                   className="validateStock"
                 >
-                  Validate Stock
+                  Confirm Purchase
                 </button>
               </div>
               <p className="my-2">Payment methods:</p>
