@@ -22,7 +22,7 @@ export default function Index() {
   const [quinthLeaf, setQuinthLeaf] = useState(true);
   const [noLeaf, setNoLeaf] = useState(false);
 
-  console.log(firstLeaf);
+  // console.log(firstLeaf);
   // useEffect(() => {
   //   setTimeout(() => {
   //     window.scrollTo(0, 0);
@@ -42,19 +42,17 @@ export default function Index() {
     let A = document.getElementById("back");
     let B = document.getElementById("center");
     let C = document.getElementById("front");
-    let D = document.getElementById("text");
-    let E = document.getElementById("par");
+    let D = document.getElementById("titleHeader");
 
     window.addEventListener("scroll", function () {
       let value = window.scrollY;
       A.style.top = value * 0.8 + "px";
       B.style.top = value * 1 + "px";
       C.style.top = value * 0.5 + "px";
-      D.style.marginTop = value * 0.9 + "px";
-      E.style.Top = value * 1 + "px";
+      D.style.marginTop = value * 1.6 + "px";
       // console.log(B.style.display)
 
-      if (window.scrollY <= 700) {
+      if (window.scrollY <= 800) {
         B.style.display = "block";
       } else {
         B.style.display = "none";
@@ -66,15 +64,149 @@ export default function Index() {
     <div className="bodyPrueba">
       <div className="headerPrueba"></div>
       <div className="section">
-        <img className="poi" src={back} id="back" alt="" />
+        <img className="sectionImg" src={back} id="back" alt="" />
         <img src={center} id="center" alt="" />
-        <div id="text">
+        <div id="titleHeader">
           <h2>Greeneable</h2>
-          <h3 id="par">Sustainable products to take care of our planet</h3>
+          <h3>Sustainable products to take care of our planet</h3>
         </div>
-        <img className="poi" src={front} id="front" alt="" />
+        <img className="sectionImg" src={front} id="front" alt="" />
       </div>
       <div className="contenedorDeTodo">
+        <div className="leaves">
+          <div className="topLeaves">
+            <h1>Our sustainability project:</h1>
+          </div>
+          <div className="leavesImg">
+            <div
+              onMouseOver={() => {
+                setNoLeaf(true);
+                setFirstLeaf(false);
+              }}
+              onMouseOut={() => {
+                setNoLeaf(false);
+                setFirstLeaf(true);
+              }}
+              className={
+                !secondLeaf || !thirdLeaf || !cuartoLeaf || !quinthLeaf
+                  ? "h-full flex items-center mix-blend-hard-light"
+                  : "h-full flex items-center hover:mix-blend-hard-light"
+              }
+            >
+              {/* <RiLeafFill size={100} width="100%" height={100} color="green" /> */}
+              <img
+                className="leafImg"
+                src="https://www.pngmart.com/files/7/Green-Leaf-PNG-Photo.png"
+                alt=""
+              />
+            </div>
+            <div
+              onMouseOver={() => {
+                setNoLeaf(true);
+                setSecondLeaf(false);
+              }}
+              onMouseOut={() => {
+                setNoLeaf(false);
+                setSecondLeaf(true);
+              }}
+              className={
+                !thirdLeaf || !cuartoLeaf || !quinthLeaf
+                  ? "h-full flex items-center mix-blend-hard-light"
+                  : "h-full flex items-center hover:mix-blend-hard-light"
+              }
+            >
+              {/* <RiLeafFill size={100} width="100%" height={100} color="green" /> */}
+              <img
+                className="leafImg"
+                src="https://www.pngmart.com/files/7/Green-Leaf-PNG-Photo.png"
+                alt=""
+              />
+            </div>
+            <div
+              onMouseOver={() => {
+                setNoLeaf(true);
+                setThirdLeaf(false);
+              }}
+              onMouseOut={() => {
+                setNoLeaf(false);
+                setThirdLeaf(true);
+              }}
+              className={
+                !cuartoLeaf || !quinthLeaf
+                  ? "h-full flex items-center mix-blend-hard-light"
+                  : "h-full flex items-center hover:mix-blend-hard-light"
+              }
+            >
+              {/* <RiLeafFill size={100} width="100%" height={100} color="green" /> */}
+              <img
+                className="leafImg"
+                src="https://www.pngmart.com/files/7/Green-Leaf-PNG-Photo.png"
+                alt=""
+              />
+            </div>
+            <div
+              onMouseOver={() => {
+                setNoLeaf(true);
+                setCuartoLeaf(false);
+              }}
+              onMouseOut={() => {
+                setNoLeaf(false);
+                setCuartoLeaf(true);
+              }}
+              className={
+                !quinthLeaf
+                  ? "h-full flex items-center mix-blend-hard-light"
+                  : "h-full flex items-center hover:mix-blend-hard-light"
+              }
+            >
+              {/* <RiLeafFill size={100} width="100%" height={100} color="green" /> */}
+              <img
+                className="leafImg"
+                src="https://www.pngmart.com/files/7/Green-Leaf-PNG-Photo.png"
+                alt=""
+              />
+            </div>
+            <div
+              onMouseOver={() => {
+                setNoLeaf(true);
+                setQuinthLeaf(false);
+              }}
+              onMouseOut={() => {
+                setNoLeaf(false);
+                setQuinthLeaf(true);
+              }}
+              className="h-full   flex items-center hover:mix-blend-hard-light"
+            >
+              {/* <RiLeafFill size={100} width="100%" height={100} color="green" /> */}
+              <img
+                className="leafImg"
+                src="https://www.pngmart.com/files/7/Green-Leaf-PNG-Photo.png"
+                alt=""
+              />
+            </div>
+          </div>
+          <div className="leavesText">
+            <h2 hidden={firstLeaf}>
+              Substitute traditional products for others with less impact.
+            </h2>
+            <h2 hidden={secondLeaf}>They consume less energy when used.</h2>
+            <h2 hidden={thirdLeaf}>
+              They do not use aggressive products or processes for the
+              environment in their production process.
+            </h2>
+            <h2 hidden={cuartoLeaf}>
+              Its raw materials come from well-used natural resources that are
+              recovered over a period of time.
+            </h2>
+            <h2 hidden={quinthLeaf}>
+              Contribute to solving an environmental problem.
+            </h2>
+            <h2 hidden={noLeaf}>
+              Hover over the leaves to obtein info about the sustainability
+              levels.
+            </h2>
+          </div>
+        </div>
         <div className="line">
           <div className="lineA">
             <div className="lineA-A"></div>
@@ -93,6 +225,7 @@ export default function Index() {
         <div className="carouselHome">
           <Carousel />
         </div>
+
         <div className="firstContent">
           {threeLampRandom.length && (
             <div className="firstContentA">
@@ -153,10 +286,7 @@ export default function Index() {
             <div className="line2A-A"></div>
           </div>
           <div className="lineBtn">
-            <h3
-              variant="contained"
-              className="sustainable"
-            >
+            <h3 variant="contained" className="sustainable">
               Sustainable
             </h3>
           </div>
@@ -164,10 +294,7 @@ export default function Index() {
         <div className="separator"></div>
         <div className="line3">
           <div className="lineBtn">
-            <h3
-              variant="contained"
-              className="sustainable"
-            >
+            <h3 variant="contained" className="sustainable">
               Sustainable
             </h3>
           </div>
@@ -175,141 +302,6 @@ export default function Index() {
             <div className="line3A-A"></div>
           </div>
         </div>
-
-        <div className=" flex flex-col bg-lime-700/50 justify-center p-5 pb-10 h-96">
-          <div className="flex w-full h-4/6 justify-center ">
-            <div
-              onMouseOver={() => {
-                setNoLeaf(true);
-                setFirstLeaf(false);
-              }}
-              onMouseOut={() => {
-                setNoLeaf(false);
-                setFirstLeaf(true);
-              }}
-              className={
-                !secondLeaf || !thirdLeaf || !cuartoLeaf || !quinthLeaf
-                  ? "h-full flex items-center mix-blend-hard-light"
-                  : "h-full flex items-center hover:mix-blend-hard-light"
-              }
-            >
-              {/* <RiLeafFill size={100} width="100%" height={100} color="green" /> */}
-              <img
-                className="leaf h-2/3"
-                src="https://www.pngmart.com/files/7/Green-Leaf-PNG-Photo.png"
-                alt=""
-              />
-            </div>
-            <div
-              onMouseOver={() => {
-                setNoLeaf(true);
-                setSecondLeaf(false);
-              }}
-              onMouseOut={() => {
-                setNoLeaf(false);
-                setSecondLeaf(true);
-              }}
-              className={
-                !thirdLeaf || !cuartoLeaf || !quinthLeaf
-                  ? "h-full flex items-center mix-blend-hard-light"
-                  : "h-full flex items-center hover:mix-blend-hard-light"
-              }
-            >
-              {/* <RiLeafFill size={100} width="100%" height={100} color="green" /> */}
-              <img
-                className="leaf h-2/3"
-                src="https://www.pngmart.com/files/7/Green-Leaf-PNG-Photo.png"
-                alt=""
-              />
-            </div>
-            <div
-              onMouseOver={() => {
-                setNoLeaf(true);
-                setThirdLeaf(false);
-              }}
-              onMouseOut={() => {
-                setNoLeaf(false);
-                setThirdLeaf(true);
-              }}
-              className={
-                !cuartoLeaf || !quinthLeaf
-                  ? "h-full flex items-center mix-blend-hard-light"
-                  : "h-full flex items-center hover:mix-blend-hard-light"
-              }
-            >
-              {/* <RiLeafFill size={100} width="100%" height={100} color="green" /> */}
-              <img
-                className="leaf h-2/3"
-                src="https://www.pngmart.com/files/7/Green-Leaf-PNG-Photo.png"
-                alt=""
-              />
-            </div>
-            <div
-              onMouseOver={() => {
-                setNoLeaf(true);
-                setCuartoLeaf(false);
-              }}
-              onMouseOut={() => {
-                setNoLeaf(false);
-                setCuartoLeaf(true);
-              }}
-              className={
-                !quinthLeaf
-                  ? "h-full flex items-center mix-blend-hard-light"
-                  : "h-full flex items-center hover:mix-blend-hard-light"
-              }
-            >
-              {/* <RiLeafFill size={100} width="100%" height={100} color="green" /> */}
-              <img
-                className="leaf h-2/3"
-                src="https://www.pngmart.com/files/7/Green-Leaf-PNG-Photo.png"
-                alt=""
-              />
-            </div>
-            <div
-              onMouseOver={() => {
-                setNoLeaf(true);
-                setQuinthLeaf(false);
-              }}
-              onMouseOut={() => {
-                setNoLeaf(false);
-                setQuinthLeaf(true);
-              }}
-              className="h-full   flex items-center hover:mix-blend-hard-light"
-            >
-              {/* <RiLeafFill size={100} width="100%" height={100} color="green" /> */}
-              <img
-                className="leaf h-2/3"
-                src="https://www.pngmart.com/files/7/Green-Leaf-PNG-Photo.png"
-                alt=""
-              />
-            </div>
-          </div>
-
-          <div className="flex relative flex-grow justify-center w-full items-center">
-            <h2 hidden={firstLeaf} className="absolute text-center">
-              Substitute traditional products for others with less impact.
-            </h2>
-            <h2 hidden={secondLeaf} className="absolute text-center">
-              They consume less energy when used.
-            </h2>
-            <h2 hidden={thirdLeaf} className="absolute text-center">
-              They do not use aggressive products or processes for the environment in their production process.
-            </h2>
-            <h2 hidden={cuartoLeaf} className="absolute text-center">
-              Its raw materials come from well-used natural resources that are recovered over a period of time.
-            </h2>
-            <h2 hidden={quinthLeaf} className="absolute text-center">
-              Contribute to solving an environmental problem.
-            </h2>
-            <h2 hidden={noLeaf} className="absolute text-center">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam
-              necessitatibus at quibusdam doloribus saepe inventore commodi
-              optio assumenda ab, dolorum iste, facere perspiciatis exercitatio
-            </h2>
-          </div>
-        </div>
-
         <div className="secondContent">
           <div className="secondContentA">
             <h3 style={{ fontSize: "42px" }}>Eco-Toys</h3>
@@ -363,6 +355,9 @@ export default function Index() {
               </div>
             </div>
           )}
+        </div>
+        <div className="line4">
+          <div className="line4A"></div>
         </div>
         <div className="twoCalls">
           <div className="firstCall">

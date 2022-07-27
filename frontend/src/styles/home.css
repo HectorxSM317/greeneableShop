@@ -1,7 +1,7 @@
 .bodyPrueba {
   min-height: 100vh;
   background-color: grey;
-  overflow-x: hidden;
+  /* overflow-x: hidden; */
 }
 
 .headerPrueba {
@@ -25,7 +25,7 @@
   align-items: center;
 }
 
-.poi {
+.sectionImg {
   position: absolute;
   top: 0;
   left: 0;
@@ -44,26 +44,33 @@
   object-fit: contain;
 }
 
-#text {
+#titleHeader {
+  /* font-size: 7.5vw; */
   position: absolute;
   padding-top: 200px;
   color: white;
-  white-space: nowrap;
-  font-size: 7.5vw;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  width: 90%;
+  height: 60%;
 }
 
-#par {
-  margin-top: 150px;
+#titleHeader h3 {
+  font-size: 1.5em;
+  text-align: center;
+}
+
+/* #subTitleHeader {
+  font-size: 2vw;
+  padding-top: 200px;
   position: absolute;
   color: white;
-  font-size: 2vw;
-}
+} */
 
 .contenedorDeTodo {
+  padding-top: 2rem;
   position: relative;
   background-color: white;
 }
@@ -143,7 +150,7 @@
 .firstContent {
   min-height: 50vh;
   display: flex;
-  margin: 5rem;
+  margin: 2rem 5rem;
 }
 
 .firstContentA {
@@ -322,7 +329,7 @@
   justify-content: space-evenly;
   align-items: center;
   text-align: center;
-  padding: 5rem;
+  padding: 2rem;
 }
 
 .separator {
@@ -337,7 +344,7 @@
 .secondContent {
   min-height: 50vh;
   display: flex;
-  margin: 5rem;
+  margin: 2rem 5rem;
 }
 
 .secondContentA {
@@ -348,7 +355,7 @@
   justify-content: space-evenly;
   align-items: center;
   text-align: center;
-  padding: 5rem;
+  padding: 2rem;
 }
 
 .secondContentB {
@@ -364,7 +371,7 @@
   height: 40vh;
   display: flex;
   justify-content: space-around;
-  margin: 5rem;
+  margin: 2rem 5rem;
   gap: 2rem;
 }
 
@@ -521,17 +528,108 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  text-align: center;
 }
 
 .lastImage-B {
   height: 30%;
-  background-color: #EEF6DF;
+  background-color: #eef6df;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
+.btnHome {
+  background-color: rgba(19, 85, 45, 0.8) !important;
+}
+
+.btnHome:hover {
+  background-color: #07642fe8 !important;
+}
+.sustainable {
+  background-color: rgba(19, 85, 45, 0.8) !important;
+  color: white;
+  padding: 0.4rem;
+  border-radius: 20px;
+}
+
+.leaves {
+  background-color: #2a9d4b10;
+  height: 30vh;
+  margin: 0 5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 20px;
+}
+.topLeaves {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+.topLeaves h1 {
+  font-size: 1.5em;
+}
+.leavesImg {
+  height: 60%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.leafImg {
+  height: 100%;
+}
+.leavesText {
+  height: 30%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.line4 {
+  display: none;
+}
+
+@media (min-width: 376px), (max-width: 768px) {
+  #titleHeader h2 {
+    height: 60%;
+    font-size: 4em;
+  }
+}
+@media (min-width: 769px) {
+  #titleHeader h2 {
+    height: 100%;
+    font-size: 7em;
+  }
+}
+
 @media (max-width: 375px) {
+  .lastImage-B p {
+    font-size: 2em;
+  }
+  #titleHeader h2 {
+    height: 40%;
+    font-size: 2em;
+  }
+  #titleHeader h3 {
+    font-size: 1em;
+  }
+  .line4 {
+    margin: 0rem 5rem;
+    height: 10vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+  }
+
+  .line4A {
+    width: 100%;
+    height: 5px;
+    background-color: #a3c5b2;
+  }
 
   .firstContentA,
   .secondContentB {
@@ -569,10 +667,6 @@
     width: 100% !important;
   }
 
-  .twoCalls {
-    margin-top: 2rem !important;
-  }
-
   .text h1 {
     font-size: 1em;
   }
@@ -586,10 +680,15 @@
   }
 }
 
-
 @media (max-width: 768px) {
+  .itemName {
+    font-size: 14px;
+  }
+  .leaves {
+    margin: 0 1rem;
+  }
   .carouselHome {
-    margin: 2rem 2rem
+    margin: 2rem 2rem;
   }
 
   .firstContent {
@@ -614,10 +713,14 @@
     align-items: center;
     column-gap: 1rem;
   }
-  
+  .B-1,
+  .B-2 {
+    width: 50%;
+  }
+
   .firstContentB,
   .secondContentA {
-    height: 25vh;
+    min-height: 35vh;
     width: 100%;
     padding: 0;
   }
@@ -640,20 +743,4 @@
   .secondCall {
     width: 100%;
   }
-
-}
-
-.btnHome{
-  background-color: rgba(19, 85, 45, 0.8) !important;
-}
-
-.btnHome:hover{
-  background-color: #07642fe8 !important;
-  
-}
-
-.sustainable{
-  background-color:rgba(19, 85, 45, 0.8) !important;
-  color: white;
-  padding: .4rem;
 }

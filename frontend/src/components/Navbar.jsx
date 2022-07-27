@@ -19,13 +19,15 @@ import PersonOutlineIcon from "@mui/icons-material/PersonOutline";
 import { Link as LinkRouter, useNavigate } from "react-router-dom";
 import Cart from "../pages/Cart";
 import { useState } from "react";
-import Logo from "../assets/greeneable-logo.png";
+import Logo from "../assets/logo-effect3.png";
 import Image from "mui-image";
 import { useSelector, useDispatch } from "react-redux";
 import userActions from "../redux/actions/userActions";
 import toast from "react-hot-toast";
 import Badge from "@mui/material/Badge";
 import { styled } from "@mui/material/styles";
+import cartActions from "../redux/actions/cartActions";
+import { RiLeafFill } from "react-icons/ri";
 
 const pages = [
   {
@@ -73,7 +75,17 @@ const Navbar = () => {
   const totalQuantity = cart.reduce((total, item) => total + item.quantity, 0);
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
+  const [sustainable, setSustainable] = React.useState();
 
+  React.useEffect(() => {
+    async function getSust() {
+      let res = await dispatch(cartActions.getSustainable());
+      setSustainable(res.data.res);
+    }
+    getSust();
+  }, [cart]);
+
+  console.log(sustainable);
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
   };
@@ -101,7 +113,13 @@ const Navbar = () => {
     <AppBar position="static">
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
+          <Box
+            className="order-1"
+            sx={{
+              flexGrow: 1,
+              display: { xs: "flex", md: "none" },
+            }}
+          >
             <IconButton
               size="large"
               aria-label="account of current user"
@@ -138,14 +156,11 @@ const Navbar = () => {
                 </LinkRouter>
               ))}
             </Menu>
-            <LinkRouter to="/">
-              <Image
-                className="logoClass"
-                src={Logo}
-                sx={{ display: { md: "flex" }, mr: 1 }}
-              />
-            </LinkRouter>
           </Box>
+
+          <LinkRouter className="order-0" to="/">
+            <Image src={Logo} className="loguito justify-start" />
+          </LinkRouter>
 
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
             {pages.map((page, index) => (
@@ -169,7 +184,19 @@ const Navbar = () => {
             ))} */}
           </Box>
 
-          <Box sx={{ flexGrow: 0 }}>
+          <Box className="flex items-center gap-5 order-3">
+            <IconButton aria-label="cart">
+              <StyledBadge badgeContent={sustainable} color="success">
+                <RiLeafFill
+                  className="iconLeaf"
+                  style={{
+                    color: "success",
+                    fontSize: "2.5rem",
+                  }}
+                />
+              </StyledBadge>
+            </IconButton>
+
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
                 {/* <PersonOutlineIcon sx={{ color: "white", fontSize: "2rem" }} /> */}
@@ -187,7 +214,7 @@ const Navbar = () => {
 
             <LinkRouter to="/cart">
               <IconButton aria-label="cart">
-                <StyledBadge badgeContent={(totalQuantity)} color="success">
+                <StyledBadge badgeContent={totalQuantity} color="success">
                   <ShoppingCartIcon
                     sx={{
                       color: "white",
@@ -198,7 +225,6 @@ const Navbar = () => {
                 </StyledBadge>
               </IconButton>
             </LinkRouter>
-
 
             {/* <LinkRouter className="relative" to="/cart">
               <ShoppingCartIcon
