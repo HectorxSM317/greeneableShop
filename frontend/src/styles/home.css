@@ -58,7 +58,6 @@
 }
 
 #titleHeader h3{
-  height: 20%;
   font-size: 1.5em;
   text-align: center;
 }
@@ -602,7 +601,7 @@
 }
 @media (min-width: 769px){
   #titleHeader h2{
-    height: 80%;
+    height: 100%;
     font-size: 7em;
   }
 }
