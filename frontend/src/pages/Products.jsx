@@ -4,6 +4,9 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import productsActions from "../redux/actions/productsActions";
 import Product from "../components/Product";
+import Checkbox from "@mui/material/Checkbox";
+import { RiLeafFill } from "react-icons/ri";
+import { RiLeafLine } from "react-icons/ri";
 
 export default function Products() {
   const [input, setInput] = useState("");
@@ -11,6 +14,15 @@ export default function Products() {
   const [orderSort, setorderSort] = useState("");
   const [catProducts, setCatProducts] = useState([]);
   const [cart, setCart] = useState([]);
+  const [sustainableRank, setSustainableRank] = useState();
+
+  const [firstLeaf, setFirstLeaf] = useState(true);
+  const [secondLeaf, setSecondLeaf] = useState(true);
+  const [thirdLeaf, setThirdLeaf] = useState(true);
+  const [cuartoLeaf, setCuartoLeaf] = useState(true);
+  const [quinthLeaf, setQuinthLeaf] = useState(true);
+  const [noLeaf, setNoLeaf] = useState(false);
+
   // const [asdProducts, setAsdProducts] = useState();
   // console.log(cart);
   const categories = new Set(catProducts.map((cat) => cat.category));
@@ -23,27 +35,24 @@ export default function Products() {
       setCatProducts(res.data.response)
     );
   }, []);
-  console.log(useSelector((store) => console.log(store)));
+
   useEffect(() => {
-    dispatch(productsActions.filterProducts(input, buttonRadio, orderSort));
-  }, [input, buttonRadio, orderSort]);
+    dispatch(
+      productsActions.filterProducts(
+        input,
+        buttonRadio,
+        orderSort,
+        sustainableRank
+      )
+    );
+  }, [input, buttonRadio, orderSort, sustainableRank]);
 
   let products = useSelector((store) => store.productsReducer?.filterProducts);
-
-  function sortProducts(e) {
-    // if (e === "des-name") {
-    //   console.log(products);
-    //   products = products.sort((x, y) => x.price - y.price);
-    //   console.log("de la A a la Z");
-    //   console.log("sortdentrofilter", products);
-    // }
-    // console.log("sort", products);
-    // return products;
-  }
+  console.log(products);
 
   return (
     <div className="p-0 mr-0 flex flex-col min-h-[100vh]">
-      <div className="upper-box flex flex-col sm:flex-row justify-center m-0 p-4 px-5 container-box bg-slate-100 sticky items-center sm:justify-around ">
+      <div className="upper-box bgInputs gap-2 flex flex-col sm:flex-row justify-center m-0 p-4 px-5 container-box bg-slate-100 sticky items-center sm:justify-around ">
         <div className="input-search">
           <label
             htmlFor="default-search"
@@ -79,16 +88,14 @@ export default function Products() {
           </div>
         </div>
         <div className="order">
-          <label className="mx-2" htmlFor="order">
-            Order by
-          </label>
+          <label className="mx-2" htmlFor="order"></label>
           <select
             onChange={(e) => setorderSort(e.target.value)}
             name="order"
-            className="bg-transparent"
+            className="bg-transparent border-2 rounded-2xl p-2"
             id="order"
           >
-            <option value={false}>Sort</option>
+            <option value={false}>Sort by</option>
             <option value="as-name">Ascending name</option>
             <option value="des-name">Descending name</option>
             <option value="high-price">Higher price</option>
@@ -97,7 +104,47 @@ export default function Products() {
         </div>
       </div>
 
-      <div className="bg-white my-3 w-full px-5 flex gap-5 flex-wrap">
+      <div className="flex justify-center">
+        <div>
+          <Checkbox
+            id="leaf1"
+            value="leaf1"
+            onChange={(e) => setSustainableRank(e.target.value)}
+            icon={<RiLeafLine style={{ color: "green", fontSize: "28px" }} />}
+            checkedIcon={<RiLeafFill style={{ color: "green", fontSize: "28px" }} />}
+          />
+          <Checkbox
+            id="leaf2"
+            value="leaf2"
+            onChange={(e) => setSustainableRank(e.target.value)}
+            icon={<RiLeafLine style={{ color: "green", fontSize: "28px" }} />}
+            checkedIcon={<RiLeafFill style={{ color: "green", fontSize: "28px" }} />}
+          />
+          <Checkbox
+            id="leaf3"
+            value="leaf3"
+            onChange={(e) => setSustainableRank(e.target.value)}
+            icon={<RiLeafLine style={{ color: "green", fontSize: "28px" }} />}
+            checkedIcon={<RiLeafFill style={{ color: "green", fontSize: "28px" }} />}
+          />
+          <Checkbox
+            id="leaf4"
+            value="leaf4"
+            onChange={(e) => setSustainableRank(e.target.value)}
+            icon={<RiLeafLine style={{ color: "green", fontSize: "28px" }} />}
+            checkedIcon={<RiLeafFill style={{ color: "green", fontSize: "28px" }} />}
+          />
+          <Checkbox
+            id="leaf5"
+            value="leaf5"
+            onChange={(e) => setSustainableRank(e.target.value)}
+            icon={<RiLeafLine style={{ color: "green", fontSize: "28px" }} />}
+            checkedIcon={<RiLeafFill style={{ color: "green", fontSize: "28px" }} />}
+          />
+        </div>
+      </div>
+
+      <div className="bg-white my-3 w-full px-5 sm:justify-center flex gap-5 flex-wrap">
         <label>
           <input type="radio" name="asd" onClick={() => setbuttonRadio("")} />
           All categories

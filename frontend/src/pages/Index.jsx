@@ -22,7 +22,7 @@ export default function Index() {
   const [quinthLeaf, setQuinthLeaf] = useState(true);
   const [noLeaf, setNoLeaf] = useState(false);
 
-  console.log(firstLeaf);
+  // console.log(firstLeaf);
   // useEffect(() => {
   //   setTimeout(() => {
   //     window.scrollTo(0, 0);
@@ -50,7 +50,7 @@ export default function Index() {
       B.style.top = value * 1 + "px";
       C.style.top = value * 0.5 + "px";
       D.style.marginTop = value * 1.6 + "px";
-      console.log(B.style.display)
+      // console.log(B.style.display)
 
       if (window.scrollY <= 800) {
         B.style.display = "block";
@@ -401,8 +401,10 @@ export default function Index() {
           <div className="lastImage-A"></div>
           <div className="lastImage-B">
             <Typography sx={{ fontSize: 50 }}>Be sustainable</Typography>
+
           </div>
         </div>
+
       </div>
     </div>
   );

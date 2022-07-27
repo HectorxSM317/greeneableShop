@@ -38,15 +38,15 @@ export default function Product({ product }) {
             {product.price} USD
           </Typography>
 
-          {product.stock <= 5 ? 
-          (product.stock===0) ?
-             <Typography color="error">Out of stock</Typography>
-             :
-             <Typography color="error">Last units in stock!</Typography>  
-           
-           : (
-            <Typography color="green">Available stock</Typography>
-          )}
+          {product.stock <= 5 ?
+            (product.stock === 0) ?
+              <Typography color="error">Out of stock</Typography>
+              :
+              <Typography color="error">Last units in stock!</Typography>
+
+            : (
+              <Typography color="green">Available stock</Typography>
+            )}
 
         </div>
         <div className="moreInfo">

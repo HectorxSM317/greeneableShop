@@ -1,183 +1,185 @@
-@import url('https://fonts.googleapis.com/css2?family=Dancing+Script&family=Libre+Baskerville&family=Licorice&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Dancing+Script&family=Libre+Baskerville&family=Licorice&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 
-*{
-    font-family: 'Raleway', sans-serif;
+* {
+  font-family: "Raleway", sans-serif;
 }
 
-.cartTitle{
-    min-height: 12vh;
-    width: 90%;
-    border-radius: 10px;
-    background-color: rgba(19, 85, 45, 0.5);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    box-shadow: 0px 0px 3px black;
-    margin-bottom: 1rem;
+.cartTitle {
+  min-height: 12vh;
+  width: 90%;
+  border-radius: 10px;
+  background-color: rgba(19, 85, 45, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0px 0px 3px black;
+  margin-bottom: 1rem;
 }
 
-.cartTitle h1{
-    text-align: center;
-    font-size: 30px;
-    color: white;
+.cartTitle h1 {
+  text-align: center;
+  font-size: 30px;
+  color: white;
 }
 
-.product{
-    display: flex;
-    align-items: center;
+.product {
+  display: flex;
+  align-items: center;
 }
 
-.containerCardsCart{
-    background-color: #2a9d4b10;
-    border-radius: 10px;
-    box-shadow: 0px 0px 3px #00000050;
+.containerCardsCart {
+  background-color: #2a9d4b10;
+  border-radius: 10px;
+  box-shadow: 0px 0px 3px #00000050;
 }
 
-.containerPriceClear{
-    background-color: #2a9d4b10;
-    border-radius: 10px;
-    box-shadow: 0px 0px 3px #00000050;
+.containerPriceClear {
+  background-color: #2a9d4b10;
+  border-radius: 10px;
+  box-shadow: 0px 0px 3px #00000050;
 }
 
-.product-box{
-    background-color: #2a9d4b10;
-    border-radius: 10px;
-    box-shadow: 0px 0px 3px #00000050;
+.product-box {
+  background-color: #2a9d4b10;
+  border-radius: 10px;
+  box-shadow: 0px 0px 3px #00000050;
 }
 
-.generalBtn{ 
-    background-color: rgba(19, 85, 45, 0.8) !important;
+.generalBtn {
+  background-color: rgba(19, 85, 45, 0.8) !important;
 }
-.generalBtn:hover{ 
-    background-color: #07642fe8 !important;
-}
-
-.imageCart{
-    border-radius: 10px;
+.generalBtn:hover {
+  background-color: #07642fe8 !important;
 }
 
-.addQuantityRemove{
-    display: flex;
-    border: 1px solid black;
-    border-radius: 5%;
-    margin: 0.5rem 0;
+.imageCart {
+  border-radius: 10px;
 }
 
-.TotalToPay{
-    display: flex;
+.addQuantityRemove {
+  display: flex;
+  border: 1px solid black;
+  border-radius: 5%;
+  margin: 0.5rem 0;
 }
 
-.addRemove{
-    width: 30%;
-    font-size: 1px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.TotalToPay {
+  display: flex;
 }
 
-.buttonaddRemove{
-    font-size:small !important;
+.addRemove {
+  width: 30%;
+  font-size: 1px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.buttonaddRemove:hover{
-    box-shadow: 1px 1px 1px gray;
+.buttonaddRemove {
+  font-size: small !important;
 }
 
-.quantity{
-    width: 60%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-left: 1px solid grey;
-    border-right: 1px solid grey;
+.buttonaddRemove:hover {
+  box-shadow: 1px 1px 1px gray;
 }
 
-.trash{
-    margin: 0.5rem 0;
-    /* color: red; */
+.quantity {
+  width: 60%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-left: 1px solid grey;
+  border-right: 1px solid grey;
 }
 
-.buy{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    align-content: center;
+.trash {
+  margin: 0.5rem 0;
+  /* color: red; */
+}
 
+.buy {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
 }
 
 @keyframes beats {
-    from { transform: none; }
-    50% { transform: scale(1.1); }
-    to { transform: none; }
+  from {
+    transform: none;
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  to {
+    transform: none;
+  }
 }
 
-.color{
-    color:#13542d;
-    text-shadow: 2px 2px 2px #e7eee8;
-    font-size: larger;
-    animation: beats 1.5s infinite;
-    display: block;
+.color {
+  color: #13542d;
+  text-shadow: 2px 2px 2px #e7eee8;
+  font-size: larger;
+  animation: beats 1.5s infinite;
+  display: block;
 }
 
-.emptyCart{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    min-height: 60vh ;
+.emptyCart {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
 }
 
-.paypal{
-    width: 50%;
+.paypal {
+  width: 50%;
 }
-
 
 @media (max-width: 600px) {
-    .containerCardsCart{
-        flex-direction: column;
-    }
+  .containerCardsCart {
+    flex-direction: column;
+  }
 
-    .containerCardsCart img{
-        width: 15rem;
-        height: 15rem;
-        object-fit: cover;
-    }
+  .containerCardsCart img {
+    width: 15rem;
+    height: 15rem;
+    object-fit: cover;
+  }
 
-    .container1{
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
+  .container1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 
-    .addQuantityRemove{
-        width: 100%;
-        
-    }
+  .addQuantityRemove {
+    width: 100%;
+  }
 }
 
 @media (max-width: 400px) {
-    .containerPriceClear{
-        display: flex;
-        flex-direction: column;
-        gap: 1rem;
-    }
+  .containerPriceClear {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
 
-    .paypal{
-        width: 100%;
-    }
+  .paypal {
+    width: 100%;
+  }
 }
 
-.validateStock{
-    background-color: rgba(19, 85, 45, 0.8) !important;
-    color: white;
-    width: 10rem;
-    padding: .5rem;
-    margin: 1rem 0;
-    box-shadow: 1px 1px 1px gray;
+.validateStock {
+  background-color: rgba(19, 85, 45, 0.8) !important;
+  color: white;
+  width: 10rem;
+  padding: 0.5rem;
+  margin: 1rem 0;
+  box-shadow: 1px 1px 1px gray;
 }
 
-.validateStock:hover{
+.validateStock:hover {
   background-color: #07642fe8 !important;
-  
 }

@@ -128,3 +128,7 @@
   flex-direction: column;
   align-items: center;
 }
+
+.bgInputs {
+  background-color: rgba(19, 85, 45, 0.8);
+}

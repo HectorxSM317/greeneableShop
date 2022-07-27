@@ -54,10 +54,10 @@
   justify-content: center;
   align-items: center;
   width: 90%;
-  height: 50%;
+  height: 60%;
 }
 
-#titleHeader h3{
+#titleHeader h3 {
   font-size: 1.5em;
   text-align: center;
 }
@@ -593,25 +593,28 @@
   display: none;
 }
 
-@media (min-width: 376px), (max-width: 768px){
-  #titleHeader h2{
+@media (min-width: 376px), (max-width: 768px) {
+  #titleHeader h2 {
     height: 60%;
     font-size: 4em;
   }
 }
-@media (min-width: 769px){
-  #titleHeader h2{
+@media (min-width: 769px) {
+  #titleHeader h2 {
     height: 100%;
     font-size: 7em;
   }
 }
 
 @media (max-width: 375px) {
-  #titleHeader h2{
+  .lastImage-B p {
+    font-size: 2em;
+  }
+  #titleHeader h2 {
     height: 40%;
     font-size: 2em;
   }
-  #titleHeader h3{
+  #titleHeader h3 {
     font-size: 1em;
   }
   .line4 {
@@ -678,6 +681,9 @@
 }
 
 @media (max-width: 768px) {
+  .itemName {
+    font-size: 14px;
+  }
   .leaves {
     margin: 0 1rem;
   }

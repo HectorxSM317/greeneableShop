@@ -19,10 +19,16 @@
 .css-1lvtzne {
   width: 2rem !important;
 }
+.order-0{
+  width: 20%;
+}
 
 @media (max-width: 900px) {
   .mui-image-img {
     width: 5rem !important;
+  }
+  .order-0{
+    width: 4rem;
   }
 }
 
