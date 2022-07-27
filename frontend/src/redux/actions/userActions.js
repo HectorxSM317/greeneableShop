@@ -1,6 +1,6 @@
 import axios from "axios";
 import toast from "react-hot-toast";
-const urlBack = "http://localhost:4000";
+const urlBack = "https://greeeneable-back.herokuapp.com";
 
 const userActions = {
   userSignUp: (userData) => {
@@ -19,14 +19,13 @@ const userActions = {
           success: res.data.success,
         },
       });
-      return res
-      
+      return res;
     };
   },
   userSignIn: (loggedUser) => {
     return async (dispatch, getState) => {
       let res = await axios.post(`${urlBack}/api/auth/signIn`, { loggedUser });
-      console.log(res)
+      console.log(res);
       if (res.data.success) {
         localStorage.setItem("token", res.data.response.token);
 

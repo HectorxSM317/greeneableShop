@@ -23,19 +23,21 @@ export default function Index() {
   const [noLeaf, setNoLeaf] = useState(false);
 
   // console.log(firstLeaf);
-  // useEffect(() => {
-  //   setTimeout(() => {
-  //     window.scrollTo(0, 0);
-  //   }, 500);
-  // }, []);
+  useEffect(() => {
+    setTimeout(() => {
+      window.scrollTo(0, 0);
+    }, 500);
+  }, []);
   useEffect(() => {
     axios
-      .get("http://localhost:4000/api/threelampproducts/random")
+      .get(
+        "https://greeeneable-back.herokuapp.com/api/threelampproducts/random"
+      )
       .then((res) => setThreeLampRandom(res.data.response));
   }, []);
   useEffect(() => {
     axios
-      .get("http://localhost:4000/api/threetoyproducts/random")
+      .get("https://greeeneable-back.herokuapp.com/api/threetoyproducts/random")
       .then((res) => setThreeToysRandom(res.data.response));
   }, []);
   useEffect(() => {
@@ -73,11 +75,18 @@ export default function Index() {
         <img className="sectionImg" src={front} id="front" alt="" />
       </div>
       <div className="contenedorDeTodo">
-
-      <div className="leaves">
+        <div className="leaves">
           <div className="topLeaves">
             <h1>Our sustainability project:</h1>
-            <p>We are Greeneable, an ecological e-commerce deeply committed to protecting the environment, and we are aware of the serious deforestation problems that affect the Amazon rainforest (the lung of the world). For this reason, we offer an innovative rating system, based on scores from 1 to 5, which represent the sustainability levels of our products. Every 500 points achieved, we will donate 1 tree for reforestation projects.</p>
+            <p>
+              We are Greeneable, an ecological e-commerce deeply committed to
+              protecting the environment, and we are aware of the serious
+              deforestation problems that affect the Amazon rainforest (the lung
+              of the world). For this reason, we offer an innovative rating
+              system, based on scores from 1 to 5, which represent the
+              sustainability levels of our products. Every 500 points achieved,
+              we will donate 1 tree for reforestation projects.
+            </p>
           </div>
           <div className="leavesImg">
             <div
@@ -189,19 +198,23 @@ export default function Index() {
           </div>
           <div className="leavesText">
             <h2 hidden={firstLeaf}>
-              <span>Level 1</span>: Substitute traditional products for others with less impact.
+              <span>Level 1</span>: Substitute traditional products for others
+              with less impact.
             </h2>
-            <h2 hidden={secondLeaf}><span>Level 2</span>: They consume less energy when used.</h2>
+            <h2 hidden={secondLeaf}>
+              <span>Level 2</span>: They consume less energy when used.
+            </h2>
             <h2 hidden={thirdLeaf}>
-            <span>Level 3</span>: They do not use aggressive products or processes for the
-              environment in their production process.
+              <span>Level 3</span>: They do not use aggressive products or
+              processes for the environment in their production process.
             </h2>
             <h2 hidden={cuartoLeaf}>
-            <span>Level 4</span>: Its raw materials come from well-used natural resources that are
-              recovered over a period of time.
+              <span>Level 4</span>: Its raw materials come from well-used
+              natural resources that are recovered over a period of time.
             </h2>
             <h2 hidden={quinthLeaf}>
-            <span>Level 5</span>: Contribute to solving an environmental problem.
+              <span>Level 5</span>: Contribute to solving an environmental
+              problem.
             </h2>
             <h2 hidden={noLeaf}>
               Hover over the leaves to obtein info about the sustainability
@@ -404,10 +417,8 @@ export default function Index() {
           <div className="lastImage-A"></div>
           <div className="lastImage-B">
             <Typography sx={{ fontSize: 50 }}>Be sustainable</Typography>
-
           </div>
         </div>
-
       </div>
     </div>
   );

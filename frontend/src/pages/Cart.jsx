@@ -10,6 +10,11 @@ import "../styles/productCart.css";
 import { Link as LinkRouter, useNavigate } from "react-router-dom";
 
 export default function Cart() {
+  useEffect(() => {
+    setTimeout(() => {
+      window.scrollTo(0, 0);
+    }, 500);
+  }, []);
   const dispatch = useDispatch();
   const navigate = useNavigate;
   const cart = useSelector((store) => store.productsReducer.cart);

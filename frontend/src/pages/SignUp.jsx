@@ -7,7 +7,7 @@ import axios from "axios";
 import MenuItem from "@mui/material/MenuItem";
 import Select from "@mui/material/Select";
 import GoogleSignUp from "../components/GoogleSignUp";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link as LinkRouter } from "react-router-dom";
 import Box from "@mui/material/Box";
 import AccountCircle from "@mui/icons-material/AccountCircle";
@@ -22,12 +22,17 @@ import toast from "react-hot-toast";
 ></link>;
 
 export default function LogIn() {
+  useEffect(() => {
+    setTimeout(() => {
+      window.scrollTo(0, 0);
+    }, 500);
+  }, []);
   const [selectCountry, setSelectCountry] = useState("");
 
   const dispatch = useDispatch();
 
   const [country, setCountry] = useState([]);
-
+  console.log(country);
   React.useEffect(() => {
     axios
       .get("https://restcountries.com/v3.1/all")
@@ -36,18 +41,16 @@ export default function LogIn() {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    console.log(event.target.value);
     const userData = {
-      firstName: event.target[2].value,
-      lastName: event.target[4].value,
-      email: event.target[6].value,
-      password: event.target[8].value,
-      // photo: event.target[6].value,
+      firstName: event.target[1].value,
+      lastName: event.target[3].value,
+      email: event.target[5].value,
+      password: event.target[7].value,
       country: selectCountry,
       from: "signUp",
       role: "user",
     };
-
+    console.log(userData);
     const res = await dispatch(userActions.userSignUp(userData));
     console.log(res);
     // const errormsg = res.data.message
@@ -93,28 +96,24 @@ export default function LogIn() {
                 hidden
               />
 
-              <form className="form form--register" onSubmit={handleSubmit}>
+              <form className="" onSubmit={handleSubmit}>
                 <div className="w-full text-center flex flex-col justify-center items-center">
                   <h1 className="w-full">Sign up</h1>
-                  <div className="w-full">
-                    <h1>Select Country</h1>
-                  </div>
 
-                  <Select
+                  <select
                     name="country"
-                    className="countryy"
+                    className="countryy w-4/5 bg-slate-500/25 rounded-lg p-2 my-2"
                     id="country"
                     required
-                    defaultValue=""
                     onChange={(p) => setSelectCountry(p.target.value)}
                   >
-                    <MenuItem value=""></MenuItem>
+                    <option value="">Select your Country</option>
                     {country.map((country, index) => (
-                      <MenuItem key={index} value={country.name.common}>
+                      <option key={index} value={country.name.common}>
                         {country.name.common}
-                      </MenuItem>
+                      </option>
                     ))}
-                  </Select>
+                  </select>
                 </div>
                 {selectCountry && (
                   <div className="h-fit w-full flex flex-col items-center justify-center py-4">

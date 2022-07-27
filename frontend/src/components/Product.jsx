@@ -7,6 +7,8 @@ import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import toast from "react-hot-toast";
 import "../styles/products.css";
+import { IoIosEye } from "react-icons/io";
+import { BiInfoCircle } from "react-icons/bi";
 
 export default function Product({ product }) {
   const dispatch = useDispatch();
@@ -21,40 +23,34 @@ export default function Product({ product }) {
     toast.success("Product added!");
   }
 
-  // let filter  = cart.filter ( item => item._id === product._id)
-  // console.log(filter)
-
   return (
-    <div className="card">
+    <div className="relative card h-[20rem] bg-black">
       <div className="image">
         <img src={product.photo} alt="" />
       </div>
+      <LinkRouter
+        className="absolute top-36 -right-5"
+        to={`/details/${product._id}`}
+      >
+        <Button className="viewMore bg-">
+          <BiInfoCircle size={35} className="eyes" />
+        </Button>
+      </LinkRouter>
       <div className="content">
         <div className="info">
-          <Typography gutterBottom variant="h6" component="div">
+          <Typography
+            className="text-white"
+            gutterBottom
+            variant="h6"
+            component="div"
+          >
             {product.name}
           </Typography>
-          <Typography variant="body2" color="text.secondary" className="price">
-            {product.price} USD
-          </Typography>
-
-          {product.stock <= 5 ?
-            (product.stock === 0) ?
-              <Typography color="error">Out of stock</Typography>
-              :
-              <Typography color="error">Last units in stock!</Typography>
-
-            : (
-              <Typography color="green">Available stock</Typography>
-            )}
-
         </div>
         <div className="moreInfo">
-          <LinkRouter to={`/details/${product._id}`}>
-            <Button size="small" className="viewMore">
-              View more
-            </Button>
-          </LinkRouter>
+          <Typography variant="body2" className="text-white font-bold">
+            {product.price} USD
+          </Typography>
           <Button
             variant="contained"
             className="buttonAdd"

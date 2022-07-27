@@ -1,5 +1,5 @@
 import axios from "axios";
-const urlBack = "http://localhost:4000";
+const urlBack = "https://greeeneable-back.herokuapp.com";
 
 const productsActions = {
   getProducts: () => {
@@ -21,6 +21,7 @@ const productsActions = {
   },
 
   filterProducts: (searchInput, buttonRadio, orderSort, sustainableRank) => {
+    console.log(sustainableRank);
     return (dispatch, getState) => {
       dispatch({
         type: "FILTERPRODUCTS",
