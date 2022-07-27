@@ -36,23 +36,21 @@ export default function LogIn() {
   React.useEffect(() => {
     axios
       .get("https://restcountries.com/v3.1/all")
-      .then((res) => setCountry(res.data.sort((a, b) => 1)));
+      .then((res) => setCountry(res.data));
   }, []);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    console.log(event.target.value);
     const userData = {
-      firstName: event.target[2].value,
-      lastName: event.target[4].value,
-      email: event.target[6].value,
-      password: event.target[8].value,
-      // photo: event.target[6].value,
+      firstName: event.target[1].value,
+      lastName: event.target[3].value,
+      email: event.target[5].value,
+      password: event.target[7].value,
       country: selectCountry,
       from: "signUp",
       role: "user",
     };
-
+    console.log(userData);
     const res = await dispatch(userActions.userSignUp(userData));
     console.log(res);
     // const errormsg = res.data.message

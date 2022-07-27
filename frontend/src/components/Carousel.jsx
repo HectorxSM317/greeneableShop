@@ -7,7 +7,7 @@ import Button from "@mui/material/Button";
 import CardMedia from "@mui/material/CardMedia";
 import axios from "axios";
 import { useEffect } from "react";
-import { Link as LinkRouter } from 'react-router-dom'
+import { Link as LinkRouter } from "react-router-dom";
 
 // Import Swiper styles
 import "swiper/css";
@@ -24,7 +24,7 @@ export default function App() {
   const [carouselItems, setCarouselItems] = useState([]);
   useEffect(() => {
     axios
-      .get("http://localhost:4000/api/fiveproducts/random")
+      .get("https://greeeneable-back.herokuapp.com/api/fiveproducts/random")
       .then((res) => setCarouselItems(res.data.response));
   }, []);
 
@@ -71,8 +71,6 @@ export default function App() {
         className="mySwiper"
       >
         {carouselItems.map((event, i) => (
-
-
           <SwiperSlide key={i} className="sliderCarousel">
             <Box
               className="sliderImg"
@@ -93,7 +91,6 @@ export default function App() {
               </LinkRouter>
             </Box>
           </SwiperSlide>
-
         ))}
       </Swiper>
     </>

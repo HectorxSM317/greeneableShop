@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const urlBack = "http://localhost:4000";
+const urlBack = "https://greeeneable-back.herokuapp.com";
 
 const cartActions = {
   createSummary: (summary) => {
