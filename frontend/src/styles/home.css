@@ -58,7 +58,7 @@
 }
 
 #titleHeader h3{
-  height: 40%;
+  height: 20%;
   font-size: 1.5em;
   text-align: center;
 }
@@ -596,20 +596,20 @@
 
 @media (min-width: 376px), (max-width: 768px){
   #titleHeader h2{
-    height: 30%;
+    height: 60%;
     font-size: 4em;
   }
 }
 @media (min-width: 769px){
   #titleHeader h2{
-    height: 60%;
+    height: 80%;
     font-size: 7em;
   }
 }
 
 @media (max-width: 375px) {
   #titleHeader h2{
-    height: 20%;
+    height: 40%;
     font-size: 2em;
   }
   #titleHeader h3{
