@@ -33,7 +33,7 @@ export default function Cart() {
   return (
     <>
       {cart?.length > 0 ? (
-        <div className="min-h-[60vh] flex items-center justify-center flex-col px-6">
+        <div className="min-h-[80vh] flex items-center justify-center flex-col px-6">
           <div className="mt-[6rem] cartTitle">
             <h1>Current products in your cart:</h1>
           </div>

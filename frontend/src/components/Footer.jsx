@@ -13,7 +13,7 @@ import { BiInfoCircle } from "react-icons/bi";
 
 function Footer() {
   return (
-    <footer className="flex flex-col z-10">
+    <footer className="flex flex-col">
       <div className="flex flex-col">
         <div className="flex flex-col items-center justify-around md:justify-center sm:flex-row gap-3 md:gap-20 py-3">
           <div className="flex justify-center sm:hidden pt-2">
