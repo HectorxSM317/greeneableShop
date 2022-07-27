@@ -32,58 +32,59 @@ const productReducer = (state = initialState, action) => {
       let buttonRadio = action.payload.buttonRadio;
       let orderSort = action.payload.orderSort;
       let sustainableRank = action.payload.sustainableRank;
-      // console.log(orderSort);
+ 
 
       function filterProducts() {
         let filterP = [];
 
-        if (buttonRadio && searchInput &&  sustainableRank !== "") {
-          sortSustainable()
+        if (buttonRadio  && searchInput!== "") {
           filterP.push(
             ...state.products.filter(
               (evento) =>
-                evento.name
-                  .toLowerCase()
-                  .includes(searchInput.trim().toLowerCase()) &&
-                evento.category === buttonRadio
-            )
-          );
-        } else if (buttonRadio && searchInput && sustainableRank === "") {
-          sortSustainable()
+              evento.name
+              .toLowerCase()
+              .includes(searchInput.trim().toLowerCase()) &&
+              evento.category === buttonRadio 
+              )
+              );
+            
+
+        } else if (buttonRadio && searchInput === "") {
           filterP.push(
             ...state.products.filter(
               (evento) => evento.category === buttonRadio
-            )
-          );
-        } else if (!buttonRadio && searchInput && sustainableRank !== "") {
-          sortSustainable()
+              )
+              );
+          
+        } else if (!buttonRadio && searchInput !== "") {
           filterP.push(
             ...state.products.filter((evento) =>
-              evento.name
-                .toLowerCase()
-                .includes(searchInput.trim().toLowerCase())
+            evento.name
+            .toLowerCase()
+            .includes(searchInput.trim().toLowerCase())
             )
-          );
+            );
+        
         } 
-        else if (!buttonRadio && !searchInput  && sustainableRank !== "") {
-          sortSustainable()
+        else if (!buttonRadio && !searchInput !== "") {
           filterP.push(
             ...state.products.filter((evento) =>
-              evento.name
-                .toLowerCase()
-                .includes(searchInput.trim().toLowerCase())
+            evento.name
+            .toLowerCase()
+            .includes(searchInput.trim().toLowerCase())
             )
-          );
+            );
+      
         }
-        else if (!buttonRadio && searchInput && !sustainableRank !== "") {
-          sortSustainable()
+        else if (!buttonRadio && searchInput!== "") {
           filterP.push(
             ...state.products.filter((evento) =>
-              evento.name
-                .toLowerCase()
-                .includes(searchInput.trim().toLowerCase())
+            evento.name
+            .toLowerCase()
+            .includes(searchInput.trim().toLowerCase())
             )
-          );
+            );
+      
         }
         
         else {
@@ -93,13 +94,17 @@ const productReducer = (state = initialState, action) => {
         if (orderSort) {
           filterP = sortProducts(orderSort, filterP);
         }
+        if (sustainableRank){
+          filterP = sortSustainable(sustainableRank,filterP)
+          console.log("filterPPP", filterP)
+        }
        
 
         return filterP;
       }
 
       function sortProducts(orderSort, filterP) {
-        console.log("filterP", filterP);
+      
         let filter;
         if (orderSort === "des-name") {
           filter = filterP
@@ -116,36 +121,37 @@ const productReducer = (state = initialState, action) => {
         }
         return filter;
       }
-
-      function sortSustainable(filterP, ){
-      let sustArray = [];
+      
+      function sortSustainable(sustainableRank,filterP ){
+        let sustArray = [];
+     
     
       if (sustainableRank === "leaf1") {
-        sustArray.push(...state.products.filter((product)=>
+        sustArray = filterP.filter((product)=>
             product.sustainable === 1
-        ))
+        )
       }
       else if (sustainableRank <= "leaf2"){
-        sustArray.push(...state.products.filter((product)=>
+        sustArray = filterP.filter((product)=>
           product.sustainable === 2
-      ))
+      )
       }
       else if (sustainableRank <= "leaf3"){
-        sustArray.push(...state.products.filter((product)=>
+        sustArray = filterP.filter((product)=>
           product.sustainable === 3
-      ))
+      )
       }
       else if (sustainableRank <= "leaf4"){
-        sustArray.push(...state.products.filter((product)=>
+        sustArray = filterP.filter((product)=>
           product.sustainable === 4
-      ))
+      )
       }
       else if (sustainableRank <= "leaf5"){
-        sustArray.push(...state.products.filter((product)=>
+        sustArray = filterP.filter((product)=>
           product.sustainable === 5
-      ))
-      }
-    
+      )
+    }
+    console.log("Ultimooo",sustArray)
       return sustArray
     }
 
