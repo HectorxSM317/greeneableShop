@@ -123,9 +123,7 @@ const productReducer = (state = initialState, action) => {
       }
       
       function sortSustainable(sustainableRank,filterP ){
-        let sustArray = [];
-     
-    
+     let sustArray;
       if (sustainableRank === "leaf1") {
         sustArray = filterP.filter((product)=>
             product.sustainable === 1
@@ -149,9 +147,11 @@ const productReducer = (state = initialState, action) => {
       else if (sustainableRank <= "leaf5"){
         sustArray = filterP.filter((product)=>
           product.sustainable === 5
-      )
-    }
-    console.log("Ultimooo",sustArray)
+      )}
+      else if (sustainableRank === "") {
+        sustArray = filterP
+      }
+  
       return sustArray
     }
 
