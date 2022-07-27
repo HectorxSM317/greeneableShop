@@ -21,11 +21,8 @@ export default function Product({ product }) {
     toast.success("Product added!");
   }
 
-  // let filter  = cart.filter ( item => item._id === product._id)
-  // console.log(filter)
-
   return (
-    <div className="card">
+    <div className="card h-[20rem]">
       <div className="image">
         <img src={product.photo} alt="" />
       </div>
@@ -38,16 +35,15 @@ export default function Product({ product }) {
             {product.price} USD
           </Typography>
 
-          {product.stock <= 5 ? 
-          (product.stock===0) ?
-             <Typography color="error">Out of stock</Typography>
-             :
-             <Typography color="error">Last units in stock!</Typography>  
-           
-           : (
+          {product.stock <= 5 ? (
+            product.stock === 0 ? (
+              <Typography color="error">Out of stock</Typography>
+            ) : (
+              <Typography color="error">Last units in stock!</Typography>
+            )
+          ) : (
             <Typography color="green">Available stock</Typography>
           )}
-
         </div>
         <div className="moreInfo">
           <LinkRouter to={`/details/${product._id}`}>

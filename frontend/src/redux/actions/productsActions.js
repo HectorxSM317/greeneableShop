@@ -21,6 +21,7 @@ const productsActions = {
   },
 
   filterProducts: (searchInput, buttonRadio, orderSort, sustainableRank) => {
+    console.log(sustainableRank);
     return (dispatch, getState) => {
       dispatch({
         type: "FILTERPRODUCTS",

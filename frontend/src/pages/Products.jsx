@@ -28,7 +28,7 @@ export default function Products() {
   const categories = new Set(catProducts.map((cat) => cat.category));
   // console.log(orderSort);
   const arrayCategories = [...categories];
-
+  console.log(sustainableRank);
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(productsActions.getProducts()).then((res) =>
@@ -45,7 +45,7 @@ export default function Products() {
         sustainableRank
       )
     );
-  }, [input, buttonRadio, orderSort]);
+  }, [input, buttonRadio, orderSort, sustainableRank]);
 
   let products = useSelector((store) => store.productsReducer?.filterProducts);
   console.log(products);
