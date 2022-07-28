@@ -22,8 +22,7 @@ export default function GoogleSignIn({ props }) {
         from: "google",
       })
     );
-    console.log(res);
-    // if (res) {
+    toast.success("Welcome!");
     //   try {
     //     toast.success(res.data.message, {
     //       position: "top-left",
@@ -49,7 +48,7 @@ export default function GoogleSignIn({ props }) {
     /* global google */
     google.accounts.id.initialize({
       client_id:
-        "523308192943-iae7rpp5oqk36bcmta9qu92stluqrut9.apps.googleusercontent.com",
+        "496650414327-4dd3hsav2d4f0ah3bor7nimgisgqithn.apps.googleusercontent.com",
       callback: handleCallbackResponse,
     });
 

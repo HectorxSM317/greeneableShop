@@ -17,7 +17,6 @@ export default function Uplaod() {
   const dispatch = useDispatch();
   const [files, setFiles] = useState([]);
   const [value, setValue] = useState(0);
-  console.log(value);
   useEffect(() => {
     dispatch(productsActions.getProducts());
   }, []);
@@ -34,9 +33,7 @@ export default function Uplaod() {
     const description = await event.target[1].value;
     const price = await event.target[2].value;
     const stock = await event.target[3].value;
-    console.log(event.target[4].value);
     const category = await event.target[10].value;
-    console.log(file, name, description);
     if (
       !name ||
       !file ||
@@ -56,14 +53,6 @@ export default function Uplaod() {
       formData.append("sustainable", value);
       formData.append("category", category);
       formData.append("file", file);
-      console.log(formData);
-      console.log(name);
-      console.log(description);
-      console.log(price);
-
-      console.log(stock);
-      console.log(category);
-      console.log(file);
 
       dispatch(adminActions.uploadProduct(formData)).then((res) => {
         if (res.data.success) {

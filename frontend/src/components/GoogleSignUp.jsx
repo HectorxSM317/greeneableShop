@@ -29,17 +29,11 @@ export default function GoogleSignUp({ props }) {
         role: "user",
       })
     );
-    console.log(res.data);
+
     if (res.data.success) {
-      toast.success(res.data.message, {
-        position: "top-center",
-        autoClose: 7000,
-      });
+      toast.success(res.data.message);
     } else {
-      toast.error(res.data.message, {
-        position: "top-center",
-        autoClose: 7000,
-      });
+      toast.error(res.data.message);
     }
     // if (res) {
     //   try {
@@ -75,7 +69,7 @@ export default function GoogleSignUp({ props }) {
     /* global google */
     google.accounts.id.initialize({
       client_id:
-        "523308192943-iae7rpp5oqk36bcmta9qu92stluqrut9.apps.googleusercontent.com",
+        "496650414327-4dd3hsav2d4f0ah3bor7nimgisgqithn.apps.googleusercontent.com",
       callback: handleCallbackResponse,
     });
 

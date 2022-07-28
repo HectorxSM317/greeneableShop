@@ -71,7 +71,6 @@ export default function PayPal({ isValid }) {
   const createOrder = (data, actions) => {
     // Creo la orden de con los datos, esta puede ser general o con detalle de items
 
-    console.log(getTotal(cart));
     return actions.order.create({
       purchase_units: [
         {

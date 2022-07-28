@@ -14,7 +14,6 @@ const adminActions = {
           },
         }
       );
-      console.log(res);
       dispatch({
         type: "message",
         payload: {
@@ -53,10 +52,9 @@ const adminActions = {
 
   modifyProduct: (id, product) => {
     const token = localStorage.getItem("token");
-    console.log(product);
-    for (const value of product.values()) {
-      console.log(value);
-    }
+    // for (const value of product.values()) {
+    //   console.log(value);
+    // }
     return async (dispatch, getState) => {
       const res = await axios.put(
         `${urlBack}/api/products/modify/${id}`,
@@ -67,7 +65,6 @@ const adminActions = {
           },
         }
       );
-      console.log(res);
       dispatch({
         type: "message",
         payload: {

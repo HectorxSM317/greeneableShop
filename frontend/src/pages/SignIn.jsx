@@ -60,7 +60,7 @@ function Login(props) {
       password: event.target[2].value,
       from: "signIn",
     };
-    console.log(loggedUser);
+
     let res = await dispatch(userActions.userSignIn(loggedUser));
     // await props.signInUser(logedUser)
 
@@ -87,7 +87,7 @@ function Login(props) {
         // draggable: true,
         // progress: undefined,
       });
-      console.log(res);
+
       return loggedUser;
     }
   };

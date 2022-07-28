@@ -21,7 +21,6 @@ const productsActions = {
   },
 
   filterProducts: (searchInput, buttonRadio, orderSort, sustainableRank) => {
-    console.log(sustainableRank);
     return (dispatch, getState) => {
       dispatch({
         type: "FILTERPRODUCTS",
@@ -108,7 +107,6 @@ const productsActions = {
   },
 
   addToCart: (product) => {
-    console.log(product);
     return async (dispatch, getState) => {
       // const res = await axios.get(`${urlBack}/api/productcart/asdprod`, {
       //   product,
@@ -131,12 +129,12 @@ const productsActions = {
   },
 
   validateStock: (cart) => {
-    console.log(cart);
+
     return async (dispatch, getState) => {
       const res = await axios.post(`${urlBack}/api/productcart/validateStock`, {
         cart,
       });
-      console.log(res.data);
+
       return res.data.response;
     };
   },
