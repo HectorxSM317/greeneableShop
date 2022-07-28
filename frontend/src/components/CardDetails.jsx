@@ -392,7 +392,7 @@ export default function RecipeReviewCard({ product }) {
                   sustainable: newValue,
                 });
               }}
-              icon={<RiLeafFill fontSize="inherit" color="green" />}
+              icon={<RiLeafFill fontSize="inherit" color="green"  />}
               emptyIcon={<RiLeafFill fontSize="inherit" />}
             />
           </CardContent>

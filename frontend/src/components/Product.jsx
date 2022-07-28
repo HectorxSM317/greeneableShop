@@ -36,12 +36,12 @@ export default function Product({ product }) {
           <div className="absolute left-[-40px] top-[32px] w-[170px] transform -rotate-45 bg-gray-600 text-center text-white font-semibold">
             {product.stock <= 5 ? (
               product.stock === 0 ? (
-                <p className="bg-red-500 p-1">Out of stock</p>
+                <p className="bg-red-700 p-1">Out of stock</p>
               ) : (
-                <p className="bg-cyan-500 p-1">Last units!</p>
+                <p className="bg-red-500 p-1">Last units!</p>
               )
             ) : (
-              <p className="bg-lime-500 p-1">Available stock</p>
+              <p className=""></p>
             )}
           </div>
         </div>
@@ -62,7 +62,7 @@ export default function Product({ product }) {
             name="sustainable"
             disabled
             value={product.sustainable}
-            icon={<RiLeafFill fontSize="inherit" color="green" />}
+            icon={<RiLeafFill fontSize="inherit" color="darkgreen" />}
             emptyIcon={<RiLeafFill fontSize="inherit" />}
           />
         </CardContent>
