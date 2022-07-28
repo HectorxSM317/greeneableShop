@@ -9,10 +9,7 @@ import toast from "react-hot-toast";
 import "../styles/products.css";
 import { IoIosEye } from "react-icons/io";
 import { BiInfoCircle } from "react-icons/bi";
-<<<<<<< HEAD
-=======
 import CardContent from "@mui/material/CardContent";
->>>>>>> dev
 import Rating from "@mui/material/Rating";
 import { RiLeafFill } from "react-icons/ri";
 

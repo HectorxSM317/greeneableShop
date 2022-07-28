@@ -53,7 +53,7 @@ export default function Products() {
   }, [input, buttonRadio, orderSort, sustainableRank]);
 
   let products = useSelector((store) => store.productsReducer?.filterProducts);
-  console.log(products);
+
 
   return (
     <div className="p-0 mr-0 flex flex-col items-center min-h-[100vh]">
@@ -257,20 +257,15 @@ export default function Products() {
         </div>
       </div>
 
-<<<<<<< HEAD
-      <div className="bg-white my-3 w-full px-5 sm:justify-center flex gap-5 lg:gap-15 flex-wrap">
-        <label className="flex gap-2 items-center">
-=======
       <div className="bg-white my-5 gap-1 w-11/12 sm:w-[95%] justify-center px-5 sm:justify-center flex md:gap-5 lg:gap-15 flex-wrap">
         <label className="flex gap-2">
->>>>>>> dev
           <input type="radio" name="asd" onClick={() => setbuttonRadio("")} />
           All categories
         </label>
 
         {arrayCategories.map((cat, i) => {
           return (
-            <label key={i} className="flex gap-2 items-center">
+            <label key={i} className="flex gap-2">
               <input
                 type="radio"
                 name="asd"

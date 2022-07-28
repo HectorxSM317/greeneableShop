@@ -72,7 +72,7 @@ export default function RecipeReviewCard({ product }) {
   };
 
   const loggedUser = useSelector((store) => store.usersReducer.loggedUser);
-  const cart = useSelector((store) => store.productsReducer.cart);
+
   // const [value, setValue] = React.useState();
   const navigate = useNavigate();
   const handleDelete = (event) => {
@@ -168,18 +168,10 @@ export default function RecipeReviewCard({ product }) {
   function addToCart(product, e) {
     e.preventDefault();
     let productAdded = cart.find((p) => p._id === product._id);
-<<<<<<< HEAD
-    if (productAdded?.quantity >= product.stock) {
-      toast.error('Product out of stock!')
-      return
-    }
-    
-=======
     if (productAdded.quantity >= product.stock) {
       toast.error("No stock");
       return;
     }
->>>>>>> dev
 
     dispatch(productsActions.addToCart(product));
     toast.success("Product added!");
@@ -225,14 +217,10 @@ export default function RecipeReviewCard({ product }) {
           </div>
         </div>
         <div className="detailsTop-B">
-<<<<<<< HEAD
-          <Box className="editContent" sx={{ display: "flex", alignItems: "center" }}>
-=======
           <Box
             className="editContent"
             sx={{ display: "flex", alignItems: "center" }}
           >
->>>>>>> dev
             <div>
               {loggedUser && loggedUser.role === "admin" && (
                 <div>
@@ -310,12 +298,7 @@ export default function RecipeReviewCard({ product }) {
               </div>
             }
           </CardContent>
-<<<<<<< HEAD
-          <CardContent
-            sx={{ p: 0 }}>
-=======
           <CardContent sx={{ p: 0 }}>
->>>>>>> dev
             <Typography
               variant="body"
               color="text.secondary"
@@ -415,16 +398,12 @@ export default function RecipeReviewCard({ product }) {
             />
           </CardContent>
           <CardContent sx={{ width: "100%" }}>
-<<<<<<< HEAD
-            <Button className="generalBtn" variant="contained" sx={{ width: "100%", backgroundColor: "#13552D" }} onClick={(e) => addToCart(product, e)}>
-=======
             <Button
               className="generalBtn"
               variant="contained"
               sx={{ width: "100%", backgroundColor: "#13552D" }}
               onClick={(e) => addToCart(product, e)}
             >
->>>>>>> dev
               Add To Cart
             </Button>
           </CardContent>
