@@ -9,6 +9,7 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import "../styles/productCart.css";
 import { Link as LinkRouter, useNavigate } from "react-router-dom";
 
+
 export default function Cart() {
   useEffect(() => {
     setTimeout(() => {
@@ -38,7 +39,7 @@ export default function Cart() {
   return (
     <>
       {cart?.length > 0 ? (
-        <div className="min-h-[80vh] flex items-center justify-center flex-col px-6">
+        <div className='min-h-[80vh] flex items-center justify-center flex-col px-6 ' >
           <div className="mt-[6rem] cartTitle">
             <h1>Current products in your cart:</h1>
           </div>
@@ -94,13 +95,14 @@ export default function Cart() {
           )}
         </div>
       ) : (
-        <div className="emptyCart">
-          <h3>Your cart is currently empty.</h3>
+        <div className="emptyCart cart-container ">
+          <h3 className="text-white my-2 text-lg">Your cart is currently empty.</h3>
           <LinkRouter to="/products">
-            <button className="color">
+            <button className="color my-2">
               Click here to start making it greeneable!
             </button>
           </LinkRouter>
+          <img className="my-2" src={"https://i.imgur.com/K3OL7sv.png"} ></img>
           {/* {!checkout && loggedUser && (
             <LinkRouter to="/checkout">
               <button className="text-6xl text-black">CheckOut</button>

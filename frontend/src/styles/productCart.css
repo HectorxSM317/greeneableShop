@@ -4,6 +4,14 @@
   font-family: "Raleway", sans-serif;
 }
 
+.cart-container{
+  background-image: url(../assets/parallax/back.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+
 .cartTitle {
   min-height: 12vh;
   width: 90%;
@@ -118,8 +126,8 @@
 }
 
 .color {
-  color: #13542d;
-  text-shadow: 2px 2px 2px #e7eee8;
+  color: white;
+  text-shadow: 2px 2px 2px #000;
   font-size: larger;
   animation: beats 1.5s infinite;
   display: block;

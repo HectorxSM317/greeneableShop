@@ -217,8 +217,7 @@ const Navbar = () => {
                   <ShoppingCartIcon
                     sx={{
                       color: "white",
-                      fontSize: "1.7rem",
-                      marginLeft: "2.5rem",
+                      fontSize: "1.7rem"
                     }}
                   />
                 </StyledBadge>
