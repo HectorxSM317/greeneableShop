@@ -69,7 +69,7 @@ export default function Index() {
         <img src={center} id="center" alt="" />
         <div id="titleHeader">
           <h2>Greeneable</h2>
-          <h3>Sustainable products to take care of our planet</h3>
+          <h3>Breaking the pollution barries.</h3>
         </div>
         <img className="sectionImg" src={front} id="front" alt="" />
       </div>
