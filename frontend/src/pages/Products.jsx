@@ -257,14 +257,14 @@ export default function Products() {
       </div>
 
       <div className="bg-white my-3 w-full px-5 sm:justify-center flex gap-5 lg:gap-15 flex-wrap">
-        <label className="flex gap-2">
+        <label className="flex gap-2 items-center">
           <input type="radio" name="asd" onClick={() => setbuttonRadio("")} />
           All categories
         </label>
 
         {arrayCategories.map((cat, i) => {
           return (
-            <label key={i} className="flex gap-2">
+            <label key={i} className="flex gap-2 items-center">
               <input
                 type="radio"
                 name="asd"
