@@ -165,16 +165,15 @@ export default function RecipeReviewCard({ product }) {
     }
   }, [product]);
 
-  function addToCart(product, e) {
-    e.preventDefault();
-    let productAdded = cart.find((p) => p._id === product._id);
-    if (productAdded.quantity >= product.stock) {
-      toast.error("No stock");
-      return;
+  console.log(cart)
+  function addToCart(product) {
+    if (product.stock === 0){
+      toast.error("This product is out of stock");
+    }else{
+      dispatch(productsActions.addToCart(product));
+      toast.success("Product added!");
     }
 
-    dispatch(productsActions.addToCart(product));
-    toast.success("Product added!");
   }
   return (
     <Card className="details">

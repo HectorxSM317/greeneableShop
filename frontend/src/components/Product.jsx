@@ -75,13 +75,7 @@ export default function Product({ product }) {
           >
             {product.name}
           </Typography>
-          <Rating
-          readOnly
-          name="sustainable"
-          value={product?.sustainable}
-          icon={<RiLeafFill fontSize="inherit" color="green" />}
-          emptyIcon={<RiLeafFill fontSize="inherit" />}
-        />
+    
         </div>
         <div className="moreInfo pt-2">
           <Typography variant="body2" className="text-white font-bold">
