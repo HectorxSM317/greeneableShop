@@ -33,6 +33,7 @@
   color: #13542d;
 }
 .image {
+  color: rgba(19, 85, 45, 0.5);
   height: 50%;
 }
 .image img {

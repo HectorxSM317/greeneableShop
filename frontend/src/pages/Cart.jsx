@@ -78,7 +78,7 @@ export default function Cart() {
                   Confirm Purchase
                 </button>
               </div>
-              <p className="my-2">Payment methods:</p>
+              {isValid && <p className="my-2">Payment methods:</p>}
               <div className="paypal">
                 <PayPal isValid={isValid} />
               </div>
