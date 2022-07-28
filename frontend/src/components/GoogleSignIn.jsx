@@ -22,8 +22,7 @@ export default function GoogleSignIn({ props }) {
         from: "google",
       })
     );
-    console.log(res);
-    // if (res) {
+    toast.success("Welcome!");
     //   try {
     //     toast.success(res.data.message, {
     //       position: "top-left",

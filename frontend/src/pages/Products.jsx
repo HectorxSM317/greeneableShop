@@ -24,8 +24,8 @@ export default function Products() {
   const [firstLeaf, setFirstLeaf] = useState(false);
   const [secondLeaf, setSecondLeaf] = useState(false);
   const [thirdLeaf, setThirdLeaf] = useState(false);
-  const [cuartoLeaf, setCuartoLeaf] = useState(false);
-  const [quinthLeaf, setQuinthLeaf] = useState(false);
+  const [fourthLeaf, setFourthLeaf] = useState(false);
+  const [fifthLeaf, setFifthLeaf] = useState(false);
   const [noLeaf, setNoLeaf] = useState(true);
 
   // const [asdProducts, setAsdProducts] = useState();
@@ -56,8 +56,8 @@ export default function Products() {
   console.log(products);
 
   return (
-    <div className="p-0 mr-0 flex flex-col min-h-[100vh]">
-      <div className="upper-box bgInputs gap-2 flex flex-col sm:flex-row justify-center m-0 p-4 px-5 container-box bg-slate-100 sticky items-center sm:justify-around ">
+    <div className="p-0 mr-0 flex flex-col items-center min-h-[100vh]">
+      <div className="upper-box bgInputs gap-2 w-full flex flex-col sm:flex-row justify-center m-0 p-4 px-5 container-box bg-slate-100 sticky items-center sm:justify-around ">
         <div className="input-search">
           <label
             htmlFor="default-search"
@@ -108,156 +108,162 @@ export default function Products() {
           </select>
         </div>
       </div>
-
       <div className="flex justify-center">
-        <div className="flex py-5 gap-5">
-          <label htmlFor="leaf" className="flex items-center pr-3">
-            {noLeaf ? (
-              <RiLeafFill style={{ color: "grey", fontSize: "35px" }} />
-            ) : (
-              <RiLeafLine style={{ color: "grey", fontSize: "35px" }} />
-            )}
-
-            <input
-              className="hidden"
-              name="leaf"
-              type="radio"
-              id="leaf"
-              value=""
-              onChange={(e) => {
-                setFirstLeaf(false);
-                setSecondLeaf(false);
-                setThirdLeaf(false);
-                setCuartoLeaf(false);
-                setQuinthLeaf(false);
-                setNoLeaf(e.target.checked);
-                setSustainableRank(e.target.value);
-              }}
-              // icon={<RiLeafLine style={{ color: "green", fontSize: "28px" }} />}
-              // checkedIcon={
-              //   <RiLeafFill style={{ color: "green", fontSize: "28px" }} />
-              // }
-            />
-          </label>
-          <label htmlFor="leaf1">
-            {firstLeaf ||
-            secondLeaf ||
-            thirdLeaf ||
-            cuartoLeaf ||
-            quinthLeaf ? (
-              <RiLeafFill style={{ color: "green", fontSize: "35px" }} />
-            ) : (
-              <RiLeafLine style={{ color: "green", fontSize: "35px" }} />
-            )}
-
-            <input
-              className="hidden"
-              name="leaf"
-              type="radio"
-              id="leaf1"
-              value="leaf1"
-              onChange={(e) => {
-                setNoLeaf(false);
-                setSecondLeaf(false);
-                setThirdLeaf(false);
-                setCuartoLeaf(false);
-                setQuinthLeaf(false);
-                setFirstLeaf(e.target.checked);
-                setSustainableRank(e.target.value);
-              }}
-            />
-          </label>
-          <label htmlFor="leaf2">
-            {secondLeaf || thirdLeaf || cuartoLeaf || quinthLeaf ? (
-              <RiLeafFill style={{ color: "green", fontSize: "35px" }} />
-            ) : (
-              <RiLeafLine style={{ color: "green", fontSize: "35px" }} />
-            )}
-
-            <input
-              className="hidden"
-              name="leaf"
-              type="radio"
-              id="leaf2"
-              value="leaf2"
-              onChange={(e) => {
-                setNoLeaf(false);
-                setThirdLeaf(false);
-                setCuartoLeaf(false);
-                setQuinthLeaf(false);
-                setSecondLeaf(e.target.checked);
-                setSustainableRank(e.target.value);
-              }}
-            />
-          </label>
-          <label htmlFor="leaf3">
-            {thirdLeaf || cuartoLeaf || quinthLeaf ? (
-              <RiLeafFill style={{ color: "green", fontSize: "35px" }} />
-            ) : (
-              <RiLeafLine style={{ color: "green", fontSize: "35px" }} />
-            )}
-
-            <input
-              className="hidden"
-              name="leaf"
-              type="radio"
-              id="leaf3"
-              value="leaf3"
-              onChange={(e) => {
-                setNoLeaf(false);
-                setCuartoLeaf(false);
-                setQuinthLeaf(false);
-                setThirdLeaf(e.target.checked);
-                setSustainableRank(e.target.value);
-              }}
-            />
-          </label>
-          <label htmlFor="leaf4">
-            {cuartoLeaf || quinthLeaf ? (
-              <RiLeafFill style={{ color: "green", fontSize: "35px" }} />
-            ) : (
-              <RiLeafLine style={{ color: "green", fontSize: "35px" }} />
-            )}
-
-            <input
-              className="hidden"
-              name="leaf"
-              type="radio"
-              id="leaf4"
-              value="leaf4"
-              onChange={(e) => {
-                setNoLeaf(false);
-                setQuinthLeaf(false);
-                setCuartoLeaf(e.target.checked);
-                setSustainableRank(e.target.value);
-              }}
-            />
-          </label>
-          <label htmlFor="leaf5">
-            {quinthLeaf ? (
-              <RiLeafFill style={{ color: "green", fontSize: "35px" }} />
-            ) : (
-              <RiLeafLine style={{ color: "green", fontSize: "35px" }} />
-            )}
-
-            <input
-              className="hidden"
-              name="leaf"
-              type="radio"
-              id="leaf5"
-              value="leaf5"
-              onChange={(e) => {
-                setNoLeaf(false);
-                setQuinthLeaf(e.target.checked);
-                setSustainableRank(e.target.value);
-              }}
-            />
-          </label>
+        <div className="flex flex-col pt-5">
+          <div className="flex gap-2 sm:gap-5 w-full">
+            <label
+              htmlFor="leaf"
+              className="flex translate-y-1 items-center cursor-pointer"
+            >
+              {noLeaf ? (
+                <RiLeafFill style={{ color: "grey", fontSize: "35px" }} />
+              ) : (
+                <RiLeafLine style={{ color: "grey", fontSize: "35px" }} />
+              )}
+              <input
+                className="hidden"
+                name="leaf"
+                type="radio"
+                id="leaf"
+                value=""
+                onChange={(e) => {
+                  setFirstLeaf(false);
+                  setSecondLeaf(false);
+                  setThirdLeaf(false);
+                  setFourthLeaf(false);
+                  setFifthLeaf(false);
+                  setNoLeaf(e.target.checked);
+                  setSustainableRank(e.target.value);
+                }}
+                // icon={<RiLeafLine style={{ color: "green", fontSize: "28px" }} />}
+                // checkedIcon={
+                //   <RiLeafFill style={{ color: "green", fontSize: "28px" }} />
+                // }
+              />
+            </label>
+            <label htmlFor="leaf1" className="translate-y-1 cursor-pointer">
+              {firstLeaf ||
+              secondLeaf ||
+              thirdLeaf ||
+              fourthLeaf ||
+              fifthLeaf ? (
+                <RiLeafFill style={{ color: "green", fontSize: "35px" }} />
+              ) : (
+                <RiLeafLine style={{ color: "green", fontSize: "35px" }} />
+              )}
+              <input
+                className="hidden"
+                name="leaf"
+                type="radio"
+                id="leaf1"
+                value="leaf1"
+                onChange={(e) => {
+                  setNoLeaf(false);
+                  setSecondLeaf(false);
+                  setThirdLeaf(false);
+                  setFourthLeaf(false);
+                  setFifthLeaf(false);
+                  setFirstLeaf(e.target.checked);
+                  setSustainableRank(e.target.value);
+                }}
+              />
+            </label>
+            <label htmlFor="leaf2" className="translate-y-1 cursor-pointer">
+              {secondLeaf || thirdLeaf || fourthLeaf || fifthLeaf ? (
+                <RiLeafFill style={{ color: "green", fontSize: "35px" }} />
+              ) : (
+                <RiLeafLine style={{ color: "green", fontSize: "35px" }} />
+              )}
+              <input
+                className="hidden"
+                name="leaf"
+                type="radio"
+                id="leaf2"
+                value="leaf2"
+                onChange={(e) => {
+                  setNoLeaf(false);
+                  setThirdLeaf(false);
+                  setFourthLeaf(false);
+                  setFifthLeaf(false);
+                  setSecondLeaf(e.target.checked);
+                  setSustainableRank(e.target.value);
+                }}
+              />
+            </label>
+            <label htmlFor="leaf3" className="translate-y-1 cursor-pointer">
+              {thirdLeaf || fourthLeaf || fifthLeaf ? (
+                <RiLeafFill style={{ color: "green", fontSize: "35px" }} />
+              ) : (
+                <RiLeafLine style={{ color: "green", fontSize: "35px" }} />
+              )}
+              <input
+                className="hidden"
+                name="leaf"
+                type="radio"
+                id="leaf3"
+                value="leaf3"
+                onChange={(e) => {
+                  setNoLeaf(false);
+                  setFourthLeaf(false);
+                  setFifthLeaf(false);
+                  setThirdLeaf(e.target.checked);
+                  setSustainableRank(e.target.value);
+                }}
+              />
+            </label>
+            <label htmlFor="leaf4" className="translate-y-1 cursor-pointer">
+              {fourthLeaf || fifthLeaf ? (
+                <RiLeafFill style={{ color: "green", fontSize: "35px" }} />
+              ) : (
+                <RiLeafLine style={{ color: "green", fontSize: "35px" }} />
+              )}
+              <input
+                className="hidden"
+                name="leaf"
+                type="radio"
+                id="leaf4"
+                value="leaf4"
+                onChange={(e) => {
+                  setNoLeaf(false);
+                  setFifthLeaf(false);
+                  setFourthLeaf(e.target.checked);
+                  setSustainableRank(e.target.value);
+                }}
+              />
+            </label>
+            <label htmlFor="leaf5" className="translate-y-1 cursor-pointer">
+              {fifthLeaf ? (
+                <RiLeafFill style={{ color: "green", fontSize: "35px" }} />
+              ) : (
+                <RiLeafLine style={{ color: "green", fontSize: "35px" }} />
+              )}
+              <input
+                className="hidden"
+                name="leaf"
+                type="radio"
+                id="leaf5"
+                value="leaf5"
+                onChange={(e) => {
+                  setNoLeaf(false);
+                  setFifthLeaf(e.target.checked);
+                  setSustainableRank(e.target.value);
+                }}
+              />
+            </label>
+          </div>
+          <div className=" rounded-b-lg">
+            <p className="text-center p-1">Sort by sustentability</p>
+          </div>
         </div>
       </div>
 
+<<<<<<< HEAD
       <div className="bg-white my-3 w-full px-5 sm:justify-center flex gap-5 lg:gap-15 flex-wrap">
         <label className="flex gap-2 items-center">
+=======
+      <div className="bg-white my-5 gap-1 w-11/12 sm:w-[95%] justify-center px-5 sm:justify-center flex md:gap-5 lg:gap-15 flex-wrap">
+        <label className="flex gap-2">
+>>>>>>> dev
           <input type="radio" name="asd" onClick={() => setbuttonRadio("")} />
           All categories
         </label>

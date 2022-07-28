@@ -16,6 +16,7 @@ import EmailIcon from "@mui/icons-material/Email";
 import Password from "../components/Password";
 import Button from "@mui/material/Button";
 import toast from "react-hot-toast";
+
 <link
   href="https://fonts.googleapis.com/css2?family=Lato:wght@300&family=Montserrat:wght@600&display=swap"
   rel="stylesheet"
@@ -32,7 +33,6 @@ export default function LogIn() {
   const dispatch = useDispatch();
 
   const [country, setCountry] = useState([]);
-  console.log(country);
   React.useEffect(() => {
     axios
       .get("https://restcountries.com/v3.1/all")
@@ -50,9 +50,7 @@ export default function LogIn() {
       from: "signUp",
       role: "user",
     };
-    console.log(userData);
     const res = await dispatch(userActions.userSignUp(userData));
-    console.log(res);
     // const errormsg = res.data.message
     // console.log(errormsg)
     // 		if (res.data.from === "validation") {
@@ -63,7 +61,6 @@ export default function LogIn() {
     // if (res.data.from === "form-Signup") {
     if (res.data.success) {
       toast.success(res.data.message);
-      console.log(res.data.message);
       // navigate('/signin')
     } else {
       toast.error(res.data.message);

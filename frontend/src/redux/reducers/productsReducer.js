@@ -85,7 +85,6 @@ const productReducer = (state = initialState, action) => {
         }
         if (sustainableRank) {
           filterP = sortSustainable(sustainableRank, filterP);
-          console.log("filterPPP", filterP);
         }
 
         return filterP;
@@ -182,12 +181,10 @@ const productReducer = (state = initialState, action) => {
       return newReduxStore;
     }
     case "REMOVE_ALL_FROM_CART": {
-      console.log(action.payload);
       const newReduxStore = {
         ...state,
         cart: state.cart.filter((item) => item._id !== action.payload),
       };
-      console.log(newReduxStore.cart);
       localStorage.setItem("product", JSON.stringify(newReduxStore.cart));
 
       return newReduxStore;

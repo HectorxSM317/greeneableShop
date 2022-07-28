@@ -29,17 +29,11 @@ export default function GoogleSignUp({ props }) {
         role: "user",
       })
     );
-    console.log(res.data);
+
     if (res.data.success) {
-      toast.success(res.data.message, {
-        position: "top-center",
-        autoClose: 7000,
-      });
+      toast.success(res.data.message);
     } else {
-      toast.error(res.data.message, {
-        position: "top-center",
-        autoClose: 7000,
-      });
+      toast.error(res.data.message);
     }
     // if (res) {
     //   try {

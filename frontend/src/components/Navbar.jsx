@@ -85,7 +85,6 @@ const Navbar = () => {
     getSust();
   }, [cart]);
 
-  console.log(sustainable);
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
   };

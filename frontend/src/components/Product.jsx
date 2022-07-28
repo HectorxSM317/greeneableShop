@@ -9,6 +9,10 @@ import toast from "react-hot-toast";
 import "../styles/products.css";
 import { IoIosEye } from "react-icons/io";
 import { BiInfoCircle } from "react-icons/bi";
+<<<<<<< HEAD
+=======
+import CardContent from "@mui/material/CardContent";
+>>>>>>> dev
 import Rating from "@mui/material/Rating";
 import { RiLeafFill } from "react-icons/ri";
 
@@ -19,16 +23,32 @@ export default function Product({ product }) {
   function addToCart(product, e) {
     e.preventDefault();
     let productAdded = cart.find((p) => p._id === product._id);
-    if (productAdded?.quantity >= product.stock) return;
+    if (productAdded?.quantity >= product.stock) {
+      toast.error("No stock");
+      return;
+    }
 
     dispatch(productsActions.addToCart(product));
     toast.success("Product added!");
   }
 
   return (
-    <div className="relative card h-[20rem] bg-black">
-      <div className="image">
-        <img src={product.photo} alt="" />
+    <div className="relative card h-[20rem] overflow-hidden bg-gray-600">
+      <div className="image relative w-full h-56 overflow-hidden">
+        <div className="absolute top-0 h-16 w-full">
+          <div className="absolute left-[-40px] top-[32px] w-[170px] transform -rotate-45 bg-gray-600 text-center text-white font-semibold">
+            {product.stock <= 5 ? (
+              product.stock === 0 ? (
+                <p className="bg-red-500 p-1">Out of stock</p>
+              ) : (
+                <p className="bg-cyan-500 p-1">Last units!</p>
+              )
+            ) : (
+              <p className="bg-lime-500 p-1">Available stock</p>
+            )}
+          </div>
+        </div>
+        <img className="" src={product.photo} alt="" />
       </div>
       <LinkRouter
         className="absolute top-36 -right-5"
@@ -39,7 +59,17 @@ export default function Product({ product }) {
         </Button>
       </LinkRouter>
       <div className="content">
-        <div className="info">
+        <CardContent sx={{ p: 0 }}>
+          <Rating
+            sx={{ py: 1 }}
+            name="sustainable"
+            disabled
+            value={product.sustainable}
+            icon={<RiLeafFill fontSize="inherit" color="green" />}
+            emptyIcon={<RiLeafFill fontSize="inherit" />}
+          />
+        </CardContent>
+        <div className="info px-2 flex-grow">
           <Typography
             className="text-white"
             gutterBottom
@@ -56,7 +86,7 @@ export default function Product({ product }) {
           emptyIcon={<RiLeafFill fontSize="inherit" />}
         />
         </div>
-        <div className="moreInfo">
+        <div className="moreInfo pt-2">
           <Typography variant="body2" className="text-white font-bold">
             {product.price} USD
           </Typography>

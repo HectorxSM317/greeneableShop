@@ -18,8 +18,8 @@ export default function Index() {
   const [firstLeaf, setFirstLeaf] = useState(true);
   const [secondLeaf, setSecondLeaf] = useState(true);
   const [thirdLeaf, setThirdLeaf] = useState(true);
-  const [cuartoLeaf, setCuartoLeaf] = useState(true);
-  const [quinthLeaf, setQuinthLeaf] = useState(true);
+  const [fourthLeaf, setFourthLeaf] = useState(true);
+  const [fifthLeaf, setFifthLeaf] = useState(true);
   const [noLeaf, setNoLeaf] = useState(false);
 
   // console.log(firstLeaf);
@@ -98,7 +98,7 @@ export default function Index() {
                 setFirstLeaf(true);
               }}
               className={
-                !secondLeaf || !thirdLeaf || !cuartoLeaf || !quinthLeaf
+                !secondLeaf || !thirdLeaf || !fourthLeaf || !fifthLeaf
                   ? "h-full flex items-center mix-blend-hard-light"
                   : "h-full flex items-center hover:mix-blend-hard-light"
               }
@@ -120,7 +120,7 @@ export default function Index() {
                 setSecondLeaf(true);
               }}
               className={
-                !thirdLeaf || !cuartoLeaf || !quinthLeaf
+                !thirdLeaf || !fourthLeaf || !fifthLeaf
                   ? "h-full flex items-center mix-blend-hard-light"
                   : "h-full flex items-center hover:mix-blend-hard-light"
               }
@@ -142,7 +142,7 @@ export default function Index() {
                 setThirdLeaf(true);
               }}
               className={
-                !cuartoLeaf || !quinthLeaf
+                !fourthLeaf || !fifthLeaf
                   ? "h-full flex items-center mix-blend-hard-light"
                   : "h-full flex items-center hover:mix-blend-hard-light"
               }
@@ -157,14 +157,14 @@ export default function Index() {
             <div
               onMouseOver={() => {
                 setNoLeaf(true);
-                setCuartoLeaf(false);
+                setFourthLeaf(false);
               }}
               onMouseOut={() => {
                 setNoLeaf(false);
-                setCuartoLeaf(true);
+                setFourthLeaf(true);
               }}
               className={
-                !quinthLeaf
+                !fifthLeaf
                   ? "h-full flex items-center mix-blend-hard-light"
                   : "h-full flex items-center hover:mix-blend-hard-light"
               }
@@ -179,11 +179,11 @@ export default function Index() {
             <div
               onMouseOver={() => {
                 setNoLeaf(true);
-                setQuinthLeaf(false);
+                setFifthLeaf(false);
               }}
               onMouseOut={() => {
                 setNoLeaf(false);
-                setQuinthLeaf(true);
+                setFifthLeaf(true);
               }}
               className="h-full   flex items-center hover:mix-blend-hard-light"
             >
@@ -207,11 +207,11 @@ export default function Index() {
               <span>Level 3</span>: They do not use aggressive products or
               processes for the environment in their production process.
             </h2>
-            <h2 hidden={cuartoLeaf}>
+            <h2 hidden={fourthLeaf}>
               <span>Level 4</span>: Its raw materials come from well-used
               natural resources that are recovered over a period of time.
             </h2>
-            <h2 hidden={quinthLeaf}>
+            <h2 hidden={fifthLeaf}>
               <span>Level 5</span>: Contribute to solving an environmental
               problem.
             </h2>

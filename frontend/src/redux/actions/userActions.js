@@ -4,13 +4,12 @@ const urlBack = "https://greeeneable-back.herokuapp.com";
 
 const userActions = {
   userSignUp: (userData) => {
-    console.log(userData);
     return async (dispatch, getState) => {
       let res = await axios.post(`${urlBack}/api/auth/signUp`, { userData });
       // {res.data.message.map((message)=> (
       //   toast.error(message.message)
       //   ))}
-      console.log(res);
+
       dispatch({
         type: "MESSAGE",
         payload: {
@@ -25,7 +24,6 @@ const userActions = {
   userSignIn: (loggedUser) => {
     return async (dispatch, getState) => {
       let res = await axios.post(`${urlBack}/api/auth/signIn`, { loggedUser });
-      console.log(res);
       if (res.data.success) {
         localStorage.setItem("token", res.data.response.token);
 
