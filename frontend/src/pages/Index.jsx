@@ -10,6 +10,7 @@ import Carousel from "../components/Carousel";
 import Button from "@mui/material/Button";
 import { Link as LinkRouter } from "react-router-dom";
 import { RiLeafFill } from "react-icons/ri";
+import { motion } from "framer-motion"
 
 export default function Index() {
   const [threeLampRandom, setThreeLampRandom] = useState([]);
@@ -89,24 +90,26 @@ export default function Index() {
           </div>
           <div className="leavesImg">
             <div
-              onMouseOver={() => {
-                setNoLeaf(true);
-                setFirstLeaf(false);
-              }}
-              onMouseOut={() => {
-                setNoLeaf(false);
-                setFirstLeaf(true);
-              }}
-              className={
-                !secondLeaf || !thirdLeaf || !fourthLeaf || !fifthLeaf
-                  ? "h-full flex items-center mix-blend-hard-light"
-                  : "h-full flex items-center hover:mix-blend-hard-light"
-              }
+
+
             >
               {/* <RiLeafFill size={100} width="100%" height={100} color="green" /> */}
-              <img
-                className="leafImg"
-                src="https://www.pngmart.com/files/7/Green-Leaf-PNG-Photo.png"
+              <motion.img
+                animate={{ rotateY: !firstLeaf || !secondLeaf || !thirdLeaf || !fourthLeaf || !fifthLeaf ? 0 : 180 }}
+                transition={{ duration: 0.7 }}
+                className={!firstLeaf || !secondLeaf || !thirdLeaf || !fourthLeaf || !fifthLeaf ? 'saturate-10' : 'saturate-50'}
+                onMouseOver={() => {
+                  setNoLeaf(true);
+                  setFirstLeaf(false);
+                }}
+                onMouseOut={() => {
+                  setNoLeaf(false);
+                  setFirstLeaf(true);
+                }
+
+                }
+
+                src="https://i.imgur.com/nzz99vK.png"
                 alt=""
               />
             </div>
@@ -119,20 +122,19 @@ export default function Index() {
                 setNoLeaf(false);
                 setSecondLeaf(true);
               }}
-              className={
-                !thirdLeaf || !fourthLeaf || !fifthLeaf
-                  ? "h-full flex items-center mix-blend-hard-light"
-                  : "h-full flex items-center hover:mix-blend-hard-light"
-              }
+
             >
               {/* <RiLeafFill size={100} width="100%" height={100} color="green" /> */}
-              <img
-                className="leafImg"
-                src="https://www.pngmart.com/files/7/Green-Leaf-PNG-Photo.png"
-                alt=""
+              <motion.img
+                className={!secondLeaf || !thirdLeaf || !fourthLeaf || !fifthLeaf ? 'saturate-10' : 'saturate-50'}
+                animate={{ rotateY: !secondLeaf || !thirdLeaf || !fourthLeaf || !fifthLeaf ? 0 : 180 }}
+                transition={{ duration: 0.7 }}
+                src="https://i.imgur.com/nzz99vK.png"
+                alt="..."
               />
             </div>
             <div
+
               onMouseOver={() => {
                 setNoLeaf(true);
                 setThirdLeaf(false);
@@ -141,16 +143,19 @@ export default function Index() {
                 setNoLeaf(false);
                 setThirdLeaf(true);
               }}
-              className={
-                !fourthLeaf || !fifthLeaf
-                  ? "h-full flex items-center mix-blend-hard-light"
-                  : "h-full flex items-center hover:mix-blend-hard-light"
-              }
+            // className={
+            //   !thirdLeaf || !fourthLeaf || !fifthLeaf
+            //     ? "h-full flex items-center saturate-200"
+            //     : "h-full flex items-center hover:saturate-100"
+            // }
             >
               {/* <RiLeafFill size={100} width="100%" height={100} color="green" /> */}
-              <img
-                className="leafImg"
-                src="https://www.pngmart.com/files/7/Green-Leaf-PNG-Photo.png"
+              <motion.img
+                className={ !thirdLeaf || !fourthLeaf || !fifthLeaf ? 'saturate-10 transition-all' : 'saturate-50'}
+                animate={{ rotateY: !thirdLeaf || !fourthLeaf || !fifthLeaf ? 0 : 180 }}
+                transition={{ duration: 0.7 }}
+                // className="leafImg"
+                src="https://i.imgur.com/nzz99vK.png"
                 alt=""
               />
             </div>
@@ -163,16 +168,18 @@ export default function Index() {
                 setNoLeaf(false);
                 setFourthLeaf(true);
               }}
-              className={
-                !fifthLeaf
-                  ? "h-full flex items-center mix-blend-hard-light"
-                  : "h-full flex items-center hover:mix-blend-hard-light"
-              }
+            // className={
+            //   !fifthLeaf
+            //     ? "h-full flex items-center mix-blend-hard-light"
+            //     : "h-full flex items-center hover:mix-blend-hard-light"
+            // }
             >
               {/* <RiLeafFill size={100} width="100%" height={100} color="green" /> */}
-              <img
-                className="leafImg"
-                src="https://www.pngmart.com/files/7/Green-Leaf-PNG-Photo.png"
+              <motion.img
+                className={!fourthLeaf || !fifthLeaf ? 'saturate-10' : 'saturate-50'}
+                animate={{ rotateY: !fourthLeaf || !fifthLeaf ? 0 : 180 }}
+                transition={{ duration: 0.7 }}
+                src="https://i.imgur.com/nzz99vK.png"
                 alt=""
               />
             </div>
@@ -185,22 +192,36 @@ export default function Index() {
                 setNoLeaf(false);
                 setFifthLeaf(true);
               }}
-              className="h-full   flex items-center hover:mix-blend-hard-light"
+            // className="h-full   flex items-center hover:mix-blend-hard-light"
             >
               {/* <RiLeafFill size={100} width="100%" height={100} color="green" /> */}
-              <img
-                className="leafImg"
-                src="https://www.pngmart.com/files/7/Green-Leaf-PNG-Photo.png"
+              <motion.img
+                className={!fifthLeaf ? 'saturate-10' : 'saturate-50'}
+                animate={{ rotateY: !fifthLeaf ? 0 : 180 }}
+                transition={{ duration: 0.7 }}
+
+                src="https://i.imgur.com/nzz99vK.png"
                 alt=""
               />
             </div>
           </div>
+
           <div className="leavesText">
-            <h2 hidden={firstLeaf}>
+            <motion.h2
+              // initial={{ opacity: !firstLeaf && 0, scale: !firstLeaf && 0.5 }}
+              transition={{ opacity: [0,2], scale: 1 }}
+              hidden={firstLeaf}
+              
+              >
+
               <span>Level 1</span>: Substitute traditional products for others
               with less impact.
-            </h2>
-            <h2 hidden={secondLeaf}>
+            </motion.h2>
+            <h2 hidden={secondLeaf}
+              initial={{ opacity: 0, scale: 0.5 }}
+              animate={{ opacity: firstLeaf && 1, scale: firstLeaf && 1 }}
+              transition={{ duration: 0.7 }}
+            >
               <span>Level 2</span>: They consume less energy when used.
             </h2>
             <h2 hidden={thirdLeaf}>
@@ -219,6 +240,20 @@ export default function Index() {
               Hover over the leaves to obtein info about the sustainability
               levels.
             </h2>
+            {/* <h2>
+              { !firstLeaf ? "Level 1: Substitute traditional products for others with less impact."
+            :
+              !secondLeaf ? "Level 2: They consume less energy when used."
+            :
+            !thirdLeaf ? "Level 3: They do not use aggressive products or processes for the environment in their production process."
+            :
+            !fourthLeaf ? "Level 4: Its raw materials come from well-used natural resources that are recovered over a period of time."
+            :
+            !fifthLeaf ? "Level 5: Contribute to solving an environmental problem."
+            :
+            "Hover over the leaves to obtein info about the sustainability levels."
+          }
+            </h2> */}
           </div>
         </div>
 
