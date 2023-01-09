@@ -1,6 +1,6 @@
 import axios from "axios";
 import toast from "react-hot-toast";
-const urlBack = "https://greeeneable-back.herokuapp.com";
+const urlBack = "greeneableshop-production.up.railway.app";
 
 const userActions = {
   userSignUp: (userData) => {

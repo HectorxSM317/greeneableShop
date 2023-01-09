@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const urlBack = "https://greeeneable-back.herokuapp.com";
+const urlBack = "greeneableshop-production.up.railway.app";
 
 const cartActions = {
   createSummary: (summary) => {

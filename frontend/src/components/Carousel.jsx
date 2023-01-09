@@ -24,7 +24,7 @@ export default function App() {
   const [carouselItems, setCarouselItems] = useState([]);
   useEffect(() => {
     axios
-      .get("https://greeeneable-back.herokuapp.com/api/fiveproducts/random")
+      .get("greeneableshop-production.up.railway.app/api/fiveproducts/random")
       .then((res) => setCarouselItems(res.data.response));
   }, []);
 

@@ -32,13 +32,13 @@ export default function Index() {
   useEffect(() => {
     axios
       .get(
-        "https://greeeneable-back.herokuapp.com/api/threelampproducts/random"
+        "greeneableshop-production.up.railway.app/api/threelampproducts/random"
       )
       .then((res) => setThreeLampRandom(res.data.response));
   }, []);
   useEffect(() => {
     axios
-      .get("https://greeeneable-back.herokuapp.com/api/threetoyproducts/random")
+      .get("greeneableshop-production.up.railway.app/api/threetoyproducts/random")
       .then((res) => setThreeToysRandom(res.data.response));
   }, []);
   useEffect(() => {

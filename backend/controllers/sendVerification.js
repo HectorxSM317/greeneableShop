@@ -40,7 +40,7 @@ const sendVerification = async (email, string) => {
         <div style="color:#0c252c;font-family: 'Arial',sans-serif">
             <h3 style="font-weight:bold">Welcome to Greeneable! 🛒</h3>
             <p>You're almost there ! We are very glad to have you as a member of our community!</p>
-            <p> Please, click <a style="color:#007acc font-weight:bold" href="https://greeeneable-back.herokuapp.com/api/verify/${string}">HERE</a> to verify your account.</p>
+            <p> Please, click <a style="color:#007acc font-weight:bold" href="greeneableshop-production.up.railway.app/api/verify/${string}">HERE</a> to verify your account.</p>
                 <div style="background-color:#13542d; padding: 1rem"> 
                     <img style="text-align: center" width="350" src="https://i.ibb.co/WnCp43G/greeneable-logo.png">
                     <h4 style="color: white;">The sustainable solution to your daily needs </h4>
